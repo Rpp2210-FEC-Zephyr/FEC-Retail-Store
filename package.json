@@ -1,0 +1,33 @@
+{
+  "name": "Zephyr",
+  "version": "1.0.0",
+  "author": "Lovinson",
+  "scripts": {
+    "server": "npx nodemon  server/index.js",
+    "build": "webpack --mode production  --watch"
+  },
+  "dependencies": {
+    "@babel/plugin-syntax-jsx": "^7.18.6",
+    "axios": "^1.3.2",
+    "bluebird": "^3.7.2",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "jquery": "^3.6.3",
+    "module": "^1.2.5",
+    "mongoose": "^6.9.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "webpack": "^5.75.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^9.1.2",
+    "react-router-dom": "^6.8.1",
+    "webpack-cli": "^5.0.1"
+  }
+}
