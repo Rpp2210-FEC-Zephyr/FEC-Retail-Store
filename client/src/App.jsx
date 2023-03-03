@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from 'react';
-import { BrowserRouter, Link, Routes, Route, Switch, HashRouter } from 'react-router-dom';
+
 import ReactDOM from 'react-dom'
 import $ from 'jquery';
 import Index from './Index.jsx'
@@ -10,10 +10,11 @@ const App = () =>{
 
 
     return (
+      <div >
+      Hello world
+      </div>
 
-      <Routes>
-        <Route path ='/' element = {<Index/>} />
-      </Routes>
+
 
 
 
@@ -23,9 +24,5 @@ const App = () =>{
 //export default App
 
 ReactDOM.render(
-
-  <BrowserRouter >
   <App />
-  </BrowserRouter>
-
 , document.getElementById('app'))

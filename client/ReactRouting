@@ -39,8 +39,9 @@ const App = () =>{
 //export default App
 
 ReactDOM.render(
+<!--
+  We would want to wrap our App Component in a <BrowserRouter> Component because it stores the website address/port -->
 
-  We would want to wrap our App Component in a <BrowserRouter> Component because it stores the website address/port
   <BrowserRouter >
   <App />
   </BrowserRouter>

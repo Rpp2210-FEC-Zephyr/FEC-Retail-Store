@@ -6,7 +6,6 @@ import $ from 'jquery';
 
 const Index = ({username, Video}) =>{
 
-
   const navigate = useNavigate()
 
 
