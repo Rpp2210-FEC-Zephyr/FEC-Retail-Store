@@ -1,0 +1,25 @@
+/* Table of Contents
+1.Product Overview
+*/
+
+/* Product Overview */
+.productOverview {
+  width: 100%;
+  height: 400px;
+  color: #303030;
+  display: flex;
+  border-radius: 0px;
+  background: #e3e3e3;
+  box-shadow:  20px 20px 60px #d3d3d3,
+               -20px -20px 60px #f3f3f3;
+}
+
+.left {
+  width: 50%; /* Set the width of the left div to 50% of the container */
+  float: left;
+}
+
+.right{
+  width: 50%; /* Set the width of the left div to 50% of the container */
+  float: right;
+}

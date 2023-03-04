@@ -9,11 +9,63 @@ import RelatedItems from './components/RelatedItemsAndOutfitCreation.jsx';
 
 
 const App = () =>{
+  const [wait, setWait] = useState([])
+  const [data, setData] = useState([])
+  const [style, setStyle] = useState([])
+
+  const getStyles = (id) =>{
+    console.log('the ID', id)
+    $.ajax({
+      type: 'GET',
+      url: '/Styles',
+      data: {id: id },
+      success: (data) =>{
+        console.log('syle data', data)
+        setStyle(data)
+        console.log('sytle', style)
+
+
+
+
+      }
+    })
+
+  }
+
+  const getProducts = () =>{
+    $.ajax({
+      type: 'GET',
+      url: '/Products',
+      success: (data) =>{
+        console.log(data)
+       setData(data)
+       setWait('waiting')
+
+
+
+      }
+    })
+  }
+
+
+
+  useEffect(() =>{
+    getProducts()
+
+
+  }, [])
+
+  useEffect(() =>{
+    console.log('the data', data)
+
+   getStyles(71700)
+
+  }, [wait])
 
 
     return (
       <div>
-      <ProductOverview />
+      <ProductOverview item = {style}/>
       <RatingsAndReviews />
       <QuestionsAndAnswers />
       <RelatedItems />

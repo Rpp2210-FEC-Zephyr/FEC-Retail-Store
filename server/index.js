@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
-
+API = require('./API/Atelier.js')
 
 var srcname = '/Users/lovinsondieujuste/rpp2210-practice-apps/2-checkout/'
 const app = express();
@@ -17,6 +17,27 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
 
 app.get('/', function(req,res){
   res.render('index.html')
+})
+
+app.get('/Products', function(req,res){
+  API.getProducts((err, data) =>{
+    if(err){
+      console.log(err)
+    }else{
+      res.send(data)
+    }
+  })
+})
+
+app.get('/Styles', function(req,res){
+  const { id } = req.query
+  API.getStyles(id, (err, data) =>{
+    if(err){
+      console.log(err)
+    }else{
+      res.send(data)
+    }
+  })
 })
 
  var port = 1028
