@@ -5,10 +5,10 @@
 # Description: Our App is a shopping app for clothing that will contain 4 widgets: Product Overview Module, Ratings & Reviews Module, Questions & Answers Module, Related Items & Outfit Creation.
 
 # Product Overview Module - will contain information in four parts - WISES IS DOING THIS
-# Image gallery
-# Product information
-# Style selector
-# Add to cart
+# a. Image gallery
+# b. Product information
+# c. Style selector
+# d. Add to cart
 
 # In the Product Info:
 product category,
