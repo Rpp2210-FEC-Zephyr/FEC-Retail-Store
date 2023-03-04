@@ -12,22 +12,12 @@ const ProductOverview = ({item}) =>{
 
 
 
-  const onState = () =>{
-
-    if(item.length !=0 ){
-      setMain(item.results[0])
-      console.log('YES')
-    }
-    console.log('CALLED')
-  }
-
 
 
 
 
   useEffect(() =>{
-    onState()
-    setMain(item.results[0])
+
 
   },[])
 
@@ -38,15 +28,16 @@ const ProductOverview = ({item}) =>{
         <div class = 'left'>
         <div class="container">
    <div class="wrapper">
-    {main.length != 0 ? console.log('mian', main) : null}
+    Hello
+
    </div>
 
 </div>
         </div>
 
         <div class = 'right'>
-        <TbStarsFilled />
-          {item ? item.name : null}
+        World
+
         </div>
           {item ? item.content : null}
         </div>
