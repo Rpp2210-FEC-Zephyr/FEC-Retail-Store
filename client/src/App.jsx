@@ -11,26 +11,8 @@ import RelatedItems from './components/RelatedItemsAndOutfitCreation.jsx';
 const App = () =>{
 
   const [data, setData] = useState([])
-  const [style, setStyle] = useState([])
+  const [main, setMain] = useState([])
 
-  const getStyles = (id) =>{
-
-    $.ajax({
-      type: 'GET',
-      url: '/Styles',
-      data: {id: id },
-      success: (data) =>{
-
-        setStyle(data)
-
-
-
-
-
-      }
-    })
-
-  }
 
   const getProducts = () =>{
     $.ajax({
@@ -39,6 +21,7 @@ const App = () =>{
       success: (data) =>{
 
        setData(data)
+       setMain(data[0])
 
 
 
@@ -50,6 +33,7 @@ const App = () =>{
 
 
   useEffect(() =>{
+    getProducts()
 
 
 
@@ -60,7 +44,7 @@ const App = () =>{
 
     return (
       <div>
-      <ProductOverview item = {style}/>
+      <ProductOverview main = {main}/>
       <RatingsAndReviews />
       <QuestionsAndAnswers />
       <RelatedItems />

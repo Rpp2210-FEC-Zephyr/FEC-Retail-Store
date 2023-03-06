@@ -7,45 +7,99 @@ import $ from 'jquery';
 
 
 
-const ProductOverview = ({item}) =>{
-  const [main, setMain] = useState([])
+const ProductOverview = ({main}) =>{
+  const [show, setShow] = useState([])
+  const [style, setStyle] = useState([])
+
+  const getStyles = (id) =>{
+
+    $.ajax({
+      type: 'GET',
+      url: '/Styles',
+      data: {id: id },
+      success: (data) =>{
+
+        setStyle(data)
+        setShow(data.results[0])
+        console.log('STYLE DATA', data)
 
 
+
+
+
+      }
+    })
+
+  }
 
 
 
 
 
   useEffect(() =>{
+    if(main.id != undefined){
+      console.log('main ID', main)
+      getStyles(main.id)
+    }
 
 
-  },[])
+
+
+  },[main])
 
 
 
     return (
       <div class = 'productOverview'>
         <div class = 'left'>
-        <div class="container">
-   <div class="wrapper" >
-   <img src="https://filmswot.files.wordpress.com/2018/01/coco_dominates_chinese_box_office_.jpg" />
-      <img src="https://www.foundry.com/sites/default/files/inline-images/Images_003_0.jpg" />
-      <img src="https://www.foylefilmfestival.org/sites/default/files/COCO%20main%20image%203.jpg" />
-      <img src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F6%2F2017%2F11%2Fcoco_c330_56b_pub-pub16n-186_rgb-2000.jpg" />
-   </div>
 
-</div>
-<div class = 'slogan'>PRODUCT SLOGAN</div>
+    <div class="slider">
+      <div class="slides">
+
+        <input type="radio" name="radio-btn" id="radio1" />
+        <input type="radio" name="radio-btn" id="radio2" />
+        <input type="radio" name="radio-btn" id="radio3" />
+        <input type="radio" name="radio-btn" id="radio4" />
+        <div class="slide first">
+          <img src= {show.length != 0 ? show.photos[0].url : null} alt="" />
+        </div>
+        {show.length != 0 ? show.photos.slice(1, 4).map( (photo) => <div class = 'slide'>
+        <img src= {photo.url} alt="" />
+        </div> ) : null}
+
+        <div class="navigation-auto">
+          <div class="auto-btn1"></div>
+          <div class="auto-btn2"></div>
+          <div class="auto-btn3"></div>
+          <div class="auto-btn4"></div>
+
+
+        </div>
+
+      </div>
+
+      <div class="navigation-manual">
+        <label for="radio1" class="manual-btn"></label>
+        <label for="radio2" class="manual-btn"></label>
+        <label for="radio3" class="manual-btn"></label>
+        <label for="radio4" class="manual-btn"></label>
+
+
+      </div>
+
+    </div>
+
+
 
         </div>
 
         <div class = 'right'>
           <TbStarsFilled />
           <div class = 'category'>
-            CATEGORY
+          {main ? main.category : null}
           </div>
           <div class = 'ProductName'>
-            PRODUCT NAME
+            {main ? main.name : null}
           </div>
           <div class = 'price'>
             $369
