@@ -31,6 +31,9 @@ const ProductOverview = ({main}) =>{
     })
 
   }
+  const Change = (item) =>{
+   setShow(item)
+  }
 
 
 
@@ -90,7 +93,6 @@ const ProductOverview = ({main}) =>{
     </div>
 
 
-
         </div>
 
         <div class = 'right'>
@@ -102,37 +104,15 @@ const ProductOverview = ({main}) =>{
             {main ? main.name : null}
           </div>
           <div class = 'price'>
-            $369
+            {main ? `$${main.default_price}` : null}
           </div>
           <div class = 'style'>
             STYLE > SELECTED STYLE
           </div>
 
           <div class = 'StyleContainer'>
-            <div class = 'StyleChoose'>
-              image
-            </div>
-            <div class = 'StyleChoose'>
-              image
-            </div>
-            <div class = 'StyleChoose'>
-              image
-            </div>
-            <div class = 'StyleChoose'>
-              image
-            </div>
-            <div class = 'StyleChoose'>
-              image
-            </div>
-            <div class = 'StyleChoose'>
-              image
-            </div>
-            <div class = 'StyleChoose'>
-              image
-            </div>
-            <div class = 'StyleChoose'>
-              image
-            </div>
+            {style.length != 0 ? style.results.map((item) => <div onClick = {(e) => {Change(item)}} class = 'StyleChoose'><img src= {item.photos[0].url} alt="" /> <div class = 'textBox'> <p class = 'text head'>{item.name}</p> </div></div>):null}
+
           </div>
           <div class = 'select'>
           <select class="SelectSize" id="Sizes">
