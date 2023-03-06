@@ -75,10 +75,7 @@ const ProductOverview = ({main}) =>{
           <div class="auto-btn2"></div>
           <div class="auto-btn3"></div>
           <div class="auto-btn4"></div>
-
-
         </div>
-
       </div>
 
       <div class="navigation-manual">
@@ -86,11 +83,11 @@ const ProductOverview = ({main}) =>{
         <label for="radio2" class="manual-btn"></label>
         <label for="radio3" class="manual-btn"></label>
         <label for="radio4" class="manual-btn"></label>
-
-
       </div>
 
     </div>
+    <div class ='slogan'>{main.slogan}</div>
+    <div class = 'desc'>{main.description}</div>
 
 
         </div>
