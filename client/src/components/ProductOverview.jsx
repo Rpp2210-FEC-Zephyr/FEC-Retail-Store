@@ -1,5 +1,7 @@
 import React, {useState, useEffect } from 'react';
 import { TbStarsFilled } from "react-icons/tb";
+import { IoAddCircle } from "react-icons/io5";
+
 import ReactDOM from 'react-dom'
 import $ from 'jquery';
 
@@ -10,6 +12,10 @@ import $ from 'jquery';
 const ProductOverview = ({main}) =>{
   const [show, setShow] = useState([])
   const [style, setStyle] = useState([])
+  const [skus, setSkus] = useState([])
+  const [cSize , setCSize] = useState(null)
+  const [cQuant, setCQuant] = useState(null)
+  const [quantity, setQuantity] = useState([])
 
   const getStyles = (id) =>{
 
@@ -21,6 +27,7 @@ const ProductOverview = ({main}) =>{
 
         setStyle(data)
         setShow(data.results[0])
+        setSkus(data.results[0].skus)
         console.log('STYLE DATA', data)
 
 
@@ -31,9 +38,45 @@ const ProductOverview = ({main}) =>{
     })
 
   }
+
+  const onQuan = (quan) =>{
+
+    quan = quan.split(' ')[0]
+
+    quan = parseInt(quan)
+    quan = quan + 1
+
+    var results = []
+
+    for(var i = 1; i < quan ; i++){
+      results.push(i)
+    }
+
+    setQuantity(results)
+    return
+
+
+  }
+
+  const onCSize = (csize) =>{
+    csize = csize.split(' ')[1]
+    setCSize(csize)
+
+  }
+  const onCQuan = (cquan) =>{
+    cquan = parseInt(cquan)
+    setCQuant(cquan)
+
+
+  }
   const Change = (item) =>{
    setShow(item)
+   setSkus(item.skus)
   }
+  const addBag = () =>{
+    console.log('Current', show,cSize, cQuant)
+  }
+
 
 
 
@@ -112,20 +155,19 @@ const ProductOverview = ({main}) =>{
 
           </div>
           <div class = 'select'>
-          <select class="SelectSize" id="Sizes">
-            <option value="S">Small</option>
-            <option value="M">Medium</option>
-            <option value="L">Large</option>
-            <option value="XL">Extra Large</option>
+          <select onChange = {(e) =>{onQuan(e.target.value); onCSize(e.target.value)}}   class="SelectSize" id="Sizes">
+            <option selected="selected" >Choose Size</option>
+            {skus.length !=0 ? Object.keys(skus).map((size) => <option value = {`${skus[size].quantity} ${skus[size].size}`}>{skus[size].size} </option>): null}
           </select>
-          <select class="SelectNumber" id="Number">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
+          <select  onChange = {(e) =>{onCQuan(e.target.value)}}class="SelectNumber" id="Number">
+            {quantity.length !=0 ? quantity.map((num) =><option value = {num}>{num} </option>) : null}
+
           </select>
           </div>
           <div class = 'Bag'>
+            <div onClick={() =>{addBag()}} class = 'Add'> <div class = 'addComp'>
+              Add Bag <IoAddCircle />
+              </div></div>
 
           <input type="checkbox" id="star" />
 <label for="star">
