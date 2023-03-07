@@ -1,5 +1,7 @@
 import React, {useState, useEffect } from 'react';
-
+import { IoAddCircleOutline} from "react-icons/io5";
+import { GiHamburgerMenu} from "react-icons/gi";
+import { IconContext } from "react-icons";
 import ReactDOM from 'react-dom'
 import $ from 'jquery';
 import ProductOverview from './components/ProductOverview.jsx';
@@ -44,6 +46,18 @@ const App = () =>{
 
     return (
       <div>
+          <div class = 'menu'>
+         <div class="dropdown">
+         <IconContext.Provider value={{ color: "#40D3DC", size:"40px" }}>
+  <span><GiHamburgerMenu /></span>
+  </IconContext.Provider>
+  <div class="dropdown-content">
+    <p class = 'nav'>Checkout</p>
+    <p class = 'nav'> Search</p>
+  </div>
+  </div>
+
+</div>
       <ProductOverview main = {main}/>
       <RatingsAndReviews />
       <QuestionsAndAnswers />
@@ -52,8 +66,4 @@ const App = () =>{
     )
   }
 
-//export default App
-
-ReactDOM.render(
-  <App />
-, document.getElementById('app'))
+export default App

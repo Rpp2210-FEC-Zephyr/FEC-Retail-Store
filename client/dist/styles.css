@@ -5,7 +5,7 @@
 /* Product Overview CSS */
 .productOverview {
   width: 100%;
-  height: 600px;
+  height: 650px;
   color: #303030;
   display: flex;
   border-radius: 0px;
@@ -151,7 +151,7 @@
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
-  margin-bottom: 15px;
+  margin-bottom: 1px;
 }
 
 .StyleChoose {
@@ -161,7 +161,7 @@
   text-align: center;
   width: 65px;
   height: 65px;
-  background: #c2c2c2;
+
   border-radius: 106px;
 
 }
@@ -180,7 +180,7 @@
 
 .StyleContainer {
   display: flex;
-  margin-bottom: 15px;
+  margin-bottom: 80px;
 
   /* width: 200px; */
 }
@@ -190,7 +190,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 15px;
+  gap: 1px;
   transition: 0.2s ease-in-out;
   z-index: 2;
 }
@@ -216,7 +216,7 @@
 }
 
 .StyleChoose:hover > .img {
-  height: 65%;
+  height: 1%;
   filter: blur(7px);
   animation: anim 3s infinite;
 }
@@ -305,7 +305,8 @@ input[type="checkbox"]:checked + label svg {
 .Add {
   background-color: #f3f3f3;
 
-  width: 200px;
+  width: 500px;
+  height: 50px;
   position: relative;
   border: 3px solid #40D3DC;
 }
@@ -316,4 +317,44 @@ input[type="checkbox"]:checked + label svg {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 
+}
+.icon {
+  margin-left: 450px;
+  position: absolute;
+  float: right;
+
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.select {
+  margin-bottom: 20px;
+}
+
+.dropdown {
+  color:white;
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #e3e3e3;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px #e3e3e3;
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.menu {
+  display: inline-flex;
+}
+
+.nav {
+  color: #40D3DC;
 }

@@ -1,7 +1,8 @@
 import React, {useState, useEffect } from 'react';
 import { TbStarsFilled } from "react-icons/tb";
-import { IoAddCircle } from "react-icons/io5";
-
+import { IoAddCircleOutline} from "react-icons/io5";
+import { GiHamburgerMenu} from "react-icons/gi";
+import { IconContext } from "react-icons";
 import ReactDOM from 'react-dom'
 import $ from 'jquery';
 
@@ -61,6 +62,7 @@ const ProductOverview = ({main}) =>{
   const onCSize = (csize) =>{
     csize = csize.split(' ')[1]
     setCSize(csize)
+    setCQuant(1)
 
   }
   const onCQuan = (cquan) =>{
@@ -97,6 +99,7 @@ const ProductOverview = ({main}) =>{
 
     return (
       <div class = 'productOverview'>
+
         <div class = 'left'>
 
     <div class="slider">
@@ -151,7 +154,7 @@ const ProductOverview = ({main}) =>{
           </div>
 
           <div class = 'StyleContainer'>
-            {style.length != 0 ? style.results.map((item) => <div onClick = {(e) => {Change(item)}} class = 'StyleChoose'><img src= {item.photos[0].url} alt="" /> <div class = 'textBox'> <p class = 'text head'>{item.name}</p> </div></div>):null}
+            {style.length != 0 ? style.results.map((item) => <div onClick = {(e) => {Change(item)}} class = 'StyleChoose'><div class = 'textBox'> <p class = 'text head'>{item.name}</p> </div><img src= {item.photos[0].url} alt="" /> </div>):null}
 
           </div>
           <div class = 'select'>
@@ -166,8 +169,14 @@ const ProductOverview = ({main}) =>{
           </div>
           <div class = 'Bag'>
             <div onClick={() =>{addBag()}} class = 'Add'> <div class = 'addComp'>
-              Add Bag <IoAddCircle />
-              </div></div>
+              Add To Bag
+              </div>
+              <div class = 'icon'>
+              <IconContext.Provider value={{ color: "#40D3DC", size:"40px" }}>
+              < IoAddCircleOutline  />
+              </IconContext.Provider>
+              </div>
+              </div>
 
           <input type="checkbox" id="star" />
 <label for="star">
