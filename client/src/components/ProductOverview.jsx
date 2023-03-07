@@ -5,7 +5,7 @@ import { GiHamburgerMenu} from "react-icons/gi";
 import { IconContext } from "react-icons";
 import ReactDOM from 'react-dom'
 import $ from 'jquery';
-
+const Popup = require('../Notification.js')
 
 
 
@@ -29,7 +29,7 @@ const ProductOverview = ({main}) =>{
         setStyle(data)
         setShow(data.results[0])
         setSkus(data.results[0].skus)
-        console.log('STYLE DATA', data)
+
 
 
 
@@ -61,8 +61,14 @@ const ProductOverview = ({main}) =>{
 
   const onCSize = (csize) =>{
     csize = csize.split(' ')[1]
-    setCSize(csize)
-    setCQuant(1)
+    console.log('C SIZE', csize)
+    if(csize == "Size"){
+      setCSize(null)
+      setCQuant(null)
+    }else{
+      setCSize(csize)
+      setCQuant(1)
+    }
 
   }
   const onCQuan = (cquan) =>{
@@ -76,6 +82,15 @@ const ProductOverview = ({main}) =>{
    setSkus(item.skus)
   }
   const addBag = () =>{
+    if(cSize == null || cQuant == null){
+
+      Popup.Alert("error")
+
+    }else{
+      Popup.Alert("success")
+
+    }
+
     console.log('Current', show,cSize, cQuant)
   }
 
@@ -86,7 +101,7 @@ const ProductOverview = ({main}) =>{
 
   useEffect(() =>{
     if(main.id != undefined){
-      console.log('main ID', main)
+
       getStyles(main.id)
     }
 
@@ -172,7 +187,7 @@ const ProductOverview = ({main}) =>{
           <ul class="notifications"></ul>
           <div class="buttons">
 
-            <button onClick={() =>{addBag()}} class = 'Add buttons btn' id = "success"> <div class = 'addComp'>
+            <button onClick={() =>{addBag()}} class = 'Add buttons btn' > <div class = 'addComp'>
               Add To Bag
               </div>
               <div class = 'icon'>

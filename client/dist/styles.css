@@ -310,7 +310,7 @@ input[type="checkbox"]:checked + label svg {
   display: flex;
 }
 .Add {
-  background-color: #f3f3f3;
+  background-color: #40D3DC;
 
   width: 500px;
   height: 50px;
@@ -434,7 +434,12 @@ input[type="checkbox"]:checked + label svg {
 .toast.success::before, .btn#success {
   background: var(--success);
 }
-
+.toast.error::before, .btn#error {
+  background: var(--error);
+}
+.toast.warning::before, .btn#warning {
+  background: var(--warning);
+}
 .toast.info::before, .btn#info {
   background: var(--info);
 }
@@ -444,7 +449,12 @@ input[type="checkbox"]:checked + label svg {
 .toast.success .column i {
   color: var(--success);
 }
-
+.toast.error .column i {
+  color: var(--error);
+}
+.toast.warning .column i {
+  color: var(--warning);
+}
 .toast.info .column i {
   color: var(--info);
 }
@@ -469,7 +479,6 @@ input[type="checkbox"]:checked + label svg {
   padding: 10px 20px;
   border-radius: 4px;
 }
-
 @media screen and (max-width: 530px) {
   .notifications {
     width: 95%;

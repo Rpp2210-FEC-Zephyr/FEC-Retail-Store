@@ -7,6 +7,7 @@ import Bag from './components/Bag/Bag.jsx'
 import Favorites from './components/Favorites/Favorites.jsx'
 import Search from './components/Search/Search.jsx'
 import Settings from './components/Settings/Settings.jsx'
+
 const Index = () =>{
 
 
