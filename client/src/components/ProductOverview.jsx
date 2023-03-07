@@ -149,8 +149,9 @@ const ProductOverview = ({main}) =>{
           <div class = 'price'>
             {main ? `$${main.default_price}` : null}
           </div>
+
           <div class = 'style'>
-            STYLE > SELECTED STYLE
+            STYLE >   <div class = 'styleSelect'> SELECTED STYLE </div>
           </div>
 
           <div class = 'StyleContainer'>
