@@ -364,7 +364,9 @@ input[type="checkbox"]:checked + label svg {
 
 .nav {
   color: #40D3DC;
+  margin-bottom: 10px;
 }
+/* Import Google font - Poppins */
 /* Import Google font - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 * {
@@ -374,8 +376,12 @@ input[type="checkbox"]:checked + label svg {
   font-family: 'Poppins', sans-serif;
 }
 :root {
+  --dark: #34495E;
+  --light: #ffffff;
   --success: #40D3DC;
-
+  --error: #E24D4C;
+  --warning: #E9BD0C;
+  --info: #fbff00;
 }
 
 .notifications {
@@ -448,6 +454,9 @@ input[type="checkbox"]:checked + label svg {
   background: var(--success);
 }
 
+.toast.info::before, .btn#info {
+  background: var(--info);
+}
 .toast .column i {
   font-size: 1.75rem;
 }
@@ -455,6 +464,9 @@ input[type="checkbox"]:checked + label svg {
   color: var(--success);
 }
 
+.toast.info .column i {
+  color: var(--info);
+}
 .toast .column span {
   font-size: 1.07rem;
   margin-left: 12px;

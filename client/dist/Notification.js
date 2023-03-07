@@ -18,7 +18,7 @@ const toastDetails = {
     },
     info: {
         icon: 'fa-circle-info',
-        text: 'Info: This is an information toast.',
+        text: 'Favorites have been updated',
     }
 }
 
@@ -47,4 +47,11 @@ const createToast = (id) => {
 // Adding a click event listener to each button to create a toast when clicked
 buttons.forEach(btn => {
     btn.addEventListener("click", () => createToast(btn.id));
+});
+//////////////////////////////////////////////////////////////////////////////////////////
+
+label = document.querySelectorAll(".label ");
+
+label.forEach(lb => {
+  lb.addEventListener("click", () => createToast(lb.id));
 });
