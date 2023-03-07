@@ -46,18 +46,22 @@ const App = () =>{
 
     return (
       <div>
-          <div class = 'menu'>
-         <div class="dropdown">
-         <IconContext.Provider value={{ color: "#40D3DC", size:"40px" }}>
-  <span><GiHamburgerMenu /></span>
-  </IconContext.Provider>
-  <div class="dropdown-content">
-    <p class = 'nav'>Checkout</p>
-    <p class = 'nav'> Search</p>
-  </div>
-  </div>
-
-</div>
+<nav>
+         <div class="logo">
+            Zephyr Store
+         </div>
+         <input type="checkbox" id="click" />
+         <label for="click" class="menu-btn" >
+         <i class="fas fa-bars"></i>
+         </label>
+         <ul>
+            <li><a class="active" href="#">Home</a></li>
+            <li><a  href="#">Checkout</a></li>
+            <li><a href="#">Favorite</a></li>
+            <li><a href="#">Search</a></li>
+            <li><a href="#">Account Settings</a></li>
+         </ul>
+      </nav>
       <ProductOverview main = {main}/>
       <RatingsAndReviews />
       <QuestionsAndAnswers />
