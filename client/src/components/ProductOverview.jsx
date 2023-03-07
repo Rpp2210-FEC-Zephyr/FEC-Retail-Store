@@ -169,14 +169,18 @@ const ProductOverview = ({main}) =>{
           </select>
           </div>
           <div class = 'Bag'>
-            <div onClick={() =>{addBag()}} class = 'Add'> <div class = 'addComp'>
+          <ul class="notifications"></ul>
+          <div class="buttons">
+
+            <button onClick={() =>{addBag()}} class = 'Add buttons btn' id = "success"> <div class = 'addComp'>
               Add To Bag
               </div>
               <div class = 'icon'>
-              <IconContext.Provider value={{ color: "#40D3DC", size:"40px" }}>
+              <IconContext.Provider value={{ color: "white", size:"40px" }}>
               < IoAddCircleOutline  />
               </IconContext.Provider>
               </div>
+              </button>
               </div>
 
           <input type="checkbox" id="star" />
