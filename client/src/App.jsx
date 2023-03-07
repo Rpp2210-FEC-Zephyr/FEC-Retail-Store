@@ -1,4 +1,5 @@
 import React, {useState, useEffect } from 'react';
+import { BrowserRouter, Link, Routes, Route, Switch, HashRouter, Navigate, useNavigate } from 'react-router-dom';
 import { IoAddCircleOutline} from "react-icons/io5";
 import { GiHamburgerMenu} from "react-icons/gi";
 import { IconContext } from "react-icons";
@@ -11,11 +12,10 @@ import RelatedItems from './components/RelatedItemsAndOutfitCreation.jsx';
 
 
 const App = () =>{
-
   const [data, setData] = useState([])
   const [main, setMain] = useState([])
 
-
+  const navigate = useNavigate()
   const getProducts = () =>{
     $.ajax({
       type: 'GET',
@@ -31,6 +31,8 @@ const App = () =>{
       }
     })
   }
+
+
 
 
 
@@ -55,11 +57,11 @@ const App = () =>{
          <i class="fas fa-bars"></i>
          </label>
          <ul>
-            <li><a class="active" href="#">Home</a></li>
-            <li><a  href="#">Checkout</a></li>
-            <li><a href="#">Favorite</a></li>
-            <li><a href="#">Search</a></li>
-            <li><a href="#">Account Settings</a></li>
+            <li onClick = {() =>{navigate('/')}}><a class="active" href="#">Home</a></li>
+            <li onClick = {() =>{navigate('/bag')}}><a  href="#">Bag</a></li>
+            <li onClick = {() =>{navigate('/favorites')}} ><a href="#">Favorites</a></li>
+            <li onClick = {() =>{navigate('/search')}}><a href="#">Search</a></li>
+            <li onClick = {() =>{navigate('/settings')}}><a href="#">Account Settings</a></li>
          </ul>
       </nav>
       <ProductOverview main = {main}/>

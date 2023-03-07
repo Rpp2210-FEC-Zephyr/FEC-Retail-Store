@@ -1,9 +1,12 @@
 import React, {useState, useEffect } from 'react';
-import { BrowserRouter, Link, Routes, Route, Switch, HashRouter } from 'react-router-dom';
+import { BrowserRouter, Link, Routes, Route, Switch, HashRouter, Navigate, useNavigate } from 'react-router-dom';
 import ReactDOM from 'react-dom'
 import $ from 'jquery';
 import App from './App.jsx'
-import Checkout from './components/Checkout/Checkout.jsx'
+import Bag from './components/Bag/Bag.jsx'
+import Favorites from './components/Favorites/Favorites.jsx'
+import Search from './components/Search/Search.jsx'
+import Settings from './components/Settings/Settings.jsx'
 const Index = () =>{
 
 
@@ -11,7 +14,10 @@ const Index = () =>{
 
       <Routes>
         <Route path ='/' element = {<App />} />
-        <Route path ='/checkout' element = {<Checkout />} />
+        <Route path ='/bag' element = {<Bag />} />
+        <Route path ='/favorites' element = {<Favorites />} />
+        <Route path ='/search' element = {<Search />} />
+        <Route path ='/settings' element = {<Settings />} />
 
       </Routes>
 
