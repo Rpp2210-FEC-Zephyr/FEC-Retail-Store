@@ -22,11 +22,6 @@ const App = () =>{
       success: (data) =>{
 
         setStyle(data)
-
-
-
-
-
       }
     })
 
@@ -39,10 +34,6 @@ const App = () =>{
       success: (data) =>{
 
        setData(data)
-
-
-
-
       }
     })
   }
@@ -50,12 +41,9 @@ const App = () =>{
 
 
   useEffect(() =>{
-
-
-
+    getStyles('71697');
+    getProducts();
   }, [])
-
-
 
 
     return (
@@ -63,10 +51,12 @@ const App = () =>{
       <ProductOverview item = {style}/>
       <RatingsAndReviews />
       <QuestionsAndAnswers />
-      <RelatedItems />
+      <RelatedItems item = {style} getProducts = {getProducts} data = {data} getStyles = {getStyles}/>
       </div>
     )
   }
+
+  //style contains the current product
 
 //export default App
 
