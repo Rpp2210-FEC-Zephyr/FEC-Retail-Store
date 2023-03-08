@@ -340,6 +340,30 @@ input[type="checkbox"]:checked + label svg {
 .select {
   margin-bottom: 20px;
 }
+
+.feature{
+  display: flex;
+  margin-top: 20px;
+
+}
+
+.featurelist{
+  list-style: none;
+
+}
+
+.featureitem{
+  margin-bottom: 10px;
+  color: #40D3DC;
+  font-size: 20px;
+
+}
+
+.vertical-divider {
+  margin-right: 30px;
+  border-left: 1px solid #000;
+  height: 150px;
+}
 /*
 End of Simple CSS for class */
 

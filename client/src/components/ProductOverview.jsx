@@ -2,6 +2,7 @@ import React, {useState, useEffect } from 'react';
 import { TbStarsFilled } from "react-icons/tb";
 import { IoAddCircleOutline} from "react-icons/io5";
 import { GiHamburgerMenu} from "react-icons/gi";
+import { BsCheck2Square} from "react-icons/bs";
 import { IconContext } from "react-icons";
 import ReactDOM from 'react-dom'
 import $ from 'jquery';
@@ -14,6 +15,7 @@ const ProductOverview = ({main}) =>{
   const [show, setShow] = useState([])
   const [style, setStyle] = useState([])
   const [skus, setSkus] = useState([])
+  const [feature, setFeature] = useState([])
   const [cSize , setCSize] = useState(null)
   const [cQuant, setCQuant] = useState(null)
   const [quantity, setQuantity] = useState([])
@@ -39,6 +41,21 @@ const ProductOverview = ({main}) =>{
       }
     })
 
+  }
+
+  const getFeatures = (id) =>{
+
+    $.ajax({
+      type: 'GET',
+      url: '/Features',
+      data: {id: id },
+      success: (data) =>{
+        console.log('Feature Data', data.features)
+
+        setFeature(data.features)
+
+      }
+    })
   }
 
   const onQuan = (quan) =>{
@@ -89,10 +106,12 @@ const ProductOverview = ({main}) =>{
 
     }else{
       Popup.Alert("success")
+      console.log('Current', show,cSize, cQuant)
+      localStorage.setItem('bag', JSON.stringify({ cloth: show, size: cSize, quant: cQuant }));
 
     }
 
-    console.log('Current', show,cSize, cQuant)
+
   }
 
 
@@ -105,6 +124,7 @@ const ProductOverview = ({main}) =>{
       console.log('main', main)
 
       getStyles(main.id)
+      getFeatures(main.id)
     }
 
 
@@ -214,6 +234,16 @@ const ProductOverview = ({main}) =>{
 
           </div>
 
+         <div class = 'feature'>
+         <div class="vertical-divider"> .</div>
+
+          <ul class  = 'featurelist'>
+            {feature.length !=0 ? feature.map((feat) => <li class = 'featureitem'>
+              <BsCheck2Square />
+              {feat.value}
+              </li>) : null}
+          </ul>
+         </div>
 
 
         </div>

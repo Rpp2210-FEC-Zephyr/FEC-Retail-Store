@@ -24,7 +24,7 @@ const App = () =>{
       success: (data) =>{
 
        setData(data)
-       setMain(data[2])
+       setMain(data[3])
 
 
 

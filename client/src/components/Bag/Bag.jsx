@@ -11,6 +11,26 @@ const Bag = () =>{
 
   const navigate = useNavigate()
 
+  const getLocalStorage = () =>{
+    const user = JSON.parse(localStorage.getItem('user'));
+    console.log('USER', user)
+
+    localStorage.setItem('dark-mode', true);
+    const dark = localStorage.getItem('dark-mode');
+
+    console.log('DARK', dark)
+
+  }
+
+  useEffect(() =>{
+
+    getLocalStorage()
+
+
+
+
+  }, [])
+
   return (
     <div>
     <nav>
