@@ -6,7 +6,7 @@ API = require('./API/Atelier.js')
 var srcname = '/Users/lovinsondieujuste/rpp2210-practice-apps/2-checkout/'
 const app = express();
 app.set('view engine', 'ejs')
-app.use(express.static(path.join(srcname, '/client/src')))
+//app.use(express.static(path.join(srcname, '/client/src')))
 
 app.use(express.urlencoded({
   extended: true
