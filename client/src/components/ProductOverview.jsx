@@ -11,7 +11,7 @@ const Popup = require('../Notification.js')
 
 
 
-const ProductOverview = ({main}) =>{
+const ProductOverview = ({main, getBag}) =>{
   const [show, setShow] = useState([])
   const [style, setStyle] = useState([])
   const [skus, setSkus] = useState([])
@@ -95,10 +95,14 @@ const ProductOverview = ({main}) =>{
 
 
   }
+
+
   const Change = (item) =>{
    setShow(item)
    setSkus(item.skus)
   }
+
+
   const addBag = () =>{
     if(cSize == null || cQuant == null){
 
@@ -107,12 +111,23 @@ const ProductOverview = ({main}) =>{
     }else{
       Popup.Alert("success")
       console.log('Current', show,cSize, cQuant)
-      localStorage.setItem('bag', JSON.stringify({ cloth: show, size: cSize, quant: cQuant }));
+      const bag = JSON.parse(localStorage.getItem('bag'));
+
+
+      if(bag != null){
+        console.log('NOT NULL')
+      localStorage.setItem('bag', JSON.stringify([bag, { cloth: show, size: cSize, quant: cQuant, name: main.name }]));
+      }else{
+        console.log('NULL')
+        localStorage.setItem('bag', JSON.stringify([{ cloth: show, size: cSize, quant: cQuant, name: main.name  }]));
+      }
+      getBag()
 
     }
 
 
   }
+
 
 
 
@@ -125,6 +140,7 @@ const ProductOverview = ({main}) =>{
 
       getStyles(main.id)
       getFeatures(main.id)
+      getBag()
     }
 
 
@@ -235,11 +251,11 @@ const ProductOverview = ({main}) =>{
           </div>
 
          <div class = 'feature'>
-         <div class="vertical-divider"> .</div>
+         <div class="vertical-divider"> ㅤ</div>
 
           <ul class  = 'featurelist'>
             {feature.length !=0 ? feature.map((feat) => <li class = 'featureitem'>
-              <BsCheck2Square />
+              <BsCheck2Square /> ㅤ
               {feat.value}
               </li>) : null}
           </ul>
