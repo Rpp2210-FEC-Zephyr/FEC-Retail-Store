@@ -15,12 +15,12 @@
 }
 
 .left {
-  width: 53%; /* Set the width of the left div to 50% of the container */
+  width: 53%;
   float: left;
 }
 
 .right{
-  width: 47%; /* Set the width of the left div to 50% of the container */
+  width: 47%;
   float: right;
 }
 
@@ -292,6 +292,8 @@ input[type="checkbox"]:checked + label svg {
   }
 }
  /* End of Star Button */
+
+ /* Simple Css for Classes */
 .slogan {
   margin-top: 30px;
   margin-bottom: 17px;
@@ -338,15 +340,12 @@ input[type="checkbox"]:checked + label svg {
 .select {
   margin-bottom: 20px;
 }
+/*
+End of Simple CSS for class */
 
 
 
 
-
-.nav {
-  color: #40D3DC;
-  margin-bottom: 10px;
-}
 
 /* CSS for Notifications */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
@@ -496,13 +495,17 @@ input[type="checkbox"]:checked + label svg {
 }
  /* End of CSS for Notification */
 
-
+ /* CSS For NAV BAR */
  @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+}
+.nav {
+  color: #40D3DC;
+  margin-bottom: 10px;
 }
 nav{
   display: flex;
@@ -612,3 +615,5 @@ input[type="checkbox"]{
   font-size: 40px;
   font-weight: 700;
 }
+
+ /* End of NavBar css */

@@ -2,7 +2,8 @@ import React, {useState, useEffect } from 'react';
 import { BrowserRouter, Link, Routes, Route, Switch, HashRouter, Navigate, useNavigate } from 'react-router-dom';
 import ReactDOM from 'react-dom'
 import $ from 'jquery';
-
+import { IconContext } from "react-icons";
+import { GiEagleEmblem} from "react-icons/gi";
 
 
 const Checkout = () =>{
@@ -16,6 +17,9 @@ const Checkout = () =>{
          <nav>
          <div class="logo">
             Zephyr Store
+            <IconContext.Provider value={{ color: "white", size:"40px" }}>
+            < GiEagleEmblem />
+              </IconContext.Provider>
          </div>
          <input type="checkbox" id="click" />
          <label for="click" class="menu-btn" >

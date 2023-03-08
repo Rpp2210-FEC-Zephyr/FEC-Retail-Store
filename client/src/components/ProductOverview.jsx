@@ -25,6 +25,7 @@ const ProductOverview = ({main}) =>{
       url: '/Styles',
       data: {id: id },
       success: (data) =>{
+        console.log('Style Data', data)
 
         setStyle(data)
         setShow(data.results[0])
@@ -101,6 +102,7 @@ const ProductOverview = ({main}) =>{
 
   useEffect(() =>{
     if(main.id != undefined){
+      console.log('main', main)
 
       getStyles(main.id)
     }

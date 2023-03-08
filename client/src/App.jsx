@@ -1,7 +1,7 @@
 import React, {useState, useEffect } from 'react';
 import { BrowserRouter, Link, Routes, Route, Switch, HashRouter, Navigate, useNavigate } from 'react-router-dom';
 import { IoAddCircleOutline} from "react-icons/io5";
-import { GiHamburgerMenu} from "react-icons/gi";
+import { GiEagleEmblem} from "react-icons/gi";
 import { IconContext } from "react-icons";
 import ReactDOM from 'react-dom'
 import $ from 'jquery';
@@ -24,7 +24,7 @@ const App = () =>{
       success: (data) =>{
 
        setData(data)
-       setMain(data[0])
+       setMain(data[2])
 
 
 
@@ -32,6 +32,8 @@ const App = () =>{
       }
     })
   }
+
+
 
 
 
@@ -52,6 +54,10 @@ const App = () =>{
 <nav>
          <div class="logo">
             Zephyr Store
+            <IconContext.Provider value={{ color: "white", size:"40px" }}>
+            < GiEagleEmblem />
+              </IconContext.Provider>
+
          </div>
          <input type="checkbox" id="click" />
          <label for="click" class="menu-btn" >
