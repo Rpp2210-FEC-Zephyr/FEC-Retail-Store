@@ -9,6 +9,6 @@ Navigate.forEach(element =>{
       }
     })
     element.classList.toggle('active')
-    console.log('ADD NEW', element.classList)
+
   })
 })

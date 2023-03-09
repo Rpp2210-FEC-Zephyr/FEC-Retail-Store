@@ -7,8 +7,8 @@ import { IconContext } from "react-icons";
 import $ from 'jquery';
 import Showcase from './Showcase.jsx'
 import Checkout from './Checkout.jsx'
-
-const Bag = ({item}) =>{
+const Popup = require('../Notify.js')
+const Bag = ({item, onDelete}) =>{
 
 
 
@@ -17,6 +17,7 @@ const Bag = ({item}) =>{
 
   useEffect(() =>{
     console.log('BAG ITEM', item)
+    Popup.Notify()
 
 
 
@@ -50,7 +51,7 @@ const Bag = ({item}) =>{
       <Showcase show = {item}/>
       </div>
       <div class = 'checkOverview'>
-        <Checkout check = {item}/>
+        <Checkout check = {item} onDelete = {onDelete}/>
       </div>
 
     </div>

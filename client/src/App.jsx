@@ -24,7 +24,7 @@ const App = ({setBag}) =>{
       success: (data) =>{
 
        setData(data)
-       setMain(data[3])
+       setMain(data[4])
 
 
 
@@ -35,21 +35,20 @@ const App = ({setBag}) =>{
 
   const getBag = () =>{
     const bag = JSON.parse(localStorage.getItem('bag'));
-    console.log('BAG', bag)
+
 
     if(Array.isArray(bag)){
-      console.log('ITS A ARRAY', bag)
+
       localStorage.setItem('bag', JSON.stringify(bag.flat(Infinity).filter((item) => item !=null)))
 
     }
     const fbag = JSON.parse(localStorage.getItem('bag'));
     if(fbag != null){
       if(typeof fbag === 'object'){
-        console.log('OBJECT')
-        console.log('APP BAG', fbag)
+
         setBag(fbag)
       }else{
-    console.log('APP BAG', fbag.flat(Infinity).filter((item) => item !=null))
+
     setBag(fbag.flat(Infinity).filter((item) => item !=null))
       }
     }

@@ -3,10 +3,11 @@ import { BrowserRouter, Link, Routes, Route, Switch, HashRouter, Navigate, useNa
 import ReactDOM from 'react-dom'
 import $ from 'jquery';
 import { IconContext } from "react-icons";
-import { GiEagleEmblem} from "react-icons/gi";
+import { FaMoneyCheckAlt} from "react-icons/fa";
 
+const Popup = require('../Notify.js')
 
-const Checkout = ({check}) =>{
+const Checkout = ({check, onDelete}) =>{
   const [total, setTotal] = useState(null)
 
 
@@ -19,6 +20,10 @@ const Checkout = ({check}) =>{
 
     }
     setTotal(sum)
+  }
+
+  const deleteNotify = () =>{
+    Popup.Alert("success")
   }
 
   useEffect(() =>{
@@ -34,12 +39,17 @@ const Checkout = ({check}) =>{
 
     return (
       <div class ='checkout'>
+        <ul class="notifications"></ul>
         <div class = 'checkTitle'> CHECKOUT </div>
-        <div class = 'checkFormat'> Item <div class = 'cost'> Cost</div></div>
+        <div class = 'checkFormat'> Items <div class = 'cost'> Cost</div></div>
         <ul>
         {check ?  check.map((item) => <li class = 'checkList'>{item.name} ({item.cloth.name}) x {item.quant}  <div class = 'total'> ${parseInt(item.cloth.original_price) * item.quant} ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ </div></li>) : null}
         </ul>
         <div class = 'checkTotal'> TOTAL ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ<div class = 'checkNumber'>{total ? `$ ${total}` : null}</div></div>
+        <button class = 'Add buttons btn' onClick = {() =>{onDelete() ; deleteNotify()}}>Purchase <div>
+          <FaMoneyCheckAlt />
+          </div></button>
+
       </div>
     )
   }

@@ -15,7 +15,7 @@ const Notify = () =>{
       },
       warning: {
           icon: 'fa-triangle-exclamation',
-          text: 'Warning: You can only have 10 items per Bag',
+          text: 'Warning: This is a warning toast.',
       },
       info: {
           icon: 'fa-circle-info',
@@ -62,20 +62,19 @@ const Notify = () =>{
 const Alert = (id) =>{
   const notifications = document.querySelector(".notifications")
 
-  // Object containing details for different types of toasts
   const toastDetails = {
       timer: 5000,
       success: {
           icon: 'fa-circle-check',
-          text: 'Successfully Added to Bag',
+          text: 'Successfully Purchase Bag',
       },
       error: {
           icon: 'fa-circle-xmark',
-          text: 'Error: please fill in values.',
+          text: 'Error: Can only have 10 Item per Bag',
       },
       warning: {
           icon: 'fa-triangle-exclamation',
-          text: 'You can only have 10 Items Per Bag',
+          text: 'Your bag have been sucesfully Deleted',
       },
       info: {
           icon: 'fa-circle-info',
@@ -92,6 +91,7 @@ const Alert = (id) =>{
   const createToast = (id) => {
       // Getting the icon and text for the toast based on the id passed
       const { icon, text } = toastDetails[id];
+
       const toast = document.createElement("li"); // Creating a new 'li' element for the toast
       toast.className = `toast ${id}`; // Setting the classes for the toast
       // Setting the inner HTML for the toast

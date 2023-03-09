@@ -16,7 +16,7 @@
 
 .bagOverview {
   width: 100%;
-  height: 680px;
+  height: 900px;
   color: #303030;
 
   border-radius: 0px;
@@ -325,7 +325,9 @@ input[type="checkbox"]:checked + label svg {
 }
 .Add {
   background-color: #40D3DC;
-
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
   width: 500px;
   height: 50px;
   position: relative;
@@ -788,7 +790,7 @@ p {
 
 .checkout {
   width: 100%;
-  height: 700px;
+  height: 1000px;
   color: #303030;
 
   border-radius: 0px;
