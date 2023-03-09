@@ -30,7 +30,7 @@ const Checkout = ({check, onDelete}) =>{
 
   const onPurchase = () =>{
     console.log('THE CHECK', check)
-    if(check.length != 0){
+    if(check.length != 0 && check != null){
       onDelete()
       deleteNotify()
     }else{
