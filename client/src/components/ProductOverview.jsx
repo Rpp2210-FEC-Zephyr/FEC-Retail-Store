@@ -121,7 +121,7 @@ const ProductOverview = ({main, getBag}) =>{
           localStorage.setItem('bag', JSON.stringify([bag, { cloth: show, size: cSize, quant: cQuant, name: main.name }]));
         }
       }else{
-
+        Popup.Alert("success")
         localStorage.setItem('bag', JSON.stringify([{ cloth: show, size: cSize, quant: cQuant, name: main.name  }]));
       }
       getBag()

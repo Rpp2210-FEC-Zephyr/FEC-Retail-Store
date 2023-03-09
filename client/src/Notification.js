@@ -18,7 +18,7 @@ const Notify = () =>{
           text: 'Warning: You can only have 10 items per Bag',
       },
       info: {
-          icon: 'fa-circle-info',
+          icon: 'fa-solid fa-star',
           text: 'Favorites have been updated',
       }
   }

@@ -172,20 +172,15 @@
 .StyleChoose {
   margin-right: 10px;
   margin-bottom: 20px;
-
-
   text-align: center;
   width: 65px;
   height: 65px;
-
   border-radius: 106px;
 
 }
  /* Style Image Styling */
 .StyleChoose img {
   margin-right: 10px;
-
-
   text-align: center;
   width: 70px;
   height: 70px;
@@ -198,7 +193,6 @@
   display: flex;
   margin-bottom: 10px;
   flex-wrap: wrap;
-
    width: 400px;
 }
 .textBox {
@@ -805,3 +799,14 @@ p {
   font-size: 30px;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+ /* End of Bag Component CSS */
+
+.coming {
+  vertical-align: center ;
+  text-align: center;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 100px;
+}
+

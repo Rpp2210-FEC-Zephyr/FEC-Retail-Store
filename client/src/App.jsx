@@ -24,7 +24,8 @@ const App = ({setBag}) =>{
       success: (data) =>{
 
        setData(data)
-       setMain(data[4])
+       console.log('ALL DATA', data)
+       setMain(data[3])
 
 
 

@@ -24,6 +24,18 @@ const Checkout = ({check, onDelete}) =>{
 
   const deleteNotify = () =>{
     Popup.Alert("success")
+    Popup.Alert("info")
+
+  }
+
+  const onPurchase = () =>{
+    console.log('THE CHECK', check)
+    if(check.length != 0){
+      onDelete()
+      deleteNotify()
+    }else{
+      Popup.Alert("error")
+    }
   }
 
   useEffect(() =>{
@@ -40,13 +52,13 @@ const Checkout = ({check, onDelete}) =>{
     return (
       <div class ='checkout'>
         <ul class="notifications"></ul>
-        <div class = 'checkTitle'> CHECKOUT </div>
+        <div class = 'checkTitle'> ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤCHECKOUT </div>
         <div class = 'checkFormat'> Items <div class = 'cost'> Cost</div></div>
         <ul>
         {check ?  check.map((item) => <li class = 'checkList'>{item.name} ({item.cloth.name}) x {item.quant}  <div class = 'total'> ${parseInt(item.cloth.original_price) * item.quant} ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ </div></li>) : null}
         </ul>
         <div class = 'checkTotal'> TOTAL ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ<div class = 'checkNumber'>{total ? `$ ${total}` : null}</div></div>
-        <button class = 'Add buttons btn' onClick = {() =>{onDelete() ; deleteNotify()}}>Purchase <div>
+        <button class = 'Add buttons btn' onClick = {() =>{onPurchase()}}>Purchase <div>
           <FaMoneyCheckAlt />
           </div></button>
 

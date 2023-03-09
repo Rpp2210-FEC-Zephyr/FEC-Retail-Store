@@ -22,6 +22,7 @@ const Index = () =>{
   const deleteBag = () =>{
     localStorage.clear()
     setTimeout(function() {
+      setBag(null)
       navigate('/')
     }, 5000);
 

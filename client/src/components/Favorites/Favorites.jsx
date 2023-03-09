@@ -31,7 +31,11 @@ const Favorites = () =>{
             <li onClick = {() =>{navigate('/settings')}}><a href="#">Account Settings</a></li>
          </ul>
       </nav>
-    Favorites
+      <div class = 'bagOverview coming'>
+      COMING SOON ! ! !
+      <div>NO ITS NOT</div>
+      </div>
+
     </div>
   )
 }

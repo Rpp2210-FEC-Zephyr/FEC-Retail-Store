@@ -31,7 +31,10 @@ const Settings = () =>{
             <li onClick = {() =>{navigate('/settings')}}><a class="active" href="#">Account Settings</a></li>
          </ul>
       </nav>
-    Settings
+      <div class = 'bagOverview coming'>
+      COMING SOON ! ! !
+      <div>NO ITS NOT</div>
+      </div>
     </div>
   )
 }
