@@ -6,6 +6,7 @@ import { GiEagleEmblem} from "react-icons/gi";
 import { IconContext } from "react-icons";
 import $ from 'jquery';
 import Showcase from './Showcase.jsx'
+import Checkout from './Checkout.jsx'
 
 const Bag = ({item}) =>{
 
@@ -47,6 +48,9 @@ const Bag = ({item}) =>{
       </nav>
       <div class = 'bagOverview'>
       <Showcase show = {item}/>
+      </div>
+      <div class = 'checkOverview'>
+        <Checkout check = {item}/>
       </div>
 
     </div>

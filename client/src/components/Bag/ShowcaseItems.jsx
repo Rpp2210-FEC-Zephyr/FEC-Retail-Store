@@ -20,7 +20,7 @@ const ShowcaseItem =  ({item }) =>{
    <div class = 'bagContainer'>
     <div class="book">
     <div class = 'bagInfo'>
-        <div>{item.name}</div>
+        <div>{item.name} <div>({item.cloth.name})</div></div>
       <div class = 'info'>Size: {item.size}</div>
       <div class = 'info'> Quantity: {item.quant}</div>
       <div class = 'info'> Price: ${item.cloth.original_price}</div>
