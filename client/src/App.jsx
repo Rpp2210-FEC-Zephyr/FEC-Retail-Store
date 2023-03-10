@@ -12,7 +12,7 @@ import RelatedItems from './components/RelatedItemsAndOutfitCreation.jsx';
 const Popup = require('./Notification.js')
 
 
-const App = () =>{
+const App = ({setBag}) =>{
   const [data, setData] = useState([])
   const [main, setMain] = useState([])
 
@@ -24,13 +24,37 @@ const App = () =>{
       success: (data) =>{
 
        setData(data)
-       setMain(data[2])
+       console.log('ALL DATA', data)
+       setMain(data[3])
 
 
 
 
       }
     })
+  }
+
+  const getBag = () =>{
+    const bag = JSON.parse(localStorage.getItem('bag'));
+
+
+    if(Array.isArray(bag)){
+
+      localStorage.setItem('bag', JSON.stringify(bag.flat(Infinity).filter((item) => item !=null)))
+
+    }
+    const fbag = JSON.parse(localStorage.getItem('bag'));
+    if(fbag != null){
+      if(typeof fbag === 'object'){
+
+        setBag(fbag)
+      }else{
+
+    setBag(fbag.flat(Infinity).filter((item) => item !=null))
+      }
+    }
+
+
   }
 
 
@@ -71,7 +95,7 @@ const App = () =>{
             <li onClick = {() =>{navigate('/settings')}}><a href="#">Account Settings</a></li>
          </ul>
       </nav>
-      <ProductOverview main = {main}/>
+      <ProductOverview main = {main} getBag = {getBag}/>
       <RatingsAndReviews />
       <QuestionsAndAnswers />
       <RelatedItems />

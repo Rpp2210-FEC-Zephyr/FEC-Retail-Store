@@ -15,10 +15,10 @@ const Notify = () =>{
       },
       warning: {
           icon: 'fa-triangle-exclamation',
-          text: 'Warning: You can only have 10 items per Bag',
+          text: 'Warning: This is a warning toast.',
       },
       info: {
-          icon: 'fa-solid fa-star',
+          icon: 'fa-circle-info',
           text: 'Favorites have been updated',
       }
   }
@@ -62,24 +62,23 @@ const Notify = () =>{
 const Alert = (id) =>{
   const notifications = document.querySelector(".notifications")
 
-  // Object containing details for different types of toasts
   const toastDetails = {
       timer: 5000,
       success: {
-          icon: 'fa-circle-check',
-          text: 'Successfully Added to Bag',
+          icon: 'fa-solid fa-money-check-dollar',
+          text: 'Successfully Purchase Bag',
       },
       error: {
           icon: 'fa-circle-xmark',
-          text: 'Error: please fill in values.',
+          text: 'Error: No Items in Bag',
       },
       warning: {
           icon: 'fa-triangle-exclamation',
-          text: 'You can only have 10 Items Per Bag',
+          text: 'Your bag have been sucesfully Deleted',
       },
       info: {
-          icon: 'fa-circle-info',
-          text: 'Favorites have been updated',
+          icon: 'fa-solid fa-backward',
+          text: 'Returning you to home page',
       }
   }
 
@@ -92,6 +91,10 @@ const Alert = (id) =>{
   const createToast = (id) => {
       // Getting the icon and text for the toast based on the id passed
       const { icon, text } = toastDetails[id];
+
+
+
+
       const toast = document.createElement("li"); // Creating a new 'li' element for the toast
       toast.className = `toast ${id}`; // Setting the classes for the toast
       // Setting the inner HTML for the toast
@@ -99,7 +102,7 @@ const Alert = (id) =>{
                           <i class="fa-solid ${icon}"></i>
                           <span>${text}</span>
                         </div>
-                        <i class="fa-solid fa-xmark" onclick="removeToast(this.parentElement)"></i>`;
+                        <i class="fa-solid fa-xmark" onclick=removeToast(this.parentElement)"></i>`;
       notifications.appendChild(toast); // Append the toast to the notification ul
       // Setting a timeout to remove the toast after the specified duration
       toast.timeoutId = setTimeout(() => removeToast(toast), toastDetails.timer);

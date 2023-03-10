@@ -2,7 +2,7 @@
 1.Product Overview
 */
 
-/* Product Overview CSS */
+/* Product Overview CSS and Other RoutesCSS */
 .productOverview {
   width: 100%;
   height: 680px;
@@ -14,6 +14,16 @@
                -20px -20px 60px #f3f3f3;
 }
 
+.bagOverview {
+  width: 100%;
+  height: 900px;
+  color: #303030;
+
+  border-radius: 0px;
+  background: #e3e3e3;
+  box-shadow:  20px 20px 60px #d3d3d3,
+               -20px -20px 60px #f3f3f3;
+}
 .left {
   width: 53%;
   float: left;
@@ -161,20 +171,16 @@
 }
 .StyleChoose {
   margin-right: 10px;
-
-
+  margin-bottom: 20px;
   text-align: center;
   width: 65px;
   height: 65px;
-
   border-radius: 106px;
 
 }
  /* Style Image Styling */
 .StyleChoose img {
   margin-right: 10px;
-
-
   text-align: center;
   width: 70px;
   height: 70px;
@@ -185,9 +191,9 @@
 
 .StyleContainer {
   display: flex;
-  margin-bottom: 80px;
-
-  /* width: 200px; */
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+   width: 400px;
 }
 .textBox {
   opacity: 0;
@@ -313,7 +319,9 @@ input[type="checkbox"]:checked + label svg {
 }
 .Add {
   background-color: #40D3DC;
-
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
   width: 500px;
   height: 50px;
   position: relative;
@@ -339,6 +347,30 @@ input[type="checkbox"]:checked + label svg {
 
 .select {
   margin-bottom: 20px;
+}
+
+.feature{
+  display: flex;
+  margin-top: 20px;
+
+}
+
+.featurelist{
+  list-style: none;
+
+}
+
+.featureitem{
+  margin-bottom: 10px;
+  color: #40D3DC;
+  font-size: 20px;
+
+}
+
+.vertical-divider {
+  margin-right: 30px;
+  border-left: 1px solid #000;
+  height: 120px;
 }
 /*
 End of Simple CSS for class */
@@ -617,3 +649,164 @@ input[type="checkbox"]{
 }
 
  /* End of NavBar css */
+
+ /* Bag Component CSS */
+
+.bagOverview {
+  width: 100%;
+  height: 680px;
+  color: #303030;
+
+  border-radius: 0px;
+  background: #e3e3e3;
+  box-shadow:  20px 20px 60px #d3d3d3,
+               -20px -20px 60px #f3f3f3;
+}
+
+.bagContainer {
+  width: 220px;
+  height: 150px;
+  margin: 20px;
+}
+.RenderList {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
+}
+
+.book {
+  position: relative;
+  border-radius: 10px;
+  width: 220px;
+  height: 300px;
+  background-color: whitesmoke;
+  -webkit-box-shadow: 1px 1px 12px #000;
+  box-shadow: 1px 1px 12px #000;
+  -webkit-transform: preserve-3d;
+  -ms-transform: preserve-3d;
+  transform: preserve-3d;
+  -webkit-perspective: 2000px;
+  perspective: 2000px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: #000;
+}
+
+.cover {
+  top: 0;
+  position: absolute;
+  background-color: lightgray;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-transform-origin: 0;
+  -ms-transform-origin: 0;
+  transform-origin: 0;
+  -webkit-box-shadow: 1px 1px 12px #000;
+  box-shadow: 1px 1px 12px #000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.book:hover .cover {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-transform: rotatey(-80deg);
+  -ms-transform: rotatey(-80deg);
+  transform: rotatey(-80deg);
+}
+
+p {
+  font-size: 20px;
+  font-weight: bolder;
+}
+.bagImage {
+  height: 100%;
+  width: 100%;
+}
+.bagInfo {
+  margin-right: 10px;
+}
+
+.info {
+  margin-bottom: 5px;
+}
+
+.total {
+  float: left;
+  margin-left: 500px;
+  order: 1;
+}
+.checkList {
+  display: flex;
+  margin-bottom: 50px;
+  justify-content: space-between;
+}
+
+.checkFormat {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.cost {
+  margin-left: 900px;
+  margin-right: 100px;
+
+}
+
+.checkTitle {
+  color: #40D3DC;
+  align-items: center;
+  font-size: 30px;
+  margin: 30px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.checkout {
+  width: 100%;
+  height: 1000px;
+  color: #303030;
+
+  border-radius: 0px;
+  background: #e3e3e3;
+  box-shadow:  20px 20px 60px #d3d3d3,
+               -20px -20px 60px #f3f3f3;
+}
+
+.checkTotal {
+  display: flex;
+  color: #40D3DC;
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+ /* End of Bag Component CSS */
+
+.coming {
+  vertical-align: center ;
+  text-align: center;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 100px;
+}
+

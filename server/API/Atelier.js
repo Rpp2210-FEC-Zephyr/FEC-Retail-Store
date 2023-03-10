@@ -35,5 +35,22 @@ const getStyles = (id, callback) => {
   })
 
 }
+
+const getFeatures = (id, callback) =>{
+  const options = {
+    method: 'GET',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${id}`,
+    headers: {
+      'Authorization': `${token}`
+    }
+  };
+
+  axios(options).then((products) =>{
+
+    callback(null, products.data)
+  })
+}
+
+module.exports.getFeatures = getFeatures
 module.exports.getProducts = getProducts
 module.exports.getStyles = getStyles

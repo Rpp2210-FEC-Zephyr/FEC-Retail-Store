@@ -2,6 +2,7 @@ import React, {useState, useEffect } from 'react';
 import { TbStarsFilled } from "react-icons/tb";
 import { IoAddCircleOutline} from "react-icons/io5";
 import { GiHamburgerMenu} from "react-icons/gi";
+import { BsCheck2Square} from "react-icons/bs";
 import { IconContext } from "react-icons";
 import ReactDOM from 'react-dom'
 import $ from 'jquery';
@@ -10,10 +11,11 @@ const Popup = require('../Notification.js')
 
 
 
-const ProductOverview = ({main}) =>{
+const ProductOverview = ({main, getBag}) =>{
   const [show, setShow] = useState([])
   const [style, setStyle] = useState([])
   const [skus, setSkus] = useState([])
+  const [feature, setFeature] = useState([])
   const [cSize , setCSize] = useState(null)
   const [cQuant, setCQuant] = useState(null)
   const [quantity, setQuantity] = useState([])
@@ -41,6 +43,21 @@ const ProductOverview = ({main}) =>{
 
   }
 
+  const getFeatures = (id) =>{
+
+    $.ajax({
+      type: 'GET',
+      url: '/Features',
+      data: {id: id },
+      success: (data) =>{
+        console.log('Feature Data', data.features)
+
+        setFeature(data.features)
+
+      }
+    })
+  }
+
   const onQuan = (quan) =>{
 
     quan = quan.split(' ')[0]
@@ -62,7 +79,7 @@ const ProductOverview = ({main}) =>{
 
   const onCSize = (csize) =>{
     csize = csize.split(' ')[1]
-    console.log('C SIZE', csize)
+
     if(csize == "Size"){
       setCSize(null)
       setCQuant(null)
@@ -78,22 +95,44 @@ const ProductOverview = ({main}) =>{
 
 
   }
+
+
   const Change = (item) =>{
    setShow(item)
    setSkus(item.skus)
   }
+
+
   const addBag = () =>{
     if(cSize == null || cQuant == null){
 
       Popup.Alert("error")
 
     }else{
-      Popup.Alert("success")
+      console.log('Current', show,cSize, cQuant)
+      const bag = JSON.parse(localStorage.getItem('bag'));
 
+
+      if(bag != null){
+        if(bag.length == 10){
+          Popup.Alert("warning")
+        }else{
+          Popup.Alert("success")
+          localStorage.setItem('bag', JSON.stringify([bag, { cloth: show, size: cSize, quant: cQuant, name: main.name }]));
+        }
+      }else{
+        Popup.Alert("success")
+        localStorage.setItem('bag', JSON.stringify([{ cloth: show, size: cSize, quant: cQuant, name: main.name  }]));
+      }
+      getBag()
     }
 
-    console.log('Current', show,cSize, cQuant)
+
+
+
+
   }
+
 
 
 
@@ -102,9 +141,11 @@ const ProductOverview = ({main}) =>{
 
   useEffect(() =>{
     if(main.id != undefined){
-      console.log('main', main)
+
 
       getStyles(main.id)
+      getFeatures(main.id)
+      getBag()
     }
 
 
@@ -214,6 +255,16 @@ const ProductOverview = ({main}) =>{
 
           </div>
 
+         <div class = 'feature'>
+         <div class="vertical-divider"> ㅤ</div>
+
+          <ul class  = 'featurelist'>
+            {feature.length !=0 ? feature.map((feat) => <li class = 'featureitem'>
+              <BsCheck2Square /> ㅤ
+              {feat.value}
+              </li>) : null}
+          </ul>
+         </div>
 
 
         </div>
