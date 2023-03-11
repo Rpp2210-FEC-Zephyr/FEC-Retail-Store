@@ -12,6 +12,9 @@ import RelatedItems from './components/RelatedItemsAndOutfitCreation.jsx';
 const Popup = require('./Notification.js')
 
 
+
+//main is the data
+
 const App = () =>{
   const [data, setData] = useState([])
   const [main, setMain] = useState([])
@@ -23,49 +26,20 @@ const App = () =>{
       url: '/Products',
       success: (data) =>{
 
-<<<<<<< HEAD
-        setStyle(data)
-=======
        setData(data)
        setMain(data[2])
 
-
-
-
->>>>>>> 04a0696ce0abc10ccc2266a1eab24688131e3739
       }
     })
   }
-
-<<<<<<< HEAD
-  const getProducts = () =>{
-    $.ajax({
-      type: 'GET',
-      url: '/Products',
-      success: (data) =>{
-
-       setData(data)
-      }
-    })
-  }
-=======
-
-
-
->>>>>>> 04a0696ce0abc10ccc2266a1eab24688131e3739
 
 
 
   useEffect(() =>{
-<<<<<<< HEAD
-    getStyles('71697');
-    getProducts();
-=======
     getProducts()
     Popup.Notify()
 
 
->>>>>>> 04a0696ce0abc10ccc2266a1eab24688131e3739
   }, [])
 
 
@@ -94,19 +68,9 @@ const App = () =>{
       <ProductOverview main = {main}/>
       <RatingsAndReviews />
       <QuestionsAndAnswers />
-      <RelatedItems item = {style} getProducts = {getProducts} data = {data} getStyles = {getStyles}/>
+      <RelatedItems main = {main}/>
       </div>
     )
   }
 
-<<<<<<< HEAD
-  //style contains the current product
-
-//export default App
-
-ReactDOM.render(
-  <App />
-, document.getElementById('app'))
-=======
 export default App
->>>>>>> 04a0696ce0abc10ccc2266a1eab24688131e3739
