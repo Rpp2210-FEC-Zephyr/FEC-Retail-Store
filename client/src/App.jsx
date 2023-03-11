@@ -15,6 +15,8 @@ const Popup = require('./Notification.js')
 const App = ({setBag}) =>{
   const [data, setData] = useState([])
   const [main, setMain] = useState([])
+  const [reviews, setReviews] = useState([]);
+  const [reviewsCount, setReviewsCount] = useState(0);
 
   const navigate = useNavigate()
   const getProducts = () =>{
@@ -30,6 +32,21 @@ const App = ({setBag}) =>{
 
 
 
+      }
+    })
+  }
+
+  const getReviews = () => {
+    $.ajax({
+      type: 'GET',
+      url: '/reviews',
+      data: {
+        product_id: 71697 // NEED VARIABLE PRODUCT_ID
+      },
+      success: (data) => {
+        console.log('Data reviewed in the client side!', data.results);
+        setReviews(data.results);
+        setReviewsCount(data.count);
       }
     })
   }
@@ -65,6 +82,7 @@ const App = ({setBag}) =>{
 
   useEffect(() =>{
     getProducts()
+    getReviews()
     Popup.Notify()
 
 
@@ -75,7 +93,7 @@ const App = ({setBag}) =>{
 
     return (
       <div>
-<nav>
+        <nav>
          <div class="logo">
             Zephyr Store
             <IconContext.Provider value={{ color: "white", size:"40px" }}>
@@ -96,7 +114,7 @@ const App = ({setBag}) =>{
          </ul>
       </nav>
       <ProductOverview main = {main} getBag = {getBag}/>
-      <RatingsAndReviews />
+      <RatingsAndReviews currentProduct={reviews} count={reviewsCount}/>
       <QuestionsAndAnswers />
       <RelatedItems />
       </div>
