@@ -34,6 +34,48 @@
   float: right;
 }
 
+.Popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,.9);
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+  display: none;
+
+}
+
+.Popup span{
+  position: absolute;
+  top: 0;
+  right: 10px;
+  font-size: 40px;
+  font-weight: bolder;
+  color: #fff;
+  cursor: pointer;
+  z-index: 100;
+
+}
+
+.Popup img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 750px;
+  object-fit: cover;
+
+
+}
+
+@media (max-width: 768px) {
+  .Popup img{
+    width: 95%;
+  }
+}
+
+
 .slider{
   width: 95%;
   height: 500px;
@@ -87,27 +129,31 @@
   background: #40D3DC;
 }
 
+.first {
+  width: 906px;
+}
+
 #radio1:checked ~ .first{
   margin-left: 0;
 }
 
 #radio2:checked ~ .first{
-  margin-left: -20%;
+  margin-left: -25%;
 }
 
 #radio3:checked ~ .first{
-  margin-left: -40%;
+  margin-left: -45%;
 }
 
 #radio4:checked ~ .first{
-  margin-left: -60%;
+  margin-left: -65%;
 }
 #radio5:checked ~ .first{
-  margin-left: -80%;
+  margin-left: -85%;
 }
 
 #radio6:checked ~ .first{
-  margin-left: -100%;
+  margin-left: -105%;
 }
 
 /*css for automatic navigation*/

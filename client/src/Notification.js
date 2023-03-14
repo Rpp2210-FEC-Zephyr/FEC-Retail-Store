@@ -1,5 +1,18 @@
 
 const Notify = () =>{
+    // JS FOR IMAGE EXPANDER
+    document.querySelectorAll('.slide img').forEach(image => {
+
+        image.onclick = () =>{
+            document.querySelector('.Popup').style.display = 'block'
+            document.querySelector('.Popup img').src = image.getAttribute('src')
+        }
+    })
+
+    document.querySelector('.Popup span').onclick = () =>{
+        document.querySelector('.Popup').style.display = 'none'
+    }
+    // END  OF JS FOR IMAGE EXPANDER
   const notifications = document.querySelector(".notifications"),
   buttons = document.querySelectorAll(".buttons .btn");
   // Object containing details for different types of toasts

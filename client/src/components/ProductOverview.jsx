@@ -106,6 +106,18 @@ const ProductOverview = ({main, getBag}) =>{
 
   }
 
+  const ImageExpander = () =>{
+
+      setTimeout(() => {
+        // Your logic here
+        Popup.Notify()
+
+
+        ImageExpander();
+      }, 1000);
+
+  }
+
 
   const addBag = () =>{
     if(cSize == null || cQuant == null){
@@ -150,6 +162,9 @@ const ProductOverview = ({main, getBag}) =>{
       getStyles(main.id)
       getFeatures(main.id)
       getBag()
+      ImageExpander()
+
+
     }
 
 
@@ -164,6 +179,7 @@ const ProductOverview = ({main, getBag}) =>{
 
         <div class = 'left'>
 
+
     <div class="slider">
       <div class="slides">
 
@@ -174,6 +190,7 @@ const ProductOverview = ({main, getBag}) =>{
         <input type="radio" name="radio-btn" id="radio5" />
         <input type="radio" name="radio-btn" id="radio6" />
         <input type="radio" name="radio-btn" id="radio7" />
+
         <div class="slide first">
           <img src= {show.length != 0 ? show.photos[0].url : null} alt="" />
         </div>
@@ -181,6 +198,13 @@ const ProductOverview = ({main, getBag}) =>{
         {show.length != 0 ? show.photos.slice(1).map( (photo) => <div class = 'slide'>
         <img src= {photo.url} alt="" />
         </div> ) : null}
+
+
+        <div class = 'Popup'>
+          <span>&times;</span>
+          <img src = "" alt="" />
+
+        </div>
 
         <div class="navigation-auto">
           <div class="auto-btn1"></div>
