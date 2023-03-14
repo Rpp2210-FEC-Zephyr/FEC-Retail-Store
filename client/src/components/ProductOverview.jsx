@@ -4,6 +4,7 @@ import { IoAddCircleOutline} from "react-icons/io5";
 import { GiHamburgerMenu} from "react-icons/gi";
 import { BsCheck2Square} from "react-icons/bs";
 import { IconContext } from "react-icons";
+import { AiOutlineCheckCircle} from "react-icons/ai";
 import ReactDOM from 'react-dom'
 import $ from 'jquery';
 const Popup = require('../Notification.js')
@@ -18,6 +19,7 @@ const ProductOverview = ({main, getBag}) =>{
   const [feature, setFeature] = useState([])
   const [cSize , setCSize] = useState(null)
   const [cQuant, setCQuant] = useState(null)
+  const [cPrice, setCPrice] = useState(null)
   const [quantity, setQuantity] = useState([])
 
   const getStyles = (id) =>{
@@ -31,6 +33,7 @@ const ProductOverview = ({main, getBag}) =>{
 
         setStyle(data)
         setShow(data.results[0])
+        setCPrice(data.results[0].original_price)
         setSkus(data.results[0].skus)
 
 
@@ -100,6 +103,7 @@ const ProductOverview = ({main, getBag}) =>{
   const Change = (item) =>{
    setShow(item)
    setSkus(item.skus)
+
   }
 
 
@@ -167,10 +171,14 @@ const ProductOverview = ({main, getBag}) =>{
         <input type="radio" name="radio-btn" id="radio2" />
         <input type="radio" name="radio-btn" id="radio3" />
         <input type="radio" name="radio-btn" id="radio4" />
+        <input type="radio" name="radio-btn" id="radio5" />
+        <input type="radio" name="radio-btn" id="radio6" />
+        <input type="radio" name="radio-btn" id="radio7" />
         <div class="slide first">
           <img src= {show.length != 0 ? show.photos[0].url : null} alt="" />
         </div>
-        {show.length != 0 ? show.photos.slice(1, 4).map( (photo) => <div class = 'slide'>
+        {/* show.photos.slice(1, 4) */}
+        {show.length != 0 ? show.photos.slice(1).map( (photo) => <div class = 'slide'>
         <img src= {photo.url} alt="" />
         </div> ) : null}
 
@@ -179,6 +187,8 @@ const ProductOverview = ({main, getBag}) =>{
           <div class="auto-btn2"></div>
           <div class="auto-btn3"></div>
           <div class="auto-btn4"></div>
+          <div class="auto-btn5"></div>
+          <div class="auto-btn6"></div>
         </div>
       </div>
 
@@ -187,6 +197,8 @@ const ProductOverview = ({main, getBag}) =>{
         <label for="radio2" class="manual-btn"></label>
         <label for="radio3" class="manual-btn"></label>
         <label for="radio4" class="manual-btn"></label>
+        <label for="radio5" class="manual-btn"></label>
+        <label for="radio6" class="manual-btn"></label>
       </div>
 
     </div>
@@ -205,7 +217,7 @@ const ProductOverview = ({main, getBag}) =>{
             {main ? main.name : null}
           </div>
           <div class = 'price'>
-            {main ? `$${main.default_price}` : null}
+            {main ? `$${cPrice}` : null}
           </div>
 
           <div class = 'style'>

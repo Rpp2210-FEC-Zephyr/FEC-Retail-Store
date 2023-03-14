@@ -20,7 +20,7 @@ const Index = () =>{
 
 
   const deleteBag = () =>{
-    localStorage.clear()
+    localStorage.removeItem("bag")
     setTimeout(function() {
       setBag(null)
       navigate('/')

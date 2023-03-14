@@ -106,6 +106,10 @@
   margin-left: -80%;
 }
 
+#radio6:checked ~ .first{
+  margin-left: -100%;
+}
+
 /*css for automatic navigation*/
 
 .navigation-auto{
@@ -138,10 +142,19 @@
 #radio3:checked ~ .navigation-auto .auto-btn3{
   background: #40D3DC;
 }
+#radio4:checked ~ .navigation-auto .auto-btn4{
+  background: #40D3DC;
+}
+#radio5:checked ~ .navigation-auto .auto-btn5{
+  background: #40D3DC;
+}
 
-
+#radio6:checked ~ .navigation-auto .auto-btn6{
+  background: #40D3DC;
+}
 
 .category {
+  font-size: 30px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -370,7 +383,7 @@ input[type="checkbox"]:checked + label svg {
 .vertical-divider {
   margin-right: 30px;
   border-left: 1px solid #000;
-  height: 120px;
+  height: 105px;
 }
 /*
 End of Simple CSS for class */
