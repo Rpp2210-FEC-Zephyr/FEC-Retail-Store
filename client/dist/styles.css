@@ -240,12 +240,8 @@
   left: 24px;
   z-index: 2;
 }
-.picked {
-  visibility: visible;
-}
-
-.Npick {
-  visibility: hidden;
+.productReview {
+  display: flex;
 }
 .Overlay {
   position: relative;

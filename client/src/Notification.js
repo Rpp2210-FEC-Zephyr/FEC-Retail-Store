@@ -1,13 +1,27 @@
 
 const Selected =() =>{
 
+    const scrollBtn =document.querySelectorAll('.scroll')
+
+    scrollBtn.forEach(scrol =>{
+
+
+    scrol.addEventListener('click', () => {
+      window.scrollBy({
+        top: 500,
+        left: 0,
+        behavior: 'smooth'
+      });
+    });
+    })
+
     const Selecet = document.querySelectorAll('.StyleChoose')
     const check = document.querySelectorAll('.selected')
 
 
     Selecet.forEach(element =>{
     element.addEventListener('click', ()=> {
-      console.log('THE CHECK')
+
 
         check.forEach(el => {
         el.style.visibility = "hidden"

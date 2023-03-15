@@ -113,7 +113,7 @@ const ProductOverview = ({main, getBag}) =>{
 
     Selecet.forEach(element =>{
     element.addEventListener('click', ()=> {
-      console.log('THE CHECK')
+
 
         check.forEach(el => {
         el.style.visibility = "hidden"
@@ -141,6 +141,8 @@ const ProductOverview = ({main, getBag}) =>{
       }, 1000);
 
   }
+
+
 
 
   const addBag = () =>{
@@ -259,7 +261,12 @@ const ProductOverview = ({main, getBag}) =>{
         </div>
 
         <div class = 'right'>
+          <div class = 'productReview'>
          <RatingSystem obj = {{rating: 1.4}}/>
+         <div class = 'scroll'>
+            Show All Reviews
+         </div>
+         </div>
           <div class = 'category'>
           {main ? main.category : null}
           </div>
