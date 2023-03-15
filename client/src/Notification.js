@@ -1,5 +1,51 @@
 
+const Selected =() =>{
+
+    const scrollBtn =document.querySelectorAll('.scroll')
+
+    scrollBtn.forEach(scrol =>{
+
+
+    scrol.addEventListener('click', () => {
+      window.scrollBy({
+        top: 500,
+        left: 0,
+        behavior: 'smooth'
+      });
+    });
+    })
+
+    const Selecet = document.querySelectorAll('.StyleChoose')
+    const check = document.querySelectorAll('.selected')
+
+
+    Selecet.forEach(element =>{
+    element.addEventListener('click', ()=> {
+
+
+        check.forEach(el => {
+        el.style.visibility = "hidden"
+        })
+  })
+    })
+}
+const ImageExpander = () =>{
+    // JS FOR IMAGE EXPANDER
+    document.querySelectorAll('.slide img').forEach(image => {
+
+        image.onclick = () =>{
+            document.querySelector('.Popup').style.display = 'block'
+            document.querySelector('.Popup img').src = image.getAttribute('src')
+        }
+    })
+
+    document.querySelector('.Popup span').onclick = () =>{
+        document.querySelector('.Popup').style.display = 'none'
+    }
+    // END  OF JS FOR IMAGE EXPANDER
+}
 const Notify = () =>{
+
   const notifications = document.querySelector(".notifications"),
   buttons = document.querySelectorAll(".buttons .btn");
   // Object containing details for different types of toasts
@@ -112,3 +158,5 @@ const Alert = (id) =>{
 
 module.exports.Notify = Notify
 module.exports.Alert = Alert
+module.exports.ImageExpander = ImageExpander
+module.exports.Selected = Selected

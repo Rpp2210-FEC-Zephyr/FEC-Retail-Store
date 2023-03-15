@@ -54,7 +54,7 @@ app.get('/Features', function(req,res){
 
 app.get('/reviews', function(req, res) {
   var id = req.query.product_id;
-  console.log('ID', id);
+
   API.getReviews(id, (err, data) => {
     if (err) {
       console.log(err);

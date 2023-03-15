@@ -61,7 +61,7 @@ const getReviews = (id, callback) => {
   }
   axios(options)
   .then((reviews) => {
-    console.log('DATA REVIEWED FROM API', reviews.data);
+
     callback(null, reviews.data);
   })
 }

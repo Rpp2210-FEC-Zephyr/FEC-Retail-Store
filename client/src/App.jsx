@@ -27,7 +27,7 @@ const App = ({setBag}) =>{
 
        setData(data)
        console.log('ALL DATA', data)
-       setMain(data[3])
+       setMain(data[0])
 
 
 
