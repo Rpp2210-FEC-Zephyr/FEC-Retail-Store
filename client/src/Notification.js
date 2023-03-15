@@ -1,5 +1,6 @@
 
-const Notify = () =>{
+
+const ImageExpander = () =>{
     // JS FOR IMAGE EXPANDER
     document.querySelectorAll('.slide img').forEach(image => {
 
@@ -13,6 +14,9 @@ const Notify = () =>{
         document.querySelector('.Popup').style.display = 'none'
     }
     // END  OF JS FOR IMAGE EXPANDER
+}
+const Notify = () =>{
+
   const notifications = document.querySelector(".notifications"),
   buttons = document.querySelectorAll(".buttons .btn");
   // Object containing details for different types of toasts
@@ -125,3 +129,4 @@ const Alert = (id) =>{
 
 module.exports.Notify = Notify
 module.exports.Alert = Alert
+module.exports.ImageExpander = ImageExpander

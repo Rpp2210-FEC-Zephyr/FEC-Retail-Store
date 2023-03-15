@@ -5,6 +5,8 @@ import { GiHamburgerMenu} from "react-icons/gi";
 import { BsCheck2Square} from "react-icons/bs";
 import { IconContext } from "react-icons";
 import { AiOutlineCheckCircle} from "react-icons/ai";
+import { AiFillCheckCircle} from "react-icons/ai";
+
 import ReactDOM from 'react-dom'
 import $ from 'jquery';
 const Popup = require('../Notification.js')
@@ -100,7 +102,11 @@ const ProductOverview = ({main, getBag}) =>{
   }
 
 
-  const Change = (item) =>{
+  const Change = (item, index) =>{
+    const mySelect = document.querySelector(`#${index} .selected`);
+    console.log('MYSELECT', mySelect)
+
+
    setShow(item)
    setSkus(item.skus)
 
@@ -110,8 +116,8 @@ const ProductOverview = ({main, getBag}) =>{
 
       setTimeout(() => {
         // Your logic here
-        Popup.Notify()
-
+        Popup.ImageExpander()
+        Popup.Selected()
 
         ImageExpander();
       }, 1000);
@@ -165,6 +171,7 @@ const ProductOverview = ({main, getBag}) =>{
       ImageExpander()
 
 
+
     }
 
 
@@ -197,7 +204,7 @@ const ProductOverview = ({main, getBag}) =>{
         {/* show.photos.slice(1, 4) */}
         {show.length != 0 ? show.photos.slice(1).map( (photo) => <div class = 'slide'>
         <img src= {photo.url} alt="" />
-        </div> ) : null}
+        </div>  ) : null}
 
 
         <div class = 'Popup'>
@@ -249,7 +256,21 @@ const ProductOverview = ({main, getBag}) =>{
           </div>
 
           <div class = 'StyleContainer'>
-            {style.length != 0 ? style.results.map((item) => <div onClick = {(e) => {Change(item)}} class = 'StyleChoose'><div class = 'textBox'> <p class = 'text head'>{item.name}</p> </div><img src= {item.photos[0].url} alt="" /> </div>):null}
+
+            {style.length != 0 ? style.results.map((item, index) =>
+
+              <div onClick = {(e) => {Change(item, index)}} class = 'StyleChoose' id = {index}>
+              <div class = 'selected' id = {index}>
+            <IconContext.Provider value={{ color: "#40D3DC", size:"20px" }}>
+              <AiFillCheckCircle />
+              </IconContext.Provider>
+              </div>
+                <div class = 'textBox'>
+                 <p class = 'text head'>{item.name}</p>
+                 </div>
+                 <img src= {item.photos[0].url} alt="" />
+                  </div>
+              ):null}
 
           </div>
           <div class = 'select'>

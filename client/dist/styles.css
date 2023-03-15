@@ -5,7 +5,7 @@
 /* Product Overview CSS and Other RoutesCSS */
 .productOverview {
   width: 100%;
-  height: 680px;
+  height: 700px;
   color: #303030;
   display: flex;
   border-radius: 0px;
@@ -221,19 +221,44 @@
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
-  margin-bottom: 1px;
+  margin-bottom: 4px;
 }
+
 .styleSelect{
   margin-left: 20px;
   font-weight: 100;
   font-family: inherit;
 }
+
+.selected {
+  position:relative;
+  top: 42px;
+  left: 24px;
+  z-index: 2;
+}
+.picked {
+  visibility: visible;
+}
+
+.Npick {
+  visibility: hidden;
+}
+.Overlay {
+  position: relative;
+
+}
 .StyleChoose {
+
+  position:relative;
+  top:0;
+  left: 0;
+  margin-top: -28px;
   margin-right: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
   text-align: center;
   width: 65px;
   height: 65px;
+  z-index: 2;
   border-radius: 106px;
 
 }
