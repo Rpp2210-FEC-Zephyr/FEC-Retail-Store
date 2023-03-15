@@ -894,3 +894,59 @@ p {
   font-size: 100px;
 }
 
+/* div {
+  border: 1px red solid;
+  padding: 2px;
+  margin: 2px;
+ } */
+ 
+ 
+ .rating-star {
+  display: flex;
+  font-size: 25px;
+  overflow: hidden;
+  position: absolute;
+  color: rgb(11, 21, 42);
+  top: 0;
+  margin: 0px;
+  padding: 0px;
+}
+
+
+
+
+.back-rating-container {
+  display: flex;
+  position: relative;
+  font-size: 25px;
+  margin: 0px;
+  padding: 0px;
+}
+
+
+.rating-container {
+    display: flex;
+    overflow: hidden;
+    position:absolute;
+    font-size: 25px;
+    top: 0;
+    margin: 0;
+    padding: 0;
+}
+
+
+.RatingsAndReviews {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  /* min-height: 100vh; */
+}
+
+
+.userAndTime {
+  font-size: 10px;
+  color: rgb(97, 97, 97);
+  text-align: right;
+  width: 100%;
+}
