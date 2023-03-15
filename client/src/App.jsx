@@ -9,7 +9,8 @@ import ProductOverview from './components/ProductOverview.jsx';
 import RatingsAndReviews from './components/RatingsAndReviews.jsx';
 import QuestionsAndAnswers from './components/QuestionsAndAnswers.jsx';
 import RelatedItems from './components/RelatedItemsAndOutfitCreation.jsx';
-const Popup = require('./Notification.js')
+import YourOutfits from './components/YourOutfits.jsx'
+const Popup = require('./Notification.jsx')
 
 
 const App = ({setBag}) =>{
@@ -114,9 +115,11 @@ const App = ({setBag}) =>{
          </ul>
       </nav>
       <ProductOverview main = {main} getBag = {getBag}/>
-      <RatingsAndReviews currentProduct={reviews} count={reviewsCount}/>
-      <QuestionsAndAnswers />
       <RelatedItems />
+      <YourOutfits />
+      <QuestionsAndAnswers />
+      <RatingsAndReviews currentProduct={reviews} count={reviewsCount}/>
+
       </div>
     )
   }

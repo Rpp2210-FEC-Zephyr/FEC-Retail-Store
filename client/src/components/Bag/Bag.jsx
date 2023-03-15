@@ -7,7 +7,7 @@ import { IconContext } from "react-icons";
 import $ from 'jquery';
 import Showcase from './Showcase.jsx'
 import Checkout from './Checkout.jsx'
-const Popup = require('../Notify.js')
+const Popup = require('../Notify.jsx')
 const Bag = ({item, onDelete}) =>{
 
 

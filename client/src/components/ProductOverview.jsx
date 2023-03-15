@@ -9,7 +9,7 @@ import { AiFillCheckCircle} from "react-icons/ai";
 import RatingSystem from './RatingSystem.jsx'
 import ReactDOM from 'react-dom'
 import $ from 'jquery';
-const Popup = require('../Notification.js')
+const Popup = require('../Notification.jsx')
 
 
 
@@ -262,7 +262,7 @@ const ProductOverview = ({main, getBag}) =>{
 
         <div class = 'right'>
           <div class = 'productReview'>
-         <RatingSystem obj = {{rating: 1.4}}/>
+         <RatingSystem obj = {{rating: 4.4}}/>
          <div class = 'scroll'>
             Show All Reviews
          </div>

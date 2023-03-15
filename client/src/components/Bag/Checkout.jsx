@@ -5,7 +5,7 @@ import $ from 'jquery';
 import { IconContext } from "react-icons";
 import { FaMoneyCheckAlt} from "react-icons/fa";
 
-const Popup = require('../Notify.js')
+const Popup = require('../Notify.jsx')
 
 const Checkout = ({check, onDelete}) =>{
   const [total, setTotal] = useState(null)
