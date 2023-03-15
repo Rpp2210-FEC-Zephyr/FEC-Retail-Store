@@ -51,6 +51,22 @@ const getFeatures = (id, callback) =>{
   })
 }
 
-module.exports.getFeatures = getFeatures
+const getReviews = (id, callback) => {
+  const options = {
+    method: 'GET',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews?product_id=${id}`,
+    headers: {
+      'Authorization': `${token}`
+    }
+  }
+  axios(options)
+  .then((reviews) => {
+    console.log('DATA REVIEWED FROM API', reviews.data);
+    callback(null, reviews.data);
+  })
+}
+
 module.exports.getProducts = getProducts
 module.exports.getStyles = getStyles
+module.exports.getReviews = getReviews
+module.exports.getFeatures = getFeatures
