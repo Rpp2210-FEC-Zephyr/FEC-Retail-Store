@@ -6,7 +6,7 @@ import { BsCheck2Square} from "react-icons/bs";
 import { IconContext } from "react-icons";
 import { AiOutlineCheckCircle} from "react-icons/ai";
 import { AiFillCheckCircle} from "react-icons/ai";
-
+import RatingSystem from './RatingSystem.jsx'
 import ReactDOM from 'react-dom'
 import $ from 'jquery';
 const Popup = require('../Notification.js')
@@ -103,14 +103,32 @@ const ProductOverview = ({main, getBag}) =>{
 
 
   const Change = (item, index) =>{
-    const mySelect = document.querySelector(`#${index} .selected`);
-    console.log('MYSELECT', mySelect)
+   const mySelect = document.getElementById(`${index}`);
+   console.log('CHANGEING')
+
+
+    const Selecet = document.querySelectorAll('.StyleChoose')
+    const check = document.querySelectorAll('.selected')
+
+
+    Selecet.forEach(element =>{
+    element.addEventListener('click', ()=> {
+      console.log('THE CHECK')
+
+        check.forEach(el => {
+        el.style.visibility = "hidden"
+        })
+  })
+    })
+
+  mySelect.style.visibility = "visible"
 
 
    setShow(item)
    setSkus(item.skus)
 
-  }
+
+}
 
   const ImageExpander = () =>{
 
@@ -169,6 +187,7 @@ const ProductOverview = ({main, getBag}) =>{
       getFeatures(main.id)
       getBag()
       ImageExpander()
+      Popup.Selected()
 
 
 
@@ -240,7 +259,7 @@ const ProductOverview = ({main, getBag}) =>{
         </div>
 
         <div class = 'right'>
-          <TbStarsFilled />
+         <RatingSystem obj = {{rating: 1.4}}/>
           <div class = 'category'>
           {main ? main.category : null}
           </div>
@@ -259,8 +278,8 @@ const ProductOverview = ({main, getBag}) =>{
 
             {style.length != 0 ? style.results.map((item, index) =>
 
-              <div onClick = {(e) => {Change(item, index)}} class = 'StyleChoose' id = {index}>
-              <div class = 'selected' id = {index}>
+              <div onClick = {(e) => {Change(item, index)}} class = 'StyleChoose'>
+              <div class = 'selected' id = {index} style = {index == 0 ? {visibility: "visible"} : {visibility: "hidden"} }>
             <IconContext.Provider value={{ color: "#40D3DC", size:"20px" }}>
               <AiFillCheckCircle />
               </IconContext.Provider>
@@ -274,14 +293,18 @@ const ProductOverview = ({main, getBag}) =>{
 
           </div>
           <div class = 'select'>
+
           <select onChange = {(e) =>{onQuan(e.target.value); onCSize(e.target.value)}}   class="SelectSize" id="Sizes">
-            <option selected="selected" >Choose Size</option>
+            <option selected="selected" >
+              Choose Size
+            </option>
             {skus.length !=0 ? Object.keys(skus).map((size) => <option value = {`${skus[size].quantity} ${skus[size].size}`}>{skus[size].size} </option>): null}
           </select>
           <select  onChange = {(e) =>{onCQuan(e.target.value)}}class="SelectNumber" id="Number">
             {quantity.length !=0 ? quantity.map((num) =><option value = {num}>{num} </option>) : null}
 
           </select>
+
           </div>
           <div class = 'Bag'>
           <ul class="notifications"></ul>

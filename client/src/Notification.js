@@ -1,5 +1,20 @@
 
+const Selected =() =>{
 
+    const Selecet = document.querySelectorAll('.StyleChoose')
+    const check = document.querySelectorAll('.selected')
+
+
+    Selecet.forEach(element =>{
+    element.addEventListener('click', ()=> {
+      console.log('THE CHECK')
+
+        check.forEach(el => {
+        el.style.visibility = "hidden"
+        })
+  })
+    })
+}
 const ImageExpander = () =>{
     // JS FOR IMAGE EXPANDER
     document.querySelectorAll('.slide img').forEach(image => {
@@ -130,3 +145,4 @@ const Alert = (id) =>{
 module.exports.Notify = Notify
 module.exports.Alert = Alert
 module.exports.ImageExpander = ImageExpander
+module.exports.Selected = Selected

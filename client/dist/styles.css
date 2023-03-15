@@ -34,6 +34,10 @@
   float: right;
 }
 
+.star-rating {
+  color: #E9BD0C;
+}
+
 .Popup {
   position: fixed;
   top: 0;
@@ -899,8 +903,8 @@ p {
   padding: 2px;
   margin: 2px;
  } */
- 
- 
+
+
  .rating-star {
   display: flex;
   font-size: 25px;
