@@ -365,10 +365,10 @@ label svg {
   stroke-width: 1px;
 }
 
-input[type="checkbox"]:checked + label svg {
+/* input[type="checkbox"]:checked + label svg {
   fill: #fbff00;
   animation: pop_42 0.5s ease-out;
-}
+} */
 
 @keyframes pop_42 {
   0% {

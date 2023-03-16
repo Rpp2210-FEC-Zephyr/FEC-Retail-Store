@@ -9,8 +9,9 @@ import { AiFillCheckCircle} from "react-icons/ai";
 import RatingSystem from './RatingSystem.jsx'
 import ReactDOM from 'react-dom'
 import $ from 'jquery';
-const Popup = require('../Notification.jsx')
 
+const Popup = require('../Notification.jsx')
+const Favorites = require('./Favorites.jsx')
 
 
 
@@ -35,14 +36,9 @@ const ProductOverview = ({main, getBag}) =>{
 
         setStyle(data)
         setShow(data.results[0])
+        Favorites.Status(data.results[0])
         setCPrice(data.results[0].original_price)
         setSkus(data.results[0].skus)
-
-
-
-
-
-
       }
     })
 
@@ -101,6 +97,24 @@ const ProductOverview = ({main, getBag}) =>{
 
   }
 
+  const Favor = () => {
+
+     const Star = JSON.parse(localStorage.getItem('favorites'));
+
+     console.log('STAR', Star)
+
+     if(Star != null){
+      localStorage.setItem('favorites', JSON.stringify([Star, show]))
+      console.log('NOT NULL',JSON.parse(localStorage.getItem('favorites')) )
+      Favorites.Toggle(show)
+
+     }else{
+      localStorage.setItem('favorites', JSON.stringify([ show]));
+      console.log('NULL', JSON.parse(localStorage.getItem('favorites')) )
+      Favorites.Toggle(show)
+     }
+  }
+
 
   const Change = (item, index) =>{
    const mySelect = document.getElementById(`${index}`);
@@ -125,6 +139,7 @@ const ProductOverview = ({main, getBag}) =>{
 
 
    setShow(item)
+   Favorites.Status(item)
    setSkus(item.skus)
 
 
@@ -184,10 +199,10 @@ const ProductOverview = ({main, getBag}) =>{
   useEffect(() =>{
     if(main.id != undefined){
 
-
       getStyles(main.id)
       getFeatures(main.id)
       getBag()
+
       ImageExpander()
       Popup.Selected()
 
@@ -329,7 +344,9 @@ const ProductOverview = ({main, getBag}) =>{
               </div>
 
           <input type="checkbox" id="star" />
-<label class = 'label' id="info" for="star">
+<label onClick = {() =>{
+  Favor()
+}}class = 'label' id="info" for="star">
 
   <svg viewBox="0 0 24 24">
     <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>

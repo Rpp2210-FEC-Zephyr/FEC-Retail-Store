@@ -7,6 +7,10 @@ import $ from 'jquery';
 const YourOutfits = () =>{
 
 
+
+
+
+
     return (
       <div>Your Outfits</div>
 
