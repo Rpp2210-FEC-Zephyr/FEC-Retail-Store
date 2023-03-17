@@ -5,6 +5,7 @@ import $ from 'jquery';
 
 import IndividualReview from './IndividualReviews.jsx';
 import exampleData from './../exampleReviewsData.js'; // used as 
+import SortBy from './SortBy.jsx';
 
 
 
@@ -22,11 +23,13 @@ const RatingsAndReviews = (props) =>{
     console.log(e.target.value);
   }
 
+  
    return (
      <div class="RatingsAndReviews">
        <div>
          <h1>Rating And Reviews!</h1>
-         <h4>{props.count} reviews, sorted by NOTHING!</h4>
+         
+        <h4>{props.count} reviews, sorted by <SortBy /></h4>
          {currentSelectionReviews.map((review) => {
           return <IndividualReview obj={review}/>
          })}

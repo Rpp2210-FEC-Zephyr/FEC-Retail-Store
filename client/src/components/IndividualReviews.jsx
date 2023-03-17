@@ -6,6 +6,8 @@ import RatingSystem from './RatingSystem.jsx';
 
 const IndividualReview = (props) => {
 
+  
+
  return (
    <div>
       <RatingSystem obj={props.obj} review={true}/>
@@ -14,7 +16,7 @@ const IndividualReview = (props) => {
        <h4>{props.obj.body}</h4>
     </div>
      <div>Helpful? Yes({props.obj.helpfulness}) | Report</div>
-     {props.obj.recommend ? <div>I recommend this product!</div> : null}
+     {props.obj.recommend ? <div><i class="fa-solid fa-check"></i>        I recommend this product!</div> : null}
      {props.obj.photos.length > 0 ? props.obj.photos.map((photo) => {
       return <div>{photo.url}</div>
     //  <img src={photo.url} alt="Supposed to be Image Here!!!"></img>

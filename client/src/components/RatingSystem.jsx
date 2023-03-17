@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState} from 'react';
 
 const RatingSystem = (props) => {
 
-    const [rating, setRating] = useState(props.obj.rating);
+    const [rating, setRating] = useState(props.obj.rating); // uses a number
     const [review, setReview] = useState(props.review);
     const ratingRef1 = useRef(null);
     const ratingRef2 = useRef(null);
@@ -11,8 +11,18 @@ const RatingSystem = (props) => {
     const ratingRef5 = useRef(null);
 
 
+    // used to format the date to just Month/Day/Year
+    const date = new Date(props.obj.date);
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const monthIndex = date.getMonth();
+    const monthName = monthNames[monthIndex];
+    const day = date.getDate();
+    const year = date.getFullYear();
+    const formattedDate = `${monthName} ${day}, ${year}`;
+    // ---------------------------------------------
+
     useEffect(() => {
-    const ratingRefs = [ratingRef1, ratingRef2, ratingRef3, ratingRef4, ratingRef5];
+    const ratingRefs = [ratingRef1, ratingRef2, ratingRef3, ratingRef4, ratingRef5]; 
     if (rating !== 5) {
         const width = ratingRefs[Math.floor(rating)].current.getBoundingClientRect().width;
         const decimal = rating % 1;
@@ -58,7 +68,7 @@ const RatingSystem = (props) => {
                 <span ref={ratingRef4}><i class="fa-sharp fa-solid fa-star"></i></span>
                 <span ref={ratingRef5}><i class="fa-sharp fa-solid fa-star"></i></span>
           </span>
-          {review ? <div class="userAndTime">{props.obj.reviewer_name}, {props.obj.date}</div> : null}
+          {review ? <div class="userAndTime">{props.obj.reviewer_name}, {formattedDate}</div> : null}
       </div>
     </div>
     )
