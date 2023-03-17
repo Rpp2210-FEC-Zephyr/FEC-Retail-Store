@@ -3,10 +3,6 @@ import { BrowserRouter, Link, Routes, Route, Switch, HashRouter, Navigate, useNa
 import ReactDOM from 'react-dom'
 import $ from 'jquery';
 import App from './App.jsx'
-import Bag from './components/Bag/Bag.jsx'
-import Favorites from './components/Favorites/Favorites.jsx'
-import Search from './components/Search/Search.jsx'
-import Settings from './components/Settings/Settings.jsx'
 const Popup = require('./Notification.jsx')
 const Index = () =>{
   const [bag, setBag] = useState([])
@@ -14,7 +10,7 @@ const Index = () =>{
 
   const onBag = (Items) =>{
     setBag(Items)
-    console.log('ITS SET', Items)
+
 
   }
 
@@ -34,10 +30,6 @@ const Index = () =>{
 
       <Routes>
         <Route path ='/' element = {<App setBag = {onBag}/>} />
-        <Route path ='/bag' element = {<Bag item = {bag} onDelete = {deleteBag}/>} />
-        <Route path ='/favorites' element = {<Favorites />} />
-        <Route path ='/search' element = {<Search />} />
-        <Route path ='/settings' element = {<Settings />} />
 
       </Routes>
 

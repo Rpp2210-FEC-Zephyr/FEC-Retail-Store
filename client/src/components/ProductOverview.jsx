@@ -100,17 +100,12 @@ const ProductOverview = ({main, getBag}) =>{
   const Favor = () => {
 
      const Star = JSON.parse(localStorage.getItem('favorites'));
-
-     console.log('STAR', Star)
-
      if(Star != null){
       localStorage.setItem('favorites', JSON.stringify([Star, show]))
-      console.log('NOT NULL',JSON.parse(localStorage.getItem('favorites')) )
       Favorites.Toggle(show)
 
      }else{
       localStorage.setItem('favorites', JSON.stringify([ show]));
-      console.log('NULL', JSON.parse(localStorage.getItem('favorites')) )
       Favorites.Toggle(show)
      }
   }
@@ -118,7 +113,7 @@ const ProductOverview = ({main, getBag}) =>{
 
   const Change = (item, index) =>{
    const mySelect = document.getElementById(`${index}`);
-   console.log('CHANGEING')
+
 
 
     const Selecet = document.querySelectorAll('.StyleChoose')
