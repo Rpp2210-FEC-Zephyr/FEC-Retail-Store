@@ -5,6 +5,8 @@ import $ from 'jquery';
 
 import IndividualReview from './IndividualReviews.jsx';
 import exampleData from './../exampleReviewsData.js'; // used as 
+import SortBy from './SortBy.jsx';
+import WriteAReview from './WriteAReview.jsx';
 
 
 
@@ -12,27 +14,26 @@ import exampleData from './../exampleReviewsData.js'; // used as
 const RatingsAndReviews = (props) =>{
 
   const [shownReviews, setShownReviews] = useState(2);
+  const [sortby, setSortBy] = useState('relevant');
+
   var currentSelectionReviews = props.currentProduct.slice(0, shownReviews);
 
   const handleMoreReviews = () => {
     setShownReviews(shownReviews + 2);
   }
 
-  const handleAddReview = (e) => {
-    console.log(e.target.value);
-  }
-
    return (
      <div class="RatingsAndReviews">
        <div>
          <h1>Rating And Reviews!</h1>
-         <h4>{props.count} reviews, sorted by NOTHING!</h4>
+         
+        <h4>{props.count} reviews, sorted by <SortBy sortFunc={setSortBy}/></h4>
          {currentSelectionReviews.map((review) => {
-          return <IndividualReview obj={review}/>
+          return <IndividualReview obj={review} />
          })}
        </div>
        {props.count > 2 ? shownReviews > props.count ? null :<button onClick={handleMoreReviews}>MORE REVIEWS</button> : null}
-       <button onClick={handleAddReview}>ADD A REVIEW +</button>
+       <WriteAReview />
    
      </div>
    )

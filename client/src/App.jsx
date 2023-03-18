@@ -14,8 +14,9 @@ const Popup = require('./Notification.jsx')
 
 
 const App = ({setBag}) =>{
-  const [data, setData] = useState([])
-  const [main, setMain] = useState([])
+  const [data, setData] = useState([]);
+  const [main, setMain] = useState([]);
+  const [prodID, setProdID] = useState(71697);
   const [reviews, setReviews] = useState([]);
   const [reviewsCount, setReviewsCount] = useState(0);
 
@@ -40,12 +41,14 @@ const App = ({setBag}) =>{
   const getReviews = () => {
     $.ajax({
       type: 'GET',
-      url: '/reviews',
+      url: '/reviews',  
       data: {
-        product_id: 71697 // NEED VARIABLE PRODUCT_ID
+        product_id: prodID, // NEED VARIABLE PRODUCT_ID
+        count: 10,
+        sort: 'relevant',
       },
       success: (data) => {
-        console.log('Data reviewed in the client side!', data.results);
+        console.log('Data reviewed in the client side!', data);
         setReviews(data.results);
         setReviewsCount(data.count);
       }
