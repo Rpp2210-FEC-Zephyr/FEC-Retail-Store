@@ -52,6 +52,17 @@ app.get('/Features', function(req,res){
   })
 })
 
+app.get('/Questions', function(req, res) {
+  const {id} = req.query
+  API.getQuestions(id, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(data);
+    }
+  })
+});
+
 app.get('/reviews', function(req, res) {
   var id = req.query.product_id;
 
@@ -62,7 +73,6 @@ app.get('/reviews', function(req, res) {
       res.send(data);
     }
   })
-
 });
 
  var port = 1028
