@@ -26,7 +26,7 @@ const RatingSystem = (props) => {
     if (rating !== 5) {
         const width = ratingRefs[Math.floor(rating)].current.getBoundingClientRect().width;
         const decimal = rating % 1;
-        console.log('decimal', decimal);
+        // console.log('decimal', decimal);
         var ratingWidth;
 
         if (decimal === 0) {

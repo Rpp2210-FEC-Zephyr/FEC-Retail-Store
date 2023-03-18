@@ -15,7 +15,7 @@ const Popup = require('./Notification.js')
 const App = ({setBag}) =>{
   const [data, setData] = useState([]);
   const [main, setMain] = useState([]);
-  const [prodID, setProdID] = useState(71700);
+  const [prodID, setProdID] = useState(71697);
   const [reviews, setReviews] = useState([]);
   const [reviewsCount, setReviewsCount] = useState(0);
 
@@ -47,9 +47,7 @@ const App = ({setBag}) =>{
         sort: 'relevant',
       },
       success: (data) => {
-        console.log('DATA!!!!!!!!!!!!!!!!!!', data);
-        console.log('Data reviewed in the client side!', data.results);
-        console.log('MAIN!!!!!!!!!!!!!!!!!!!!', main);
+        console.log('Data reviewed in the client side!', data);
         setReviews(data.results);
         setReviewsCount(data.count);
       }
