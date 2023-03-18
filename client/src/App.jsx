@@ -9,7 +9,8 @@ import ProductOverview from './components/ProductOverview.jsx';
 import RatingsAndReviews from './components/RatingsAndReviews.jsx';
 import QuestionsAndAnswers from './components/QuestionsAndAnswers.jsx';
 import RelatedItems from './components/RelatedItemsAndOutfitCreation.jsx';
-const Popup = require('./Notification.js')
+import YourOutfits from './components/YourOutfits.jsx'
+const Popup = require('./Notification.jsx')
 
 
 const App = ({setBag}) =>{
@@ -101,22 +102,14 @@ const App = ({setBag}) =>{
               </IconContext.Provider>
 
          </div>
-         <input type="checkbox" id="click" />
-         <label for="click" class="menu-btn" >
-         <i class="fas fa-bars"></i>
-         </label>
-         <ul>
-            <li onClick = {() =>{navigate('/')}}><a class="active" href="#">Home</a></li>
-            <li onClick = {() =>{navigate('/bag')}}><a  href="#">Bag</a></li>
-            <li onClick = {() =>{navigate('/favorites')}} ><a href="#">Favorites</a></li>
-            <li onClick = {() =>{navigate('/search')}}><a href="#">Search</a></li>
-            <li onClick = {() =>{navigate('/settings')}}><a href="#">Account Settings</a></li>
-         </ul>
+
       </nav>
       <ProductOverview main = {main} getBag = {getBag}/>
-      <RatingsAndReviews currentProduct={reviews} count={reviewsCount}/>
-      <QuestionsAndAnswers />
       <RelatedItems />
+      <YourOutfits />
+      <QuestionsAndAnswers />
+      <RatingsAndReviews currentProduct={reviews} count={reviewsCount}/>
+
       </div>
     )
   }

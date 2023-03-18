@@ -100,7 +100,11 @@ const Notify = () =>{
   const label = document.querySelectorAll(".label ");
 
   label.forEach(lb => {
-    lb.addEventListener("click", () => createToast(lb.id));
+    lb.addEventListener("click", (e) =>{
+
+        createToast(lb.id)
+
+    });
   });
 }
 
