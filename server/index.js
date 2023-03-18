@@ -52,6 +52,17 @@ app.get('/Features', function(req,res){
   })
 })
 
+app.get('/Questions', function(req, res) {
+  const {id} = req.query
+  API.getQuestions(id, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(data);
+    }
+  })
+})
+
  var port = 1028
  app.listen(port, () =>{
 

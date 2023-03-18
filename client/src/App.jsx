@@ -96,9 +96,9 @@ const App = ({setBag}) =>{
          </ul>
       </nav>
       <ProductOverview main = {main} getBag = {getBag}/>
-      <RatingsAndReviews />
-      <QuestionsAndAnswers />
-      <RelatedItems />
+      {/* <RatingsAndReviews /> */}
+      <QuestionsAndAnswers main = {main}/>
+      {/* <RelatedItems /> */}
       </div>
     )
   }

@@ -5,12 +5,12 @@ import QuestionsList from './QuestionsList.jsx';
 import QuestionsSearch from './QuestionsSearch.jsx';
 import QuestionAdd from './QuestionAdd.jsx';
 
-const QuestionsAndAnswers = () =>{
+const QuestionsAndAnswers = ({main}) => {
   return (
     <div>
       <h1>Questions & Answers</h1>
       <QuestionsSearch />
-      <QuestionsList />
+      <QuestionsList main = {main}/>
       <QuestionAdd />
     </div>
   )

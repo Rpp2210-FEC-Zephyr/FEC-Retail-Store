@@ -2,7 +2,7 @@ import React, {useState, useEffect } from 'react';
 import ReactDOM from 'react-dom'
 import $ from 'jquery';
 
-const QuestionAdd = () =>{
+const QuestionAdd = () => {
   return (
     <div>
       <button>Add Question +</button>
