@@ -65,7 +65,7 @@ const Notify = () =>{
       },
       info: {
           icon: 'fa-solid fa-star',
-          text: 'Favorites have been updated',
+          text: ' Your Outfits have been updated',
       }
   }
 

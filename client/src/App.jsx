@@ -23,6 +23,8 @@ const App = () =>{
 
 
   const navigate = useNavigate()
+
+
   const getProducts = () =>{
     $.ajax({
       type: 'GET',
@@ -45,7 +47,6 @@ const App = () =>{
   }
 
   const Outfits = (obj) =>{
-    console.log('OUTFIT', obj)
     setOutfit(obj)
   }
 
@@ -98,7 +99,7 @@ const App = () =>{
       </nav>
       <ProductOverview main = {main} Outfits = {Outfits}/>
       <RelatedItems main = {main} Change = {Change}/>
-      <YourOutfits outfit = {outfit}/>
+      <YourOutfits outfit = {outfit} Change = {Change}/>
       <QuestionsAndAnswers />
       <RatingsAndReviews currentProduct={reviews} count={reviewsCount}/>
 

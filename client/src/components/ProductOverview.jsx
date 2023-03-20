@@ -160,7 +160,7 @@ const ProductOverview = ({main, Outfits}) =>{
       Popup.Alert("error")
 
     }else{
-      console.log('Current', show,cSize, cQuant)
+
       const bag = JSON.parse(localStorage.getItem('bag'));
 
 
@@ -192,6 +192,8 @@ const ProductOverview = ({main, Outfits}) =>{
 
   useEffect(() =>{
     if(main.id != undefined){
+
+
       getStyles(main.id)
       getFeatures(main.id)
 
@@ -201,7 +203,9 @@ const ProductOverview = ({main, Outfits}) =>{
       Outfits(Favorites.showOutfit())
 
 
+
     }
+
 
 
 

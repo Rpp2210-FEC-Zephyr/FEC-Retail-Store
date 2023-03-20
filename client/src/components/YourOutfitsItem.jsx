@@ -1,6 +1,6 @@
 import React, {useState, useEffect } from 'react';
 
-const YourOutfitsItem =  ({item }) =>{
+const YourOutfitsItem =  ({item, Change }) =>{
 
 
  useEffect(() =>{
@@ -9,7 +9,7 @@ const YourOutfitsItem =  ({item }) =>{
  }, [])
 
   return (
-  <div class = 'OutfitCard'>
+  <div onClick = {() =>{Change(item)}}class = 'RelatedItems'>
    <div>{item.name}</div>
 
   </div>

@@ -706,8 +706,23 @@ nav .logo{
 
 .Related{
   display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 .RelatedItems {
- margin: 59px;
- background-color: #40D3DC;
+  margin-left: 46px;
+  width: 122px;
+  height: 100px;
+  border-radius: 8px;
+  background: #8fecff;
+  box-shadow: 6px 6px 11px #7ac9d9, -6px -6px 11px #a4ffff;
+  margin-top: 56px;
+}
+.Title {
+  margin-top: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
 }

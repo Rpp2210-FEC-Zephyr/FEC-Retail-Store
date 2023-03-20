@@ -4,19 +4,18 @@ import $ from 'jquery';
 import YourOutfitsItem from './YourOutfitsItem.jsx'
 
 
-const YourOutfits = ( {outfit}) =>{
+const YourOutfits = ( {outfit, Change }) =>{
 
 
- useEffect(() =>{
-  console.log('CURRENT OUTFIT', outfit)
-
- }, [outfit])
     return (
-      <div class = 'OutfitList'>
+      <div>
+       <div class = 'Title'> Your Outfits</div>
+      <div class = 'Related'>
 
       {outfit ? outfit.map((item) =>
-      <YourOutfitsItem  item ={item} />
+      <YourOutfitsItem  item ={item} Change ={Change}/>
       ): null}
+    </div>
     </div>
 
     )

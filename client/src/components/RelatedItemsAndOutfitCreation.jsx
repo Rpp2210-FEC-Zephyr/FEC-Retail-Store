@@ -29,6 +29,7 @@ const RelatedItemsAndOutfitCreation = ({ main, Change }) =>{
 
   useEffect(() =>{
     if(main.id != undefined){
+      console.log('RELATED MAIN', main.id)
 
       getRelated(main.id)
 
@@ -42,14 +43,21 @@ const RelatedItemsAndOutfitCreation = ({ main, Change }) =>{
 
 
     return (
-      <div class = 'Related'>
-
+      <div>
+       <div class = 'Title'> RELATED ITEMS</div>
+       <div class ='Related'>
     {related ? related.map((item) =>
       <div onClick = {() =>{Change(item)}}class = 'RelatedItems'>
-        <div>{item.name} </div>
+        <div>
+          {item.name}
+         </div>
+         <div>
+
+         </div>
 
          </div>
       ): null}
+      </div>
     </div>
 
 
