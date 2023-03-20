@@ -109,7 +109,7 @@ const App = ({setBag}) =>{
       </nav>
       <ProductOverview main = {main} getBag = {getBag}/>
       <RelatedItems />
-      <YourOutfits />
+      {/* <YourOutfits /> */}
       <QuestionsAndAnswers main = {main}/>
       <RatingsAndReviews currentProduct={reviews} count={reviewsCount}/>
 

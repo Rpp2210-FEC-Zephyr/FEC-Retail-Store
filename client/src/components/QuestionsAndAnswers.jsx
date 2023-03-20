@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom'
 import $ from 'jquery';
 import QuestionsList from './QuestionsList.jsx';
