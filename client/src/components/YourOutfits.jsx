@@ -4,7 +4,7 @@ import $ from 'jquery';
 import YourOutfitsItem from './YourOutfitsItem.jsx'
 
 
-const YourOutfits = ( {outfit, Change }) =>{
+const YourOutfits = ( {outfit, URL }) =>{
 
 
     return (
@@ -13,7 +13,7 @@ const YourOutfits = ( {outfit, Change }) =>{
       <div class = 'Related'>
 
       {outfit ? outfit.map((item) =>
-      <YourOutfitsItem  item ={item} Change ={Change}/>
+      <YourOutfitsItem  item ={item} URL ={URL}/>
       ): null}
     </div>
     </div>

@@ -16,7 +16,6 @@ const Index = () =>{
 
       <Routes>
         <Route path ='/' element = {<App />} />
-
       </Routes>
 
 
