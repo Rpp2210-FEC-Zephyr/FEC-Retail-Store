@@ -44,6 +44,11 @@ const App = () =>{
     setMain(obj)
   }
 
+  const Outfits = (obj) =>{
+    console.log('OUTFIT', obj)
+    setOutfit(obj)
+  }
+
   const getReviews = () => {
     $.ajax({
       type: 'GET',
@@ -88,11 +93,10 @@ const App = () =>{
             <IconContext.Provider value={{ color: "white", size:"40px" }}>
             < GiEagleEmblem />
               </IconContext.Provider>
-
          </div>
 
       </nav>
-      <ProductOverview main = {main}/>
+      <ProductOverview main = {main} Outfits = {Outfits}/>
       <RelatedItems main = {main} Change = {Change}/>
       <YourOutfits outfit = {outfit}/>
       <QuestionsAndAnswers />

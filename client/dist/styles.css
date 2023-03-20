@@ -597,12 +597,8 @@ End of Simple CSS for class */
 .OutfitList {
   display: flex
 }
-.OutfitIMG {
-  width: 100px;
-  height: 100px;
-}
 .OutfitCard {
-
+  margin: 59px;
   border-radius: 0px;
   background: #e3e3e3;
   box-shadow:  20px 20px 60px #d3d3d3,

@@ -15,7 +15,7 @@ const Favorites = require('./Favorites.jsx')
 
 
 
-const ProductOverview = ({main}) =>{
+const ProductOverview = ({main, Outfits}) =>{
   const [show, setShow] = useState([])
   const [style, setStyle] = useState([])
   const [skus, setSkus] = useState([])
@@ -101,11 +101,11 @@ const ProductOverview = ({main}) =>{
      const Star = JSON.parse(localStorage.getItem('favorites'));
      if(Star != null){
       localStorage.setItem('favorites', JSON.stringify([Star, main]))
-      Favorites.Toggle(main)
+      Outfits(Favorites.Toggle(main))
 
      }else{
       localStorage.setItem('favorites', JSON.stringify([ main]));
-      Favorites.Toggle(main)
+      Outfits(Favorites.Toggle(main))
      }
   }
 
@@ -198,6 +198,7 @@ const ProductOverview = ({main}) =>{
       ImageExpander()
       Popup.Selected()
       Favorites.Status(main)
+      Outfits(Favorites.showOutfit())
 
 
     }

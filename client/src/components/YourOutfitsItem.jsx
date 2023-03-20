@@ -10,7 +10,7 @@ const YourOutfitsItem =  ({item }) =>{
 
   return (
   <div class = 'OutfitCard'>
-    <img class = 'OutfitIMG' src = {item.photos[0].url}/>
+   <div>{item.name}</div>
 
   </div>
   )

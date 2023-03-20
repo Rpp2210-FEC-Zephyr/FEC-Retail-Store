@@ -37,6 +37,8 @@ const Toggle = (item) =>{
     const svg = checkbox.querySelector('svg');
     svg.style.fill = '#fbff00';
   });
+      console.log('RETURN DATA', data)
+    return data
   }else{
 
     const newArr = data.filter((obj) => obj.id != item.id)
@@ -47,13 +49,22 @@ const Toggle = (item) =>{
       const svg = checkbox.querySelector('svg');
       svg.style.fill = '';
     });
+    console.log('RETURN NEW ARRAY', newArr)
+    return newArr
 
   }
 
+
 }
 
+const showOutfit =() =>{
+  const Star = JSON.parse(localStorage.getItem('favorites'));
+  const data = Star ? Star.flat(Infinity).filter((i) => i !=null) : []
 
+  return data
+}
 
 
 module.exports.Toggle = Toggle
 module.exports.Status = Status
+module.exports.showOutfit = showOutfit

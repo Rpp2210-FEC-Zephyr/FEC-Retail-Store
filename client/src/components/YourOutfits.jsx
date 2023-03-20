@@ -4,29 +4,13 @@ import $ from 'jquery';
 import YourOutfitsItem from './YourOutfitsItem.jsx'
 
 
-const YourOutfits = () =>{
- const [outfit, setOutfit] = useState(null)
+const YourOutfits = ( {outfit}) =>{
 
 
-  const getOutfits = () =>{
-    const Star = JSON.parse(localStorage.getItem('favorites'));
+ useEffect(() =>{
+  console.log('CURRENT OUTFIT', outfit)
 
-    const data = data ? Star.flat(Infinity).filter((i) => i !=null) : null
-    setOutfit(data)
-    console.log('ITEM DATA', data)
-  }
-
-
-
-  useEffect(() =>{
-    getOutfits()
-
-  }, [])
-
-
-
-
-
+ }, [outfit])
     return (
       <div class = 'OutfitList'>
 
