@@ -708,3 +708,6 @@ nav .logo{
   width: 100%;
 }
 
+.Related{
+  display: flex;
+}

@@ -29,6 +29,20 @@ app.get('/Products', function(req,res){
   })
 })
 
+app.get('/Related', function(req,res){
+  const { id } = req.query
+
+  API.getRelated(id, (err, data) =>{
+    if(err){
+      console.log(err)
+    }else{
+      res.send(data)
+    }
+  })
+})
+
+
+
 app.get('/Styles', function(req,res){
   const { id } = req.query
   API.getStyles(id, (err, data) =>{

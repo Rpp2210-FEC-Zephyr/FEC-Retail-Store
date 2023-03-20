@@ -41,7 +41,7 @@ const App = ({setBag}) =>{
   const getReviews = () => {
     $.ajax({
       type: 'GET',
-      url: '/reviews',  
+      url: '/reviews',
       data: {
         product_id: prodID, // NEED VARIABLE PRODUCT_ID
         count: 10,
@@ -108,7 +108,7 @@ const App = ({setBag}) =>{
 
       </nav>
       <ProductOverview main = {main} getBag = {getBag}/>
-      <RelatedItems />
+      <RelatedItems main = {main}/>
       <YourOutfits />
       <QuestionsAndAnswers />
       <RatingsAndReviews currentProduct={reviews} count={reviewsCount}/>
