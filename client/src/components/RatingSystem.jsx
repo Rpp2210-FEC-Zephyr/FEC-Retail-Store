@@ -22,7 +22,7 @@ const RatingSystem = (props) => {
     // ---------------------------------------------
 
     useEffect(() => {
-    const ratingRefs = [ratingRef1, ratingRef2, ratingRef3, ratingRef4, ratingRef5]; 
+    const ratingRefs = [ratingRef1, ratingRef2, ratingRef3, ratingRef4, ratingRef5];
     if (rating !== 5) {
         const width = ratingRefs[Math.floor(rating)].current.getBoundingClientRect().width;
         const decimal = rating % 1;
@@ -34,7 +34,7 @@ const RatingSystem = (props) => {
         } else {
             ratingWidth = width * decimal;
         }
-        
+
         // populate only a fraction of the star
         ratingRefs[Math.floor(rating)].current.style.width = `${ratingWidth}px`;
 

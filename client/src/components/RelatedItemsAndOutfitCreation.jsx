@@ -4,7 +4,7 @@ import $ from 'jquery';
 
 
 
-const RelatedItemsAndOutfitCreation = ({ main }) =>{
+const RelatedItemsAndOutfitCreation = ({ main, Change }) =>{
   const [related, setRelated] = useState(null)
 
 
@@ -42,14 +42,16 @@ const RelatedItemsAndOutfitCreation = ({ main }) =>{
 
 
     return (
-      <div>
       <div class = 'Related'>
 
     {related ? related.map((item) =>
-      <div>{item.name} </div>
+      <div onClick = {() =>{Change(item)}}class = 'RelatedItems'>
+        <div>{item.name} </div>
+
+         </div>
       ): null}
     </div>
-    </div>
+
 
 
 

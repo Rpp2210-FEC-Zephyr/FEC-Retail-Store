@@ -15,7 +15,7 @@ const Favorites = require('./Favorites.jsx')
 
 
 
-const ProductOverview = ({main, getBag}) =>{
+const ProductOverview = ({main}) =>{
   const [show, setShow] = useState([])
   const [style, setStyle] = useState([])
   const [skus, setSkus] = useState([])
@@ -36,7 +36,6 @@ const ProductOverview = ({main, getBag}) =>{
 
         setStyle(data)
         setShow(data.results[0])
-        Favorites.Status(data.results[0])
         setCPrice(data.results[0].original_price)
         setSkus(data.results[0].skus)
       }
@@ -101,12 +100,12 @@ const ProductOverview = ({main, getBag}) =>{
 
      const Star = JSON.parse(localStorage.getItem('favorites'));
      if(Star != null){
-      localStorage.setItem('favorites', JSON.stringify([Star, show]))
-      Favorites.Toggle(show)
+      localStorage.setItem('favorites', JSON.stringify([Star, main]))
+      Favorites.Toggle(main)
 
      }else{
-      localStorage.setItem('favorites', JSON.stringify([ show]));
-      Favorites.Toggle(show)
+      localStorage.setItem('favorites', JSON.stringify([ main]));
+      Favorites.Toggle(main)
      }
   }
 
@@ -134,7 +133,7 @@ const ProductOverview = ({main, getBag}) =>{
 
 
    setShow(item)
-   Favorites.Status(item)
+   Favorites.Status(main)
    setSkus(item.skus)
 
 
@@ -176,7 +175,7 @@ const ProductOverview = ({main, getBag}) =>{
         Popup.Alert("success")
         localStorage.setItem('bag', JSON.stringify([{ cloth: show, size: cSize, quant: cQuant, name: main.name  }]));
       }
-      getBag()
+
     }
 
 
@@ -193,14 +192,12 @@ const ProductOverview = ({main, getBag}) =>{
 
   useEffect(() =>{
     if(main.id != undefined){
-
       getStyles(main.id)
       getFeatures(main.id)
-      getBag()
 
       ImageExpander()
       Popup.Selected()
-
+      Favorites.Status(main)
 
 
     }

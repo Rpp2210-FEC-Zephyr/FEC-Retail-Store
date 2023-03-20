@@ -5,13 +5,13 @@ import YourOutfitsItem from './YourOutfitsItem.jsx'
 
 
 const YourOutfits = () =>{
- const [outfit, setOutfit] = useState([])
+ const [outfit, setOutfit] = useState(null)
 
 
   const getOutfits = () =>{
     const Star = JSON.parse(localStorage.getItem('favorites'));
 
-    const data = Star.flat(Infinity).filter((i) => i !=null)
+    const data = data ? Star.flat(Infinity).filter((i) => i !=null) : null
     setOutfit(data)
     console.log('ITEM DATA', data)
   }

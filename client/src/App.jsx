@@ -13,12 +13,14 @@ import YourOutfits from './components/YourOutfits.jsx'
 const Popup = require('./Notification.jsx')
 
 
-const App = ({setBag}) =>{
+const App = () =>{
   const [data, setData] = useState([]);
   const [main, setMain] = useState([]);
   const [prodID, setProdID] = useState(71697);
   const [reviews, setReviews] = useState([]);
   const [reviewsCount, setReviewsCount] = useState(0);
+  const [outfit , setOutfit] = useState(null)
+
 
   const navigate = useNavigate()
   const getProducts = () =>{
@@ -38,6 +40,10 @@ const App = ({setBag}) =>{
     })
   }
 
+  const Change = (obj) =>{
+    setMain(obj)
+  }
+
   const getReviews = () => {
     $.ajax({
       type: 'GET',
@@ -55,28 +61,7 @@ const App = ({setBag}) =>{
     })
   }
 
-  const getBag = () =>{
-    const bag = JSON.parse(localStorage.getItem('bag'));
 
-
-    if(Array.isArray(bag)){
-
-      localStorage.setItem('bag', JSON.stringify(bag.flat(Infinity).filter((item) => item !=null)))
-
-    }
-    const fbag = JSON.parse(localStorage.getItem('bag'));
-    if(fbag != null){
-      if(typeof fbag === 'object'){
-
-        setBag(fbag)
-      }else{
-
-    setBag(fbag.flat(Infinity).filter((item) => item !=null))
-      }
-    }
-
-
-  }
 
 
 
@@ -107,9 +92,9 @@ const App = ({setBag}) =>{
          </div>
 
       </nav>
-      <ProductOverview main = {main} getBag = {getBag}/>
-      <RelatedItems main = {main}/>
-      <YourOutfits />
+      <ProductOverview main = {main}/>
+      <RelatedItems main = {main} Change = {Change}/>
+      <YourOutfits outfit = {outfit}/>
       <QuestionsAndAnswers />
       <RatingsAndReviews currentProduct={reviews} count={reviewsCount}/>
 

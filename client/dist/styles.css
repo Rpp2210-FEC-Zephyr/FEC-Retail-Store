@@ -711,3 +711,7 @@ nav .logo{
 .Related{
   display: flex;
 }
+.RelatedItems {
+ margin: 59px;
+ background-color: #40D3DC;
+}
