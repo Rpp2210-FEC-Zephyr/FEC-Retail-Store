@@ -54,21 +54,21 @@ const RatingSystem = (props) => {
 
 
     return (
-    <div class="star-rating">
-            <div class="back-rating-container">
-                <span><i class="fa-sharp fa-regular fa-star"></i></span>
-                <span><i class="fa-sharp fa-regular fa-star"></i></span>
-                <span><i class="fa-sharp fa-regular fa-star"></i></span>
-                <span><i class="fa-sharp fa-regular fa-star"></i></span>
-                <span><i class="fa-sharp fa-regular fa-star"></i></span>
-            <span class="rating-container">
-                <span ref={ratingRef1}><i class="fa-sharp fa-solid fa-star"></i></span>
-                <span ref={ratingRef2}><i class="fa-sharp fa-solid fa-star"></i></span>
-                <span ref={ratingRef3}><i class="fa-sharp fa-solid fa-star"></i></span>
-                <span ref={ratingRef4}><i class="fa-sharp fa-solid fa-star"></i></span>
-                <span ref={ratingRef5}><i class="fa-sharp fa-solid fa-star"></i></span>
+    <div className="star-rating">
+            <div className="back-rating-container">
+                <span><i className="fa-sharp fa-regular fa-star"></i></span>
+                <span><i className="fa-sharp fa-regular fa-star"></i></span>
+                <span><i className="fa-sharp fa-regular fa-star"></i></span>
+                <span><i className="fa-sharp fa-regular fa-star"></i></span>
+                <span><i className="fa-sharp fa-regular fa-star"></i></span>
+            <span className="rating-container">
+                <span ref={ratingRef1}><i className="fa-sharp fa-solid fa-star"></i></span>
+                <span ref={ratingRef2}><i className="fa-sharp fa-solid fa-star"></i></span>
+                <span ref={ratingRef3}><i className="fa-sharp fa-solid fa-star"></i></span>
+                <span ref={ratingRef4}><i className="fa-sharp fa-solid fa-star"></i></span>
+                <span ref={ratingRef5}><i className="fa-sharp fa-solid fa-star"></i></span>
           </span>
-          {review ? <div class="userAndTime">{props.obj.reviewer_name}, {formattedDate}</div> : null}
+          {review ? <div className="userAndTime">{props.obj.reviewer_name}, {formattedDate}</div> : null}
       </div>
     </div>
     )

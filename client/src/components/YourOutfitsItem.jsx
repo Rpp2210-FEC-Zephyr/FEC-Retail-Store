@@ -31,7 +31,12 @@ const YourOutfitsItem =  ({item, URL }) =>{
         sort: 'relevant',
       },
       success: (data) => {
-        setRating(data.count)
+        var sum = 0
+        for (var i = 0 ; i < data.results.length; i++){
+          sum += data.results[i].rating
+        }
+
+        setRating(sum/data.results.length)
 
 
       }

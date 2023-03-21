@@ -8,7 +8,7 @@ const Selected =() =>{
 
     scrol.addEventListener('click', () => {
       window.scrollBy({
-        top: 500,
+        top: 8000,
         left: 0,
         behavior: 'smooth'
       });

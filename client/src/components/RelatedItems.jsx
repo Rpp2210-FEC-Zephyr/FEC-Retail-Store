@@ -15,7 +15,7 @@ const RelatedItems = ({ item, URL }) =>{
       url: '/Styles',
       data: {id: id },
       success: (data) =>{
-        console.log('Outfit Data', data)
+
         setImage(data.results[0].photos[0].url)
 
       }
@@ -33,7 +33,13 @@ const RelatedItems = ({ item, URL }) =>{
         sort: 'relevant',
       },
       success: (data) => {
-        setRating(data.count)
+        var sum = 0
+        for (var i = 0 ; i < data.results.length; i++){
+          sum += data.results[i].rating
+        }
+
+        setRating(sum/data.results.length)
+
 
 
       }

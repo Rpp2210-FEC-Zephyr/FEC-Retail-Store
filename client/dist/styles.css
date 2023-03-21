@@ -110,7 +110,7 @@ body {
 }
 
 .slide img{
-  width: 100%;
+  width: 906px;
   height: 500px;
 }
 
@@ -144,6 +144,7 @@ body {
   width: 906px;
 }
 
+
 #radio1:checked ~ .first{
   margin-left: 0;
 }
@@ -166,7 +167,33 @@ body {
 #radio6:checked ~ .first{
   margin-left: -105%;
 }
-
+#radio7:checked ~ .first{
+  margin-left: -125%;
+}
+#radio8:checked ~ .first{
+  margin-left: -145%;
+}
+#radio9:checked ~ .first{
+  margin-left: -165%;
+}
+#radio10:checked ~ .first{
+  margin-left: -185%;
+}
+#radio11:checked ~ .first{
+  margin-left: -205%;
+}
+#radio12:checked ~ .first{
+  margin-left: -225%;
+}
+#radio13:checked ~ .first{
+  margin-left: -245%;
+}
+#radio14:checked ~ .first{
+  margin-left: -265%;
+}
+#radio15:checked ~ .first{
+  margin-left: -285%;
+}
 /*css for automatic navigation*/
 
 .navigation-auto{
@@ -209,6 +236,38 @@ body {
 #radio6:checked ~ .navigation-auto .auto-btn6{
   background: #40D3DC;
 }
+#radio7:checked ~ .navigation-auto .auto-btn7{
+  background: #40D3DC;
+}
+
+#radio8:checked ~ .navigation-auto .auto-btn8{
+  background: #40D3DC;
+}
+
+#radio9:checked ~ .navigation-auto .auto-btn9{
+  background: #40D3DC;
+}
+
+#radio10:checked ~ .navigation-auto .auto-btn10{
+  background: #40D3DC;
+}
+
+#radio11:checked ~ .navigation-auto .auto-btn11{
+  background: #40D3DC;
+}
+#radio12:checked ~ .navigation-auto .auto-btn12{
+  background: #40D3DC;
+}
+#radio13:checked ~ .navigation-auto .auto-btn13{
+  background: #40D3DC;
+}
+#radio14:checked ~ .navigation-auto .auto-btn14{
+  background: #40D3DC;
+}
+#radio15:checked ~ .navigation-auto .auto-btn15{
+  background: #40D3DC;
+}
+
 
 .category {
   font-size: 30px;
@@ -217,7 +276,17 @@ body {
 }
 
 .price{
+  display: flex;
   margin-bottom: 20px;
+}
+.priceC{
+  display: flex;
+
+}
+.PriceCross {
+  color: #E24D4C;
+  text-decoration:line-through;
+  margin-right: 15px;
 }
 .ProductName {
   margin-bottom: 20px;
@@ -742,6 +811,7 @@ nav .logo{
 }
 
 .Title {
+  margin-left: 50px;
   margin-top: 20px;
   font-size: 30px;
   font-weight: bold;
