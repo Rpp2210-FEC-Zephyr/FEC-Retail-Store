@@ -43,11 +43,11 @@ const RelatedItemsAndOutfitCreation = ({ main, URL }) =>{
 
 
     return (
-      <div class = 'RELATE CAROSEL'>
-       <div class = 'Title'> RELATED ITEMS</div>
-       <div class ='Related'>
+      <div className = 'RELATE CAROSEL'>
+       <div className = 'Title'> RELATED ITEMS</div>
+       <div className ='Related' key = {main ? `${main.id}-related` : null}>
     {related ? related.map((item) =>
-        < RelatedItems item = {item} URL = {URL}/>
+        < RelatedItems key={`${main.id}-${item.id}`} item = {item} URL = {URL}/>
       ): null}
       </div>
     </div>

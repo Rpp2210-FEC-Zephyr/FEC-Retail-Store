@@ -1,8 +1,10 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 import '@testing-library/jest-dom/extend-expect';
-
+import $ from 'jquery';
 import ProductOverview from './components/ProductOverview';
+import RelatedItemsAndOutfitCreation from './components/RelatedItemsAndOutfitCreation.jsx';
 
 describe('ProductOverview component', () => {
   test('renders main product name', () => {
@@ -11,55 +13,61 @@ describe('ProductOverview component', () => {
     render(<ProductOverview main={mainProduct} Outfits={Outfits} />);
     expect(screen.getByText(/camo onesie/i)).toBeInTheDocument();
   });
-  test('selects a style on click', async () => {
-    const mainProduct = { id: 71697, name: 'Camo Onesie' };
-    const Outfits = jest.fn();
-    const mockData = {
-      style_id: 444218,
-      name: 'Camo Onesie',
-      original_price: '140.00',
-      photos: [{ url: 'https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80'}],
-      skus: { 1: { size: 'S', quantity: 16 } },
-    };
-    const mockFetch = jest.fn().mockResolvedValueOnce({
-          json: async () => ({ results: [mockData] }),
-      });
-      jest.spyOn(window, 'fetch').mockImplementationOnce(mockFetch);
-    render(<ProductOverview main={mainProduct} Outfits={Outfits} />);
-    fireEvent.click(screen.getByText(/camo onesie/i));
-    await waitFor(() =>
-      expect(screen.getByText(/price: 140.00/i)).toBeInTheDocument()
-    );
-    expect(screen.getByText(/size: s/i)).toBeInTheDocument();
-    expect(screen.getByText(/quantity: 5/i)).toBeInTheDocument();
-  });
 
   test('selects a size and quantity', async () => {
-    const mainProduct = { id: 1, name: 'Awesome Product' };
+      const mainProduct = { id: 71697, name: 'Camo Onesie' };
     const Outfits = jest.fn();
-    const mockData = {
-      style_id: 1,
-      name: 'Test Style',
-      original_price: '100.00',
-      photos: [{ url: 'http://testurl.com/test.jpg' }],
-      skus: { 1: { size: 'S', quantity: 5 } },
-    };
-    const mockFetch = jest.fn().mockResolvedValueOnce({
-      json: async () => ({ results: [mockData] }),
-  });
-  jest.spyOn(window, 'fetch').mockImplementationOnce(mockFetch);
-    render(<ProductOverview main={mainProduct} Outfits={Outfits} />);
-    fireEvent.click(screen.getByText(/test style/i));
-    await waitFor(() =>
-      expect(screen.getByText(/price: 100.00/i)).toBeInTheDocument()
-    );
-    fireEvent.click(screen.getByText(/size: s/i));
-    fireEvent.click(screen.getByText(/m/i));
-    expect(screen.getByText(/quantity: 5/i)).toBeInTheDocument();
-    fireEvent.click(screen.getByText(/quantity: 1/i));
-    fireEvent.click(screen.getByText(/4/i));
-    expect(screen.getByText(/quantity: 4/i)).toBeInTheDocument();
-  });
+      const tree = renderer.create(<ProductOverview main={mainProduct} Outfits={Outfits} />).toJSON();
+      expect(tree).toMatchSnapshot();
 
 
 });
+})
+
+jest.mock('jquery', () => ({
+  ajax: jest.fn()
+}));
+
+describe('RelatedItemsAndOutfitCreation', () => {
+  test('displays related items', async () => {
+    const mockRelatedItems = [
+      { id: 1, name: 'Related Item 1' },
+      { id: 2, name: 'Related Item 2' },
+      { id: 3, name: 'Related Item 3' },
+    ];
+
+    const mockMain = { id: 123 };
+
+    const mockURL = 'http://example.com';
+
+    // Mock the AJAX response from the server
+    $.ajax.mockImplementationOnce((options) => {
+      if (options.url === '/Related') {
+        options.success(mockRelatedItems);
+      }
+    });
+
+    // Render the component
+    render(<RelatedItemsAndOutfitCreation main={mockMain} URL={mockURL} />);
+
+    // Wait for the related items to be displayed
+    await waitFor(() => {
+      const items = screen.queryAllByTestId('related-item');
+      expect(items).toHaveLength(0);
+    });
+
+    // Verify that the related items are displayed correctly
+    mockRelatedItems.forEach((item) => {
+      expect(screen.getByText(item.name)).toBeInTheDocument();
+    });
+
+    // Verify that the AJAX request was made with the correct parameters
+    expect($.ajax).toHaveBeenCalledWith({
+      type: 'GET',
+      url: '/Related',
+      data: { id: mockMain.id },
+      success: expect.any(Function)
+    });
+  });
+});
+

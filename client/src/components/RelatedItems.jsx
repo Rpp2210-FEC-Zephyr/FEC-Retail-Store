@@ -55,14 +55,14 @@ const RelatedItems = ({ item, URL }) =>{
 
 
     return (
-      <div onClick = {() =>{URL(item.id)}}class = 'RelatedItems'>
-        <div class = 'RELATEIMG'> <img class = 'RIMG' src = {image ? image: null}/> </div>
-        <div class ='RelatedCat'> Category: {item.category}</div>
+      <div onClick = {() =>{URL(item.id)}}className = 'RelatedItems'>
+        <div className = 'RELATEIMG'> <img className = 'RIMG' src = {image ? image: null}/> </div>
+        <div className ='RelatedCat'> Category: {item.category}</div>
         <div>
           {item.name}
          </div>
          <div>${item.default_price} </div>
-         <div class = 'RelateRATING'>
+         <div className = 'RelateRATING'>
          {rating ? <RatingSystem obj = {{rating: rating}}/> : null}
          </div>
          <div>
