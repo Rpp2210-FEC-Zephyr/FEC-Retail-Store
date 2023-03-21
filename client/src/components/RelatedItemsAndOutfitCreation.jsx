@@ -43,14 +43,18 @@ const RelatedItemsAndOutfitCreation = ({ main, URL }) =>{
 
 
     return (
-      <div>
+      <div class = 'RELATE CAROSEL'>
        <div class = 'Title'> RELATED ITEMS</div>
        <div class ='Related'>
     {related ? related.map((item) =>
       <div onClick = {() =>{URL(item.id)}}class = 'RelatedItems'>
+        <div class = 'RELATEIMG'> </div>
+        <div class ='RelatedCat'> {item.category}</div>
         <div>
           {item.name}
          </div>
+         <div>${item.default_price} </div>
+
          <div>
 
          </div>

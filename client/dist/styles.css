@@ -713,12 +713,21 @@ nav .logo{
 }
 .RelatedItems {
   margin-left: 46px;
-  width: 122px;
-  height: 100px;
+  width: 268px;
+  height: 365px;
   border-radius: 8px;
-  background: #8fecff;
-  box-shadow: 6px 6px 11px #7ac9d9, -6px -6px 11px #a4ffff;
-  margin-top: 56px;
+  border: 2px solid;
+}
+.RelatedCat {
+
+}
+
+.RELATEIMG{
+  margin: 2px;
+  border-radius: 8px;
+  background-color: #cccccc;
+  width: 260px;
+  height: 274px;
 }
 .Title {
   margin-top: 20px;

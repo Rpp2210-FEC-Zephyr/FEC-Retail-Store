@@ -8,7 +8,7 @@ const YourOutfits = ( {outfit, URL }) =>{
 
 
     return (
-      <div>
+      <div class = 'OUTFIT CAROSEL'>
        <div class = 'Title'> Your Outfits</div>
       <div class = 'Related'>
 

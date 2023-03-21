@@ -19,8 +19,8 @@ const App = () =>{
   const [prodID, setProdID] = useState(71697);
   const [reviews, setReviews] = useState([]);
   const [reviewsCount, setReviewsCount] = useState(0);
-  const [cProdID, setCProdID] = useState(null)
   const [outfit , setOutfit] = useState(null)
+
   const [queryParameters] = useSearchParams()
 
   const navigate = useNavigate()

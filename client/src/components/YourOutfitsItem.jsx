@@ -10,7 +10,16 @@ const YourOutfitsItem =  ({item, URL }) =>{
 
   return (
   <div onClick = {() =>{URL(item.id)}}class = 'RelatedItems'>
-   <div>{item.name}</div>
+    <div class = 'RELATEIMG'> </div>
+     <div class ='RelatedCat'> {item.category}</div>
+        <div>
+          {item.name}
+         </div>
+         <div>${item.default_price} </div>
+
+         <div>
+
+         </div>
 
   </div>
   )
