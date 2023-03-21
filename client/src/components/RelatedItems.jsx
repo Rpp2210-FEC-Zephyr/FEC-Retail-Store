@@ -34,7 +34,7 @@ const RelatedItems = ({ item, URL }) =>{
       },
       success: (data) => {
         setRating(data.count)
-        console.log('RATING COUNT', data.count)
+
 
       }
     })

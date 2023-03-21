@@ -17,7 +17,7 @@ const RelatedItemsAndOutfitCreation = ({ main, URL }) =>{
       url: '/Related',
       data: {id: id },
       success: (data) =>{
-        console.log('Related Data', data)
+
         setRelated(data)
 
       }
@@ -29,7 +29,7 @@ const RelatedItemsAndOutfitCreation = ({ main, URL }) =>{
 
   useEffect(() =>{
     if(main.id != undefined){
-      console.log('RELATED MAIN', main.id)
+
 
       getRelated(main.id)
 

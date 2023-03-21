@@ -717,7 +717,9 @@ nav .logo{
   -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 .RelatedItems {
+  margin-bottom: 24px;
   margin-left: 46px;
+  margin-top: 24px;
   width: 268px;
   height: 380px;
   border-radius: 8px;

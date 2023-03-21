@@ -14,7 +14,7 @@ const YourOutfitsItem =  ({item, URL }) =>{
       url: '/Styles',
       data: {id: id },
       success: (data) =>{
-        console.log('Outfit Data', data)
+
         setImage(data.results[0].photos[0].url)
 
       }
@@ -32,7 +32,7 @@ const YourOutfitsItem =  ({item, URL }) =>{
       },
       success: (data) => {
         setRating(data.count)
-        console.log('RATING COUNT', data.count)
+
 
       }
     })
