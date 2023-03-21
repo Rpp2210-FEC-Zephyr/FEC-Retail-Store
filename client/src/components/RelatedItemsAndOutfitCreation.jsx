@@ -1,7 +1,7 @@
 import React, {useState, useEffect } from 'react';
 import ReactDOM from 'react-dom'
 import $ from 'jquery';
-
+import RelatedItems from './RelatedItems.jsx'
 
 
 const RelatedItemsAndOutfitCreation = ({ main, URL }) =>{
@@ -47,19 +47,7 @@ const RelatedItemsAndOutfitCreation = ({ main, URL }) =>{
        <div class = 'Title'> RELATED ITEMS</div>
        <div class ='Related'>
     {related ? related.map((item) =>
-      <div onClick = {() =>{URL(item.id)}}class = 'RelatedItems'>
-        <div class = 'RELATEIMG'> </div>
-        <div class ='RelatedCat'> {item.category}</div>
-        <div>
-          {item.name}
-         </div>
-         <div>${item.default_price} </div>
-
-         <div>
-
-         </div>
-
-         </div>
+        < RelatedItems item = {item} URL = {URL}/>
       ): null}
       </div>
     </div>

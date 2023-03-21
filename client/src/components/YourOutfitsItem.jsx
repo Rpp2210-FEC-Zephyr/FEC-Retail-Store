@@ -2,11 +2,25 @@ import React, {useState, useEffect } from 'react';
 import { IconContext } from "react-icons";
 import { HiOutlineX} from "react-icons/hi";
 import { AiFillCheckCircle} from "react-icons/ai";
+import $ from 'jquery';
 const YourOutfitsItem =  ({item, URL }) =>{
+   const [image, setImage] = useState(null)
+  const getStyles = (id) =>{
 
+    $.ajax({
+      type: 'GET',
+      url: '/Styles',
+      data: {id: id },
+      success: (data) =>{
+        console.log('Outfit Data', data)
+        setImage(data.results[0].photos[0].url)
 
+      }
+    })
+
+  }
  useEffect(() =>{
-  console.log('THE ITEM', item)
+  getStyles(item.id)
 
  }, [])
 
@@ -17,8 +31,8 @@ const YourOutfitsItem =  ({item, URL }) =>{
           < HiOutlineX/>
     </IconContext.Provider>
     </div>
-    <div class = 'RELATEIMG'> </div>
-     <div class ='RelatedCat'> {item.category}</div>
+    <div class = 'RELATEIMG'> <img class = 'RIMG' src = {image ? image: null}/> </div>
+     <div class ='RelatedCat'>Category: {item.category}</div>
         <div>
           {item.name}
          </div>
