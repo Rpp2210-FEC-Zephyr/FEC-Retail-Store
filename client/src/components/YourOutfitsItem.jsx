@@ -3,8 +3,10 @@ import { IconContext } from "react-icons";
 import { HiOutlineX} from "react-icons/hi";
 import { AiFillCheckCircle} from "react-icons/ai";
 import $ from 'jquery';
+import RatingSystem from './RatingSystem.jsx'
 const YourOutfitsItem =  ({item, URL }) =>{
    const [image, setImage] = useState(null)
+   const [rating, setRating] = useState(null)
   const getStyles = (id) =>{
 
     $.ajax({
@@ -19,8 +21,25 @@ const YourOutfitsItem =  ({item, URL }) =>{
     })
 
   }
+  const getReviews = (id) => {
+    $.ajax({
+      type: 'GET',
+      url: '/reviews',
+      data: {
+        product_id: id, // NEED VARIABLE PRODUCT_ID
+        count: 10,
+        sort: 'relevant',
+      },
+      success: (data) => {
+        setRating(data.count)
+        console.log('RATING COUNT', data.count)
+
+      }
+    })
+  }
  useEffect(() =>{
   getStyles(item.id)
+  getReviews(item.id)
 
  }, [])
 
@@ -37,7 +56,9 @@ const YourOutfitsItem =  ({item, URL }) =>{
           {item.name}
          </div>
          <div>${item.default_price} </div>
-
+         <div class = 'RelateRATING'>
+          {rating ? <RatingSystem obj = {{rating: rating}}/> : null}
+          </div>
          <div>
 
          </div>

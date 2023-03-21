@@ -3,6 +3,10 @@
 */
 
 /* Product Overview CSS and Other RoutesCSS */
+
+body {
+  background: #e3e3e3;
+}
 .productOverview {
   width: 100%;
   height: 740px;
@@ -13,6 +17,7 @@
   box-shadow:  20px 20px 60px #d3d3d3,
                -20px -20px 60px #f3f3f3;
 }
+
 
 .bagOverview {
   width: 100%;
@@ -714,12 +719,12 @@ nav .logo{
 .RelatedItems {
   margin-left: 46px;
   width: 268px;
-  height: 365px;
+  height: 380px;
   border-radius: 8px;
   border: 2px solid;
 }
-.RelatedCat {
-
+.RelateRATING {
+  margin-top: 5px;
 }
 
 .RELATEIMG{
