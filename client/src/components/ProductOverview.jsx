@@ -247,22 +247,15 @@ const ProductOverview = ({main, Outfits}) =>{
         </div>
 
         <div class="navigation-auto">
-          <div class="auto-btn1"></div>
-          <div class="auto-btn2"></div>
-          <div class="auto-btn3"></div>
-          <div class="auto-btn4"></div>
-          <div class="auto-btn5"></div>
-          <div class="auto-btn6"></div>
+        {show.length != 0 ? show.photos.map( (photo, index) => <div class = {`auto-btn${index + 1}`}>
+        </div>  ) : null}
         </div>
       </div>
 
       <div class="navigation-manual">
-        <label for="radio1" class="manual-btn"></label>
-        <label for="radio2" class="manual-btn"></label>
-        <label for="radio3" class="manual-btn"></label>
-        <label for="radio4" class="manual-btn"></label>
-        <label for="radio5" class="manual-btn"></label>
-        <label for="radio6" class="manual-btn"></label>
+      {show.length != 0 ? show.photos.map( (photo, index) => <label for = {`radio${index + 1}`} class = "manual-btn">
+        </label>  ) : null}
+
       </div>
 
     </div>
