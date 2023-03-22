@@ -54,6 +54,22 @@ const App = ({setBag}) =>{
     })
   }
 
+  const getReviewData = () => {
+    $.ajax({
+      type: 'GET',
+      url: '/reviews/meta',
+      data: {
+        product_id: prodID,
+      },
+      success: (data) => {
+        console.log('Data from meta data', data);
+      },
+      error: (error) => {
+        console.log('Error received from metadata call!', error);
+      }
+    })
+  }
+
   const getBag = () =>{
     const bag = JSON.parse(localStorage.getItem('bag'));
 
@@ -77,6 +93,8 @@ const App = ({setBag}) =>{
 
   }
 
+  
+
 
 
 
@@ -86,6 +104,7 @@ const App = ({setBag}) =>{
   useEffect(() =>{
     getProducts()
     getReviews()
+    getReviewData()
     Popup.Notify()
 
 

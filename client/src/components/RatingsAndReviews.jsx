@@ -24,14 +24,11 @@ const RatingsAndReviews = (props) =>{
 
    return (
      <div class="RatingsAndReviews">
-       <div>
          <h1>Rating And Reviews!</h1>
-         
         <h4>{props.count} reviews, sorted by <SortBy sortFunc={setSortBy}/></h4>
          {currentSelectionReviews.map((review) => {
           return <IndividualReview obj={review} />
          })}
-       </div>
        {props.count > 2 ? shownReviews > props.count ? null :<button onClick={handleMoreReviews}>MORE REVIEWS</button> : null}
        <WriteAReview />
    

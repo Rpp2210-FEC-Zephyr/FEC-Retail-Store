@@ -9,7 +9,7 @@ const IndividualReview = (props) => {
   
 
  return (
-   <div>
+   <div id={props.id}>
       <RatingSystem obj={props.obj} review={true}/>
      <div>
        <h3>{props.obj.summary}</h3>

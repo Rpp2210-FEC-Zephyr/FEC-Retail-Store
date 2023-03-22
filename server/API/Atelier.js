@@ -1,6 +1,6 @@
 const axios = require('axios');
 const AtelierAPI = 'https://app-hrsei-api.herokuapp.com/api/fec2/rpp2210/'
-const token = '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'
+const token = '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'
 
 const getProducts = (callback) =>{
 
@@ -66,7 +66,24 @@ const getReviews = (id, callback) => {
   })
 }
 
+const getReviewData = (id, callback) => {
+  const options = {
+    method: 'GET',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/meta/?product_id=${id}`,
+    headers: {
+      'Authorization': `${token}`
+    }
+  }
+  axios(options)
+  .then((metadata) => {
+    console.log('DATA RECEIVED FROM API FOR METADATA', metadata.data);
+    callback(null,metadata.data);
+  })
+}
+
+
 module.exports.getProducts = getProducts
 module.exports.getStyles = getStyles
 module.exports.getReviews = getReviews
 module.exports.getFeatures = getFeatures
+module.exports.getReviewData = getReviewData

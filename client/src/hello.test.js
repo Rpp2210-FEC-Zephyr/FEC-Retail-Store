@@ -1,12 +1,14 @@
-
-import { render } from '@testing-library/react';
+import React from 'react';
+import { render, screen } from '@testing-library/react';
 import RatingsAndReviews from './components/RatingsAndReviews';
+import '@testing-library/jest-dom/extend-expect';
 
-test('renders the title with "rating and review"', () => {
-  const mockProps = {
-    currentProduct: [{photos: ['2']}, {photos: ['1']}],
+test('renders a heading with text "Rating And Reviews!"', () => {
+  const dummyObj = { 
+    slice: (start, end) => { return [] }
   };
-  const { getByText } = render(<RatingsAndReviews {...mockProps} />);
-  const titleElement = getByText(/rating and review/i);
-  expect(titleElement).toBeInTheDocument();
+
+  render(<RatingsAndReviews currentProduct={dummyObj} count={0} />);
+  const words = screen.getByText(/Rating And Reviews!/i);
+  expect(words).toBeInTheDocument();
 });

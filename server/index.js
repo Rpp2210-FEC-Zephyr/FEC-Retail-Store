@@ -65,6 +65,19 @@ app.get('/reviews', function(req, res) {
 
 });
 
+app.get('/reviews/meta', function(req, res) {
+  var id = req.query.product_id;
+  console.log('ID', id);
+  API.getReviewData(id, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(data);
+    }
+  })
+}) 
+
+
  var port = 1028
  app.listen(port, () =>{
 

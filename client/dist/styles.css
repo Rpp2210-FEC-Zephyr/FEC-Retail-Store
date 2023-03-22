@@ -852,11 +852,14 @@ p {
 
 
 .RatingsAndReviews {
+  width: 60%;
+  align-content: center;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: left;
   text-align: left;
-  /* min-height: 100vh; */
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0 auto;
 }
 
 
