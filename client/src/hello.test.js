@@ -31,12 +31,12 @@ jest.mock('jquery', () => ({
 describe('RelatedItemsAndOutfitCreation', () => {
   test('displays related items', async () => {
     const mockRelatedItems = [
-      { id: 1, name: 'Related Item 1' },
-      { id: 2, name: 'Related Item 2' },
-      { id: 3, name: 'Related Item 3' },
+      { id: 71698, name: 'Bright Future Sunglasses' },
+      { id: 71699, name: 'Morning Joggers' },
+      { id: 71700, name: 'Slacker\'s Slacks' },
     ];
 
-    const mockMain = { id: 123 };
+    const mockMain = { id: 71704 };
 
     const mockURL = 'http://example.com';
 
@@ -47,10 +47,8 @@ describe('RelatedItemsAndOutfitCreation', () => {
       }
     });
 
-    // Render the component
     render(<RelatedItemsAndOutfitCreation main={mockMain} URL={mockURL} />);
 
-    // Wait for the related items to be displayed
     await waitFor(() => {
       const items = screen.queryAllByTestId('related-item');
       expect(items).toHaveLength(0);
@@ -61,7 +59,7 @@ describe('RelatedItemsAndOutfitCreation', () => {
       expect(screen.getByText(item.name)).toBeInTheDocument();
     });
 
-    // Verify that the AJAX request was made with the correct parameters
+
     expect($.ajax).toHaveBeenCalledWith({
       type: 'GET',
       url: '/Related',
