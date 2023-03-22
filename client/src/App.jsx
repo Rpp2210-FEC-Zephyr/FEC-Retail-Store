@@ -12,13 +12,10 @@ import RelatedItems from './components/RelatedItemsAndOutfitCreation.jsx';
 import YourOutfits from './components/YourOutfits.jsx'
 const Popup = require('./Notification.jsx')
 
-
 const App = () =>{
   const [data, setData] = useState([]);
   const [main, setMain] = useState([]);
-  const [prodID, setProdID] = useState(71697);
-  const [reviews, setReviews] = useState([]);
-  const [reviewsCount, setReviewsCount] = useState(0);
+
   const [outfit , setOutfit] = useState(null)
 
   const [queryParameters] = useSearchParams()
@@ -35,9 +32,6 @@ const App = () =>{
        setData(data)
        console.log('ALL DATA', data)
        setMain(data[0])
-
-
-
 
       }
     })
@@ -71,29 +65,6 @@ const App = () =>{
     window.location.href = `/?ProdID=${id}`;
   }
 
-  const getReviews = () => {
-    $.ajax({
-      type: 'GET',
-      url: '/reviews',
-      data: {
-        product_id: prodID, // NEED VARIABLE PRODUCT_ID
-        count: 10,
-        sort: 'relevant',
-      },
-      success: (data) => {
-        console.log('Data reviewed in the client side!', data);
-        setReviews(data.results);
-        setReviewsCount(data.count);
-      }
-    })
-  }
-
-
-
-
-
-
-
 
 
   useEffect(() =>{
@@ -102,10 +73,12 @@ const App = () =>{
     }else{
       getProducts()
     }
-    getReviews()
+
     Popup.Notify()
 
   }, [])
+
+
 
 
 
@@ -127,7 +100,7 @@ const App = () =>{
       <RelatedItems main = {main} URL = {URL}/>
       <YourOutfits outfit = {outfit} URL = {URL}/>
       <QuestionsAndAnswers main = {main}/>
-      <RatingsAndReviews currentProduct={reviews} count={reviewsCount}/>
+      <RatingsAndReviews main={main}/>
 
       </div>
     )
