@@ -113,6 +113,21 @@ const getFeatures = (id, callback) =>{
   })
 }
 
+const getQuestions = (product_id, callback) => {
+  const options = {
+    method: 'GET',
+    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions',
+    params: {product_id: product_id},
+    headers: {
+      'Authorization': `${token}`
+    }
+  };
+
+  axios(options).then((questions) => {
+    callback(null, questions.data);
+  })
+}
+
 const getReviews = (id, callback) => {
   const options = {
     method: 'GET',
@@ -134,3 +149,4 @@ module.exports.getReviews = getReviews
 module.exports.getFeatures = getFeatures
 module.exports.getRelated = getRelated
 module.exports.getProductsID = getProductsID
+module.exports.getQuestions = getQuestions;

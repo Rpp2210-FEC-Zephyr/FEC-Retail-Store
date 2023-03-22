@@ -126,7 +126,7 @@ const App = () =>{
       <ProductOverview main = {main} Outfits = {Outfits}/>
       <RelatedItems main = {main} URL = {URL}/>
       <YourOutfits outfit = {outfit} URL = {URL}/>
-      <QuestionsAndAnswers />
+      <QuestionsAndAnswers main = {main}/>
       <RatingsAndReviews currentProduct={reviews} count={reviewsCount}/>
 
       </div>

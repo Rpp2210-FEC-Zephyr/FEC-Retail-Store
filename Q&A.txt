@@ -1,0 +1,51 @@
+Web Sequence Diagram
+
+title Questions & Answers
+
+Client->Server: GET /questions
+note right of Server: requires: product_id, page, count
+Server->API: GET /qa/questions
+API->Server: Questions
+Server->Client: Questions
+
+Client->Server: GET /answers
+note right of Server: requires: question_id, page, count
+Server->API: GET /qa/questions/:question_id/answers
+API->Server: Answers
+Server->Client: Answers
+
+Client->Server: POST /question
+note right of Server: requires: product_id, body, name, email
+Server->API: POST /qa/questions
+API->Server: CREATED
+Server->Client: CREATED
+
+Client->Server: POST /answer
+note right of Server: requires: question_id, body, name, email, photos
+Server->API: POST /qa/questions/:question_id/answers
+API->Server: CREATED
+Server->Client: CREATED
+
+Client->Server: PUT /questionhelpful
+note right of Server: requires: question_id
+Server->API: PUT /qa/questions/:question_id/helpful
+API->Server: MARKED
+Server->Client: MARKED
+
+Client->Server: PUT /answerhelpful
+note right of Server: requires: answer_id
+Server->API: PUT /qa/questions/:question_id/helpful
+API->Server: MARKED
+Server->Client: MARKED
+
+Client->Server: PUT /questionreport
+note right of Server: requires: question_id
+Server->API: PUT /qa/questions/:question_id/report
+API->Server: REPORTED
+Server->Client: REPORTED
+
+Client->Server: PUT /answerreport
+note right of Server: requires: answer_id
+Server->API: PUT /qa/answers/:answer_id/report
+API->Server: REPORTED
+Server->Client: REPORTED
