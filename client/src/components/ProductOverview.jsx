@@ -4,21 +4,27 @@ import { IoAddCircleOutline} from "react-icons/io5";
 import { GiHamburgerMenu} from "react-icons/gi";
 import { BsCheck2Square} from "react-icons/bs";
 import { IconContext } from "react-icons";
+import { AiOutlineCheckCircle} from "react-icons/ai";
+import { AiFillCheckCircle} from "react-icons/ai";
+import RatingSystem from './RatingSystem.jsx'
 import ReactDOM from 'react-dom'
 import $ from 'jquery';
-const Popup = require('../Notification.js')
+
+const Popup = require('../Notification.jsx')
+const Favorites = require('./Favorites.jsx')
 
 
 
-
-const ProductOverview = ({main, getBag}) =>{
+const ProductOverview = ({main, Outfits}) =>{
   const [show, setShow] = useState([])
   const [style, setStyle] = useState([])
   const [skus, setSkus] = useState([])
   const [feature, setFeature] = useState([])
   const [cSize , setCSize] = useState(null)
   const [cQuant, setCQuant] = useState(null)
+  const [cPrice, setCPrice] = useState(null)
   const [quantity, setQuantity] = useState([])
+  const [rating, setRating] = useState(null)
 
   const getStyles = (id) =>{
 
@@ -31,13 +37,8 @@ const ProductOverview = ({main, getBag}) =>{
 
         setStyle(data)
         setShow(data.results[0])
+        setCPrice(data.results[0].original_price)
         setSkus(data.results[0].skus)
-
-
-
-
-
-
       }
     })
 
@@ -96,42 +97,115 @@ const ProductOverview = ({main, getBag}) =>{
 
   }
 
+  const Favor = () => {
 
-  const Change = (item) =>{
-   setShow(item)
-   setSkus(item.skus)
+     const Star = JSON.parse(localStorage.getItem('favorites'));
+     if(Star != null){
+      localStorage.setItem('favorites', JSON.stringify([Star, main]))
+      Outfits(Favorites.Toggle(main))
+
+     }else{
+      localStorage.setItem('favorites', JSON.stringify([ main]));
+      Outfits(Favorites.Toggle(main))
+     }
   }
 
 
-  const addBag = () =>{
-    if(cSize == null || cQuant == null){
-
-      Popup.Alert("error")
-
-    }else{
-      console.log('Current', show,cSize, cQuant)
-      const bag = JSON.parse(localStorage.getItem('bag'));
+  const Change = (item, index) =>{
+   const mySelect = document.getElementById(`${index}`);
 
 
-      if(bag != null){
-        if(bag.length == 10){
-          Popup.Alert("warning")
-        }else{
-          Popup.Alert("success")
-          localStorage.setItem('bag', JSON.stringify([bag, { cloth: show, size: cSize, quant: cQuant, name: main.name }]));
-        }
+
+    const Selecet = document.querySelectorAll('.StyleChoose')
+    const check = document.querySelectorAll('.selected')
+
+
+    Selecet.forEach(element =>{
+    element.addEventListener('click', ()=> {
+
+
+        check.forEach(el => {
+        el.style.visibility = "hidden"
+        })
+  })
+    })
+
+  mySelect.style.visibility = "visible"
+
+
+   setShow(item)
+   Favorites.Status(main)
+   setSkus(item.skus)
+
+
+}
+const addBag = () =>{
+  if(cSize == null || cQuant == null){
+
+    Popup.Alert("error")
+
+  }else{
+    console.log('Current', show,cSize, cQuant)
+    const bag = JSON.parse(localStorage.getItem('bag'));
+
+
+    if(bag != null){
+      if(bag.length == 10){
+        Popup.Alert("warning")
       }else{
         Popup.Alert("success")
-        localStorage.setItem('bag', JSON.stringify([{ cloth: show, size: cSize, quant: cQuant, name: main.name  }]));
+        localStorage.setItem('bag', JSON.stringify([bag, { cloth: show, size: cSize, quant: cQuant, name: main.name }]));
       }
-      getBag()
+    }else{
+      Popup.Alert("success")
+      localStorage.setItem('bag', JSON.stringify([{ cloth: show, size: cSize, quant: cQuant, name: main.name  }]));
     }
+    getBag()
+  }
 
 
 
 
+
+}
+
+  const ImageExpander = () =>{
+
+      setTimeout(() => {
+        // Your logic here
+        Popup.ImageExpander()
+        Popup.Selected()
+
+        ImageExpander();
+      }, 1000);
 
   }
+  const getReviews = (id) => {
+    $.ajax({
+      type: 'GET',
+      url: '/reviews',
+      data: {
+        product_id: id, // NEED VARIABLE PRODUCT_ID
+        count: 10,
+        sort: 'relevant',
+      },
+      success: (data) => {
+        var sum = 0
+
+        for (var i = 0 ; i < data.results.length; i++){
+          sum += data.results[i].rating
+
+        }
+
+
+        setRating(sum/data.results.length)
+
+
+      }
+    })
+  }
+
+
 
 
 
@@ -145,8 +219,16 @@ const ProductOverview = ({main, getBag}) =>{
 
       getStyles(main.id)
       getFeatures(main.id)
-      getBag()
+      getReviews(main.id)
+      ImageExpander()
+      Popup.Selected()
+      Favorites.Status(main)
+      Outfits(Favorites.showOutfit())
+
+
+
     }
+
 
 
 
@@ -156,84 +238,113 @@ const ProductOverview = ({main, getBag}) =>{
 
 
     return (
-      <div class = 'productOverview'>
+      <div className = 'productOverview'>
 
-        <div class = 'left'>
+        <div className = 'left'>
 
-    <div class="slider">
-      <div class="slides">
 
-        <input type="radio" name="radio-btn" id="radio1" />
-        <input type="radio" name="radio-btn" id="radio2" />
-        <input type="radio" name="radio-btn" id="radio3" />
-        <input type="radio" name="radio-btn" id="radio4" />
-        <div class="slide first">
+    <div className="slider">
+      <div className="slides">
+      {show.length != 0 ? show.photos.map( (photo, index) => <input type= "radio" name = "radio-btn" id = {`radio${index + 1}`}/>
+        ) : null}
+
+
+        <div className="slide first">
           <img src= {show.length != 0 ? show.photos[0].url : null} alt="" />
         </div>
-        {show.length != 0 ? show.photos.slice(1, 4).map( (photo) => <div class = 'slide'>
-        <img src= {photo.url} alt="" />
-        </div> ) : null}
+        {/* show.photos.slice(1, 4) */}
+        {show.length != 0 ? show.photos.slice(1).map( (photo) => <div className = 'slide'>
+        <img src= {photo.url} alt="" className = 'ProductOverviewIMG'/>
+        </div>  ) : null}
 
-        <div class="navigation-auto">
-          <div class="auto-btn1"></div>
-          <div class="auto-btn2"></div>
-          <div class="auto-btn3"></div>
-          <div class="auto-btn4"></div>
+
+        <div className = 'Popup'>
+          <span>&times;</span>
+          <img src = "" alt="" />
+
+        </div>
+
+        <div className="navigation-auto">
+        {show.length != 0 ? show.photos.map( (photo, index) => <div className = {`auto-btn${index + 1}`}>
+        </div>  ) : null}
         </div>
       </div>
 
-      <div class="navigation-manual">
-        <label for="radio1" class="manual-btn"></label>
-        <label for="radio2" class="manual-btn"></label>
-        <label for="radio3" class="manual-btn"></label>
-        <label for="radio4" class="manual-btn"></label>
+      <div className="navigation-manual">
+      {show.length != 0 ? show.photos.map( (photo, index) => <label htmlFor = {`radio${index + 1}`} className = "manual-btn">
+        </label>  ) : null}
+
       </div>
 
     </div>
-    <div class ='slogan'>{main.slogan}</div>
-    <div class = 'desc'>{main.description}</div>
+    <div className ='slogan'>{main.slogan}</div>
+    <div className = 'desc'>{main.description}</div>
 
 
         </div>
 
-        <div class = 'right'>
-          <TbStarsFilled />
-          <div class = 'category'>
+        <div className = 'right'>
+          <div className = 'productReview'>
+          {rating ? <RatingSystem obj = {{rating: rating}}/> : null}
+         <div className = 'scroll'>
+            Show All Reviews
+         </div>
+         </div>
+          <div className = 'category'>
           {main ? main.category : null}
           </div>
-          <div class = 'ProductName'>
+          <div className = 'ProductName'>
             {main ? main.name : null}
           </div>
-          <div class = 'price'>
-            {main ? `$${main.default_price}` : null}
+          <div className = 'price'>
+            {show.sale_price ?  <div className = 'priceC'><div className = 'PriceCross'>${show.original_price}</div><div className = 'PriceSale'> ${show.sale_price}
+</div> </div>: <div>${show.original_price} </div>}
           </div>
 
-          <div class = 'style'>
-            STYLE >   <div class = 'styleSelect'> SELECTED STYLE </div>
+          <div className = 'style'>
+            STYLE >   <div className = 'styleSelect'> {show ? show.name : null} </div>
           </div>
 
-          <div class = 'StyleContainer'>
-            {style.length != 0 ? style.results.map((item) => <div onClick = {(e) => {Change(item)}} class = 'StyleChoose'><div class = 'textBox'> <p class = 'text head'>{item.name}</p> </div><img src= {item.photos[0].url} alt="" /> </div>):null}
+          <div className = 'StyleContainer'>
+
+            {style.length != 0 ? style.results.map((item, index) =>
+
+              <div onClick = {(e) => {Change(item, index)}} className = 'StyleChoose'>
+              <div className = 'selected' id = {index} style = {index == 0 ? {visibility: "visible"} : {visibility: "hidden"} }>
+            <IconContext.Provider value={{ color: "#40D3DC", size:"20px" }}>
+              <AiFillCheckCircle />
+              </IconContext.Provider>
+              </div>
+                <div className = 'textBox'>
+                 <p className = 'text head'>{item.name}</p>
+                 </div>
+                 <img src= {item.photos[0].url} alt="" />
+                  </div>
+              ):null}
 
           </div>
-          <div class = 'select'>
-          <select onChange = {(e) =>{onQuan(e.target.value); onCSize(e.target.value)}}   class="SelectSize" id="Sizes">
-            <option selected="selected" >Choose Size</option>
+          <div className = 'select'>
+
+          <select onChange = {(e) =>{onQuan(e.target.value); onCSize(e.target.value)}}   className="SelectSize" id="Sizes">
+            <option defaultValue="selected" >
+              Choose Size
+            </option>
             {skus.length !=0 ? Object.keys(skus).map((size) => <option value = {`${skus[size].quantity} ${skus[size].size}`}>{skus[size].size} </option>): null}
           </select>
-          <select  onChange = {(e) =>{onCQuan(e.target.value)}}class="SelectNumber" id="Number">
+          <select  onChange = {(e) =>{onCQuan(e.target.value)}}className="SelectNumber" id="Number">
             {quantity.length !=0 ? quantity.map((num) =><option value = {num}>{num} </option>) : null}
 
           </select>
-          </div>
-          <div class = 'Bag'>
-          <ul class="notifications"></ul>
-          <div class="buttons">
 
-            <button onClick={() =>{addBag()}} class = 'Add buttons btn' > <div class = 'addComp'>
+          </div>
+          <div className = 'Bag'>
+          <ul className="notifications"></ul>
+          <div className="buttons">
+
+            <button onClick ={() =>{addBag()}} className = 'Add buttons btn' > <div className = 'addComp'>
               Add To Bag
               </div>
-              <div class = 'icon'>
+              <div className = 'icon'>
               <IconContext.Provider value={{ color: "white", size:"40px" }}>
               < IoAddCircleOutline  />
               </IconContext.Provider>
@@ -242,7 +353,9 @@ const ProductOverview = ({main, getBag}) =>{
               </div>
 
           <input type="checkbox" id="star" />
-<label class = 'label' id="info" for="star">
+<label onClick = {() =>{
+  Favor()
+}}className = 'label' id="info" htmlFor="star">
 
   <svg viewBox="0 0 24 24">
     <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
@@ -255,11 +368,11 @@ const ProductOverview = ({main, getBag}) =>{
 
           </div>
 
-         <div class = 'feature'>
-         <div class="vertical-divider"> ㅤ</div>
+         <div className = 'feature'>
+         <div className="vertical-divider"> ㅤ</div>
 
-          <ul class  = 'featurelist'>
-            {feature.length !=0 ? feature.map((feat) => <li class = 'featureitem'>
+          <ul className  = 'featurelist'>
+            {feature.length !=0 ? feature.map((feat) => <li className = 'featureitem'>
               <BsCheck2Square /> ㅤ
               {feat.value}
               </li>) : null}

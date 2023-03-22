@@ -6,7 +6,7 @@ import RatingSystem from './RatingSystem.jsx';
 
 const IndividualReview = (props) => {
 
-  
+
 
  return (
    <div id={props.id}>
@@ -21,7 +21,7 @@ const IndividualReview = (props) => {
       return <div>{photo.url}</div>
     //  <img src={photo.url} alt="Supposed to be Image Here!!!"></img>
     }) : null }
-    {props.obj.response !== null ? 
+    {props.obj.response !== null ?
       <div>
         <h3>Response: </h3>
         <div>{props.obj.response}</div>

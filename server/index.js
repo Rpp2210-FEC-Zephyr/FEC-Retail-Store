@@ -28,6 +28,29 @@ app.get('/Products', function(req,res){
     }
   })
 })
+app.get('/ProductsID', function(req,res){
+  const { id } = req.query
+  API.getProductsID(id, (err, data) =>{
+    if(err){
+      console.log(err)
+    }else{
+      res.send(data)
+    }
+  })
+})
+app.get('/Related', function(req,res){
+  const { id } = req.query
+
+  API.getRelated(id, (err, data) =>{
+    if(err){
+      console.log(err)
+    }else{
+      res.send(data)
+    }
+  })
+})
+
+
 
 app.get('/Styles', function(req,res){
   const { id } = req.query
@@ -52,9 +75,20 @@ app.get('/Features', function(req,res){
   })
 })
 
+app.get('/Questions', function(req, res) {
+  const {id} = req.query
+  API.getQuestions(id, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(data);
+    }
+  })
+});
+
 app.get('/reviews', function(req, res) {
   var id = req.query.product_id;
-  console.log('ID', id);
+
   API.getReviews(id, (err, data) => {
     if (err) {
       console.log(err);
@@ -62,7 +96,6 @@ app.get('/reviews', function(req, res) {
       res.send(data);
     }
   })
-
 });
 
 app.get('/reviews/meta', function(req, res) {

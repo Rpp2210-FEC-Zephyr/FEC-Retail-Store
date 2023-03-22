@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from 'react';
-import { BrowserRouter, Link, Routes, Route, Switch, HashRouter, Navigate, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Link, Routes, Route, Switch, HashRouter, Navigate, useNavigate, useSearchParams} from 'react-router-dom';
 import { IoAddCircleOutline} from "react-icons/io5";
 import { GiEagleEmblem} from "react-icons/gi";
 import { IconContext } from "react-icons";
@@ -9,17 +9,20 @@ import ProductOverview from './components/ProductOverview.jsx';
 import RatingsAndReviews from './components/RatingsAndReviews.jsx';
 import QuestionsAndAnswers from './components/QuestionsAndAnswers.jsx';
 import RelatedItems from './components/RelatedItemsAndOutfitCreation.jsx';
-const Popup = require('./Notification.js')
+import YourOutfits from './components/YourOutfits.jsx'
+const Popup = require('./Notification.jsx')
 
-
-const App = ({setBag}) =>{
+const App = () =>{
   const [data, setData] = useState([]);
   const [main, setMain] = useState([]);
-  const [prodID, setProdID] = useState(71697);
-  const [reviews, setReviews] = useState([]);
-  const [reviewsCount, setReviewsCount] = useState(0);
+
+  const [outfit , setOutfit] = useState(null)
+
+  const [queryParameters] = useSearchParams()
 
   const navigate = useNavigate()
+
+
   const getProducts = () =>{
     $.ajax({
       type: 'GET',
@@ -28,87 +31,56 @@ const App = ({setBag}) =>{
 
        setData(data)
        console.log('ALL DATA', data)
-       setMain(data[3])
-
-
-
+       setMain(data[0])
 
       }
     })
   }
 
-  const getReviews = () => {
+  const getProductsID = (id) =>{
     $.ajax({
       type: 'GET',
-      url: '/reviews',  
-      data: {
-        product_id: prodID, // NEED VARIABLE PRODUCT_ID
-        count: 10,
-        sort: 'relevant',
-      },
-      success: (data) => {
-        console.log('Data reviewed in the client side!', data);
-        setReviews(data.results);
-        setReviewsCount(data.count);
+      url: '/ProductsID',
+      data: {id, id},
+      success: (data) =>{
+
+       setMain(data)
+
+
+
+
       }
     })
   }
 
-  const getReviewData = () => {
-    $.ajax({
-      type: 'GET',
-      url: '/reviews/meta',
-      data: {
-        product_id: prodID,
-      },
-      success: (data) => {
-        console.log('Data from meta data', data);
-      },
-      error: (error) => {
-        console.log('Error received from metadata call!', error);
-      }
-    })
+  const Change = (obj) =>{
+    setMain(obj)
   }
 
-  const getBag = () =>{
-    const bag = JSON.parse(localStorage.getItem('bag'));
-
-
-    if(Array.isArray(bag)){
-
-      localStorage.setItem('bag', JSON.stringify(bag.flat(Infinity).filter((item) => item !=null)))
-
-    }
-    const fbag = JSON.parse(localStorage.getItem('bag'));
-    if(fbag != null){
-      if(typeof fbag === 'object'){
-
-        setBag(fbag)
-      }else{
-
-    setBag(fbag.flat(Infinity).filter((item) => item !=null))
-      }
-    }
-
-
+  const Outfits = (obj) =>{
+    setOutfit(obj)
   }
 
-  
-
-
-
-
+  const URL = (id) =>{
+    window.location.href = `/?ProdID=${id}`;
+  }
 
 
 
   useEffect(() =>{
-    getProducts()
-    getReviews()
-    getReviewData()
+    if(queryParameters.get('ProdID')){
+      getProductsID(queryParameters.get('ProdID'))
+    }else{
+      getProducts()
+    }
+
     Popup.Notify()
 
-
   }, [])
+
+
+
+
 
 
 
@@ -121,24 +93,15 @@ const App = ({setBag}) =>{
             <IconContext.Provider value={{ color: "white", size:"40px" }}>
             < GiEagleEmblem />
               </IconContext.Provider>
-
          </div>
-         <input type="checkbox" id="click" />
-         <label for="click" class="menu-btn" >
-         <i class="fas fa-bars"></i>
-         </label>
-         <ul>
-            <li onClick = {() =>{navigate('/')}}><a class="active" href="#">Home</a></li>
-            <li onClick = {() =>{navigate('/bag')}}><a  href="#">Bag</a></li>
-            <li onClick = {() =>{navigate('/favorites')}} ><a href="#">Favorites</a></li>
-            <li onClick = {() =>{navigate('/search')}}><a href="#">Search</a></li>
-            <li onClick = {() =>{navigate('/settings')}}><a href="#">Account Settings</a></li>
-         </ul>
+
       </nav>
-      <ProductOverview main = {main} getBag = {getBag}/>
-      <RatingsAndReviews currentProduct={reviews} count={reviewsCount}/>
-      <QuestionsAndAnswers />
-      <RelatedItems />
+      <ProductOverview main = {main} Outfits = {Outfits}/>
+      <RelatedItems main = {main} URL = {URL}/>
+      <YourOutfits outfit = {outfit} URL = {URL}/>
+      <QuestionsAndAnswers main = {main}/>
+      <RatingsAndReviews main={main}/>
+
       </div>
     )
   }

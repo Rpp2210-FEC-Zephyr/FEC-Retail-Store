@@ -3,9 +3,13 @@
 */
 
 /* Product Overview CSS and Other RoutesCSS */
+
+body {
+  background: #e3e3e3;
+}
 .productOverview {
   width: 100%;
-  height: 680px;
+  height: 740px;
   color: #303030;
   display: flex;
   border-radius: 0px;
@@ -13,6 +17,7 @@
   box-shadow:  20px 20px 60px #d3d3d3,
                -20px -20px 60px #f3f3f3;
 }
+
 
 .bagOverview {
   width: 100%;
@@ -33,6 +38,54 @@
   width: 47%;
   float: right;
 }
+
+.star-rating {
+  color: #E9BD0C;
+}
+.scroll {
+  margin-left: 10px;
+}
+.Popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,.9);
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+  display: none;
+
+}
+
+.Popup span{
+  position: absolute;
+  top: 0;
+  right: 10px;
+  font-size: 40px;
+  font-weight: bolder;
+  color: #fff;
+  cursor: pointer;
+  z-index: 100;
+
+}
+
+.Popup img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 750px;
+  object-fit: cover;
+
+
+}
+
+@media (max-width: 768px) {
+  .Popup img{
+    width: 95%;
+  }
+}
+
 
 .slider{
   width: 95%;
@@ -57,7 +110,7 @@
 }
 
 .slide img{
-  width: 100%;
+  width: 906px;
   height: 500px;
 }
 
@@ -87,25 +140,60 @@
   background: #40D3DC;
 }
 
+.first {
+  width: 906px;
+}
+
+
 #radio1:checked ~ .first{
   margin-left: 0;
 }
 
 #radio2:checked ~ .first{
-  margin-left: -20%;
+  margin-left: -25%;
 }
 
 #radio3:checked ~ .first{
-  margin-left: -40%;
+  margin-left: -45%;
 }
 
 #radio4:checked ~ .first{
-  margin-left: -60%;
+  margin-left: -65%;
 }
 #radio5:checked ~ .first{
-  margin-left: -80%;
+  margin-left: -85%;
 }
 
+#radio6:checked ~ .first{
+  margin-left: -105%;
+}
+#radio7:checked ~ .first{
+  margin-left: -125%;
+}
+#radio8:checked ~ .first{
+  margin-left: -145%;
+}
+#radio9:checked ~ .first{
+  margin-left: -165%;
+}
+#radio10:checked ~ .first{
+  margin-left: -185%;
+}
+#radio11:checked ~ .first{
+  margin-left: -205%;
+}
+#radio12:checked ~ .first{
+  margin-left: -225%;
+}
+#radio13:checked ~ .first{
+  margin-left: -245%;
+}
+#radio14:checked ~ .first{
+  margin-left: -265%;
+}
+#radio15:checked ~ .first{
+  margin-left: -285%;
+}
 /*css for automatic navigation*/
 
 .navigation-auto{
@@ -138,16 +226,67 @@
 #radio3:checked ~ .navigation-auto .auto-btn3{
   background: #40D3DC;
 }
+#radio4:checked ~ .navigation-auto .auto-btn4{
+  background: #40D3DC;
+}
+#radio5:checked ~ .navigation-auto .auto-btn5{
+  background: #40D3DC;
+}
 
+#radio6:checked ~ .navigation-auto .auto-btn6{
+  background: #40D3DC;
+}
+#radio7:checked ~ .navigation-auto .auto-btn7{
+  background: #40D3DC;
+}
+
+#radio8:checked ~ .navigation-auto .auto-btn8{
+  background: #40D3DC;
+}
+
+#radio9:checked ~ .navigation-auto .auto-btn9{
+  background: #40D3DC;
+}
+
+#radio10:checked ~ .navigation-auto .auto-btn10{
+  background: #40D3DC;
+}
+
+#radio11:checked ~ .navigation-auto .auto-btn11{
+  background: #40D3DC;
+}
+#radio12:checked ~ .navigation-auto .auto-btn12{
+  background: #40D3DC;
+}
+#radio13:checked ~ .navigation-auto .auto-btn13{
+  background: #40D3DC;
+}
+#radio14:checked ~ .navigation-auto .auto-btn14{
+  background: #40D3DC;
+}
+#radio15:checked ~ .navigation-auto .auto-btn15{
+  background: #40D3DC;
+}
 
 
 .category {
+  font-size: 30px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
 .price{
+  display: flex;
   margin-bottom: 20px;
+}
+.priceC{
+  display: flex;
+
+}
+.PriceCross {
+  color: #E24D4C;
+  text-decoration:line-through;
+  margin-right: 15px;
 }
 .ProductName {
   margin-bottom: 20px;
@@ -162,19 +301,40 @@
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
-  margin-bottom: 1px;
+  margin-bottom: 4px;
 }
+
 .styleSelect{
   margin-left: 20px;
   font-weight: 100;
   font-family: inherit;
 }
+
+.selected {
+  position:relative;
+  top: 42px;
+  left: 24px;
+  z-index: 2;
+}
+.productReview {
+  display: flex;
+}
+.Overlay {
+  position: relative;
+
+}
 .StyleChoose {
+
+  position:relative;
+  top:0;
+  left: 0;
+  margin-top: -28px;
   margin-right: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
   text-align: center;
   width: 65px;
   height: 65px;
+  z-index: 2;
   border-radius: 106px;
 
 }
@@ -278,25 +438,6 @@ label svg {
   stroke: #000;
   stroke-width: 1px;
 }
-
-input[type="checkbox"]:checked + label svg {
-  fill: #fbff00;
-  animation: pop_42 0.5s ease-out;
-}
-
-@keyframes pop_42 {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.5);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
  /* End of Star Button */
 
  /* Simple Css for Classes */
@@ -370,7 +511,7 @@ input[type="checkbox"]:checked + label svg {
 .vertical-divider {
   margin-right: 30px;
   border-left: 1px solid #000;
-  height: 120px;
+  height: 133px;
 }
 /*
 End of Simple CSS for class */
@@ -526,7 +667,19 @@ End of Simple CSS for class */
   }
 }
  /* End of CSS for Notification */
+  /* CSS for YOUR OUTFIT */
+.OutfitList {
+  display: flex
+}
+.OutfitCard {
+  margin: 59px;
+  border-radius: 0px;
+  background: #e3e3e3;
+  box-shadow:  20px 20px 60px #d3d3d3,
+               -20px -20px 60px #f3f3f3;
 
+
+}
  /* CSS For NAV BAR */
  @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 *{
@@ -554,253 +707,11 @@ nav .logo{
   font-size: 35px;
   font-weight: 600;
 }
-nav ul{
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-}
-nav ul li{
-  margin: 0 5px;
-}
-nav ul li a{
-  color: #f2f2f2;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: 500;
-  padding: 8px 15px;
-  border-radius: 5px;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-}
-nav ul li a.active,
-nav ul li a:hover{
-  color: #40D3DC;
-  background: #fff;
-}
-nav .menu-btn i{
-  color: #fff;
-  font-size: 22px;
-  cursor: pointer;
-  display: none;
-}
-input[type="checkbox"]{
-  display: none;
-}
-@media (max-width: 1000px){
-  nav{
-    padding: 0 40px 0 50px;
-  }
-}
-@media (max-width: 920px) {
-  nav .menu-btn i{
-    display: block;
-  }
-  #click:checked ~ .menu-btn i:before{
-    content: "\f00d";
-  }
-  nav ul{
-    position: fixed;
-    top: 80px;
-    left: -100%;
-    background: #40D3DC;
-    height: 100vh;
-    width: 100%;
-    text-align: center;
-    display: block;
-    transition: all 0.3s ease;
-  }
-  #click:checked ~ ul{
-    left: 0;
-  }
-  nav ul li{
-    width: 100%;
-    margin: 40px 0;
-  }
-  nav ul li a{
-    width: 100%;
-    margin-left: -100%;
-    display: block;
-    font-size: 20px;
-    transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  }
-  #click:checked ~ ul li a{
-    margin-left: 0px;
-  }
-  nav ul li a.active,
-  nav ul li a:hover{
-    background: none;
-    color: cyan;
-  }
-}
-.content{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  z-index: -1;
-  width: 100%;
-  padding: 0 30px;
-  color: #40D3DC;
-}
-.content div{
-  font-size: 40px;
-  font-weight: 700;
-}
+
+
 
  /* End of NavBar css */
 
- /* Bag Component CSS */
-
-.bagOverview {
-  width: 100%;
-  height: 680px;
-  color: #303030;
-
-  border-radius: 0px;
-  background: #e3e3e3;
-  box-shadow:  20px 20px 60px #d3d3d3,
-               -20px -20px 60px #f3f3f3;
-}
-
-.bagContainer {
-  width: 220px;
-  height: 150px;
-  margin: 20px;
-}
-.RenderList {
-  display: flex;
-  flex-wrap: wrap;
-  height: 100%;
-  width: 100%;
-}
-
-.book {
-  position: relative;
-  border-radius: 10px;
-  width: 220px;
-  height: 300px;
-  background-color: whitesmoke;
-  -webkit-box-shadow: 1px 1px 12px #000;
-  box-shadow: 1px 1px 12px #000;
-  -webkit-transform: preserve-3d;
-  -ms-transform: preserve-3d;
-  transform: preserve-3d;
-  -webkit-perspective: 2000px;
-  perspective: 2000px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  color: #000;
-}
-
-.cover {
-  top: 0;
-  position: absolute;
-  background-color: lightgray;
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  cursor: pointer;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-  -webkit-transform-origin: 0;
-  -ms-transform-origin: 0;
-  transform-origin: 0;
-  -webkit-box-shadow: 1px 1px 12px #000;
-  box-shadow: 1px 1px 12px #000;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
-.book:hover .cover {
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-  -webkit-transform: rotatey(-80deg);
-  -ms-transform: rotatey(-80deg);
-  transform: rotatey(-80deg);
-}
-
-p {
-  font-size: 20px;
-  font-weight: bolder;
-}
-.bagImage {
-  height: 100%;
-  width: 100%;
-}
-.bagInfo {
-  margin-right: 10px;
-}
-
-.info {
-  margin-bottom: 5px;
-}
-
-.total {
-  float: left;
-  margin-left: 500px;
-  order: 1;
-}
-.checkList {
-  display: flex;
-  margin-bottom: 50px;
-  justify-content: space-between;
-}
-
-.checkFormat {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  display: flex;
-}
-
-.cost {
-  margin-left: 900px;
-  margin-right: 100px;
-
-}
-
-.checkTitle {
-  color: #40D3DC;
-  align-items: center;
-  font-size: 30px;
-  margin: 30px;
-  font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.checkout {
-  width: 100%;
-  height: 1000px;
-  color: #303030;
-
-  border-radius: 0px;
-  background: #e3e3e3;
-  box-shadow:  20px 20px 60px #d3d3d3,
-               -20px -20px 60px #f3f3f3;
-}
-
-.checkTotal {
-  display: flex;
-  color: #40D3DC;
-  font-size: 30px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
- /* End of Bag Component CSS */
 
 .coming {
   vertical-align: center ;
@@ -815,8 +726,8 @@ p {
   padding: 2px;
   margin: 2px;
  } */
- 
- 
+
+
  .rating-star {
   display: flex;
   font-size: 25px;
@@ -868,4 +779,49 @@ p {
   color: rgb(97, 97, 97);
   text-align: right;
   width: 100%;
+}
+
+.Related{
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+.RelatedItems {
+  margin-bottom: 24px;
+  margin-left: 46px;
+  margin-top: 24px;
+  width: 268px;
+  height: 380px;
+  border-radius: 8px;
+  border: 2px solid;
+}
+.RelateRATING {
+  margin-top: 5px;
+}
+
+.RELATEIMG{
+  margin: 2px;
+  border-radius: 8px;
+  background-color: #cccccc;
+  width: 260px;
+  height: 274px;
+}
+
+.RELATEDxmark {
+  margin-bottom: -23px;
+}
+
+.Title {
+  margin-left: 50px;
+  margin-top: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.RIMG {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
 }

@@ -15,7 +15,7 @@ const WriteAReview = () => {
     return (
         <div>
             <button onClick={handleAddReview}>ADD A REVIEW +</button>
-            {popUp ? 
+            {popUp ?
             <div>
                 <h4>Write Your Review!</h4>
                 <div>Name: <input></input></div>
