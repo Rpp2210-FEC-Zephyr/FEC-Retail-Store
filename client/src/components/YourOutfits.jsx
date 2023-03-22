@@ -4,35 +4,18 @@ import $ from 'jquery';
 import YourOutfitsItem from './YourOutfitsItem.jsx'
 
 
-const YourOutfits = () =>{
- const [outfit, setOutfit] = useState([])
-
-
-  const getOutfits = () =>{
-    const Star = JSON.parse(localStorage.getItem('favorites'));
-
-    const data = Star.flat(Infinity).filter((i) => i !=null)
-    setOutfit(data)
-    console.log('ITEM DATA', data)
-  }
-
-
-
-  useEffect(() =>{
-    getOutfits()
-
-  }, [])
-
-
-
+const YourOutfits = ( {outfit, URL }) =>{
 
 
     return (
-      <div class = 'OutfitList'>
+      <div class = 'OUTFIT CAROSEL'>
+       <div class = 'Title'> Your Outfits</div>
+      <div class = 'Related'>
 
       {outfit ? outfit.map((item) =>
-      <YourOutfitsItem  item ={item} />
+      <YourOutfitsItem  item ={item} URL ={URL}/>
       ): null}
+    </div>
     </div>
 
     )

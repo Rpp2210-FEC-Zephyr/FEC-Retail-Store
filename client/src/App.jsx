@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from 'react';
-import { BrowserRouter, Link, Routes, Route, Switch, HashRouter, Navigate, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Link, Routes, Route, Switch, HashRouter, Navigate, useNavigate, useSearchParams} from 'react-router-dom';
 import { IoAddCircleOutline} from "react-icons/io5";
 import { GiEagleEmblem} from "react-icons/gi";
 import { IconContext } from "react-icons";
@@ -13,14 +13,19 @@ import YourOutfits from './components/YourOutfits.jsx'
 const Popup = require('./Notification.jsx')
 
 
-const App = ({setBag}) =>{
+const App = () =>{
   const [data, setData] = useState([]);
   const [main, setMain] = useState([]);
   const [prodID, setProdID] = useState(71697);
   const [reviews, setReviews] = useState([]);
   const [reviewsCount, setReviewsCount] = useState(0);
+  const [outfit , setOutfit] = useState(null)
+
+  const [queryParameters] = useSearchParams()
 
   const navigate = useNavigate()
+
+
   const getProducts = () =>{
     $.ajax({
       type: 'GET',
@@ -36,6 +41,34 @@ const App = ({setBag}) =>{
 
       }
     })
+  }
+
+  const getProductsID = (id) =>{
+    $.ajax({
+      type: 'GET',
+      url: '/ProductsID',
+      data: {id, id},
+      success: (data) =>{
+
+       setMain(data)
+
+
+
+
+      }
+    })
+  }
+
+  const Change = (obj) =>{
+    setMain(obj)
+  }
+
+  const Outfits = (obj) =>{
+    setOutfit(obj)
+  }
+
+  const URL = (id) =>{
+    window.location.href = `/?ProdID=${id}`;
   }
 
   const getReviews = () => {
@@ -55,28 +88,7 @@ const App = ({setBag}) =>{
     })
   }
 
-  const getBag = () =>{
-    const bag = JSON.parse(localStorage.getItem('bag'));
 
-
-    if(Array.isArray(bag)){
-
-      localStorage.setItem('bag', JSON.stringify(bag.flat(Infinity).filter((item) => item !=null)))
-
-    }
-    const fbag = JSON.parse(localStorage.getItem('bag'));
-    if(fbag != null){
-      if(typeof fbag === 'object'){
-
-        setBag(fbag)
-      }else{
-
-    setBag(fbag.flat(Infinity).filter((item) => item !=null))
-      }
-    }
-
-
-  }
 
 
 
@@ -85,12 +97,17 @@ const App = ({setBag}) =>{
 
 
   useEffect(() =>{
-    getProducts()
+    if(queryParameters.get('ProdID')){
+      getProductsID(queryParameters.get('ProdID'))
+    }else{
+      getProducts()
+    }
     getReviews()
     Popup.Notify()
 
-
   }, [])
+
+
 
 
 
@@ -103,13 +120,12 @@ const App = ({setBag}) =>{
             <IconContext.Provider value={{ color: "white", size:"40px" }}>
             < GiEagleEmblem />
               </IconContext.Provider>
-
          </div>
 
       </nav>
-      <ProductOverview main = {main} getBag = {getBag}/>
-      <RelatedItems />
-      {/* <YourOutfits /> */}
+      <ProductOverview main = {main} Outfits = {Outfits}/>
+      <RelatedItems main = {main} URL = {URL}/>
+      <YourOutfits outfit = {outfit} URL = {URL}/>
       <QuestionsAndAnswers main = {main}/>
       <RatingsAndReviews currentProduct={reviews} count={reviewsCount}/>
 

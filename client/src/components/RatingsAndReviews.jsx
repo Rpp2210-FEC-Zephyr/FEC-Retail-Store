@@ -4,7 +4,7 @@ import $ from 'jquery';
 
 
 import IndividualReview from './IndividualReviews.jsx';
-import exampleData from './../exampleReviewsData.js'; // used as 
+import exampleData from './../exampleReviewsData.js'; // used as
 import SortBy from './SortBy.jsx';
 import WriteAReview from './WriteAReview.jsx';
 
@@ -26,7 +26,7 @@ const RatingsAndReviews = (props) =>{
      <div class="RatingsAndReviews">
        <div>
          <h1>Rating And Reviews!</h1>
-         
+
         <h4>{props.count} reviews, sorted by <SortBy sortFunc={setSortBy}/></h4>
          {currentSelectionReviews.map((review) => {
           return <IndividualReview obj={review} />
@@ -34,7 +34,7 @@ const RatingsAndReviews = (props) =>{
        </div>
        {props.count > 2 ? shownReviews > props.count ? null :<button onClick={handleMoreReviews}>MORE REVIEWS</button> : null}
        <WriteAReview />
-   
+
      </div>
    )
  }

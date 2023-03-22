@@ -5,32 +5,17 @@ import $ from 'jquery';
 import App from './App.jsx'
 const Popup = require('./Notification.jsx')
 const Index = () =>{
-  const [bag, setBag] = useState([])
   const navigate = useNavigate()
-
-  const onBag = (Items) =>{
-    setBag(Items)
+  const [main, setMain]= useState(null)
 
 
-  }
 
-
-  const deleteBag = () =>{
-    localStorage.removeItem("bag")
-    setTimeout(function() {
-      setBag(null)
-      navigate('/')
-    }, 5000);
-
-
-  }
 
 
     return (
 
       <Routes>
-        <Route path ='/' element = {<App setBag = {onBag}/>} />
-
+        <Route path ='/' element = {<App />} />
       </Routes>
 
 
