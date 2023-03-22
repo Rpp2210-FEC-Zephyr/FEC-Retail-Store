@@ -12,7 +12,7 @@ const QuestionsList = ({main}) => {
       type: 'GET',
       url: '/Questions',
       // data: {id: id},
-      data: {id: 71698},
+      data: {id: id},
       success: (data) => {
         setQuestions(data.results);
         console.log('ayo', data.results)
