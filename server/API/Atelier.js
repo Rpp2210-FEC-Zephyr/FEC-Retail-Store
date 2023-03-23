@@ -143,6 +143,21 @@ const getReviews = (id, callback) => {
   })
 }
 
+const getReviewData = (id, callback) => {
+  const options = {
+    method: 'GET',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/meta/?product_id=${id}`,
+    headers: {
+      'Authorization': `${token}`
+    }
+  }
+  axios(options)
+  .then((metadata) => {
+    console.log('DATA RECEIVED FROM API FOR METADATA', metadata.data);
+    callback(null,metadata.data);
+  })
+}
+
 module.exports.getProducts = getProducts
 module.exports.getStyles = getStyles
 module.exports.getReviews = getReviews
@@ -150,3 +165,4 @@ module.exports.getFeatures = getFeatures
 module.exports.getRelated = getRelated
 module.exports.getProductsID = getProductsID
 module.exports.getQuestions = getQuestions;
+module.exports.getReviewData = getReviewData;

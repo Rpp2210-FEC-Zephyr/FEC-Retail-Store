@@ -35,11 +35,27 @@ const RatingsAndReviews = (props) =>{
     })
   }
 
+  const getReviewData = (id) => {
+    $.ajax({
+      type: 'GET',
+      url: '/reviews/meta',
+      data: {
+        product_id: id,
+      },
+      success: (data) => {
+        console.log('Data from meta data', data);
+      },
+      error: (error) => {
+        console.log('Error received from metadata call!', error);
+      }
+    })
+  }
+
   useEffect(() => {
     if (props.main.id != undefined) {
       console.log('RATING MAIN ID', props.main.id)
-
       getReviews(props.main.id);
+      getReviewData(props.main.id);
     }
   }, [props.main])
 

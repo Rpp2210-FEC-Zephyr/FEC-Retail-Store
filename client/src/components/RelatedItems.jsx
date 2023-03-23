@@ -56,7 +56,7 @@ const RelatedItems = ({ item, URL }) =>{
 
     return (
       <div onClick = {() =>{URL(item.id)}}className = 'RelatedItems'>
-        <div className = 'RELATEIMG'> <img className = 'RIMG' src = {image ? image: null}/> </div>
+        <div className = 'RELATEIMG'> <img className = 'RIMG' src = {image ? image: 'http://cdn.onlinewebfonts.com/svg/img_471954.png'}/> </div>
         <div className ='RelatedCat'> Category: {item.category}</div>
         <div>
           {item.name}
