@@ -1,6 +1,6 @@
-import React, {useState, useEffect } from 'react';
-import ReactDOM from 'react-dom'
-import $ from 'jquery';
+import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom";
+import $ from "jquery";
 
 const QuestionsSearch = () => {
   return (
@@ -8,7 +8,7 @@ const QuestionsSearch = () => {
       <input></input>
       <button>Search</button>
     </div>
-  )
-}
+  );
+};
 
 export default QuestionsSearch;
