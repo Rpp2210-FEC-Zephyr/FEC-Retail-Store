@@ -770,7 +770,9 @@ nav .logo {
 }
 
 .RELATEDxmark {
-  margin-bottom: -23px;
+  margin-left: 231px;
+  position: sticky;
+  margin-top: -34px;
 }
 
 .Title {
@@ -784,4 +786,9 @@ nav .logo {
   width: 100%;
   height: 100%;
   border-radius: 8px;
+}
+.EmptyOutfit {
+  font-size: 39px;
+  color: #40d3dc;
+  margin-left: 245px;
 }

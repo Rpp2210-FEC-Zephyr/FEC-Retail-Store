@@ -116,8 +116,8 @@ const Alert = (id) => {
       text: "You can only have 10 Items Per Bag",
     },
     info: {
-      icon: "fa-circle-info",
-      text: "Favorites have been updated",
+      icon: "fa-solid fa-star",
+      text: "Your Outfits have been updated",
     },
   };
 
