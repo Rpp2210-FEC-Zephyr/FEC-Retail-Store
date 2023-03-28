@@ -20,7 +20,7 @@ import RatingsAndReviews from "./components/RatingsAndReviews.jsx";
 import QuestionsAndAnswers from "./components/QuestionsAndAnswers.jsx";
 import RelatedItems from "./components/RelatedItemsAndOutfitCreation.jsx";
 import YourOutfits from "./components/YourOutfits.jsx";
-const Popup = require("./Notification.jsx");
+const Popup = require("./components/Notification.jsx");
 
 const App = () => {
   const [data, setData] = useState([]);
