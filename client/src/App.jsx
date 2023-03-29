@@ -81,6 +81,9 @@ const App = () => {
     setOutfit(Favorites.showOutfit());
     Popup.Alert("info");
   };
+  const DetailModal = (product) => {
+    Popup.DetailExpander(product, main);
+  };
 
   useEffect(() => {
     if (queryParameters.get("ProdID")) {
@@ -103,7 +106,7 @@ const App = () => {
         </div>
       </nav>
       <ProductOverview main={main} Outfits={Outfits} />
-      <RelatedItems main={main} URL={URL} />
+      <RelatedItems main={main} URL={URL} DetailModal={DetailModal} />
       <YourOutfits outfit={outfit} URL={URL} Toggle={Toggle} />
       <QuestionsAndAnswers main={main} />
       <RatingsAndReviews main={main} />

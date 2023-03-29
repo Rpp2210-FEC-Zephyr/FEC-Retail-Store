@@ -186,6 +186,7 @@ const ProductOverview = ({ main, Outfits }) => {
 
   useEffect(() => {
     if (main.id != undefined) {
+      console.log("THE MAIN", main);
       getStyles(main.id);
       getFeatures(main.id);
       getReviews(main.id);

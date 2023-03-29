@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import $ from "jquery";
+import { IconContext } from "react-icons";
+import { BiDetail } from "react-icons/bi";
+
 import RatingSystem from "./RatingSystem.jsx";
 
-const RelatedItems = ({ item, URL }) => {
+const RelatedItems = ({ item, URL, DetailModal }) => {
   const [image, setImage] = useState(null);
   const [rating, setRating] = useState(null);
   const getStyles = (id) => {
@@ -42,28 +45,41 @@ const RelatedItems = ({ item, URL }) => {
   }, []);
 
   return (
-    <div
-      onClick={() => {
-        URL(item.id);
-      }}
-      className="RelatedItems"
-    >
-      <div className="RELATEIMG">
+    <div className="RelatedItems">
+      <div
+        onClick={() => {
+          DetailModal(item);
+        }}
+        class="RELATEDdetail"
+      >
         {" "}
-        <img
-          className="RIMG"
-          src={
-            image ? image : "http://cdn.onlinewebfonts.com/svg/img_471954.png"
-          }
-        />{" "}
+        <IconContext.Provider value={{ color: "#40d3dc", size: "30px" }}>
+          <BiDetail />
+        </IconContext.Provider>
       </div>
-      <div className="RelatedCat"> Category: {item.category}</div>
-      <div>{item.name}</div>
-      <div>${item.default_price} </div>
-      <div className="RelateRATING">
-        {rating ? <RatingSystem obj={{ rating: rating }} /> : null}
+      <div
+        onClick={() => {
+          URL(item.id);
+        }}
+        class="relatecard"
+      >
+        <div className="RELATEIMG">
+          {" "}
+          <img
+            className="RIMG"
+            src={
+              image ? image : "http://cdn.onlinewebfonts.com/svg/img_471954.png"
+            }
+          />{" "}
+        </div>
+        <div className="RelatedCat"> Category: {item.category}</div>
+        <div>{item.name}</div>
+        <div>${item.default_price} </div>
+        <div className="RelateRATING">
+          {rating ? <RatingSystem obj={{ rating: rating }} /> : null}
+        </div>
+        <div></div>
       </div>
-      <div></div>
     </div>
   );
 };
