@@ -20,13 +20,15 @@ import RatingsAndReviews from "./components/RatingsAndReviews.jsx";
 import QuestionsAndAnswers from "./components/QuestionsAndAnswers.jsx";
 import RelatedItems from "./components/RelatedItemsAndOutfitCreation.jsx";
 import YourOutfits from "./components/YourOutfits.jsx";
-const Popup = require("./Notification.jsx");
+import Favorites from "./components/Favorites.jsx";
+
+const Popup = require("./components/Notification.jsx");
 
 const App = () => {
   const [data, setData] = useState([]);
   const [main, setMain] = useState([]);
 
-  const [outfit, setOutfit] = useState(null);
+  const [outfit, setOutfit] = useState([]);
 
   const [queryParameters] = useSearchParams();
 
@@ -67,6 +69,19 @@ const App = () => {
     window.location.href = `/?ProdID=${id}`;
   };
 
+  const Toggle = (obj) => {
+    const Star = JSON.parse(localStorage.getItem("favorites"));
+    if (Star != null) {
+      localStorage.setItem("favorites", JSON.stringify([Star, obj]));
+    } else {
+      localStorage.setItem("favorites", JSON.stringify([obj]));
+    }
+
+    Favorites.Toggle(obj);
+    setOutfit(Favorites.showOutfit());
+    Popup.Alert("info");
+  };
+
   useEffect(() => {
     if (queryParameters.get("ProdID")) {
       getProductsID(queryParameters.get("ProdID"));
@@ -89,7 +104,7 @@ const App = () => {
       </nav>
       <ProductOverview main={main} Outfits={Outfits} />
       <RelatedItems main={main} URL={URL} />
-      <YourOutfits outfit={outfit} URL={URL} />
+      <YourOutfits outfit={outfit} URL={URL} Toggle={Toggle} />
       <QuestionsAndAnswers main={main} />
       <RatingsAndReviews main={main} />
     </div>
