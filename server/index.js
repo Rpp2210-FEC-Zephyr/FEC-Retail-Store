@@ -11,10 +11,12 @@ app.set("view engine", "ejs");
 app.use(
   express.urlencoded({
     extended: true,
-  }),
+  })
 );
 
 app.use(express.static(path.join(__dirname, "../client/dist")));
+
+app.use(express.json());
 
 app.get("/", function (req, res) {
   res.render("index.html");
@@ -75,10 +77,23 @@ app.get("/Features", function (req, res) {
 });
 
 app.get("/Questions", function (req, res) {
-  const { id } = req.query;
-  API.getQuestions(id, (err, data) => {
+  const { product_id } = req.query;
+
+  API.getQuestions(product_id, (err, data) => {
     if (err) {
-      console.log(err);
+      res.send(err);
+    } else {
+      res.send(data);
+    }
+  });
+});
+
+app.post("/Question", function (req, res) {
+  var { question, username, email, product_id } = req.body;
+
+  API.postQuestion(question, username, email, product_id, (err, data) => {
+    if (err) {
+      res.send(err);
     } else {
       res.send(data);
     }

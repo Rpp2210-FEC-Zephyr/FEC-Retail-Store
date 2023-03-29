@@ -785,3 +785,8 @@ nav .logo {
   height: 100%;
   border-radius: 8px;
 }
+
+.qa-card {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
