@@ -770,10 +770,13 @@ nav .logo {
 }
 
 .RELATEDxmark {
-  margin-bottom: -23px;
+  margin-left: 231px;
+  position: sticky;
+  margin-top: -34px;
 }
 
 .Title {
+  margin-bottom: 20px;
   margin-left: 50px;
   margin-top: 20px;
   font-size: 30px;
@@ -789,4 +792,10 @@ nav .logo {
 .qa-card {
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.EmptyOutfit {
+  font-size: 39px;
+  color: #40d3dc;
+  margin-left: 300px;
 }

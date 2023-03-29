@@ -12,7 +12,6 @@ import {
 import ReactDOM from "react-dom";
 import $ from "jquery";
 import App from "./App.jsx";
-const Popup = require("./Notification.jsx");
 const Index = () => {
   const navigate = useNavigate();
   const [main, setMain] = useState(null);
