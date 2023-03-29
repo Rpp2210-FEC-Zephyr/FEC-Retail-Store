@@ -36,6 +36,20 @@ const ImageExpander = () => {
   };
   // END  OF JS FOR IMAGE EXPANDER
 };
+const DetailExpander = () => {
+  // JS FOR IMAGE EXPANDER
+  document.querySelectorAll(".slide img").forEach((image) => {
+    image.onclick = () => {
+      document.querySelector(".Popup").style.display = "block";
+      document.querySelector(".Popup img").src = image.getAttribute("src");
+    };
+  });
+
+  document.querySelector(".Popup span").onclick = () => {
+    document.querySelector(".Popup").style.display = "none";
+  };
+  // END  OF JS FOR IMAGE EXPANDER
+};
 const Notify = () => {
   const notifications = document.querySelector(".notifications"),
     buttons = document.querySelectorAll(".buttons .btn");

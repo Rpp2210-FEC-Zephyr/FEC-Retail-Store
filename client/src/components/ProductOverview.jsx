@@ -88,7 +88,7 @@ const ProductOverview = ({ main, Outfits }) => {
   };
 
   const Favor = () => {
-    main.photo = show.photos[0].url;
+    main.photo = style.results[0].photos[0].url;
     main.reviews = rating;
     console.log("THE MAIN", main);
     const Star = JSON.parse(localStorage.getItem("favorites"));
