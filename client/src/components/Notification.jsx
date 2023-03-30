@@ -25,28 +25,23 @@ const Selected = () => {
 const Zoom = () => {
   const img = document.getElementById("Expanded");
   console.log("THE EXPANDED", img);
+
   let zoomedIn = false;
 
-  img.addEventListener("click", function (event) {
+  img.addEventListener("click", function (e) {
     if (zoomedIn) {
       console.log("ZOOM OUT");
       // Zoom out
-      img.style.backgroundPosition = `0% 0%`;
-      img.classList.remove("zoomed-in");
+      img.style.transformOrigin = ``;
+      img.style.transform = "scale(1)";
       zoomedIn = false;
     } else {
-      const { left, top, width, height } = event.target.getBoundingClientRect();
-      const x = ((event.pageX - left) / width) * 100;
-      const y = ((event.pageY - top) / height) * 100;
-
-      // Set background position based on x and y percentages
-      img.style.backgroundPosition = `${x}% ${y}%`;
+      const x = e.clientX - e.target.offsetLeft;
+      const y = e.clientY - e.target.offsetTop;
+      img.style.transformOrigin = `${x}px ${y}px`;
+      img.style.transform = "scale(2.5)";
       console.log("ZOOM IN");
-      // Trigger the transition
-      setTimeout(() => {
-        img.classList.add("zoomed-in");
-        zoomedIn = true;
-      }, 0);
+      zoomedIn = true;
     }
   });
 };
@@ -54,8 +49,13 @@ const ImageExpander = () => {
   // JS FOR IMAGE EXPANDER
   document.querySelectorAll(".slide img").forEach((image) => {
     image.onclick = () => {
+      var popupDiv = document.querySelector(".Popup");
       document.querySelector(".Popup").style.display = "block";
-      document.querySelector(".Popup img").src = image.getAttribute("src");
+
+      const Image = document.createElement("img");
+      Image.src = image.getAttribute("src");
+      Image.setAttribute("id", "Expanded");
+      popupDiv.appendChild(Image);
 
       Zoom();
     };
@@ -69,7 +69,9 @@ const ImageExpander = () => {
     }
 
     var IMG = popupDiv.querySelector("img");
-    IMG.src = "";
+    if (IMG) {
+      popupDiv.removeChild(IMG);
+    }
 
     document.querySelector(".Popup").style.display = "none";
   };
@@ -113,10 +115,10 @@ const DetailExpander = (ProdOne, ProdTwo) => {
   var featuresCell1 = document.createElement("td");
   var featuresCell2 = document.createElement("td");
   featuresCell1.textContent = `${ProdOne.features.map(
-    (feat) => feat.value + "\n",
+    (feat) => "ㅤㅤ" + feat.value,
   )}`;
   featuresCell2.textContent = `${ProdTwo.features.map(
-    (feat) => feat.value + "\n",
+    (feat) => "ㅤㅤ" + feat.value,
   )}`;
   featuresRow.appendChild(featuresCell1);
   featuresRow.appendChild(featuresCell2);

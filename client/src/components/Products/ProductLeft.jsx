@@ -52,8 +52,6 @@ const ProductLeft = ({ main, show }) => {
 
           <div className="Popup">
             <span>&times;</span>
-
-            <img class="Expanded" id="Expanded" src="" alt="" />
           </div>
 
           <div className="navigation-auto">
