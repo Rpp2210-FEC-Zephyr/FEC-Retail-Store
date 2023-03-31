@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import $ from "jquery";
 import Answer from "./Answer.jsx";
 const axios = require("axios");
-const formatDate = require("./formatDate.js");
+const formatDate = require("./formatDate.jsx");
 
 const Question = ({ question, refreshKey, setRefreshKey }) => {
   const [answers, setAnswers] = useState([]);
@@ -87,7 +87,7 @@ const Question = ({ question, refreshKey, setRefreshKey }) => {
     <div class="qa-card">
       <div>{`Q: ${question.question_body}`}</div>
       <span>{`by ${question.asker_name}, ${formatDate(
-        question.question_date
+        question.question_date,
       )} | Helpful? `}</span>
       <span
         onClick={handleQuestionHelpfulClick}

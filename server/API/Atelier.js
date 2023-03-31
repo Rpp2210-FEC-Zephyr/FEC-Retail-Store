@@ -1,7 +1,8 @@
+const config = require("./config.js");
 const axios = require("axios");
 const AtelierAPI = "https://app-hrsei-api.herokuapp.com/api/fec2/rpp2210/";
-const token =
-  "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";
+const token = config.config.MY_API_TOKEN;
+
 const Promise = require("bluebird");
 
 const getProducts = (callback) => {
@@ -127,7 +128,7 @@ const postQuestion = (body, name, email, product_id, callback) => {
         headers: {
           Authorization: `${token}`,
         },
-      }
+      },
     )
     .then((data) => {
       callback(null, data.data);
@@ -151,7 +152,7 @@ const postAnswer = (question_id, body, name, email, photos, callback) => {
         headers: {
           Authorization: `${token}`,
         },
-      }
+      },
     )
     .then((data) => {
       callback(null, data.data);
@@ -170,7 +171,7 @@ const putQuestionHelpful = (question_id, callback) => {
         headers: {
           Authorization: `${token}`,
         },
-      }
+      },
     )
     .then((data) => {
       callback(null, data.data);
@@ -189,7 +190,7 @@ const putAnswerHelpful = (answer_id, callback) => {
         headers: {
           Authorization: `${token}`,
         },
-      }
+      },
     )
     .then((data) => {
       callback(null, data.data);
@@ -208,7 +209,7 @@ const putQuestionReport = (question_id, callback) => {
         headers: {
           Authorization: `${token}`,
         },
-      }
+      },
     )
     .then((data) => {
       callback(null, data.data);
@@ -227,7 +228,7 @@ const putAnswerReport = (answer_id, callback) => {
         headers: {
           Authorization: `${token}`,
         },
-      }
+      },
     )
     .then((data) => {
       callback(null, data.data);
