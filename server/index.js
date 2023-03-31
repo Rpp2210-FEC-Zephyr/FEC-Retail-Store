@@ -11,7 +11,7 @@ app.set("view engine", "ejs");
 app.use(
   express.urlencoded({
     extended: true,
-  })
+  }),
 );
 
 app.use(express.static(path.join(__dirname, "../client/dist")));
@@ -172,7 +172,7 @@ app.get("/reviews", function (req, res) {
   });
 });
 
-var port = 1028;
+var port = 3000;
 app.listen(port, () => {
   console.log("Server listening on port ", port);
 });
