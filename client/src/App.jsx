@@ -26,7 +26,7 @@ const Popup = require("./components/Notification.jsx");
 
 const App = () => {
   const [data, setData] = useState([]);
-  const [main, setMain] = useState([]);
+  const [main, setMain] = useState({});
 
   const [outfit, setOutfit] = useState([]);
 

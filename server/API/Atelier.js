@@ -3,7 +3,7 @@ const AtelierAPI = "https://app-hrsei-api.herokuapp.com/api/fec2/rpp2210/";
 const token =
   "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";
 const Promise = require("bluebird");
-//
+
 const getProducts = (callback) => {
   const options = {
     method: "GET",
@@ -93,11 +93,16 @@ const getFeatures = (id, callback) => {
   });
 };
 
+// (and Answers)
 const getQuestions = (product_id, callback) => {
   const options = {
     method: "GET",
     url: "https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions",
-    params: { product_id: product_id },
+    params: {
+      product_id: product_id,
+      page: 1,
+      count: 1000000,
+    },
     headers: {
       Authorization: `${token}`,
     },
@@ -106,6 +111,130 @@ const getQuestions = (product_id, callback) => {
   axios(options).then((questions) => {
     callback(null, questions.data);
   });
+};
+
+const postQuestion = (body, name, email, product_id, callback) => {
+  axios
+    .post(
+      "https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions",
+      {
+        body: body,
+        name: name,
+        email: email,
+        product_id: product_id,
+      },
+      {
+        headers: {
+          Authorization: `${token}`,
+        },
+      }
+    )
+    .then((data) => {
+      callback(null, data.data);
+    })
+    .catch((err) => {
+      callback(err);
+    });
+};
+
+const postAnswer = (question_id, body, name, email, photos, callback) => {
+  axios
+    .post(
+      `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${question_id}/answers`,
+      {
+        body: body,
+        name: name,
+        email: email,
+        photos: photos,
+      },
+      {
+        headers: {
+          Authorization: `${token}`,
+        },
+      }
+    )
+    .then((data) => {
+      callback(null, data.data);
+    })
+    .catch((err) => {
+      callback(err);
+    });
+};
+
+const putQuestionHelpful = (question_id, callback) => {
+  axios
+    .put(
+      `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${question_id}/helpful`,
+      {},
+      {
+        headers: {
+          Authorization: `${token}`,
+        },
+      }
+    )
+    .then((data) => {
+      callback(null, data.data);
+    })
+    .catch((err) => {
+      callback(err);
+    });
+};
+
+const putAnswerHelpful = (answer_id, callback) => {
+  axios
+    .put(
+      `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/answers/${answer_id}/helpful`,
+      {},
+      {
+        headers: {
+          Authorization: `${token}`,
+        },
+      }
+    )
+    .then((data) => {
+      callback(null, data.data);
+    })
+    .catch((err) => {
+      callback(err);
+    });
+};
+
+const putQuestionReport = (question_id, callback) => {
+  axios
+    .put(
+      `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${question_id}/report`,
+      {},
+      {
+        headers: {
+          Authorization: `${token}`,
+        },
+      }
+    )
+    .then((data) => {
+      callback(null, data.data);
+    })
+    .catch((err) => {
+      callback(err);
+    });
+};
+
+const putAnswerReport = (answer_id, callback) => {
+  axios
+    .put(
+      `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/answers/${answer_id}/report`,
+      {},
+      {
+        headers: {
+          Authorization: `${token}`,
+        },
+      }
+    )
+    .then((data) => {
+      callback(null, data.data);
+    })
+    .catch((err) => {
+      callback(err);
+    });
 };
 
 const getReviews = (id, callback) => {
@@ -142,4 +271,10 @@ module.exports.getFeatures = getFeatures;
 module.exports.getRelated = getRelated;
 module.exports.getProductsID = getProductsID;
 module.exports.getQuestions = getQuestions;
+module.exports.postQuestion = postQuestion;
+module.exports.postAnswer = postAnswer;
+module.exports.putQuestionHelpful = putQuestionHelpful;
+module.exports.putAnswerHelpful = putAnswerHelpful;
+module.exports.putQuestionReport = putQuestionReport;
+module.exports.putAnswerReport = putAnswerReport;
 module.exports.getReviewData = getReviewData;
