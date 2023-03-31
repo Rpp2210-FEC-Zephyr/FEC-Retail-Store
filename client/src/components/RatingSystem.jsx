@@ -103,8 +103,6 @@ const RatingSystem = (props) => {
             <i className="fa-sharp fa-solid fa-star"></i>
           </span>
         </span>
-        {/* specifically for Ratings and Review use to add user and Time to the
-        right side of the component */}
         {review ? (
           <div className="userAndTime">
             {props.obj.reviewer_name}, {formattedDate}

@@ -41,8 +41,10 @@ const RatingsOverview = (props) => {
     <div>
       {averageRating ? (
         <div>
-          {averageRating.rating}
-          <RatingSystem obj={averageRating} />
+          <h1>
+            {Math.round(averageRating.rating * 10) / 10}{" "}
+            <RatingSystem obj={averageRating} />
+          </h1>
         </div>
       ) : null}
       <h4>{percentRecommended}% of reviews recommend this product</h4>

@@ -691,26 +691,39 @@ nav .logo {
   font-size: 100px;
 }
 
-div {
-  border: 1px red solid;
-  padding: 2px;
-  margin: 2px;
+.individual-review {
+  border: 1px rgb(112, 112, 112) solid;
+  padding: 20px;
+  margin: 10px;
+  background-color: white;
+  border-radius: 10px;
 }
-
-.RatingsAndReviews {
-  width: 100%;
-  align-content: center;
-  display: flex;
-  align-items: left;
-  text-align: left;
-  flex-direction: column;
-  min-height: 100vh;
-  margin: 0 auto;
+.individual-review div {
+  margin: 3px;
 }
 
 .review-image {
   width: 150px;
   height: 150px;
+  padding: 5px;
+}
+
+#fullpage {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#fullpage img {
+  max-width: 90%;
+  max-height: 90%;
 }
 
 .review-summary {
@@ -746,6 +759,32 @@ div {
   padding: 0;
 }
 
+.RatingsAndReviews {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* text-align: left; */
+  /* min-height: 100vh; */
+  /* margin-left: auto; */
+  /* margin-right: 0; */
+}
+
+/* .overview-container {
+  width: 35%;
+}
+
+.reviews-container {
+  width: 65%;
+} */
+
+.response-box {
+  background-color: rgba(177, 177, 177, 0.826);
+  padding: 10px;
+  border-radius: 5px;
+  margin: 5px;
+}
+
 .userAndTime {
   font-size: 10px;
   color: rgb(97, 97, 97);
@@ -753,12 +792,13 @@ div {
   width: 100%;
 }
 
-.overview-container {
-  width: 35%;
-}
-
-.reviews-container {
-  width: 65%;
+.review-buttons {
+  background-color: transparent;
+  border: 2px solid black;
+  color: black;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 progress {

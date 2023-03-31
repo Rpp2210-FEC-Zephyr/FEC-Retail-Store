@@ -3,6 +3,7 @@ import React from "react";
 const SortBy = (props) => {
   const handleSortBy = (e) => {
     props.sortFunc(e.target.value);
+    props.resort(props.id, e.target.value);
     console.log("sorted by ", e.target.value);
   };
 

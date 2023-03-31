@@ -1,5 +1,5 @@
-const path = require('path');
-const webpack = require('webpack')
+const path = require("path");
+const webpack = require("webpack");
 /*"build": "babel src.js -d Javascript", */
 var SRC_DIR = path.join(__dirname, "/client/src");
 var DIST_DIR = path.join(__dirname, "/client/dist");
@@ -18,7 +18,6 @@ module.exports = {
         use: {
           loader: "babel-loader",
         },
-
       },
     ],
   },

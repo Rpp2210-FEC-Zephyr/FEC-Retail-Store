@@ -15,7 +15,7 @@ const QuestionsList = ({ main }) => {
       data: { id: id },
       success: (data) => {
         setQuestions(data.results);
-        // console.log("ayo", data.results);
+        console.log("ayo", data.results);
       },
     });
   };

@@ -86,11 +86,11 @@ const App = () => {
             <GiEagleEmblem />
           </IconContext.Provider>
         </div>
-      </nav>
-      <ProductOverview main={main} Outfits={Outfits} />
-      <RelatedItems main={main} URL={URL} />
-      <YourOutfits outfit={outfit} URL={URL} />
-      <QuestionsAndAnswers main={main} /> */}
+      </nav> */}
+      {/* <ProductOverview main={main} Outfits={Outfits} /> */}
+      {/* <RelatedItems main={main} URL={URL} /> */}
+      {/* <YourOutfits outfit={outfit} URL={URL} /> */}
+      {/* <QuestionsAndAnswers main={main} /> */}
       <RatingsAndReviews main={main} />
     </div>
   );

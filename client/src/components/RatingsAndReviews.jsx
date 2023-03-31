@@ -14,13 +14,16 @@ const RatingsAndReviews = (props) => {
   const [shownReviews, setShownReviews] = useState(2);
   const [sortby, setSortBy] = useState("relevant");
   const [reviewMeta, setReviewMeta] = useState({});
+  const [helpful, setHelpful] = useState(true);
 
-  const getReviews = (id) => {
+  const getReviews = (id, sortby) => {
     $.ajax({
       type: "GET",
       url: "/reviews",
+      // url: `/reviews?product_id=${id}&sort=${sortby}`,
       data: {
-        product_id: id, // NEED VARIABLE PRODUCT_ID
+        product_id: id,
+        sortby: sortby, // NEED VARIABLE PRODUCT_ID
       },
       success: (data) => {
         console.log("Data reviewed in the client side!", data);
@@ -45,12 +48,12 @@ const RatingsAndReviews = (props) => {
   };
 
   useEffect(() => {
-    if (props.main.id != undefined) {
+    if (props.main && props.main.id != undefined) {
       console.log("RATING MAIN ID", props.main.id);
       getReviews(props.main.id);
       getReviewData(props.main.id);
     }
-  }, [props.main]);
+  }, [props.main, helpful]);
 
   var currentSelectionReviews = reviews.slice(0, shownReviews);
 
@@ -63,7 +66,8 @@ const RatingsAndReviews = (props) => {
       <div>
         <h1>Rating And Reviews!</h1>
         <h4>
-          {reviewsCount} reviews, sorted by <SortBy sortFunc={setSortBy} />
+          {reviewsCount} reviews, sorted by{" "}
+          <SortBy id={props.main.id} sortFunc={setSortBy} resort={getReviews} />
         </h4>
 
         <div class="overview-container">
@@ -71,13 +75,21 @@ const RatingsAndReviews = (props) => {
         </div>
         <div class="reviews-container">
           {currentSelectionReviews.map((review) => {
-            return <IndividualReview obj={review} />;
+            return (
+              <IndividualReview
+                setHelpful={setHelpful}
+                helpful={helpful}
+                obj={review}
+              />
+            );
           })}
 
           {reviewsCount > 2 ? (
             shownReviews > reviewsCount ? null : (
               <div>
-                <button onClick={handleMoreReviews}>MORE REVIEWS</button>
+                <button class="review-buttons" onClick={handleMoreReviews}>
+                  MORE REVIEWS
+                </button>
               </div>
             )
           ) : null}

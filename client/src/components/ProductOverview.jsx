@@ -30,7 +30,7 @@ const ProductOverview = ({ main, Outfits }) => {
       url: "/Styles",
       data: { id: id },
       success: (data) => {
-        // console.log("Style Data", data);
+        console.log("Style Data", data);
 
         setStyle(data);
         setShow(data.results[0]);
@@ -46,7 +46,7 @@ const ProductOverview = ({ main, Outfits }) => {
       url: "/Features",
       data: { id: id },
       success: (data) => {
-        // console.log("Feature Data", data.features);
+        console.log("Feature Data", data.features);
 
         setFeature(data.features);
       },

@@ -55,7 +55,12 @@ const YourOutfitsItem = ({ item, URL }) => {
       </div>
       <div class="RELATEIMG">
         {" "}
-        <img class="RIMG" src={image ? image : null} />{" "}
+        <img
+          class="RIMG"
+          src={
+            image ? image : "http://cdn.onlinewebfonts.com/svg/img_471954.png"
+          }
+        />{" "}
       </div>
       <div class="RelatedCat">Category: {item.category}</div>
       <div>{item.name}</div>

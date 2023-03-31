@@ -87,8 +87,9 @@ app.get("/Questions", function (req, res) {
 
 app.get("/reviews", function (req, res) {
   var id = req.query.product_id;
+  var sort = req.query.sortby; // default to "relevant"
 
-  API.getReviews(id, (err, data) => {
+  API.getReviews(id, sort, (err, data) => {
     if (err) {
       console.log(err);
     } else {
@@ -101,6 +102,17 @@ app.get("/reviews/meta", function (req, res) {
   var id = req.query.product_id;
   console.log("ID", id);
   API.getReviewData(id, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(data);
+    }
+  });
+});
+
+app.put("/reviews/:reviewId/helpful", function (req, res) {
+  var id = req.params.reviewId;
+  API.updateHelpfulness(id, (err, data) => {
     if (err) {
       console.log(err);
     } else {

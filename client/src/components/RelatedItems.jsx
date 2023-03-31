@@ -50,7 +50,12 @@ const RelatedItems = ({ item, URL }) => {
     >
       <div className="RELATEIMG">
         {" "}
-        <img className="RIMG" src={image ? image : null} />{" "}
+        <img
+          className="RIMG"
+          src={
+            image ? image : "http://cdn.onlinewebfonts.com/svg/img_471954.png"
+          }
+        />{" "}
       </div>
       <div className="RelatedCat"> Category: {item.category}</div>
       <div>{item.name}</div>

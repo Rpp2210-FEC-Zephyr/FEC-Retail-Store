@@ -13,7 +13,9 @@ const WriteAReview = () => {
 
   return (
     <div>
-      <button onClick={handleAddReview}>ADD A REVIEW +</button>
+      <button class="review-buttons" onClick={handleAddReview}>
+        ADD A REVIEW +
+      </button>
       {popUp ? (
         <div>
           <h4>Write Your Review!</h4>
@@ -38,7 +40,9 @@ const WriteAReview = () => {
           <div>
             <input value="Example: Best purchase ever!"></input>
           </div>
-          <button onClick={closeAddReview}>SUBMIT!</button>
+          <button class="review-buttons" onClick={closeAddReview}>
+            SUBMIT!
+          </button>
         </div>
       ) : null}
     </div>

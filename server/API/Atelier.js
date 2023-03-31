@@ -1,6 +1,7 @@
 const axios = require("axios");
 const AtelierAPI = "https://app-hrsei-api.herokuapp.com/api/fec2/rpp2210/";
 const token = "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";
+const Promise = require("bluebird");
 
 const getProducts = (callback) => {
   const options = {
@@ -106,10 +107,10 @@ const getQuestions = (product_id, callback) => {
   });
 };
 
-const getReviews = (id, callback) => {
+const getReviews = (id, sort, callback) => {
   const options = {
     method: "GET",
-    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews?product_id=${id}`,
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews?product_id=${id}&sort=${sort}`,
     headers: {
       Authorization: `${token}`,
     },
@@ -133,6 +134,22 @@ const getReviewData = (id, callback) => {
   });
 };
 
+const updateHelpfulness = (id, callback) => {
+  const options = {
+    method: "PUT",
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/${id}/helpful`,
+    data: {},
+    headers: {
+      Authorization: `${token}`,
+    },
+  };
+  axios(options).then((data) => {
+    console.log("id received from ajax call", id);
+    console.log("DATA RECEIVED FROM API FOR helpfullness", data.data);
+    callback(null, data.data);
+  });
+};
+
 module.exports.getProducts = getProducts;
 module.exports.getStyles = getStyles;
 module.exports.getReviews = getReviews;
@@ -141,3 +158,4 @@ module.exports.getRelated = getRelated;
 module.exports.getProductsID = getProductsID;
 module.exports.getQuestions = getQuestions;
 module.exports.getReviewData = getReviewData;
+module.exports.updateHelpfulness = updateHelpfulness;
