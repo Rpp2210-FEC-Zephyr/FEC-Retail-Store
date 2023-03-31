@@ -15,18 +15,18 @@ const RatingsAndReviews = (props) => {
   const [sortby, setSortBy] = useState("relevant");
   const [reviewMeta, setReviewMeta] = useState({});
   const [helpful, setHelpful] = useState(true);
+  const [filtered, setFiltered] = useState([]);
 
   const getReviews = (id, sortby) => {
     $.ajax({
       type: "GET",
       url: "/reviews",
-      // url: `/reviews?product_id=${id}&sort=${sortby}`,
       data: {
         product_id: id,
         sortby: sortby, // NEED VARIABLE PRODUCT_ID
       },
       success: (data) => {
-        console.log("Data reviewed in the client side!", data);
+        console.log("Data reviewed in the client side!", data.results);
         setReviews(data.results);
         setReviewsCount(data.results.length);
       },
@@ -50,7 +50,7 @@ const RatingsAndReviews = (props) => {
   useEffect(() => {
     if (props.main && props.main.id != undefined) {
       console.log("RATING MAIN ID", props.main.id);
-      getReviews(props.main.id);
+      getReviews(props.main.id, sortby);
       getReviewData(props.main.id);
     }
   }, [props.main, helpful]);
@@ -63,17 +63,21 @@ const RatingsAndReviews = (props) => {
 
   return (
     <div class="RatingsAndReviews">
-      <div>
-        <h1>Rating And Reviews!</h1>
-        <h4>
-          {reviewsCount} reviews, sorted by{" "}
-          <SortBy id={props.main.id} sortFunc={setSortBy} resort={getReviews} />
-        </h4>
-
+      <div class="PracFlex">
         <div class="overview-container">
+          <h1 class="rating-title">Rating And Reviews!</h1>
+
           {reviewMeta.product_id ? <RatingsOverview obj={reviewMeta} /> : null}
         </div>
         <div class="reviews-container">
+          <h4 class="individual-review">
+            {reviewsCount} reviews, sorted by{" "}
+            <SortBy
+              id={props.main.id}
+              sortFunc={setSortBy}
+              resort={getReviews}
+            />
+          </h4>
           {currentSelectionReviews.map((review) => {
             return (
               <IndividualReview

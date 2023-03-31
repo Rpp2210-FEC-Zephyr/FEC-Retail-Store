@@ -5,6 +5,7 @@ import $ from "jquery";
 
 const IndividualReview = (props) => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [clickedHelp, setclickedHelp] = useState(true);
 
   const updateReviewHelpful = (reviewId) => {
     $.ajax({
@@ -12,8 +13,11 @@ const IndividualReview = (props) => {
       method: "PUT",
       success: (data) => {
         props.setHelpful(!props.helpful);
+        setclickedHelp(false);
       },
-      error: (err) => {},
+      error: (err) => {
+        console.log(err);
+      },
     });
   };
 
@@ -35,7 +39,11 @@ const IndividualReview = (props) => {
 
       <div>
         Helpful?{" "}
-        <span onClick={() => updateReviewHelpful(props.obj.review_id)}>
+        <span
+          onClick={
+            clickedHelp ? () => updateReviewHelpful(props.obj.review_id) : null
+          }
+        >
           Yes
         </span>{" "}
         ({props.obj.helpfulness}) | Report

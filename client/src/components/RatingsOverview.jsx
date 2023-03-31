@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import RatingSystem from "./RatingSystem.jsx";
 
 const RatingsOverview = (props) => {
-  console.log("inside ratings overview", props.obj);
-
   const [averageRating, setAverageRating] = useState(null);
   const [percentRecommended, setpercentRecommended] = useState(0);
   const [totalRatingCount, setTotalRatingCount] = useState(0);
@@ -37,24 +35,40 @@ const RatingsOverview = (props) => {
     settingsAverageRating();
   }, []);
 
+  const handleClickedProgress = (ele) => {
+    console.log("Clicked on rating of: ", ele);
+  };
+
   return (
     <div>
       {averageRating ? (
-        <div>
-          <h1>
+        <div class="PracFlex">
+          <h1 class="margin-right">
             {Math.round(averageRating.rating * 10) / 10}{" "}
+          </h1>
+          <h1>
             <RatingSystem obj={averageRating} />
           </h1>
         </div>
       ) : null}
-      <h4>{percentRecommended}% of reviews recommend this product</h4>
+      <h4>
+        {percentRecommended ? percentRecommended : 0}% of reviews recommend this
+        product
+      </h4>
       {Object.keys(props.obj.ratings)
         .reverse()
         .map((ele) => {
           return (
-            <div>
+            <div
+              class="progress-outer"
+              onClick={() => handleClickedProgress(ele)}
+            >
               {ele} Stars
-              <progress value={props.obj.ratings[ele]} max={totalRatingCount} />
+              <progress
+                value={props.obj.ratings[ele]}
+                max={totalRatingCount}
+              />{" "}
+              {props.obj.ratings[ele]}
             </div>
           );
         })}
