@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import $ from "jquery";
 const axios = require("axios");
-const formatDate = require("./formatDate.js");
+const formatDate = require("./formatDate.jsx");
 
 const Answer = ({ answer, refreshKey, setRefreshKey }) => {
   const handleAnswerHelpfulClick = () => {
@@ -42,7 +42,7 @@ const Answer = ({ answer, refreshKey, setRefreshKey }) => {
         })}
       </div>
       <span>{`by ${answer.answerer_name}, ${formatDate(
-        answer.date
+        answer.date,
       )} | Helpful? `}</span>
       <span
         onClick={handleAnswerHelpfulClick}
