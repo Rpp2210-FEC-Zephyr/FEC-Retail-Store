@@ -137,6 +137,106 @@ const postQuestion = (body, name, email, product_id, callback) => {
     });
 };
 
+const postAnswer = (question_id, body, name, email, photos, callback) => {
+  axios
+    .post(
+      `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${question_id}/answers`,
+      {
+        body: body,
+        name: name,
+        email: email,
+        photos: photos,
+      },
+      {
+        headers: {
+          Authorization: `${token}`,
+        },
+      }
+    )
+    .then((data) => {
+      callback(null, data.data);
+    })
+    .catch((err) => {
+      callback(err);
+    });
+};
+
+const putQuestionHelpful = (question_id, callback) => {
+  axios
+    .put(
+      `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${question_id}/helpful`,
+      {},
+      {
+        headers: {
+          Authorization: `${token}`,
+        },
+      }
+    )
+    .then((data) => {
+      callback(null, data.data);
+    })
+    .catch((err) => {
+      callback(err);
+    });
+};
+
+const putAnswerHelpful = (answer_id, callback) => {
+  axios
+    .put(
+      `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/answers/${answer_id}/helpful`,
+      {},
+      {
+        headers: {
+          Authorization: `${token}`,
+        },
+      }
+    )
+    .then((data) => {
+      callback(null, data.data);
+    })
+    .catch((err) => {
+      callback(err);
+    });
+};
+
+const putQuestionReport = (question_id, callback) => {
+  axios
+    .put(
+      `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${question_id}/report`,
+      {},
+      {
+        headers: {
+          Authorization: `${token}`,
+        },
+      }
+    )
+    .then((data) => {
+      callback(null, data.data);
+    })
+    .catch((err) => {
+      callback(err);
+    });
+};
+
+const putAnswerReport = (answer_id, callback) => {
+  axios
+    .put(
+      `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/answers/${answer_id}/report`,
+      {},
+      {
+        headers: {
+          Authorization: `${token}`,
+        },
+      }
+    )
+    .then((data) => {
+      callback(null, data.data);
+    })
+    .catch((err) => {
+      callback(err);
+    });
+};
+
 const getReviews = (id, callback) => {
   const options = {
     method: "GET",
@@ -172,4 +272,9 @@ module.exports.getRelated = getRelated;
 module.exports.getProductsID = getProductsID;
 module.exports.getQuestions = getQuestions;
 module.exports.postQuestion = postQuestion;
+module.exports.postAnswer = postAnswer;
+module.exports.putQuestionHelpful = putQuestionHelpful;
+module.exports.putAnswerHelpful = putAnswerHelpful;
+module.exports.putQuestionReport = putQuestionReport;
+module.exports.putAnswerReport = putAnswerReport;
 module.exports.getReviewData = getReviewData;

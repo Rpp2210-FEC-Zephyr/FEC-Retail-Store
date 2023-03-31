@@ -89,9 +89,69 @@ app.get("/Questions", function (req, res) {
 });
 
 app.post("/Question", function (req, res) {
-  var { question, username, email, product_id } = req.body;
+  const { question, username, email, product_id } = req.body;
 
   API.postQuestion(question, username, email, product_id, (err, data) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(data);
+    }
+  });
+});
+
+app.post("/Answer", function (req, res) {
+  const { question_id, body, name, email, photos } = req.body;
+
+  API.postAnswer(question_id, body, name, email, photos, (err, data) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(data);
+    }
+  });
+});
+
+app.put("/QuestionHelpful", function (req, res) {
+  const { question_id } = req.body;
+
+  API.putQuestionHelpful(question_id, (err, data) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(data);
+    }
+  });
+});
+
+app.put("/AnswerHelpful", function (req, res) {
+  const { answer_id } = req.body;
+
+  API.putAnswerHelpful(answer_id, (err, data) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(data);
+    }
+  });
+});
+
+app.put("/QuestionReport", function (req, res) {
+  const { question_id } = req.body;
+
+  API.putQuestionReport(question_id, (err, data) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(data);
+    }
+  });
+});
+
+app.put("/AnswerReport", function (req, res) {
+  const { answer_id } = req.body;
+
+  API.putAnswerReport(answer_id, (err, data) => {
     if (err) {
       res.send(err);
     } else {

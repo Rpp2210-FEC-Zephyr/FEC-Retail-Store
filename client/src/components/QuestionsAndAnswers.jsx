@@ -6,13 +6,19 @@ import QuestionsSearch from "./QuestionsSearch.jsx";
 import QuestionAdd from "./QuestionAdd.jsx";
 
 const QuestionsAndAnswers = ({ main }) => {
+  const [searchTerm, setSearchTerm] = useState("");
   const [refreshKey, setRefreshKey] = useState(true);
 
   return (
-    <div>
+    <div id="qa-main">
       <h1>Questions & Answers</h1>
-      <QuestionsSearch />
-      <QuestionsList main={main} refreshKey={refreshKey} />
+      <QuestionsSearch searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      <QuestionsList
+        main={main}
+        searchTerm={searchTerm}
+        refreshKey={refreshKey}
+        setRefreshKey={setRefreshKey}
+      />
       <QuestionAdd
         main={main}
         refreshKey={refreshKey}

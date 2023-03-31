@@ -794,6 +794,14 @@ nav .logo {
   padding-bottom: 10px;
 }
 
+.answer-photo {
+  width: 150px;
+}
+
+#qa-search-bar {
+  width: 300px;
+}
+
 .EmptyOutfit {
   font-size: 39px;
   color: #40d3dc;

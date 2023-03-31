@@ -3,11 +3,11 @@ import ReactDOM from "react-dom";
 import $ from "jquery";
 import Question from "./Question.jsx";
 
-const QuestionsList = ({ main, refreshKey }) => {
+const QuestionsList = ({ main, searchTerm, refreshKey, setRefreshKey }) => {
   const [questions, setQuestions] = useState([]);
+  const [filteredQuestions, setFilteredQuestions] = useState([]);
   const [renderedQuestions, setRenderedQuestions] = useState([]);
   const [numberRenderedQuestions, setNumberRenderedQuestions] = useState(2);
-  const [isInitialMount, setIsInitialMount] = useState(true);
 
   const getQuestions = (product_id) => {
     $.ajax({
@@ -20,13 +20,27 @@ const QuestionsList = ({ main, refreshKey }) => {
     });
   };
 
+  const filterQuestions = () => {
+    if (searchTerm.length >= 3) {
+      let tempArr = [];
+      for (let i = 0; i < questions.length; i++) {
+        if (questions[i].question_body.includes(searchTerm)) {
+          tempArr.push(questions[i]);
+        }
+      }
+      setFilteredQuestions(tempArr);
+    } else {
+      setFilteredQuestions(questions);
+    }
+  };
+
   const updateRenderedQuestions = () => {
-    if (questions.length <= numberRenderedQuestions) {
-      setRenderedQuestions(questions);
+    if (filteredQuestions.length <= numberRenderedQuestions) {
+      setRenderedQuestions(filteredQuestions);
     } else {
       let tempArr = [];
       for (let i = 0; i < numberRenderedQuestions; i++) {
-        tempArr.push(questions[i]);
+        tempArr.push(filteredQuestions[i]);
       }
       setRenderedQuestions(tempArr);
     }
@@ -43,12 +57,12 @@ const QuestionsList = ({ main, refreshKey }) => {
   }, [main.id, refreshKey]);
 
   useEffect(() => {
-    if (isInitialMount) {
-      setIsInitialMount(false);
-    } else {
-      updateRenderedQuestions();
-    }
-  }, [questions]);
+    filterQuestions();
+  }, [questions, searchTerm]);
+
+  useEffect(() => {
+    updateRenderedQuestions();
+  }, [filteredQuestions]);
 
   useEffect(() => {
     if (numberRenderedQuestions > 2) {
@@ -60,7 +74,13 @@ const QuestionsList = ({ main, refreshKey }) => {
     <div>
       <div>
         {renderedQuestions.map((question) => {
-          return <Question question={question} />;
+          return (
+            <Question
+              question={question}
+              refreshKey={refreshKey}
+              setRefreshKey={setRefreshKey}
+            />
+          );
         })}
       </div>
       <button onClick={handleLoadMoreQuestions}>Load more questions</button>
