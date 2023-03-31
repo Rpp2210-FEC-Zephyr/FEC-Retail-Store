@@ -90,7 +90,7 @@ const ProductOverview = ({ main, Outfits }) => {
   const Favor = () => {
     main.photo = style.results[0].photos[0].url;
     main.reviews = rating;
-    console.log("THE MAIN", main);
+
     const Star = JSON.parse(localStorage.getItem("favorites"));
     if (Star != null) {
       localStorage.setItem("favorites", JSON.stringify([Star, main]));
@@ -125,7 +125,6 @@ const ProductOverview = ({ main, Outfits }) => {
     if (cSize == null || cQuant == null) {
       Popup.Alert("error");
     } else {
-      console.log("Current", show, cSize, cQuant);
       const bag = JSON.parse(localStorage.getItem("bag"));
 
       if (bag != null) {
@@ -186,6 +185,7 @@ const ProductOverview = ({ main, Outfits }) => {
 
   useEffect(() => {
     if (main.id != undefined) {
+      console.log("THE MAIN", main);
       getStyles(main.id);
       getFeatures(main.id);
       getReviews(main.id);
