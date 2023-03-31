@@ -24,7 +24,7 @@ const Toggle = (item) => {
   const Star = JSON.parse(localStorage.getItem("favorites"));
   const data = Star ? Star.flat(Infinity).filter((i) => i != null) : [];
   const find = data.filter((obj) => obj.id == item.id);
-  console.log("The find", find);
+
   if (find.length == 1) {
     const label = document.querySelectorAll(".label");
 

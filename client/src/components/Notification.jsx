@@ -24,13 +24,11 @@ const Selected = () => {
 };
 const Zoom = () => {
   const img = document.getElementById("Expanded");
-  console.log("THE EXPANDED", img);
 
   let zoomedIn = false;
 
   img.addEventListener("click", function (e) {
     if (zoomedIn) {
-      console.log("ZOOM OUT");
       // Zoom out
       img.style.transformOrigin = ``;
       img.style.transform = "scale(1)";
@@ -40,7 +38,7 @@ const Zoom = () => {
       const y = e.clientY - e.target.offsetTop;
       img.style.transformOrigin = `${x}px ${y}px`;
       img.style.transform = "scale(2.5)";
-      console.log("ZOOM IN");
+
       zoomedIn = true;
     }
   });
