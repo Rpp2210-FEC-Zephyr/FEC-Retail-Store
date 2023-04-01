@@ -85,7 +85,7 @@ body {
   transition: opacity 1s ease-out;
   position: absolute;
   z-index: 2;
-  margin-top: 66px;
+  margin-top: 14vh;
   background-color: hidden;
   height: 28vh;
   width: 10vh;
