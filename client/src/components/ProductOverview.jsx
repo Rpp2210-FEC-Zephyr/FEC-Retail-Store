@@ -87,6 +87,10 @@ const ProductOverview = ({ main, Outfits }) => {
     setCQuant(cquan);
   };
 
+  const Scroll = (id) => {
+    Popup.Scroller(id);
+  };
+
   const Favor = () => {
     main.photo = style.results[0].photos[0].url;
     main.reviews = rating;
@@ -198,7 +202,7 @@ const ProductOverview = ({ main, Outfits }) => {
 
   return (
     <div className="productOverview">
-      <ProductLeft main={main} show={show} />
+      <ProductLeft main={main} show={show} Scroll={Scroll} />
 
       <ProductRight
         main={main}
