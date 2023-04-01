@@ -1,7 +1,7 @@
-const config = require("./.env");
+require("dotenv").config();
 const axios = require("axios");
 const AtelierAPI = "https://app-hrsei-api.herokuapp.com/api/fec2/rpp2210/";
-const token = config.MY_API_TOKEN;
+const token = process.env.MY_API_TOKEN;
 
 const Promise = require("bluebird");
 
