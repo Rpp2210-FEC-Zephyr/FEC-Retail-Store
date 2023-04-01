@@ -22,6 +22,17 @@ const Selected = () => {
     });
   });
 };
+
+const Scroller = (id) => {
+  const checkbox = document.querySelector(`#radio${id}`);
+  checkbox.checked = true;
+  const Selected = document.getElementById(`scroll${id}`);
+  const vImage = document.querySelectorAll(".vslide");
+  vImage.forEach((div) => {
+    div.style.border = "0"; // or div.style.border = 'none';
+  });
+  Selected.style.border = "3px solid #40d3dc";
+};
 const Zoom = () => {
   const img = document.getElementById("Expanded");
 
@@ -259,4 +270,5 @@ module.exports.Alert = Alert;
 module.exports.ImageExpander = ImageExpander;
 module.exports.Selected = Selected;
 module.exports.Zoom = Zoom;
+module.exports.Scroller = Scroller;
 module.exports.DetailExpander = DetailExpander;
