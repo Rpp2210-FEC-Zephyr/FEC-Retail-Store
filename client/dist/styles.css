@@ -85,10 +85,10 @@ body {
   transition: opacity 1s ease-out;
   position: absolute;
   z-index: 2;
-  margin-top: 14vh;
+  margin-top: 5vh;
   background-color: hidden;
-  height: 28vh;
-  width: 10vh;
+  height: 41vh;
+  width: 11vh;
   margin-left: 10px;
   overflow-y: scroll;
 }
@@ -98,7 +98,7 @@ body {
 }
 .ScrollIMG {
   width: 100%;
-  height: 5vh;
+  height: 8vh;
 }
 .slider {
   width: 95%;
