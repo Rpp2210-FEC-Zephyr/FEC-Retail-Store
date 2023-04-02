@@ -82,6 +82,9 @@ const ProductLeft = ({ main, show, Scroll }) => {
           {show.length != 0
             ? show.photos.map((photo, index) => (
                 <label
+                  onClick={() => {
+                    Scroll(index + 1);
+                  }}
                   htmlFor={`radio${index + 1}`}
                   className="manual-btn"
                 ></label>
