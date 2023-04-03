@@ -1,4 +1,5 @@
 const Selected = () => {
+  //React Refactorable
   const scrollBtn = document.querySelectorAll(".scroll");
 
   scrollBtn.forEach((scrol) => {
@@ -24,8 +25,9 @@ const Selected = () => {
 };
 
 const Scroller = (id) => {
-  const checkbox = document.querySelector(`#radio${id}`);
-  checkbox.checked = true;
+  //React Factorable
+  const checkbox = document.querySelector(`#radio${id}`); //Buttons
+  checkbox.checked = true; //Toggle Button
   const Selected = document.getElementById(`scroll${id}`);
   const vImage = document.querySelectorAll(".vslide");
   vImage.forEach((div) => {
@@ -33,6 +35,7 @@ const Scroller = (id) => {
   });
   Selected.style.border = "3px solid #40d3dc";
 };
+
 const Zoom = () => {
   const img = document.getElementById("Expanded");
 
@@ -226,7 +229,7 @@ const Notify = () => {
     });
   });
 };
-
+//Alert("success")
 const Alert = (id) => {
   const notifications = document.querySelector(".notifications");
 
