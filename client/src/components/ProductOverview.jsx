@@ -59,7 +59,7 @@ const ProductOverview = ({ main, Outfits }) => {
     quan = quan.split(" ")[0];
 
     quan = parseInt(quan);
-    quan = quan + 1;
+    quan = quan + 1 < 16 ? quan + 1 : 16;
 
     var results = [];
 

@@ -81,7 +81,7 @@ body {
 }
 
 .vSlider {
-  opacity: 0.2;
+  opacity: 0.25;
   transition: opacity 1s ease-out;
   position: absolute;
   z-index: 2;
