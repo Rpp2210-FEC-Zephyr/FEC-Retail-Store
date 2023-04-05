@@ -19,13 +19,14 @@ const ProductRight = ({
   main,
   show,
   style,
-  Change,
   setCQuant,
   Favor,
   skus,
   cSize,
   cQuant,
   setCSize,
+  setShow,
+  setSkus,
 }) => {
   return (
     <div className="right">
@@ -34,10 +35,11 @@ const ProductRight = ({
         main={main}
         show={show}
         style={style}
-        Change={Change}
         skus={skus}
         setCQuant={setCQuant}
         setCSize={setCSize}
+        setSkus={setSkus}
+        setShow={setShow}
       />
       <ProductBag
         Favor={Favor}

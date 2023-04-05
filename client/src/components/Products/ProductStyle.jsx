@@ -11,17 +11,36 @@ import ReactDOM from "react-dom";
 import $ from "jquery";
 
 const Popup = require("../Notification.jsx");
-
+const Favorites = require("../Favorites.jsx");
 const ProductStyle = ({
   main,
   show,
   style,
-  Change,
   skus,
   setCQuant,
   setCSize,
+  setShow,
+  setSkus,
 }) => {
   const [quantity, setQuantity] = useState([]);
+  const Change = (item, index) => {
+    const mySelect = document.getElementById(`${index}`);
+    const Selecet = document.querySelectorAll(".StyleChoose");
+    const check = document.querySelectorAll(".selected");
+    Selecet.forEach((element) => {
+      element.addEventListener("click", () => {
+        check.forEach((el) => {
+          el.style.visibility = "hidden";
+        });
+      });
+    });
+    mySelect.style.visibility = "visible";
+    setShow(item);
+    Favorites.Status(main);
+
+    setSkus(item.skus);
+    console.log("THE SKUS", skus);
+  };
   const onCQuan = (cquan) => {
     cquan = parseInt(cquan);
     setCQuant(cquan);

@@ -23,7 +23,6 @@ const ProductOverview = ({ main, Outfits }) => {
   const [cSize, setCSize] = useState(null);
   const [cQuant, setCQuant] = useState(null);
   const [cPrice, setCPrice] = useState(null);
-
   const getStyles = (id) => {
     $.ajax({
       type: "GET",
@@ -57,23 +56,6 @@ const ProductOverview = ({ main, Outfits }) => {
     }
   };
 
-  const Change = (item, index) => {
-    const mySelect = document.getElementById(`${index}`);
-    const Selecet = document.querySelectorAll(".StyleChoose");
-    const check = document.querySelectorAll(".selected");
-    Selecet.forEach((element) => {
-      element.addEventListener("click", () => {
-        check.forEach((el) => {
-          el.style.visibility = "hidden";
-        });
-      });
-    });
-    mySelect.style.visibility = "visible";
-    setShow(item);
-    Favorites.Status(main);
-    setSkus(item.skus);
-  };
-
   const ImageExpander = () => {
     setTimeout(() => {
       // Your logic here
@@ -94,7 +76,6 @@ const ProductOverview = ({ main, Outfits }) => {
       Outfits(Favorites.showOutfit());
     }
   }, [main]);
-
   return (
     <div className="productOverview">
       <ProductLeft main={main} show={show} Scroll={Scroll} />
@@ -104,15 +85,15 @@ const ProductOverview = ({ main, Outfits }) => {
         cSize={cSize}
         show={show}
         style={style}
-        Change={Change}
         Favor={Favor}
         skus={skus}
         cQuant={cQuant}
         setCQuant={setCQuant}
         setCSize={setCSize}
+        setSkus={setSkus}
+        setShow={setShow}
       />
     </div>
   );
 };
-
 export default ProductOverview;
