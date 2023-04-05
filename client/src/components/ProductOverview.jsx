@@ -73,35 +73,6 @@ const ProductOverview = ({ main, Outfits }) => {
     Favorites.Status(main);
     setSkus(item.skus);
   };
-  const addBag = () => {
-    if (cSize == null || cQuant == null) {
-      Popup.Alert("error");
-    } else {
-      const bag = JSON.parse(localStorage.getItem("bag"));
-      if (bag != null) {
-        if (bag.length == 10) {
-          Popup.Alert("warning");
-        } else {
-          Popup.Alert("success");
-          localStorage.setItem(
-            "bag",
-            JSON.stringify([
-              bag,
-              { cloth: show, size: cSize, quant: cQuant, name: main.name },
-            ]),
-          );
-        }
-      } else {
-        Popup.Alert("success");
-        localStorage.setItem(
-          "bag",
-          JSON.stringify([
-            { cloth: show, size: cSize, quant: cQuant, name: main.name },
-          ]),
-        );
-      }
-    }
-  };
 
   const ImageExpander = () => {
     setTimeout(() => {
@@ -130,12 +101,15 @@ const ProductOverview = ({ main, Outfits }) => {
 
       <ProductRight
         main={main}
+        cSize={cSize}
         show={show}
         style={style}
         Change={Change}
-        addBag={addBag}
         Favor={Favor}
         skus={skus}
+        cQuant={cQuant}
+        setCQuant={setCQuant}
+        setCSize={setCSize}
       />
     </div>
   );

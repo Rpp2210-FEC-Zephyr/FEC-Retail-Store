@@ -18,12 +18,14 @@ const Popup = require("../Notification.jsx");
 const ProductRight = ({
   main,
   show,
-
   style,
   Change,
-  addBag,
+  setCQuant,
   Favor,
   skus,
+  cSize,
+  cQuant,
+  setCSize,
 }) => {
   return (
     <div className="right">
@@ -34,8 +36,16 @@ const ProductRight = ({
         style={style}
         Change={Change}
         skus={skus}
+        setCQuant={setCQuant}
+        setCSize={setCSize}
       />
-      <ProductBag addBag={addBag} Favor={Favor} />
+      <ProductBag
+        Favor={Favor}
+        main={main}
+        show={show}
+        cSize={cSize}
+        cQuant={cQuant}
+      />
       <ProductFeature main={main} />
     </div>
   );

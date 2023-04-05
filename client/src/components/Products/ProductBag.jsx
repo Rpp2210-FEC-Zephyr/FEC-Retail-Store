@@ -11,7 +11,37 @@ import $ from "jquery";
 
 const Popup = require("../Notification.jsx");
 
-const ProductBag = ({ addBag, Favor }) => {
+const ProductBag = ({ Favor, main, show, cSize, cQuant }) => {
+  const addBag = () => {
+    console.log("CSIXE QUANT", cSize, cQuant);
+    if (cSize == null || cQuant == null) {
+      Popup.Alert("error");
+    } else {
+      const bag = JSON.parse(localStorage.getItem("bag"));
+      if (bag != null) {
+        if (bag.length == 10) {
+          Popup.Alert("warning");
+        } else {
+          Popup.Alert("success");
+          localStorage.setItem(
+            "bag",
+            JSON.stringify([
+              bag,
+              { cloth: show, size: cSize, quant: cQuant, name: main.name },
+            ]),
+          );
+        }
+      } else {
+        Popup.Alert("success");
+        localStorage.setItem(
+          "bag",
+          JSON.stringify([
+            { cloth: show, size: cSize, quant: cQuant, name: main.name },
+          ]),
+        );
+      }
+    }
+  };
   return (
     <div className="Bag">
       <ul className="notifications"></ul>
