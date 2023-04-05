@@ -41,18 +41,6 @@ const ProductOverview = ({ main, Outfits }) => {
     });
   };
 
-  const onCSize = (csize) => {
-    csize = csize.split(" ")[1];
-
-    if (csize == "Size") {
-      setCSize(null);
-      setCQuant(null);
-    } else {
-      setCSize(csize);
-      setCQuant(1);
-    }
-  };
-
   const Scroll = (id) => {
     Popup.Scroller(id);
   };
