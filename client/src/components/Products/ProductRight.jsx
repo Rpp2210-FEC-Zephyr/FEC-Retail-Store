@@ -24,11 +24,9 @@ const ProductRight = ({
   onQuan,
   onCSize,
   addBag,
-
   Favor,
   skus,
   quantity,
-  onCQuan,
 }) => {
   return (
     <div className="right">
@@ -40,7 +38,6 @@ const ProductRight = ({
         Change={Change}
         onQuan={onQuan}
         onCSize={onCSize}
-        onCQuan={onCQuan}
         skus={skus}
         quantity={quantity}
       />

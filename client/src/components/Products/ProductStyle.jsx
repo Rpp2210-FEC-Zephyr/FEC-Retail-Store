@@ -19,10 +19,14 @@ const ProductStyle = ({
   Change,
   onQuan,
   onCSize,
-  onCQuan,
   skus,
   quantity,
 }) => {
+  const [cQuant, setCQuant] = useState(null);
+  const onCQuan = (cquan) => {
+    cquan = parseInt(cquan);
+    setCQuant(cquan);
+  };
   return (
     <div className="ProductNameC">
       <div className="price">

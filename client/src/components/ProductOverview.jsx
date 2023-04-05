@@ -69,10 +69,6 @@ const ProductOverview = ({ main, Outfits }) => {
       setCQuant(1);
     }
   };
-  const onCQuan = (cquan) => {
-    cquan = parseInt(cquan);
-    setCQuant(cquan);
-  };
 
   const Scroll = (id) => {
     Popup.Scroller(id);
@@ -202,7 +198,6 @@ const ProductOverview = ({ main, Outfits }) => {
         Favor={Favor}
         skus={skus}
         quantity={quantity}
-        onCQuan={onCQuan}
       />
     </div>
   );
