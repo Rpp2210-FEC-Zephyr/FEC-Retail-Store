@@ -23,7 +23,6 @@ const ProductOverview = ({ main, Outfits }) => {
   const [cSize, setCSize] = useState(null);
   const [cQuant, setCQuant] = useState(null);
   const [cPrice, setCPrice] = useState(null);
-  const [quantity, setQuantity] = useState([]);
   const [rating, setRating] = useState(null);
 
   const getStyles = (id) => {
@@ -40,22 +39,6 @@ const ProductOverview = ({ main, Outfits }) => {
         setSkus(data.results[0].skus);
       },
     });
-  };
-
-  const onQuan = (quan) => {
-    quan = quan.split(" ")[0];
-
-    quan = parseInt(quan);
-    quan = quan + 1 < 16 ? quan + 1 : 16;
-
-    var results = [];
-
-    for (var i = 1; i < quan; i++) {
-      results.push(i);
-    }
-
-    setQuantity(results);
-    return;
   };
 
   const onCSize = (csize) => {
@@ -136,7 +119,6 @@ const ProductOverview = ({ main, Outfits }) => {
           ]),
         );
       }
-      getBag();
     }
   };
 
@@ -192,12 +174,10 @@ const ProductOverview = ({ main, Outfits }) => {
         rating={rating}
         style={style}
         Change={Change}
-        onQuan={onQuan}
         onCSize={onCSize}
         addBag={addBag}
         Favor={Favor}
         skus={skus}
-        quantity={quantity}
       />
     </div>
   );

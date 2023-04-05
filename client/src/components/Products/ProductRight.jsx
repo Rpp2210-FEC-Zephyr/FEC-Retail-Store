@@ -21,12 +21,10 @@ const ProductRight = ({
   rating,
   style,
   Change,
-  onQuan,
   onCSize,
   addBag,
   Favor,
   skus,
-  quantity,
 }) => {
   return (
     <div className="right">
@@ -36,10 +34,8 @@ const ProductRight = ({
         show={show}
         style={style}
         Change={Change}
-        onQuan={onQuan}
         onCSize={onCSize}
         skus={skus}
-        quantity={quantity}
       />
       <ProductBag addBag={addBag} Favor={Favor} />
       <ProductFeature main={main} />
