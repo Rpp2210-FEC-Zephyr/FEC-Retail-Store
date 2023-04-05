@@ -82,6 +82,7 @@ const ProductLeft = ({ main, show, Scroll }) => {
           {show.length != 0
             ? show.photos.map((photo, index) => (
                 <label
+                  key={`${photo} ${index}`}
                   onClick={() => {
                     Scroll(index + 1);
                   }}

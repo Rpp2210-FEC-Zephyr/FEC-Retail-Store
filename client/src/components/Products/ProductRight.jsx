@@ -18,34 +18,37 @@ const Popup = require("../Notification.jsx");
 const ProductRight = ({
   main,
   show,
-  rating,
   style,
-  Change,
-  onQuan,
-  onCSize,
-  addBag,
-  feature,
+  setCQuant,
   Favor,
   skus,
-  quantity,
-  onCQuan,
+  cSize,
+  cQuant,
+  setCSize,
+  setShow,
+  setSkus,
 }) => {
   return (
     <div className="right">
-      <ProductName main={main} rating={rating} />
+      <ProductName main={main} />
       <ProductStyle
         main={main}
         show={show}
         style={style}
-        Change={Change}
-        onQuan={onQuan}
-        onCSize={onCSize}
-        onCQuan={onCQuan}
         skus={skus}
-        quantity={quantity}
+        setCQuant={setCQuant}
+        setCSize={setCSize}
+        setSkus={setSkus}
+        setShow={setShow}
       />
-      <ProductBag addBag={addBag} Favor={Favor} />
-      <ProductFeature feature={feature} />
+      <ProductBag
+        Favor={Favor}
+        main={main}
+        show={show}
+        cSize={cSize}
+        cQuant={cQuant}
+      />
+      <ProductFeature main={main} />
     </div>
   );
 };
