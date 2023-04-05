@@ -23,7 +23,6 @@ const ProductOverview = ({ main, Outfits }) => {
   const [cSize, setCSize] = useState(null);
   const [cQuant, setCQuant] = useState(null);
   const [cPrice, setCPrice] = useState(null);
-  const [rating, setRating] = useState(null);
 
   const getStyles = (id) => {
     $.ajax({
@@ -48,7 +47,6 @@ const ProductOverview = ({ main, Outfits }) => {
   const Favor = () => {
     main.photo = style.results[0].photos[0].url;
     main.reviews = rating;
-
     const Star = JSON.parse(localStorage.getItem("favorites"));
     if (Star != null) {
       localStorage.setItem("favorites", JSON.stringify([Star, main]));
@@ -61,10 +59,8 @@ const ProductOverview = ({ main, Outfits }) => {
 
   const Change = (item, index) => {
     const mySelect = document.getElementById(`${index}`);
-
     const Selecet = document.querySelectorAll(".StyleChoose");
     const check = document.querySelectorAll(".selected");
-
     Selecet.forEach((element) => {
       element.addEventListener("click", () => {
         check.forEach((el) => {
@@ -72,9 +68,7 @@ const ProductOverview = ({ main, Outfits }) => {
         });
       });
     });
-
     mySelect.style.visibility = "visible";
-
     setShow(item);
     Favorites.Status(main);
     setSkus(item.skus);
@@ -84,7 +78,6 @@ const ProductOverview = ({ main, Outfits }) => {
       Popup.Alert("error");
     } else {
       const bag = JSON.parse(localStorage.getItem("bag"));
-
       if (bag != null) {
         if (bag.length == 10) {
           Popup.Alert("warning");
@@ -119,32 +112,11 @@ const ProductOverview = ({ main, Outfits }) => {
       ImageExpander();
     }, 1000);
   };
-  const getReviews = (id) => {
-    $.ajax({
-      type: "GET",
-      url: "/reviews",
-      data: {
-        product_id: id, // NEED VARIABLE PRODUCT_ID
-        count: 10,
-        sort: "relevant",
-      },
-      success: (data) => {
-        var sum = 0;
-
-        for (var i = 0; i < data.results.length; i++) {
-          sum += data.results[i].rating;
-        }
-
-        setRating(sum / data.results.length);
-      },
-    });
-  };
 
   useEffect(() => {
     if (main.id != undefined) {
       console.log("THE MAIN", main);
       getStyles(main.id);
-      getReviews(main.id);
       ImageExpander();
       Popup.Selected();
       Favorites.Status(main);
@@ -159,7 +131,6 @@ const ProductOverview = ({ main, Outfits }) => {
       <ProductRight
         main={main}
         show={show}
-        rating={rating}
         style={style}
         Change={Change}
         addBag={addBag}
