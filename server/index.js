@@ -3,7 +3,6 @@ const express = require("express");
 const path = require("path");
 API = require("./API/Atelier.js");
 
-var srcname = "/Users/lovinsondieujuste/rpp2210-practice-apps/2-checkout/";
 const app = express();
 
 app.use(
