@@ -42,19 +42,6 @@ const ProductOverview = ({ main, Outfits }) => {
     });
   };
 
-  const getFeatures = (id) => {
-    $.ajax({
-      type: "GET",
-      url: "/Features",
-      data: { id: id },
-      success: (data) => {
-        console.log("Feature Data", data.features);
-
-        setFeature(data.features);
-      },
-    });
-  };
-
   const onQuan = (quan) => {
     quan = quan.split(" ")[0];
 
@@ -191,7 +178,6 @@ const ProductOverview = ({ main, Outfits }) => {
     if (main.id != undefined) {
       console.log("THE MAIN", main);
       getStyles(main.id);
-      getFeatures(main.id);
       getReviews(main.id);
       ImageExpander();
       Popup.Selected();
@@ -213,7 +199,6 @@ const ProductOverview = ({ main, Outfits }) => {
         onQuan={onQuan}
         onCSize={onCSize}
         addBag={addBag}
-        feature={feature}
         Favor={Favor}
         skus={skus}
         quantity={quantity}

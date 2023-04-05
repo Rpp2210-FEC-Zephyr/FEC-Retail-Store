@@ -24,7 +24,7 @@ const ProductRight = ({
   onQuan,
   onCSize,
   addBag,
-  feature,
+
   Favor,
   skus,
   quantity,
@@ -45,7 +45,7 @@ const ProductRight = ({
         quantity={quantity}
       />
       <ProductBag addBag={addBag} Favor={Favor} />
-      <ProductFeature feature={feature} />
+      <ProductFeature main={main} />
     </div>
   );
 };

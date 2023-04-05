@@ -12,7 +12,27 @@ import $ from "jquery";
 
 const Popup = require("../Notification.jsx");
 
-const ProductFeature = ({ feature }) => {
+const ProductFeature = ({ main }) => {
+  const [feature, setFeature] = useState([]);
+
+  const getFeatures = (id) => {
+    $.ajax({
+      type: "GET",
+      url: "/Features",
+      data: { id: id },
+      success: (data) => {
+        console.log("Feature Data", data.features);
+
+        setFeature(data.features);
+      },
+    });
+  };
+  useEffect(() => {
+    if (main.id != undefined) {
+      console.log("THE MAIN", main);
+      getFeatures(main.id);
+    }
+  }, [main]);
   return (
     <div className="feature">
       <div className="vertical-divider"> ㅤ</div>
