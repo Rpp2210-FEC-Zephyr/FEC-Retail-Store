@@ -39,8 +39,8 @@ const ProductFeature = ({ main }) => {
 
       <ul className="featurelist">
         {feature.length != 0
-          ? feature.map((feat) => (
-              <li className="featureitem">
+          ? feature.map((feat, index) => (
+              <li className="featureitem" key={`${feat.value} ${index}`}>
                 <BsCheck2Square /> ㅤ{feat.value}
               </li>
             ))

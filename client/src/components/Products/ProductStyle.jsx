@@ -92,6 +92,7 @@ const ProductStyle = ({
         {style.length != 0
           ? style.results.map((item, index) => (
               <div
+                key={`${item} ${index}`}
                 onClick={(e) => {
                   Change(item, index);
                 }}
