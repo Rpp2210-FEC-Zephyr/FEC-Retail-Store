@@ -174,7 +174,6 @@ const ProductOverview = ({ main, Outfits }) => {
         rating={rating}
         style={style}
         Change={Change}
-        onCSize={onCSize}
         addBag={addBag}
         Favor={Favor}
         skus={skus}

@@ -12,12 +12,26 @@ import $ from "jquery";
 
 const Popup = require("../Notification.jsx");
 
-const ProductStyle = ({ main, show, style, Change, onCSize, skus }) => {
+const ProductStyle = ({ main, show, style, Change, skus }) => {
   const [cQuant, setCQuant] = useState(null);
   const [quantity, setQuantity] = useState([]);
+  const [cSize, setCSize] = useState(null);
+
   const onCQuan = (cquan) => {
     cquan = parseInt(cquan);
     setCQuant(cquan);
+  };
+
+  const onCSize = (csize) => {
+    csize = csize.split(" ")[1];
+
+    if (csize == "Size") {
+      setCSize(null);
+      setCQuant(null);
+    } else {
+      setCSize(csize);
+      setCQuant(1);
+    }
   };
   const onQuan = (quan) => {
     quan = quan.split(" ")[0];

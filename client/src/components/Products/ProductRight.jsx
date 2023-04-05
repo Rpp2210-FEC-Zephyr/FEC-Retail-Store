@@ -21,7 +21,6 @@ const ProductRight = ({
   rating,
   style,
   Change,
-  onCSize,
   addBag,
   Favor,
   skus,
@@ -34,7 +33,6 @@ const ProductRight = ({
         show={show}
         style={style}
         Change={Change}
-        onCSize={onCSize}
         skus={skus}
       />
       <ProductBag addBag={addBag} Favor={Favor} />
