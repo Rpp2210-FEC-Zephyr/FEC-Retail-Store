@@ -23,6 +23,7 @@ const ProductOverview = ({ main, Outfits }) => {
   const [cSize, setCSize] = useState(null);
   const [cQuant, setCQuant] = useState(null);
   const [cPrice, setCPrice] = useState(null);
+  const [rating, setRating] = useState(null);
   const getStyles = (id) => {
     $.ajax({
       type: "GET",
@@ -81,6 +82,8 @@ const ProductOverview = ({ main, Outfits }) => {
       <ProductLeft main={main} show={show} Scroll={Scroll} />
 
       <ProductRight
+        setRating={setRating}
+        rating={rating}
         main={main}
         cSize={cSize}
         show={show}

@@ -27,10 +27,12 @@ const ProductRight = ({
   setCSize,
   setShow,
   setSkus,
+  rating,
+  setRating,
 }) => {
   return (
     <div className="right">
-      <ProductName main={main} />
+      <ProductName main={main} rating={rating} setRating={setRating} />
       <ProductStyle
         main={main}
         show={show}
