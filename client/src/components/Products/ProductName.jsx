@@ -12,8 +12,7 @@ import $ from "jquery";
 
 const Popup = require("../Notification.jsx");
 
-const ProductName = ({ main }) => {
-  const [rating, setRating] = useState(null);
+const ProductName = ({ rating, main, setRating }) => {
   const getReviews = (id) => {
     $.ajax({
       type: "GET",
