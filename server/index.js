@@ -3,10 +3,7 @@ const express = require("express");
 const path = require("path");
 API = require("./API/Atelier.js");
 
-var srcname = "/Users/lovinsondieujuste/rpp2210-practice-apps/2-checkout/";
 const app = express();
-app.set("view engine", "ejs");
-//app.use(express.static(path.join(srcname, '/client/src')))
 
 app.use(
   express.urlencoded({
@@ -18,14 +15,10 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
 
 app.use(express.json());
 
-app.get("/", function (req, res) {
-  res.render("index.html");
-});
-
 app.get("/Products", function (req, res) {
   API.getProducts((err, data) => {
     if (err) {
-      console.log(err);
+      res.status(500).send(err);
     } else {
       res.send(data);
     }
@@ -35,7 +28,7 @@ app.get("/ProductsID", function (req, res) {
   const { id } = req.query;
   API.getProductsID(id, (err, data) => {
     if (err) {
-      console.log(err);
+      res.status(500).send(err);
     } else {
       res.send(data);
     }
@@ -46,7 +39,7 @@ app.get("/Related", function (req, res) {
 
   API.getRelated(id, (err, data) => {
     if (err) {
-      console.log(err);
+      res.status(500).send(err);
     } else {
       res.send(data);
     }
@@ -57,7 +50,7 @@ app.get("/Styles", function (req, res) {
   const { id } = req.query;
   API.getStyles(id, (err, data) => {
     if (err) {
-      console.log(err);
+      res.status(500).send(err);
     } else {
       res.send(data);
     }
@@ -69,7 +62,7 @@ app.get("/Features", function (req, res) {
 
   API.getFeatures(id, (err, data) => {
     if (err) {
-      console.log(err);
+      res.status(500).send(err);
     } else {
       res.send(data);
     }
@@ -81,8 +74,7 @@ app.get("/Questions", function (req, res) {
 
   API.getQuestions(product_id, (err, data) => {
     if (err) {
-      res.status(400);
-      res.send(err);
+      res.status(500).send(err);
     } else {
       res.status(200);
       res.send(data);

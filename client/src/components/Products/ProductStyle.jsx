@@ -11,18 +11,66 @@ import ReactDOM from "react-dom";
 import $ from "jquery";
 
 const Popup = require("../Notification.jsx");
-
+const Favorites = require("../Favorites.jsx");
 const ProductStyle = ({
   main,
   show,
   style,
-  Change,
-  onQuan,
-  onCSize,
-  onCQuan,
   skus,
-  quantity,
+  setCQuant,
+  setCSize,
+  setShow,
+  setSkus,
 }) => {
+  const [quantity, setQuantity] = useState([]);
+  const Change = (item, index) => {
+    const mySelect = document.getElementById(`${index}`);
+    const Selecet = document.querySelectorAll(".StyleChoose");
+    const check = document.querySelectorAll(".selected");
+    Selecet.forEach((element) => {
+      element.addEventListener("click", () => {
+        check.forEach((el) => {
+          el.style.visibility = "hidden";
+        });
+      });
+    });
+    mySelect.style.visibility = "visible";
+    setShow(item);
+    Favorites.Status(main);
+
+    setSkus(item.skus);
+    console.log("THE SKUS", skus);
+  };
+  const onCQuan = (cquan) => {
+    cquan = parseInt(cquan);
+    setCQuant(cquan);
+  };
+  const onCSize = (csize) => {
+    csize = csize.split(" ")[1];
+
+    if (csize == "Size") {
+      setCSize(null);
+      setCQuant(null);
+    } else {
+      setCSize(csize);
+      setCQuant(1);
+    }
+  };
+  const onQuan = (quan) => {
+    quan = quan.split(" ")[0];
+
+    quan = parseInt(quan);
+    quan = quan + 1 < 16 ? quan + 1 : 16;
+
+    var results = [];
+
+    for (var i = 1; i < quan; i++) {
+      results.push(i);
+    }
+
+    setQuantity(results);
+    return;
+  };
   return (
     <div className="ProductNameC">
       <div className="price">
@@ -44,6 +92,7 @@ const ProductStyle = ({
         {style.length != 0
           ? style.results.map((item, index) => (
               <div
+                key={`${item} ${index}`}
                 onClick={(e) => {
                   Change(item, index);
                 }}

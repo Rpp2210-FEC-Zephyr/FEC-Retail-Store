@@ -1,6 +1,8 @@
+require("dotenv").config();
 const axios = require("axios");
 const AtelierAPI = "https://app-hrsei-api.herokuapp.com/api/fec2/rpp2210/";
-const token = "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";
+const token = process.env.MY_API_TOKEN;
+
 const Promise = require("bluebird");
 
 const getProducts = (callback) => {
