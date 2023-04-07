@@ -238,12 +238,19 @@ const putAnswerReport = (answer_id, callback) => {
     });
 };
 
-const getReviews = (id, callback) => {
+const getReviews = (id, sort, callback) => {
   const options = {
     method: "GET",
-    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews?product_id=${id}`,
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews`,
+    // url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews?product_id=${id}&sort=${sort}`,
     headers: {
       Authorization: `${token}`,
+    },
+    params: {
+      product_id: id,
+      page: 1,
+      count: 100000,
+      sort: sort,
     },
   };
   axios(options).then((reviews) => {
@@ -265,6 +272,22 @@ const getReviewData = (id, callback) => {
   });
 };
 
+const updateHelpfulness = (id, callback) => {
+  const options = {
+    method: "PUT",
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/${id}/helpful`,
+    data: {},
+    headers: {
+      Authorization: `${token}`,
+    },
+  };
+  axios(options).then((data) => {
+    console.log("id received from ajax call", id);
+    console.log("DATA RECEIVED FROM API FOR helpfullness", data.data);
+    callback(null, data.data);
+  });
+};
+
 module.exports.getProducts = getProducts;
 module.exports.getStyles = getStyles;
 module.exports.getReviews = getReviews;
@@ -279,3 +302,4 @@ module.exports.putAnswerHelpful = putAnswerHelpful;
 module.exports.putQuestionReport = putQuestionReport;
 module.exports.putAnswerReport = putAnswerReport;
 module.exports.getReviewData = getReviewData;
+module.exports.updateHelpfulness = updateHelpfulness;

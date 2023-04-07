@@ -30,5 +30,5 @@ ReactDOM.render(
     <Index />
   </BrowserRouter>,
 
-  document.getElementById("app"),
+  document.getElementById("app")
 );

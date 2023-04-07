@@ -4,6 +4,7 @@ const webpack = require("webpack");
 var SRC_DIR = path.join(__dirname, "/client/src");
 var DIST_DIR = path.join(__dirname, "/client/dist");
 module.exports = {
+  mode: "production",
   entry: `${SRC_DIR}/Index.jsx`,
   output: {
     filename: "bundle.js",

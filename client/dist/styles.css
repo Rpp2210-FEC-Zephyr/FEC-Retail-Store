@@ -708,11 +708,59 @@ nav .logo {
   font-size: 100px;
 }
 
-/* div {
-  border: 1px red solid;
-  padding: 2px;
-  margin: 2px;
- } */
+.individual-review {
+  border: 1px rgb(112, 112, 112) solid;
+  padding: 20px;
+  margin: 10px;
+  background-color: white;
+  border-radius: 10px;
+  width: 40vw;
+}
+.individual-review div {
+  margin: 3px;
+}
+
+.review-image {
+  width: 150px;
+  height: 150px;
+  padding: 5px;
+}
+
+.PracFlex {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.margin-right {
+  margin-right: 7px;
+}
+
+.progress-outer {
+  margin: "3px";
+}
+
+#fullpage {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#fullpage img {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.review-summary {
+  font-weight: bold;
+}
 
 .rating-star {
   display: flex;
@@ -744,11 +792,25 @@ nav .logo {
 }
 
 .RatingsAndReviews {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: left;
+  /* text-align: left; */
   /* min-height: 100vh; */
+  /* margin-left: auto; */
+  /* margin-right: 0; */
+}
+
+.reviews-container {
+  margin-top: 25px;
+}
+
+.response-box {
+  background-color: rgba(177, 177, 177, 0.826);
+  padding: 10px;
+  border-radius: 5px;
+  margin: 5px;
 }
 
 .userAndTime {
@@ -757,6 +819,64 @@ nav .logo {
   text-align: right;
   width: 100%;
 }
+
+.review-buttons {
+  background-color: transparent;
+  border: 2px solid black;
+  color: black;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+progress {
+  border: none;
+  margin-left: 10px;
+}
+
+progress::-webkit-progress-value {
+  background-color: green;
+}
+
+progress::-webkit-progress-bar {
+  background: rgb(202, 202, 202);
+}
+
+.form-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-popup-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.form-popup-inner {
+  background-color: #fff;
+}
+
+.form-popup-container button {
+  margin-top: 10px;
+}
+
+.buttons-container {
+  display: flex;
+  margin-right: 10px;
+  padding-right: 10px;
+  justify-content: center;
+}
+
+/* ////////////// */
 
 .Related {
   display: flex;
