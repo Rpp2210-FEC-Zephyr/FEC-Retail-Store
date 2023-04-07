@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import $ from "jquery";
 import Question from "./Question.jsx";
+import QuestionAdd from "./QuestionAdd.jsx";
 
 const QuestionsList = ({ main, searchTerm, refreshKey, setRefreshKey }) => {
   const [questions, setQuestions] = useState([]);
@@ -46,7 +47,7 @@ const QuestionsList = ({ main, searchTerm, refreshKey, setRefreshKey }) => {
     }
   };
 
-  const handleLoadMoreQuestions = () => {
+  const handleMoreAnsweredQuestions = () => {
     setNumberRenderedQuestions(numberRenderedQuestions + 2);
   };
 
@@ -72,7 +73,7 @@ const QuestionsList = ({ main, searchTerm, refreshKey, setRefreshKey }) => {
 
   return (
     <div>
-      <div>
+      <div id="qa-list">
         {renderedQuestions.map((question) => {
           return (
             <Question
@@ -83,7 +84,22 @@ const QuestionsList = ({ main, searchTerm, refreshKey, setRefreshKey }) => {
           );
         })}
       </div>
-      <button onClick={handleLoadMoreQuestions}>Load more questions</button>
+      <div class="flex">
+        {numberRenderedQuestions < questions.length ? (
+          <button
+            class="qa-more-questions"
+            onClick={handleMoreAnsweredQuestions}
+          >
+            MORE ANSWERED QUESTIONS
+          </button>
+        ) : null}
+
+        <QuestionAdd
+          main={main}
+          refreshKey={refreshKey}
+          setRefreshKey={setRefreshKey}
+        />
+      </div>
     </div>
   );
 };

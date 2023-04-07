@@ -128,7 +128,7 @@ const postQuestion = (body, name, email, product_id, callback) => {
         headers: {
           Authorization: `${token}`,
         },
-      },
+      }
     )
     .then((data) => {
       callback(null, data.data);
@@ -152,7 +152,7 @@ const postAnswer = (question_id, body, name, email, photos, callback) => {
         headers: {
           Authorization: `${token}`,
         },
-      },
+      }
     )
     .then((data) => {
       callback(null, data.data);
@@ -171,7 +171,7 @@ const putQuestionHelpful = (question_id, callback) => {
         headers: {
           Authorization: `${token}`,
         },
-      },
+      }
     )
     .then((data) => {
       callback(null, data.data);
@@ -190,7 +190,7 @@ const putAnswerHelpful = (answer_id, callback) => {
         headers: {
           Authorization: `${token}`,
         },
-      },
+      }
     )
     .then((data) => {
       callback(null, data.data);
@@ -209,7 +209,7 @@ const putQuestionReport = (question_id, callback) => {
         headers: {
           Authorization: `${token}`,
         },
-      },
+      }
     )
     .then((data) => {
       callback(null, data.data);
@@ -228,7 +228,7 @@ const putAnswerReport = (answer_id, callback) => {
         headers: {
           Authorization: `${token}`,
         },
-      },
+      }
     )
     .then((data) => {
       callback(null, data.data);

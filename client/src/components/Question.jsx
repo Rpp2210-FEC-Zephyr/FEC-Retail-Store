@@ -12,6 +12,7 @@ const Question = ({ question, refreshKey, setRefreshKey }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [photos, setPhotos] = useState("");
+  const [showAllAnswers, setShowAllAnswers] = useState(false);
 
   const handleAddAnswer = () => {
     setAnswerShowForm(true);
@@ -61,53 +62,105 @@ const Question = ({ question, refreshKey, setRefreshKey }) => {
       });
   };
 
-  const handleQuestionReportClick = () => {
-    axios
-      .put("/QuestionReport", {
-        question_id: question.question_id,
-      })
-      .then((data) => {
-        console.log(data.data);
-        setRefreshKey(!refreshKey);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const handleAnswersFullOrCollapseClick = () => {
+    setShowAllAnswers(!showAllAnswers);
   };
 
+  // const handleQuestionReportClick = () => {
+  //   axios
+  //     .put("/QuestionReport", {
+  //       question_id: question.question_id,
+  //     })
+  //     .then((data) => {
+  //       console.log(data.data);
+  //       setRefreshKey(!refreshKey);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+
   useEffect(() => {
-    var tempArr = [];
+    var helpfulness = [];
     for (var key in question.answers) {
-      tempArr.push(question.answers[key]);
+      helpfulness.push(question.answers[key].helpfulness);
     }
-    setAnswers(tempArr);
+    helpfulness.sort((a, b) => {
+      return b - a;
+    });
+    var sortedAnswers = [];
+    for (var i = 0; i < helpfulness.length; i++) {
+      for (var key in question.answers) {
+        if (
+          helpfulness[i] === question.answers[key].helpfulness &&
+          !sortedAnswers.includes(question.answers[key])
+        ) {
+          sortedAnswers.push(question.answers[key]);
+        }
+      }
+    }
+    setAnswers(sortedAnswers);
   }, [question]);
+
+  //make answers load more and name the button to load more answers "See more answers"
 
   return (
     <div class="qa-card">
-      <div>{`Q: ${question.question_body}`}</div>
-      <span>{`by ${question.asker_name}, ${formatDate(
-        question.question_date,
-      )} | Helpful? `}</span>
-      <span
-        onClick={handleQuestionHelpfulClick}
-      >{`Yes (${question.question_helpfulness})`}</span>
-      <span> | </span>
-      <span onClick={handleQuestionReportClick}>Report</span>
-      <div>
-        {answers.map((answer) => {
-          return (
-            <Answer
-              answer={answer}
-              refreshKey={refreshKey}
-              setRefreshKey={setRefreshKey}
-            />
-          );
-        })}
+      <div class="q-card">
+        <div class="q-Q">Q:</div>
+        <div class="q-body">{question.question_body}</div>
+        <div class="q-help-and-report">
+          <span>Helpful? </span>
+          <span
+            onClick={handleQuestionHelpfulClick}
+          >{`Yes (${question.question_helpfulness})`}</span>
+          <span>{"  |  "}</span>
+          <span onClick={handleAddAnswer}>Add Answer</span>
+        </div>
       </div>
-      {showAnswerForm ? null : (
-        <button onClick={handleAddAnswer}>Add Answer</button>
-      )}
+      <div class="a-card">
+        {answers.length === 0 ? null : <div class="a-A">A:</div>}
+        <div>
+          <div class="a-list">
+            {showAllAnswers
+              ? answers.map((answer) => {
+                  return (
+                    <Answer
+                      answer={answer}
+                      refreshKey={refreshKey}
+                      setRefreshKey={setRefreshKey}
+                    />
+                  );
+                })
+              : answers.slice(0, 2).map((answer) => {
+                  return (
+                    <Answer
+                      answer={answer}
+                      refreshKey={refreshKey}
+                      setRefreshKey={setRefreshKey}
+                    />
+                  );
+                })}
+          </div>
+          {answers.length > 2 ? (
+            !showAllAnswers ? (
+              <button
+                class="a-full-or-collapse"
+                onClick={handleAnswersFullOrCollapseClick}
+              >
+                SEE MORE ANSWERS
+              </button>
+            ) : (
+              <button
+                class="a-full-or-collapse"
+                onClick={handleAnswersFullOrCollapseClick}
+              >
+                COLLAPSE ANSWERS
+              </button>
+            )
+          ) : null}
+        </div>
+      </div>
       {showAnswerForm ? (
         <form>
           <div>Answer:</div>

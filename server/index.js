@@ -8,7 +8,7 @@ const app = express();
 app.use(
   express.urlencoded({
     extended: true,
-  }),
+  })
 );
 
 app.use(express.static(path.join(__dirname, "../client/dist")));
@@ -76,6 +76,7 @@ app.get("/Questions", function (req, res) {
     if (err) {
       res.status(500).send(err);
     } else {
+      res.status(200);
       res.send(data);
     }
   });
@@ -86,8 +87,10 @@ app.post("/Question", function (req, res) {
 
   API.postQuestion(question, username, email, product_id, (err, data) => {
     if (err) {
+      res.status(400);
       res.send(err);
     } else {
+      res.status(201);
       res.send(data);
     }
   });
@@ -98,8 +101,10 @@ app.post("/Answer", function (req, res) {
 
   API.postAnswer(question_id, body, name, email, photos, (err, data) => {
     if (err) {
+      res.status(400);
       res.send(err);
     } else {
+      res.status(201);
       res.send(data);
     }
   });
@@ -110,8 +115,10 @@ app.put("/QuestionHelpful", function (req, res) {
 
   API.putQuestionHelpful(question_id, (err, data) => {
     if (err) {
+      res.status(400);
       res.send(err);
     } else {
+      res.status(204);
       res.send(data);
     }
   });
@@ -122,8 +129,10 @@ app.put("/AnswerHelpful", function (req, res) {
 
   API.putAnswerHelpful(answer_id, (err, data) => {
     if (err) {
+      res.status(400);
       res.send(err);
     } else {
+      res.status(204);
       res.send(data);
     }
   });
@@ -134,8 +143,10 @@ app.put("/QuestionReport", function (req, res) {
 
   API.putQuestionReport(question_id, (err, data) => {
     if (err) {
+      res.status(400);
       res.send(err);
     } else {
+      res.status(204);
       res.send(data);
     }
   });
@@ -146,8 +157,10 @@ app.put("/AnswerReport", function (req, res) {
 
   API.putAnswerReport(answer_id, (err, data) => {
     if (err) {
+      res.status(400);
       res.send(err);
     } else {
+      res.status(204);
       res.send(data);
     }
   });
