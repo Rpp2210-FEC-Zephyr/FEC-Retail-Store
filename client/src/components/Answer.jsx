@@ -44,11 +44,14 @@ const Answer = ({ answer, refreshKey, setRefreshKey }) => {
       <span>{`by ${answer.answerer_name}, ${formatDate(
         answer.date
       )}  |  Helpful? `}</span>
-      <span
-        onClick={handleAnswerHelpfulClick}
-      >{`Yes (${answer.helpfulness})`}</span>
+      <span class="underline" onClick={handleAnswerHelpfulClick}>
+        Yes
+      </span>
+      <span>{` (${answer.helpfulness})`}</span>
       <span>{"  |  "}</span>
-      <span onClick={handleAnswerReportClick}>Report</span>
+      <span class="underline" onClick={handleAnswerReportClick}>
+        Report
+      </span>
     </div>
   );
 };
