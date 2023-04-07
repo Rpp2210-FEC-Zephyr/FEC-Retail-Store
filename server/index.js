@@ -18,7 +18,7 @@ app.use(express.json());
 app.get("/Products", function (req, res) {
   API.getProducts((err, data) => {
     if (err) {
-      res.status(404).send(err);
+      res.status(500).send(err);
     } else {
       res.send(data);
     }
@@ -28,7 +28,7 @@ app.get("/ProductsID", function (req, res) {
   const { id } = req.query;
   API.getProductsID(id, (err, data) => {
     if (err) {
-      res.status(404).send(err);
+      res.status(500).send(err);
     } else {
       res.send(data);
     }
@@ -39,7 +39,7 @@ app.get("/Related", function (req, res) {
 
   API.getRelated(id, (err, data) => {
     if (err) {
-      res.status(404).send(err);
+      res.status(500).send(err);
     } else {
       res.send(data);
     }
@@ -50,7 +50,7 @@ app.get("/Styles", function (req, res) {
   const { id } = req.query;
   API.getStyles(id, (err, data) => {
     if (err) {
-      res.status(404).send(err);
+      res.status(500).send(err);
     } else {
       res.send(data);
     }
@@ -62,7 +62,7 @@ app.get("/Features", function (req, res) {
 
   API.getFeatures(id, (err, data) => {
     if (err) {
-      res.status(404).send(err);
+      res.status(500).send(err);
     } else {
       res.send(data);
     }
@@ -74,7 +74,7 @@ app.get("/Questions", function (req, res) {
 
   API.getQuestions(product_id, (err, data) => {
     if (err) {
-      res.status(404).send(err);
+      res.status(500).send(err);
     } else {
       res.send(data);
     }
