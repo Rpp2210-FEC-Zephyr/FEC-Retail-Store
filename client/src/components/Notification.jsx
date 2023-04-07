@@ -1,4 +1,5 @@
 const Selected = () => {
+  //React Refactorable
   const scrollBtn = document.querySelectorAll(".scroll");
 
   scrollBtn.forEach((scrol) => {
@@ -22,6 +23,19 @@ const Selected = () => {
     });
   });
 };
+
+const Scroller = (id) => {
+  //React Factorable
+  const checkbox = document.querySelector(`#radio${id}`); //Buttons
+  checkbox.checked = true; //Toggle Button
+  const Selected = document.getElementById(`scroll${id}`);
+  const vImage = document.querySelectorAll(".vslide");
+  vImage.forEach((div) => {
+    div.style.border = "0"; // or div.style.border = 'none';
+  });
+  Selected.style.border = "3px solid #40d3dc";
+};
+
 const Zoom = () => {
   const img = document.getElementById("Expanded");
 
@@ -87,10 +101,13 @@ const DetailExpander = (ProdOne, ProdTwo) => {
   var headerRow = document.createElement("tr");
   var currentProductHeader = document.createElement("th");
   var comparedProductHeader = document.createElement("th");
+  var middleHeader = document.createElement("th");
   var currentValueHeader = document.createElement("th");
   currentProductHeader.textContent = `${ProdOne.name}`;
   comparedProductHeader.textContent = `${ProdTwo.name}`;
+  middleHeader.textContent = "Name";
   headerRow.appendChild(currentProductHeader);
+  headerRow.appendChild(middleHeader);
   headerRow.appendChild(comparedProductHeader);
   headerRow.appendChild(currentValueHeader);
   table.appendChild(headerRow);
@@ -102,33 +119,43 @@ const DetailExpander = (ProdOne, ProdTwo) => {
   var valueCell = document.createElement("td");
   priceCell1.textContent = `$${ProdOne.default_price}`;
   priceCell2.textContent = `$${ProdTwo.default_price}`;
-  valueCell.setAttribute("rowspan", "2");
-
+  valueCell.textContent = "Price";
+  valueCell.setAttribute("rowspan", "1");
   priceRow.appendChild(priceCell1);
-  priceRow.appendChild(priceCell2);
   priceRow.appendChild(valueCell);
+  priceRow.appendChild(priceCell2);
+
   table.appendChild(priceRow);
 
   var featuresRow = document.createElement("tr");
+
   var featuresCell1 = document.createElement("td");
   var featuresCell2 = document.createElement("td");
+  var FeatCell = document.createElement("td");
   featuresCell1.textContent = `${ProdOne.features.map(
     (feat) => "ㅤㅤ" + feat.value,
   )}`;
   featuresCell2.textContent = `${ProdTwo.features.map(
     (feat) => "ㅤㅤ" + feat.value,
   )}`;
+  FeatCell.textContent = "Features";
+
   featuresRow.appendChild(featuresCell1);
+  featuresRow.appendChild(FeatCell);
   featuresRow.appendChild(featuresCell2);
   table.appendChild(featuresRow);
 
   var categoryRow = document.createElement("tr");
   var categoryCell1 = document.createElement("td");
   var categoryCell2 = document.createElement("td");
+  var catCell = document.createElement("td");
   categoryCell1.textContent = `${ProdOne.category}`;
   categoryCell2.textContent = `${ProdTwo.category}`;
+  catCell.textContent = "Category";
   categoryRow.appendChild(categoryCell1);
+  categoryRow.appendChild(catCell);
   categoryRow.appendChild(categoryCell2);
+
   table.appendChild(categoryRow);
 
   // Append the table to the .Popup div
@@ -202,7 +229,7 @@ const Notify = () => {
     });
   });
 };
-
+//Alert("success")
 const Alert = (id) => {
   const notifications = document.querySelector(".notifications");
 
@@ -259,4 +286,5 @@ module.exports.Alert = Alert;
 module.exports.ImageExpander = ImageExpander;
 module.exports.Selected = Selected;
 module.exports.Zoom = Zoom;
+module.exports.Scroller = Scroller;
 module.exports.DetailExpander = DetailExpander;

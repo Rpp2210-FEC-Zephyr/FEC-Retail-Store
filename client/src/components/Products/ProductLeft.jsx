@@ -11,7 +11,7 @@ import $ from "jquery";
 
 const Popup = require("../Notification.jsx");
 
-const ProductLeft = ({ main, show }) => {
+const ProductLeft = ({ main, show, Scroll }) => {
   const ImageExpander = () => {
     setTimeout(() => {
       // Your logic here
@@ -31,6 +31,21 @@ const ProductLeft = ({ main, show }) => {
   return (
     <div className="left">
       <div className="slider">
+        <div class="vSlider">
+          {show.length != 0
+            ? show.photos.map((photo, index) => (
+                <div
+                  id={`scroll${index + 1}`}
+                  onClick={() => {
+                    Scroll(index + 1);
+                  }}
+                  className="vslide"
+                >
+                  <img src={photo.url} alt="" className="ScrollIMG" />
+                </div>
+              ))
+            : null}
+        </div>
         <div className="slides">
           {show.length != 0
             ? show.photos.map((photo, index) => (
@@ -67,6 +82,10 @@ const ProductLeft = ({ main, show }) => {
           {show.length != 0
             ? show.photos.map((photo, index) => (
                 <label
+                  key={`${photo} ${index}`}
+                  onClick={() => {
+                    Scroll(index + 1);
+                  }}
                   htmlFor={`radio${index + 1}`}
                   className="manual-btn"
                 ></label>
