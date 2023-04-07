@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import $ from "jquery";
 const axios = require("axios");
-const formatDate = require("./formatDate.js");
+const formatDate = require("./formatDate.jsx");
 
 const Answer = ({ answer, refreshKey, setRefreshKey }) => {
   const handleAnswerHelpfulClick = () => {
@@ -34,20 +34,20 @@ const Answer = ({ answer, refreshKey, setRefreshKey }) => {
   };
 
   return (
-    <div>
-      <div>{`A: ${answer.body}`}</div>
-      <div>
+    <div class="a-individual-entry">
+      <div class="a-body">{answer.body}</div>
+      <div class="a-photos">
         {answer.photos.map((photoURL) => {
           return <img class="answer-photo" src={photoURL}></img>;
         })}
       </div>
       <span>{`by ${answer.answerer_name}, ${formatDate(
         answer.date
-      )} | Helpful? `}</span>
+      )}  |  Helpful? `}</span>
       <span
         onClick={handleAnswerHelpfulClick}
       >{`Yes (${answer.helpfulness})`}</span>
-      <span> | </span>
+      <span>{"  |  "}</span>
       <span onClick={handleAnswerReportClick}>Report</span>
     </div>
   );

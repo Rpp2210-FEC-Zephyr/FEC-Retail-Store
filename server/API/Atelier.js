@@ -1,7 +1,6 @@
 const axios = require("axios");
 const AtelierAPI = "https://app-hrsei-api.herokuapp.com/api/fec2/rpp2210/";
-const token =
-  "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";
+const token = "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";
 const Promise = require("bluebird");
 
 const getProducts = (callback) => {

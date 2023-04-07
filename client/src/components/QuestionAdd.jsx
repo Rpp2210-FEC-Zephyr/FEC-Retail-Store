@@ -36,37 +36,41 @@ const QuestionAdd = ({ main, refreshKey, setRefreshKey }) => {
   };
 
   return (
-    <div>
+    <div id="qa-q-add">
       {showQuestionForm ? null : (
-        <button onClick={handleAddQuestion}>Add Question +</button>
+        <button class="q-add" onClick={handleAddQuestion}>
+          ADD QUESTION +
+        </button>
       )}
       {showQuestionForm ? (
-        <form>
-          <div>Question:</div>
-          <input
-            value={question}
-            onChange={(e) => {
-              setQuestion(e.target.value);
-            }}
-          ></input>
-          <div>Username:</div>
-          <input
-            value={username}
-            onChange={(e) => {
-              setUsername(e.target.value);
-            }}
-          ></input>
-          <div>Email:</div>
-          <input
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-          ></input>
-          <button type="button" onClick={handleSubmitQuestion}>
-            Submit
-          </button>
-        </form>
+        <div id="q-add-form">
+          <form>
+            <div>Question:</div>
+            <input
+              value={question}
+              onChange={(e) => {
+                setQuestion(e.target.value);
+              }}
+            ></input>
+            <div>Username:</div>
+            <input
+              value={username}
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
+            ></input>
+            <div>Email:</div>
+            <input
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            ></input>
+            <button type="button" onClick={handleSubmitQuestion}>
+              Submit
+            </button>
+          </form>
+        </div>
       ) : null}
     </div>
   );
