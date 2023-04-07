@@ -6,6 +6,10 @@
 
 body {
   background: #e3e3e3;
+  font-family: "Font Awesome 5 Brands";
+}
+* {
+  font-family: "Font Awesome 5 Brands";
 }
 .productOverview {
   width: 100%;
@@ -298,14 +302,14 @@ body {
   margin-bottom: 20px;
 
   font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
+
   font-size: 50px;
 }
 
 .style {
   display: flex;
   font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
+
   font-size: 20px;
   margin-bottom: 4px;
 }
@@ -313,7 +317,6 @@ body {
 .styleSelect {
   margin-left: 20px;
   font-weight: 100;
-  font-family: inherit;
 }
 
 .selected {
@@ -370,7 +373,7 @@ body {
 
 .textBox > .text {
   font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
+
   color: #40d3dc;
 }
 
@@ -449,7 +452,7 @@ label svg {
 
 .desc {
   margin-left: 20px;
-  font-family: Arial, Helvetica, sans-serif;
+
   font-size: 15px;
 }
 .Bag {
@@ -458,7 +461,7 @@ label svg {
 .Add {
   background-color: #40d3dc;
   color: white;
-  font-family: Arial, Helvetica, sans-serif;
+
   font-size: 15px;
   width: 500px;
   height: 50px;
@@ -515,7 +518,7 @@ End of Simple CSS for class */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 :root {
   --dark: #34495e;
@@ -676,7 +679,7 @@ End of Simple CSS for class */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .nav {
   color: #40d3dc;
@@ -704,20 +707,21 @@ nav .logo {
   vertical-align: center;
   text-align: center;
   font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
+
   font-size: 100px;
 }
 
 .individual-review {
-  border: 1px rgb(112, 112, 112) solid;
+  border: 2px rgb(112, 112, 112) solid;
   padding: 20px;
   margin: 10px;
-  background-color: white;
+  background-color: #f2f2f2;
   border-radius: 10px;
-  width: 40vw;
+  width: 46.4vw;
 }
 .individual-review div {
   margin: 3px;
+  margin-bottom: 1.1vh;
 }
 
 .review-image {
@@ -794,8 +798,7 @@ nav .logo {
 .RatingsAndReviews {
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-left: 14vw;
   /* text-align: left; */
   /* min-height: 100vh; */
   /* margin-left: auto; */
@@ -821,6 +824,7 @@ nav .logo {
 }
 
 .review-buttons {
+  margin-right: 1vw;
   background-color: transparent;
   border: 2px solid black;
   color: black;
@@ -922,7 +926,6 @@ progress::-webkit-progress-bar {
   margin-top: 20px;
   font-size: 30px;
   font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
 }
 .RIMG {
   width: 100%;
@@ -932,10 +935,11 @@ progress::-webkit-progress-bar {
 
 /* Questions & Answers */
 #qa-main {
+  margin-bottom: 4vh;
   display: flex;
   justify-content: center;
   align-items: baseline;
-  margin-left: 20vw;
+  margin-left: 14vw;
   flex-direction: column;
   /* text-align: left; */
 }
@@ -955,16 +959,23 @@ progress::-webkit-progress-bar {
 }
 
 #qa-list {
-  width: 54vw;
+  width: 69vw;
   max-height: 80vh;
   overflow-y: auto;
   overflow-x: hidden;
 }
-
+.qa-card {
+  background-color: #f2f2f2;
+  border: 2px solid rgb(112, 112, 112);
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
 .q-card {
   display: flex;
-  width: 54vw;
-  padding-top: 20px;
+  width: 65vw;
+  margin-bottom: 1.5vh;
 }
 
 .q-Q {
@@ -1008,7 +1019,13 @@ progress::-webkit-progress-bar {
 }
 
 .a-individual-entry {
-  padding-top: 7px;
+  margin-bottom: 1vw;
+  border: 2px solid rgb(112, 112, 112);
+  border-radius: 5px;
+  padding: 1vw;
+}
+.a-individual-entry div {
+  margin-bottom: 1.1vh;
 }
 
 .a-body {
@@ -1023,7 +1040,7 @@ progress::-webkit-progress-bar {
   font-weight: bold;
   margin-top: 5px;
   border: none;
-  background-color: #e3e3e3;
+  background-color: #f2f2f2;
   text-align: left;
 }
 
