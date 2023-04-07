@@ -9,7 +9,7 @@ body {
 }
 .productOverview {
   width: 100%;
-  height: 88vh;
+  height: 740px;
   color: #303030;
   display: flex;
   border-radius: 0px;
@@ -68,8 +68,8 @@ body {
   transform: scale(1);
   transform-origin: center center;
   position: absolute;
-  top: 22%;
-  left: 24%;
+  top: 27%;
+  left: 21%;
   width: 750px;
   height: 490px;
 }
@@ -80,26 +80,6 @@ body {
   }
 }
 
-.vSlider {
-  opacity: 0.25;
-  transition: opacity 1s ease-out;
-  position: absolute;
-  z-index: 2;
-  margin-top: 5vh;
-  background-color: hidden;
-  height: 41vh;
-  width: 11vh;
-  margin-left: 10px;
-  overflow-y: scroll;
-}
-.vSlider:hover {
-  opacity: 1;
-  transition: opacity 0.5s ease-in;
-}
-.ScrollIMG {
-  width: 100%;
-  height: 8vh;
-}
 .slider {
   width: 95%;
   height: 500px;
@@ -930,132 +910,17 @@ progress::-webkit-progress-bar {
   border-radius: 8px;
 }
 
-/* Questions & Answers */
-#qa-main {
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-  margin-left: 20vw;
-  flex-direction: column;
-  /* text-align: left; */
-}
-
-#qa-header {
-  width: 54vw;
-  padding-top: 15px;
-  padding-bottom: 15px;
-}
-
-#qa-search-bar {
-  font-size: 2em;
-  width: 54vw;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding-left: 15px;
-}
-
-#qa-list {
-  width: 54vw;
-  max-height: 80vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.q-card {
-  display: flex;
-  width: 54vw;
-  padding-top: 20px;
-}
-
-.q-Q {
-  font-size: 26px;
-  font-weight: bolder;
-  flex-shrink: 0;
-  padding-right: 10px;
-}
-
-.q-body {
-  font-size: 26px;
-  font-weight: bolder;
-  flex-grow: 1;
-  height: auto;
-}
-
-.q-help-and-report {
-  font-size: 18px;
-  font-weight: normal;
-  text-align: right;
-  flex-shrink: 0;
-}
-
-.a-card {
-  display: flex;
-  width: 54vw;
-}
-
-.a-A {
-  font-size: 26px;
-  font-weight: bolder;
-  flex-shrink: 0;
-  padding-right: 10px;
-}
-
-.a-list {
-  max-height: 25vh;
-  flex-grow: 1;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.a-individual-entry {
-  padding-top: 7px;
-}
-
-.a-body {
-  font-size: 18px;
-  font-weight: normal;
-  width: 30vw;
-  height: auto;
-}
-
-.a-full-or-collapse {
-  font-size: 14px;
-  font-weight: bold;
-  margin-top: 5px;
-  border: none;
-  background-color: #e3e3e3;
-  text-align: left;
-}
-
-.qa-more-questions {
-  border: 1px solid black;
-  font-size: 26px;
-  font-weight: bolder;
-  padding: 20px 20px 20px 20px;
-  border-radius: 0px;
-  text-align: center;
-  background-color: #e3e3e3;
-  margin-top: 15px;
-}
-
-.q-add {
-  border: 1px solid black;
-  font-size: 26px;
-  font-weight: bolder;
-  padding: 20px 20px 20px 20px;
-  border-radius: 0px;
-  text-align: center;
-  background-color: #e3e3e3;
-  margin-top: 15px;
-}
-
-#qa-q-add {
-  width: 54vw;
-  padding-left: 15px;
+.qa-card {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .answer-photo {
   width: 150px;
+}
+
+#qa-search-bar {
+  width: 300px;
 }
 
 .EmptyOutfit {
@@ -1076,7 +941,4 @@ table,
 th,
 td {
   border: 1px solid;
-}
-.flex {
-  display: flex;
 }
