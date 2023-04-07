@@ -77,6 +77,7 @@ const QuestionsList = ({ main, searchTerm, refreshKey, setRefreshKey }) => {
         {renderedQuestions.map((question) => {
           return (
             <Question
+              prod_name={main.name}
               question={question}
               refreshKey={refreshKey}
               setRefreshKey={setRefreshKey}
