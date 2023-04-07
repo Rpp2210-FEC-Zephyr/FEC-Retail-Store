@@ -1,6 +1,6 @@
 const axios = require("axios");
 const AtelierAPI = "https://app-hrsei-api.herokuapp.com/api/fec2/rpp2210/";
-const token = "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";
+const token = "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";
 const Promise = require("bluebird");
 
 const getProducts = (callback) => {
@@ -239,9 +239,16 @@ const putAnswerReport = (answer_id, callback) => {
 const getReviews = (id, sort, callback) => {
   const options = {
     method: "GET",
-    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews?product_id=${id}&sort=${sort}`,
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews`,
+    // url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews?product_id=${id}&sort=${sort}`,
     headers: {
       Authorization: `${token}`,
+    },
+    params: {
+      product_id: id,
+      page: 1,
+      count: 100000,
+      sort: sort,
     },
   };
   axios(options).then((reviews) => {

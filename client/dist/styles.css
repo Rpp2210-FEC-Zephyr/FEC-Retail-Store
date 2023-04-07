@@ -694,6 +694,7 @@ nav .logo {
   margin: 10px;
   background-color: white;
   border-radius: 10px;
+  width: 40vw;
 }
 .individual-review div {
   margin: 3px;
@@ -820,6 +821,42 @@ progress::-webkit-progress-value {
 progress::-webkit-progress-bar {
   background: rgb(202, 202, 202);
 }
+
+.form-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-popup-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.form-popup-inner {
+  background-color: #fff;
+}
+
+.form-popup-container button {
+  margin-top: 10px;
+}
+
+.buttons-container {
+  display: flex;
+  margin-right: 10px;
+  padding-right: 10px;
+  justify-content: center;
+}
+
+/* ////////////// */
 
 .Related {
   display: flex;

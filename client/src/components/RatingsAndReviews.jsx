@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import $ from "jquery";
 
 import IndividualReview from "./IndividualReviews.jsx";
-import exampleData from "./../exampleReviewsData.js"; // used as
+// import exampleData from "./../exampleReviewsData.js"; // used as
 import SortBy from "./SortBy.jsx";
 import WriteAReview from "./WriteAReview.jsx";
 import RatingsOverview from "./RatingsOverview.jsx";
@@ -15,7 +15,13 @@ const RatingsAndReviews = (props) => {
   const [sortby, setSortBy] = useState("relevant");
   const [reviewMeta, setReviewMeta] = useState({});
   const [helpful, setHelpful] = useState(true);
-  const [filtered, setFiltered] = useState([]);
+  const [filtered, setFiltered] = useState(false);
+  const [clickedFilter, setClickedFilter] = useState([]);
+  const [filteredReviews, setFilteredReviews] = useState([]);
+  // const [currentSelectionReviews, setcurrentSelectionReviews] = useEffect(0);
+  // const [currentSelectionReviews, setcurrentSelectionReviews] = useState(
+  //   reviews.slice(0, shownReviews)
+  // );
 
   const getReviews = (id, sortby) => {
     $.ajax({
@@ -29,6 +35,7 @@ const RatingsAndReviews = (props) => {
         console.log("Data reviewed in the client side!", data.results);
         setReviews(data.results);
         setReviewsCount(data.results.length);
+        setcurrentSelectionReviews(data.results.slice(0, shownReviews));
       },
     });
   };
@@ -52,10 +59,22 @@ const RatingsAndReviews = (props) => {
       console.log("RATING MAIN ID", props.main.id);
       getReviews(props.main.id, sortby);
       getReviewData(props.main.id);
+      console.log("filteredReviews", filteredReviews);
+      if (clickedFilter.length > 0) {
+        const filtered = reviews.filter((review) =>
+          clickedFilter.includes(review.rating.toString())
+        ); // [{rating : 4, name: lala}, {rating: 4, name: fafa}]
+        setFilteredReviews(filtered);
+      } else {
+        setFilteredReviews([]);
+        setFiltered(false);
+      }
+      console.log("current selection", clickedFilter);
     }
-  }, [props.main, helpful]);
+  }, [props.main, helpful, clickedFilter]);
 
   var currentSelectionReviews = reviews.slice(0, shownReviews);
+  var currentFilteredReviews = filteredReviews.slice(0, shownReviews);
 
   const handleMoreReviews = () => {
     setShownReviews(shownReviews + 2);
@@ -67,7 +86,14 @@ const RatingsAndReviews = (props) => {
         <div class="overview-container">
           <h1 class="rating-title">Rating And Reviews!</h1>
 
-          {reviewMeta.product_id ? <RatingsOverview obj={reviewMeta} /> : null}
+          {reviewMeta.product_id ? (
+            <RatingsOverview
+              obj={reviewMeta}
+              setClickedFilter={setClickedFilter}
+              setFiltered={setFiltered}
+              clickedFilter={clickedFilter}
+            />
+          ) : null}
         </div>
         <div class="reviews-container">
           <h4 class="individual-review">
@@ -78,26 +104,37 @@ const RatingsAndReviews = (props) => {
               resort={getReviews}
             />
           </h4>
-          {currentSelectionReviews.map((review) => {
-            return (
-              <IndividualReview
-                setHelpful={setHelpful}
-                helpful={helpful}
-                obj={review}
-              />
-            );
-          })}
-
-          {reviewsCount > 2 ? (
-            shownReviews > reviewsCount ? null : (
-              <div>
-                <button class="review-buttons" onClick={handleMoreReviews}>
-                  MORE REVIEWS
-                </button>
-              </div>
-            )
-          ) : null}
-          <WriteAReview />
+          {filtered
+            ? currentFilteredReviews.map((review) => {
+                return (
+                  <IndividualReview
+                    setHelpful={setHelpful}
+                    helpful={helpful}
+                    obj={review}
+                  />
+                );
+              })
+            : currentSelectionReviews.map((review) => {
+                return (
+                  <IndividualReview
+                    setHelpful={setHelpful}
+                    helpful={helpful}
+                    obj={review}
+                  />
+                );
+              })}
+          <div class="buttons-container">
+            {reviewsCount > 2 ? (
+              shownReviews > reviewsCount ? null : (
+                <div>
+                  <button class="review-buttons" onClick={handleMoreReviews}>
+                    MORE REVIEWS
+                  </button>
+                </div>
+              )
+            ) : null}
+            <WriteAReview />
+          </div>
         </div>
       </div>
     </div>

@@ -5,6 +5,9 @@ const RatingsOverview = (props) => {
   const [averageRating, setAverageRating] = useState(null);
   const [percentRecommended, setpercentRecommended] = useState(0);
   const [totalRatingCount, setTotalRatingCount] = useState(0);
+  const [currentShownReviews, setCurrentShownReviews] = useState(
+    Object.keys(props.obj.ratings)
+  );
 
   // percentage recommended calculation
   const settingPercentage = () => {
@@ -37,6 +40,17 @@ const RatingsOverview = (props) => {
 
   const handleClickedProgress = (ele) => {
     console.log("Clicked on rating of: ", ele);
+    const newClickedFilter = [...props.clickedFilter];
+    const ratingIndex = newClickedFilter.indexOf(ele);
+
+    if (ratingIndex > -1) {
+      newClickedFilter.splice(ratingIndex, 1);
+    } else {
+      newClickedFilter.push(ele);
+    }
+
+    props.setClickedFilter(newClickedFilter);
+    props.setFiltered(true);
   };
 
   return (
