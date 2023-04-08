@@ -5,6 +5,7 @@
 /* Product Overview CSS and Other RoutesCSS */
 
 body {
+  overflow-x: hidden;
   background: #e3e3e3;
   font-family: "Font Awesome 5 Brands";
 }
@@ -856,21 +857,40 @@ progress::-webkit-progress-bar {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-y: scroll;
+  z-index: 10;
 }
 
 .form-popup-container {
+  height: 89vh;
   background-color: #fff;
-  padding: 20px;
+  padding: 50px;
+  margin: 10px;
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  justify-content: center;
 }
 
 .form-popup-inner {
+  height: 80vh;
+  overflow-y: scroll;
   background-color: #fff;
+  height: 77vh;
+}
+
+.write-review-label div {
+  font-size: 13px;
+  color: grey;
 }
 
 .form-popup-container button {
   margin-top: 10px;
+}
+
+.fieldset {
+  padding: 5px;
+  height: 15vh;
+  margin-bottom: 2vh;
 }
 
 .buttons-container {

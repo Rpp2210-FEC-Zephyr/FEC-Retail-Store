@@ -6,6 +6,7 @@ import $ from "jquery";
 const IndividualReview = (props) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [clickedHelp, setclickedHelp] = useState(true);
+  const [clickedDots, setClickedDots] = useState(false);
 
   const updateReviewHelpful = (reviewId) => {
     $.ajax({
@@ -21,6 +22,25 @@ const IndividualReview = (props) => {
     });
   };
 
+  const handleReport = (reviewId) => {
+    $.ajax({
+      url: `reviews/${reviewId}/report`,
+      method: "PUT",
+      success: (data) => {
+        console.log("Successfully Reported!!!", data);
+        props.change(!props.origChange);
+      },
+      error: (err) => {
+        console.log("Getting an Error reporting", err);
+      },
+    });
+  };
+
+  const handleExpandSummary = () => {
+    console.log("expanding summary");
+    setClickedDots(!clickedDots);
+  };
+
   return (
     <div class="individual-review" id={props.id} key={props.id}>
       <RatingSystem obj={props.obj} review={true} />
@@ -32,7 +52,14 @@ const IndividualReview = (props) => {
         </h3>
       </div>
       {props.obj.body.length > 250 ? (
-        <div>{props.obj.body.slice(0, 250) + "..."}</div>
+        clickedDots ? (
+          <div>{props.obj.body}</div>
+        ) : (
+          <>
+            {props.obj.body.slice(0, 250)}{" "}
+            <span onClick={handleExpandSummary}>Show More</span>
+          </>
+        )
       ) : (
         <div>{props.obj.body.slice(0, 250)}</div>
       )}
@@ -46,7 +73,14 @@ const IndividualReview = (props) => {
         >
           Yes
         </span>{" "}
-        ({props.obj.helpfulness}) | Report
+        ({props.obj.helpfulness}) |{" "}
+        <span
+          onClick={() => {
+            handleReport(props.obj.review_id);
+          }}
+        >
+          Report
+        </span>
       </div>
       {props.obj.recommend ? (
         <div>
