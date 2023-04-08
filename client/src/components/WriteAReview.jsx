@@ -132,6 +132,7 @@ const WriteAReview = (props) => {
               <form
                 onSubmit={(e) => {
                   handleSubmitReview(e);
+                  setShowFormPopup(false);
                 }}
               >
                 <label className="write-review-label">
@@ -351,11 +352,7 @@ const WriteAReview = (props) => {
                 </label>
                 <br />
                 <div class="buttons-container">
-                  <button
-                    onClick={() => setShowFormPopup(false)}
-                    class="review-buttons"
-                    type="submit"
-                  >
+                  <button class="review-buttons" type="submit">
                     <h4>Submit</h4>
                   </button>
                   <button
