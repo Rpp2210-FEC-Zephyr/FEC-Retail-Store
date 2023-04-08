@@ -128,7 +128,7 @@ const postQuestion = (body, name, email, product_id, callback) => {
         headers: {
           Authorization: `${token}`,
         },
-      }
+      },
     )
     .then((data) => {
       callback(null, data.data);
@@ -152,7 +152,7 @@ const postAnswer = (question_id, body, name, email, photos, callback) => {
         headers: {
           Authorization: `${token}`,
         },
-      }
+      },
     )
     .then((data) => {
       callback(null, data.data);
@@ -171,7 +171,7 @@ const putQuestionHelpful = (question_id, callback) => {
         headers: {
           Authorization: `${token}`,
         },
-      }
+      },
     )
     .then((data) => {
       callback(null, data.data);
@@ -190,7 +190,7 @@ const putAnswerHelpful = (answer_id, callback) => {
         headers: {
           Authorization: `${token}`,
         },
-      }
+      },
     )
     .then((data) => {
       callback(null, data.data);
@@ -209,7 +209,7 @@ const putQuestionReport = (question_id, callback) => {
         headers: {
           Authorization: `${token}`,
         },
-      }
+      },
     )
     .then((data) => {
       callback(null, data.data);
@@ -228,7 +228,7 @@ const putAnswerReport = (answer_id, callback) => {
         headers: {
           Authorization: `${token}`,
         },
-      }
+      },
     )
     .then((data) => {
       callback(null, data.data);
@@ -288,6 +288,61 @@ const updateHelpfulness = (id, callback) => {
   });
 };
 
+const reportReview = (id, callback) => {
+  const options = {
+    method: "PUT",
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/${id}/report`,
+    data: {},
+    headers: {
+      Authorization: `${token}`,
+    },
+  };
+  axios(options).then((data) => {
+    console.log("Successfully reported", data);
+    callback(null, data.data);
+  });
+};
+
+const postReview = (
+  product_id,
+  rating,
+  summary,
+  body,
+  recommend,
+  nickname,
+  email,
+  photos,
+  characteristics,
+  callback,
+) => {
+  axios
+    .post(
+      "https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews",
+      {
+        product_id: product_id,
+        rating: rating,
+        summary: summary,
+        body: body,
+        recommend: recommend,
+        name: nickname,
+        email: email,
+        photos: photos,
+        characteristics: characteristics,
+      },
+      {
+        headers: {
+          Authorization: `${token}`,
+        },
+      },
+    )
+    .then((data) => {
+      callback(null, data.data);
+    })
+    .catch((err) => {
+      callback(err);
+    });
+};
+
 module.exports.getProducts = getProducts;
 module.exports.getStyles = getStyles;
 module.exports.getReviews = getReviews;
@@ -303,3 +358,5 @@ module.exports.putQuestionReport = putQuestionReport;
 module.exports.putAnswerReport = putAnswerReport;
 module.exports.getReviewData = getReviewData;
 module.exports.updateHelpfulness = updateHelpfulness;
+module.exports.reportReview = reportReview;
+module.exports.postReview = postReview;
