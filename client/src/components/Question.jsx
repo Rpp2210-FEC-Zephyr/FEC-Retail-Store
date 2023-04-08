@@ -5,7 +5,7 @@ import Answer from "./Answer.jsx";
 const axios = require("axios");
 const formatDate = require("./formatDate.jsx");
 
-const Question = ({ question, refreshKey, setRefreshKey }) => {
+const Question = ({ prod_name, question, refreshKey, setRefreshKey }) => {
   const [answers, setAnswers] = useState([]);
   const [showAnswerForm, setAnswerShowForm] = useState(false);
   const [answer, setAnswer] = useState("");
@@ -16,6 +16,10 @@ const Question = ({ question, refreshKey, setRefreshKey }) => {
 
   const handleAddAnswer = () => {
     setAnswerShowForm(true);
+  };
+
+  const handleCloseAnswer = () => {
+    setAnswerShowForm(false);
   };
 
   const handleSubmitAnswer = (e) => {
@@ -66,20 +70,6 @@ const Question = ({ question, refreshKey, setRefreshKey }) => {
     setShowAllAnswers(!showAllAnswers);
   };
 
-  // const handleQuestionReportClick = () => {
-  //   axios
-  //     .put("/QuestionReport", {
-  //       question_id: question.question_id,
-  //     })
-  //     .then((data) => {
-  //       console.log(data.data);
-  //       setRefreshKey(!refreshKey);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-
   useEffect(() => {
     var helpfulness = [];
     for (var key in question.answers) {
@@ -102,8 +92,6 @@ const Question = ({ question, refreshKey, setRefreshKey }) => {
     setAnswers(sortedAnswers);
   }, [question]);
 
-  //make answers load more and name the button to load more answers "See more answers"
-
   return (
     <div class="qa-card">
       <div class="q-card">
@@ -111,11 +99,14 @@ const Question = ({ question, refreshKey, setRefreshKey }) => {
         <div class="q-body">{question.question_body}</div>
         <div class="q-help-and-report">
           <span>Helpful? </span>
-          <span
-            onClick={handleQuestionHelpfulClick}
-          >{`Yes (${question.question_helpfulness})`}</span>
+          <span class="underline" onClick={handleQuestionHelpfulClick}>
+            Yes
+          </span>
+          <span>{` (${question.question_helpfulness})`}</span>
           <span>{"  |  "}</span>
-          <span onClick={handleAddAnswer}>Add Answer</span>
+          <span class="underline" onClick={handleAddAnswer}>
+            Add Answer
+          </span>
         </div>
       </div>
       <div class="a-card">
@@ -162,40 +153,61 @@ const Question = ({ question, refreshKey, setRefreshKey }) => {
         </div>
       </div>
       {showAnswerForm ? (
-        <form>
-          <div>Answer:</div>
-          <input
-            value={answer}
-            onChange={(e) => {
-              setAnswer(e.target.value);
-            }}
-          ></input>
-          <div>Username:</div>
-          <input
-            value={username}
-            onChange={(e) => {
-              setUsername(e.target.value);
-            }}
-          ></input>
-          <div>Email:</div>
-          <input
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-          ></input>
-          <div>Photos:</div>
-          <textarea
-            rows="5"
-            value={photos}
-            onChange={(e) => {
-              setPhotos(e.target.value);
-            }}
-          ></textarea>
-          <button type="button" onClick={handleSubmitAnswer}>
-            Submit
-          </button>
-        </form>
+        <div id="a-add-form-overlay" onClick={handleCloseAnswer}>
+          <div id="a-add-form-container">
+            <form>
+              <h1 id="a-form-title">Submit your Answer</h1>
+              <h2 id="a-form-subtitle">{`${prod_name}: ${question.question_body}`}</h2>
+              <div>Your answer</div>
+              <textarea
+                value={answer}
+                onChange={(e) => {
+                  setAnswer(e.target.value);
+                }}
+                maxlength="1000"
+                rows="5"
+              ></textarea>
+              <div>What is your nickname</div>
+              <input
+                value={username}
+                onChange={(e) => {
+                  setUsername(e.target.value);
+                }}
+                placeholder="Example: jack543!"
+                maxlength="60"
+              ></input>
+              <div id="a-username-privacy-note">
+                For privacy reasons, do not use your full name or email address
+              </div>
+              <div>Your email</div>
+              <input
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+                placeholder="Example: jack@email.com"
+                maxlength="60"
+              ></input>
+              <div id="a-email-privacy-note">
+                For authentication reasons, you will not be emailed
+              </div>
+              <div>Upload your photos</div>
+              <div>
+                <textarea
+                  rows="5"
+                  value={photos}
+                  onChange={(e) => {
+                    setPhotos(e.target.value);
+                  }}
+                  placeholder="Paste image links here"
+                ></textarea>
+              </div>
+              <button type="button" onClick={handleSubmitAnswer}>
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
       ) : null}
     </div>
   );

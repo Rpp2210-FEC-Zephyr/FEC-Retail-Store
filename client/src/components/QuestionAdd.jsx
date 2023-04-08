@@ -13,6 +13,10 @@ const QuestionAdd = ({ main, refreshKey, setRefreshKey }) => {
     setQuestionShowForm(true);
   };
 
+  const handleCloseQuestion = () => {
+    setQuestionShowForm(false);
+  };
+
   const handleSubmitQuestion = (e) => {
     e.preventDefault();
     setQuestionShowForm(false);
@@ -37,39 +41,54 @@ const QuestionAdd = ({ main, refreshKey, setRefreshKey }) => {
 
   return (
     <div id="qa-q-add">
-      {showQuestionForm ? null : (
-        <button class="q-add" onClick={handleAddQuestion}>
-          ADD QUESTION +
-        </button>
-      )}
+      <button class="q-add" onClick={handleAddQuestion}>
+        ADD QUESTION +
+      </button>
       {showQuestionForm ? (
-        <div id="q-add-form">
-          <form>
-            <div>Question:</div>
-            <input
-              value={question}
-              onChange={(e) => {
-                setQuestion(e.target.value);
-              }}
-            ></input>
-            <div>Username:</div>
-            <input
-              value={username}
-              onChange={(e) => {
-                setUsername(e.target.value);
-              }}
-            ></input>
-            <div>Email:</div>
-            <input
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            ></input>
-            <button type="button" onClick={handleSubmitQuestion}>
-              Submit
-            </button>
-          </form>
+        <div id="q-add-form-overlay" onClick={handleCloseQuestion}>
+          <div id="q-add-form-container">
+            <form>
+              <h1 id="q-form-title">Ask your Question</h1>
+              <h2 id="q-form-subtitle">{`About the ${main.name}`}</h2>
+              <div>Your question</div>
+              <textarea
+                value={question}
+                onChange={(e) => {
+                  setQuestion(e.target.value);
+                }}
+                placeholder="What do you want to know about this product?"
+                maxlength="1000"
+                rows="5"
+              ></textarea>
+              <div>What is your nickname</div>
+              <input
+                value={username}
+                onChange={(e) => {
+                  setUsername(e.target.value);
+                }}
+                placeholder="Example: jackson11!"
+                maxlength="60"
+              ></input>
+              <div id="q-username-privacy-note">
+                For privacy reasons, do not use your full name or email address
+              </div>
+              <div>Your email</div>
+              <input
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+                placeholder="Please enter your email"
+                maxlength="60"
+              ></input>
+              <div id="q-email-privacy-note">
+                For authentication reasons, you will not be emailed
+              </div>
+              <button type="button" onClick={handleSubmitQuestion}>
+                Submit
+              </button>
+            </form>
+          </div>
         </div>
       ) : null}
     </div>
