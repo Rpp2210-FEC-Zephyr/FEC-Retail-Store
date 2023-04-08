@@ -153,7 +153,10 @@ const Question = ({ prod_name, question, refreshKey, setRefreshKey }) => {
         </div>
       </div>
       {showAnswerForm ? (
-        <div id="a-add-form-overlay" onClick={handleCloseAnswer}>
+        <div id="a-add-form-overlay">
+          <span class="qa-form-close-x" onClick={handleCloseAnswer}>
+            &times;
+          </span>
           <div id="a-add-form-container">
             <form>
               <h1 id="a-form-title">Submit your Answer</h1>

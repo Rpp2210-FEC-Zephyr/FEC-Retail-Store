@@ -45,7 +45,10 @@ const QuestionAdd = ({ main, refreshKey, setRefreshKey }) => {
         ADD QUESTION +
       </button>
       {showQuestionForm ? (
-        <div id="q-add-form-overlay" onClick={handleCloseQuestion}>
+        <div id="q-add-form-overlay">
+          <span class="qa-form-close-x" onClick={handleCloseQuestion}>
+            &times;
+          </span>
           <div id="q-add-form-container">
             <form>
               <h1 id="q-form-title">Ask your Question</h1>

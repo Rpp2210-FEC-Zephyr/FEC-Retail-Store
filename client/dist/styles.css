@@ -1145,6 +1145,17 @@ progress::-webkit-progress-bar {
   margin-bottom: 10px;
 }
 
+.qa-form-close-x {
+  position: fixed;
+  top: 0;
+  right: 10px;
+  font-size: 40px;
+  font-weight: bolder;
+  color: #fff;
+  cursor: pointer;
+  z-index: 100;
+}
+
 .answer-photo {
   width: 150px;
 }
