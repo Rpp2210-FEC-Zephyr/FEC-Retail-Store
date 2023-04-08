@@ -231,19 +231,19 @@ const WriteAReview = (props) => {
                     <h3>Length</h3>
                   </legend>
                   <input type="radio" id="length1" name="" value="1" />
-                  <label for="length1">Perfect</label>
+                  <label for="length1">Runs Short</label>
                   <br />
                   <input type="radio" id="length2" name="" value="2" />
-                  <label for="length2">Perfect</label>
+                  <label for="length2">Runs slightly short</label>
                   <br />
                   <input type="radio" id="length3" name="" value="3" />
                   <label for="length3">Perfect</label>
                   <br />
                   <input type="radio" id="length4" name="" value="4" />
-                  <label for="length4">Perfect</label>
+                  <label for="length4">Runs slightly long</label>
                   <br />
                   <input type="radio" id="length5" name="" value="5" />
-                  <label for="length5">Perfect</label>
+                  <label for="length5">Runs long</label>
                   <br />
                 </fieldset>
                 <fieldset class="fieldset">

@@ -830,7 +830,7 @@ progress::-webkit-progress-bar {
 }
 
 .form-popup-overlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   height: 100%;
@@ -840,6 +840,7 @@ progress::-webkit-progress-bar {
   justify-content: center;
   align-items: center;
   overflow-y: scroll;
+  z-index: 10;
 }
 
 .form-popup-container {

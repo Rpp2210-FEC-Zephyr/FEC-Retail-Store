@@ -97,7 +97,7 @@ const App = () => {
 
   return (
     <div>
-      {/* <nav>
+      <nav>
         <div class="logo">
           Zephyr Store
           <IconContext.Provider value={{ color: "white", size: "40px" }}>
@@ -107,8 +107,8 @@ const App = () => {
       </nav>
       <ProductOverview main={main} Outfits={Outfits} />
       <RelatedItems main={main} URL={URL} DetailModal={DetailModal} />
-      <YourOutfits outfit={outfit} URL={URL} Toggle={Toggle} /> */}
-      {/* <QuestionsAndAnswers main={main} /> */}
+      <YourOutfits outfit={outfit} URL={URL} Toggle={Toggle} />
+      <QuestionsAndAnswers main={main} />
       <RatingsAndReviews main={main} />
     </div>
   );
