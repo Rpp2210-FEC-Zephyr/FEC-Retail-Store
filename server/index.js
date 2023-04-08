@@ -202,6 +202,52 @@ app.put("/reviews/:reviewId/helpful", function (req, res) {
   });
 });
 
+app.put("/reviews/:reviewID/report", function (req, res) {
+  var id = req.params.reviewID;
+  API.reportReview(id, (err, data) => {
+    if (err) {
+      console.log("Err!!!", err);
+    } else {
+      res.send(data);
+    }
+  });
+});
+
+app.post("/reviews", function (req, res) {
+  const {
+    product_id,
+    rating,
+    summary,
+    body,
+    recommend,
+    nickname,
+    email,
+    photos,
+    characteristics,
+  } = req.body;
+
+  API.postReview(
+    product_id,
+    rating,
+    summary,
+    body,
+    recommend,
+    nickname,
+    email,
+    photos,
+    characteristics,
+    (err, data) => {
+      if (err) {
+        res.status(400);
+        res.send(err);
+      } else {
+        res.status(201);
+        res.send(data);
+      }
+    }
+  );
+});
+
 var port = 3000;
 app.listen(port, () => {
   console.log("Server listening on port ", port);

@@ -6,6 +6,10 @@
 
 body {
   background: #e3e3e3;
+  font-family: "Font Awesome 5 Brands";
+}
+* {
+  font-family: "Font Awesome 5 Brands";
 }
 .productOverview {
   width: 100%;
@@ -278,14 +282,14 @@ body {
   margin-bottom: 20px;
 
   font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
+
   font-size: 50px;
 }
 
 .style {
   display: flex;
   font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
+
   font-size: 20px;
   margin-bottom: 4px;
 }
@@ -293,7 +297,6 @@ body {
 .styleSelect {
   margin-left: 20px;
   font-weight: 100;
-  font-family: inherit;
 }
 
 .selected {
@@ -350,7 +353,7 @@ body {
 
 .textBox > .text {
   font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
+
   color: #40d3dc;
 }
 
@@ -429,7 +432,7 @@ label svg {
 
 .desc {
   margin-left: 20px;
-  font-family: Arial, Helvetica, sans-serif;
+
   font-size: 15px;
 }
 .Bag {
@@ -438,7 +441,7 @@ label svg {
 .Add {
   background-color: #40d3dc;
   color: white;
-  font-family: Arial, Helvetica, sans-serif;
+
   font-size: 15px;
   width: 500px;
   height: 50px;
@@ -495,7 +498,7 @@ End of Simple CSS for class */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 :root {
   --dark: #34495e;
@@ -656,7 +659,7 @@ End of Simple CSS for class */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .nav {
   color: #40d3dc;
@@ -684,20 +687,21 @@ nav .logo {
   vertical-align: center;
   text-align: center;
   font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
+
   font-size: 100px;
 }
 
 .individual-review {
-  border: 1px rgb(112, 112, 112) solid;
+  border: 2px rgb(112, 112, 112) solid;
   padding: 20px;
   margin: 10px;
-  background-color: white;
+  background-color: #f2f2f2;
   border-radius: 10px;
-  width: 40vw;
+  width: 46.4vw;
 }
 .individual-review div {
   margin: 3px;
+  margin-bottom: 1.1vh;
 }
 
 .review-image {
@@ -742,6 +746,10 @@ nav .logo {
   font-weight: bold;
 }
 
+.starClass {
+  font-size: 25px;
+}
+
 .rating-star {
   display: flex;
   font-size: 25px;
@@ -774,8 +782,7 @@ nav .logo {
 .RatingsAndReviews {
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-left: 14vw;
   /* text-align: left; */
   /* min-height: 100vh; */
   /* margin-left: auto; */
@@ -801,11 +808,11 @@ nav .logo {
 }
 
 .review-buttons {
+  margin-right: 1vw;
   background-color: transparent;
   border: 2px solid black;
   color: black;
   padding: 10px 20px;
-  font-size: 16px;
   cursor: pointer;
 }
 
@@ -823,7 +830,7 @@ progress::-webkit-progress-bar {
 }
 
 .form-popup-overlay {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   height: 100%;
@@ -832,21 +839,37 @@ progress::-webkit-progress-bar {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-y: scroll;
 }
 
 .form-popup-container {
+  height: 89vh;
   background-color: #fff;
-  padding: 20px;
+  padding: 50px;
+  margin: 10px;
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  justify-content: center;
 }
 
 .form-popup-inner {
+  height: 80vh;
+  overflow-y: scroll;
   background-color: #fff;
+  height: 77vh;
 }
 
 .form-popup-container button {
   margin-top: 10px;
+}
+
+.write-review-label {
+  padding: 1px;
+}
+
+.write-review-label div {
+  font-size: 13px;
+  color: grey;
 }
 
 .buttons-container {
@@ -902,7 +925,6 @@ progress::-webkit-progress-bar {
   margin-top: 20px;
   font-size: 30px;
   font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
 }
 .RIMG {
   width: 100%;
@@ -910,9 +932,142 @@ progress::-webkit-progress-bar {
   border-radius: 8px;
 }
 
+/* Questions & Answers */
+#qa-main {
+  margin-bottom: 4vh;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  margin-left: 14vw;
+  flex-direction: column;
+  /* text-align: left; */
+}
+
+#qa-header {
+  width: 54vw;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+#qa-search-bar {
+  font-size: 2em;
+  width: 54vw;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+}
+
+#qa-list {
+  width: 69vw;
+  max-height: 80vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 .qa-card {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  background-color: #f2f2f2;
+  border: 2px solid rgb(112, 112, 112);
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.q-card {
+  display: flex;
+  width: 65vw;
+  margin-bottom: 1.5vh;
+}
+
+.q-Q {
+  font-size: 26px;
+  font-weight: bolder;
+  flex-shrink: 0;
+  padding-right: 10px;
+}
+
+.q-body {
+  font-size: 26px;
+  font-weight: bolder;
+  flex-grow: 1;
+  height: auto;
+}
+
+.q-help-and-report {
+  font-size: 18px;
+  font-weight: normal;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.a-card {
+  display: flex;
+  width: 54vw;
+}
+
+.a-A {
+  font-size: 26px;
+  font-weight: bolder;
+  flex-shrink: 0;
+  padding-right: 10px;
+}
+
+.a-list {
+  max-height: 25vh;
+  flex-grow: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.a-individual-entry {
+  margin-bottom: 1vw;
+  border: 2px solid rgb(112, 112, 112);
+  border-radius: 5px;
+  padding: 1vw;
+}
+.a-individual-entry div {
+  margin-bottom: 1.1vh;
+}
+
+.a-body {
+  font-size: 18px;
+  font-weight: normal;
+  width: 30vw;
+  height: auto;
+}
+
+.a-full-or-collapse {
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 5px;
+  border: none;
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+.qa-more-questions {
+  border: 1px solid black;
+  font-size: 26px;
+  font-weight: bolder;
+  padding: 20px 20px 20px 20px;
+  border-radius: 0px;
+  text-align: center;
+  background-color: #e3e3e3;
+  margin-top: 15px;
+}
+
+.q-add {
+  border: 1px solid black;
+  font-size: 26px;
+  font-weight: bolder;
+  padding: 20px 20px 20px 20px;
+  border-radius: 0px;
+  text-align: center;
+  background-color: #e3e3e3;
+  margin-top: 15px;
+}
+
+#qa-q-add {
+  width: 54vw;
+  padding-left: 15px;
 }
 
 .answer-photo {
@@ -938,7 +1093,9 @@ progress::-webkit-progress-bar {
   color: #d3d3d3;
 }
 table,
-th,
-td {
+th td {
   border: 1px solid;
+}
+.fieldset {
+  height: 13vh;
 }

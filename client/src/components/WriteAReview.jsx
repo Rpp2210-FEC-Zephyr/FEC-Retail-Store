@@ -1,64 +1,340 @@
 import React, { useState } from "react";
-const WriteAReview = () => {
-  const [showFormPopup, setShowFormPopup] = useState(false);
+import $ from "jquery";
 
-  const handleSubmit = (event) => {
+const WriteAReview = (props) => {
+  const [showFormPopup, setShowFormPopup] = useState(false);
+  const [rating, setRating] = useState(0);
+  const [charCount, setcharCount] = useState(0);
+
+  const starGrid = {
+    1: "Poor",
+    2: "Fair",
+    3: "Average",
+    4: "Good",
+    5: "Great",
+  };
+
+  const updateCount = () => {
+    // var countElement = document.getElementById("char-count");
+    var inputElement = document.getElementsByName("write-review-body")[0];
+    var currentLength = inputElement.value.length;
+    setcharCount(currentLength);
+  };
+
+  const handleSubmitReview = (event) => {
     event.preventDefault();
-    // Handle form submission logic here
+
+    // Get all form inputs
+    const nickname = document.getElementsByName("name")[0].value;
+    const email = document.getElementsByName("email")[0].value;
+    const recommend =
+      document.getElementsByName("recommend")[0].value === "true";
+    const summary = document.getElementsByName("summary")[0].value;
+    const body = document.getElementsByName("write-review-body")[0].value;
+    const photos = [
+      document.getElementsByName("photos1")[0].value,
+      document.getElementsByName("photos2")[0].value,
+      document.getElementsByName("photos3")[0].value,
+      document.getElementsByName("photos4")[0].value,
+    ];
+
+    const reviewData = {
+      product_id: props.productId,
+      rating,
+      summary,
+      body,
+      recommend,
+      nickname,
+      email,
+      photos,
+    };
+
+    // Check if all required inputs have been filled in
+    if (nickname && email && recommend && summary && body && rating) {
+      // All required inputs have been filled in
+      $.ajax({
+        url: `reviews`,
+        method: "POST",
+        data: JSON.stringify(reviewData),
+        contentType: "application/json",
+        success: (data) => {
+          console.log("Successfully posted review!!!!", data);
+          alert("Your review has been posted!");
+        },
+        error: (err) => {
+          console.log("Getting an Error reporting", err);
+        },
+      });
+    } else {
+      alert("Please fill in all required fields.");
+    }
+  };
+  // Star rating system
+  const handleStarClick = (event) => {
+    const ratingValue = parseInt(event.target.getAttribute("data-value"));
+    setRating(ratingValue);
+  };
+
+  const renderStar = (value) => {
+    // let coloring = "color: #efff0a;";
+    let starClass = "fa-sharp fa-regular fa-star ";
+    if (value <= rating) {
+      starClass = "fa-sharp fa-solid fa-star";
+    }
+    return (
+      <span
+        key={value}
+        className={starClass}
+        data-value={value}
+        // style={coloring}
+        onClick={handleStarClick}
+      >
+        <i></i>
+      </span>
+    );
   };
 
   return (
     <div>
       <button class="review-buttons" onClick={() => setShowFormPopup(true)}>
-        WRITE REVIEW
+        <h2>WRITE REVIEW</h2>
       </button>
       {showFormPopup && (
         <div className="form-popup-overlay">
           <div className="form-popup-container">
             <div className="form-popup-inner">
-              <h2>Form Popup</h2>
-              <form onSubmit={handleSubmit}>
-                <label>
-                  What is your nickname
-                  <input type="text" name="name" />
+              <h1>Write Your Review</h1>
+              <h3>About the {props.name}</h3>
+              <form onSubmit={handleSubmitReview}>
+                <label className="write-review-label">
+                  <br />
+                  <h3>What is your nickname?</h3>
+                  <input type="text" name="name" maxLength="60" required />
+                  <div>
+                    For privacy reasons, do not use your full name or email
+                    address
+                  </div>
                 </label>
                 <br />
-                <label>
-                  Email:
-                  <input type="email" name="email" />
+                <label className="write-review-label">
+                  <h3>Email:</h3>
+                  <input type="email" name="email" minLength="60" required />
+                  <div>For authentication reasons, you will not be emailed</div>
                 </label>
                 <br />
-                <label>
-                  Do you recommend this product?
-                  <input type="text" name="name" />
+                <label className="write-review-label">
+                  <h3>Do you recommend this product?</h3>
+                  <select name="recommend" required>
+                    <option value="">Select an option</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </select>
                 </label>
                 <br />
-                <label>
-                  Overall rating
-                  <input type="text" name="name" />
+                <label className="write-review-label">
+                  <div className="rating-system">
+                    <div className="star-grid">
+                      {Object.keys(starGrid).map((key) =>
+                        renderStar(parseInt(key))
+                      )}
+                    </div>
+                    <div className="selected-rating">
+                      {rating > 0 ? (
+                        <h4>You have rated this {starGrid[rating]}!</h4>
+                      ) : null}
+                    </div>
+                  </div>
+                </label>
+                <fieldset class="fieldset">
+                  <legend>
+                    <h3>Size</h3>
+                  </legend>
+                  <input type="radio" id="size1" name="size" value="1" />
+                  <label for="size1">A size too small</label>
+                  <br />
+                  <input type="radio" id="size2" name="size" value="2" />
+                  <label for="size2">½ a size too small</label>
+                  <br />
+                  <input type="radio" id="size3" name="size" value="3" />
+                  <label for="size3">Perfect</label>
+                  <br />
+                  <input type="radio" id="size4" name="size" value="4" />
+                  <label for="size4">½ a size too big</label>
+                  <br />
+                  <input type="radio" id="size5" name="size" value="5" />
+                  <label for="size5">A size too wide</label>
+                  <br />
+                </fieldset>
+
+                <fieldset class="fieldset">
+                  <legend>
+                    <h3>Width</h3>
+                  </legend>
+                  <input type="radio" id="width1" name="width" value="1" />
+                  <label for="width1">Too narrow</label>
+                  <br />
+                  <input type="radio" id="width2" name="width" value="2" />
+                  <label for="width2">Slightly narrow</label>
+                  <br />
+                  <input type="radio" id="width3" name="width" value="3" />
+                  <label for="width3">Perfect</label>
+                  <br />
+                  <input type="radio" id="width4" name="width" value="4" />
+                  <label for="width4">Slightly wide</label>
+                  <br />
+                  <input type="radio" id="width5" name="width" value="5" />
+                  <label for="width5">Too wide</label>
+                  <br />
+                </fieldset>
+                <fieldset class="fieldset">
+                  <legend>
+                    <h3>Comfort</h3>
+                  </legend>
+                  <input type="radio" id="comfort1" name="comfort" value="1" />
+                  <label for="comfort1">Uncomfortable</label>
+                  <br />
+                  <input type="radio" id="comfort2" name="comfort" value="2" />
+                  <label for="comfort2">Slightly uncomfortable</label>
+                  <br />
+                  <input type="radio" id="comfort3" name="comfort" value="3" />
+                  <label for="comfort3">Ok</label>
+                  <br />
+                  <input type="radio" id="comfort4" name="comfort" value="4" />
+                  <label for="comfort4">Comfortable</label>
+                  <br />
+                  <input type="radio" id="comfort5" name="comfort" value="5" />
+                  <label for="comfort5">Perfect</label>
+                  <br />
+                </fieldset>
+                <fieldset class="fieldset">
+                  <legend>
+                    <h3>Quality</h3>
+                  </legend>
+                  <input type="radio" id="quality1" name="" value="1" />
+                  <label for="quality1">Poor</label>
+                  <br />
+                  <input type="radio" id="quality2" name="" value="2" />
+                  <label for="quality2">Below average</label>
+                  <br />
+                  <input type="radio" id="quality3" name="" value="3" />
+                  <label for="quality3">Ok</label>
+                  <br />
+                  <input type="radio" id="quality4" name="" value="4" />
+                  <label for="quality4">Pretty great</label>
+                  <br />
+                  <input type="radio" id="quality5" name="" value="5" />
+                  <label for="quality5">Perfect</label>
+                  <br />
+                </fieldset>
+                <fieldset class="fieldset">
+                  <legend>
+                    <h3>Length</h3>
+                  </legend>
+                  <input type="radio" id="length1" name="" value="1" />
+                  <label for="length1">Perfect</label>
+                  <br />
+                  <input type="radio" id="length2" name="" value="2" />
+                  <label for="length2">Perfect</label>
+                  <br />
+                  <input type="radio" id="length3" name="" value="3" />
+                  <label for="length3">Perfect</label>
+                  <br />
+                  <input type="radio" id="length4" name="" value="4" />
+                  <label for="length4">Perfect</label>
+                  <br />
+                  <input type="radio" id="length5" name="" value="5" />
+                  <label for="length5">Perfect</label>
+                  <br />
+                </fieldset>
+                <fieldset class="fieldset">
+                  <legend>
+                    <h3>Fit</h3>
+                  </legend>
+                  <input type="radio" id="fit1" name="fit" value="1" />
+                  <label for="fit1">Runs tight</label>
+                  <br />
+                  <input type="radio" id="fit2" name="fit" value="2" />
+                  <label for="fit2">Runs slightly tight</label>
+                  <br />
+                  <input type="radio" id="fit3" name="fit" value="3" />
+                  <label for="fit3">Perfect</label>
+                  <br />
+                  <input type="radio" id="fit4" name="fit" value="4" />
+                  <label for="fit4">Runs slightly long</label>
+                  <br />
+                  <input type="radio" id="fit5" name="fit" value="5" />
+                  <label for="fit5">Runs long</label>
+                  <br />
+                </fieldset>
+                <label className="write-review-label">
+                  <h3>Review summary</h3>
+                  <input type="text" name="summary" maxlength="60" required />
                 </label>
                 <br />
-                <label>
-                  Review summary
-                  <input type="text" name="name" />
+                <label className="write-review-label">
+                  <h3>Review body</h3>
+                  <textarea
+                    name="write-review-body"
+                    style={{ width: "30vw", height: "15vh" }}
+                    maxlength="1000"
+                    required
+                    placeholder="Why did you like the product or not?"
+                    onInput={updateCount}
+                  ></textarea>
+                </label>
+                {charCount > 50 ? (
+                  <div>Minimum reached</div>
+                ) : (
+                  <div>Minimum required characters left: {50 - charCount}</div>
+                )}
+
+                <br />
+                <label className="write-review-label">
+                  <h3>Upload your photos:</h3>
+                  <input
+                    type="text"
+                    name="photos1"
+                    style={{ width: "30vw", margin: "1.5px" }}
+                  />
+                  <br />
+                  <input
+                    type="text"
+                    name="photos2"
+                    style={{ width: "30vw", margin: "1.5px" }}
+                  />
+                  <br />
+                  <input
+                    type="text"
+                    name="photos3"
+                    style={{ width: "30vw", margin: "1.5px" }}
+                  />
+                  <br />
+                  <input
+                    type="text"
+                    name="photos4"
+                    style={{ width: "30vw", margin: "1.5px" }}
+                  />
+                  <br />
+                  <input
+                    type="text"
+                    name="photos5"
+                    style={{ width: "30vw", margin: "1.5px" }}
+                  />
                 </label>
                 <br />
-                <label>
-                  Review body
-                  <input type="text" name="name" />
-                </label>
-                <br />
-                <label>
-                  Upload your photos
-                  <input type="text" name="name" />
-                </label>
-                <br />
-                <button type="submit">Submit</button>
+                <div class="buttons-container">
+                  <button class="review-buttons" type="submit">
+                    <h4>Submit</h4>
+                  </button>
+                  <button
+                    class="review-buttons"
+                    onClick={() => setShowFormPopup(false)}
+                  >
+                    <h4>Close</h4>
+                  </button>
+                </div>
               </form>
             </div>
-            <button onClick={() => setShowFormPopup(false)}>
-              Close Form Popup
-            </button>
           </div>
         </div>
       )}
@@ -67,143 +343,3 @@ const WriteAReview = () => {
 };
 
 export default WriteAReview;
-
-// import React, { useState, useEffect } from "react";
-// import $ from "jquery";
-
-// const WriteReview = (props) => {
-//   const [review, setReview] = useState({
-//     productId: props.productId,
-//     rating: 0,
-//     summary: "",
-//     body: "",
-//     recommend: false,
-//     name: "",
-//     email: "",
-//     photos: [],
-//     characteristics: {},
-//   });
-
-//   const [isSubmitting, setIsSubmitting] = useState(false);
-
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     setIsSubmitting(true);
-//     $.ajax({
-//       url: "/reviews",
-//       type: "POST",
-//       data: JSON.stringify(review),
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     })
-//       .done((response) => {
-//         if (response.status === 200) {
-//           alert("Review submitted successfully");
-//         } else {
-//           alert(response.statusText);
-//         }
-//         setIsSubmitting(false);
-//       })
-//       .fail((error) => {
-//         alert(error.message);
-//         setIsSubmitting(false);
-//       });
-//   };
-
-//   return (
-//     <div>
-//       <h1>Write a Review</h1>
-//       <form onSubmit={handleSubmit}>
-//         <div>
-//           <label htmlFor={props.productId}>Product ID</label>
-//           <input
-//             type="number"
-//             id={props.productId}
-//             name={props.productId}
-//             value={productId}
-//             required
-//           />
-//         </div>
-//         <div>
-//           <label htmlFor="rating">Rating</label>
-//           <select id="rating" name="rating" required>
-//             <option value="">Select Rating</option>
-//             <option value="1">1</option>
-//             <option value="2">2</option>
-//             <option value="3">3</option>
-//             <option value="4">4</option>
-//             <option value="5">5</option>
-//           </select>
-//         </div>
-//         <div>
-//           <label htmlFor="summary">Summary</label>
-//           <textarea id="summary" name="summary" rows="3" cols="50" required>
-//             {review.summary}
-//           </textarea>
-//         </div>
-//         <div>
-//           <label htmlFor="body">Body</label>
-//           <textarea id="body" name="body" rows="5" cols="50" required>
-//             {review.body}
-//           </textarea>
-//         </div>
-//         <div>
-//           <label htmlFor="recommend">Recommend</label>
-//           <input
-//             type="checkbox"
-//             id="recommend"
-//             name="recommend"
-//             value="1"
-//             checked={review.recommend}
-//           />
-//         </div>
-//         <div>
-//           <label htmlFor="name">Name</label>
-//           <input
-//             type="text"
-//             id="name"
-//             name="name"
-//             value={review.name}
-//             required
-//           />
-//         </div>
-//         <div>
-//           <label htmlFor="email">Email</label>
-//           <input
-//             type="email"
-//             id="email"
-//             name="email"
-//             value={review.email}
-//             required
-//           />
-//         </div>
-//         <div>
-//           <label htmlFor="photos">Photos</label>
-//           <input type="file" id="photos" name="photos" multiple />
-//         </div>
-//         <div>
-//           <label htmlFor="characteristics">Characteristics</label>
-//           <div>
-//             {review.characteristics.map((characteristic, index) => (
-//               <div key={index}>
-//                 <label htmlFor={characteristic.id}>{characteristic.name}</label>
-//                 <input
-//                   type="number"
-//                   id={characteristic.id}
-//                   name={characteristic.id}
-//                   value={characteristic.value}
-//                 />
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//         <div>
-//           <button type="submit">Submit</button>
-//         </div>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default WriteReview;

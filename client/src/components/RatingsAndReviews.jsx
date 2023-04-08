@@ -18,10 +18,7 @@ const RatingsAndReviews = (props) => {
   const [filtered, setFiltered] = useState(false);
   const [clickedFilter, setClickedFilter] = useState([]);
   const [filteredReviews, setFilteredReviews] = useState([]);
-  // const [currentSelectionReviews, setcurrentSelectionReviews] = useEffect(0);
-  // const [currentSelectionReviews, setcurrentSelectionReviews] = useState(
-  //   reviews.slice(0, shownReviews)
-  // );
+  const [somethingChanged, setSomethingChanged] = useState(false);
 
   const getReviews = (id, sortby) => {
     $.ajax({
@@ -35,7 +32,7 @@ const RatingsAndReviews = (props) => {
         console.log("Data reviewed in the client side!", data.results);
         setReviews(data.results);
         setReviewsCount(data.results.length);
-        setcurrentSelectionReviews(data.results.slice(0, shownReviews));
+        // setcurrentSelectionReviews(data.results.slice(0, shownReviews));
       },
     });
   };
@@ -71,7 +68,7 @@ const RatingsAndReviews = (props) => {
       }
       console.log("current selection", clickedFilter);
     }
-  }, [props.main, helpful, clickedFilter]);
+  }, [props.main, helpful, clickedFilter, somethingChanged]);
 
   var currentSelectionReviews = reviews.slice(0, shownReviews);
   var currentFilteredReviews = filteredReviews.slice(0, shownReviews);
@@ -120,6 +117,8 @@ const RatingsAndReviews = (props) => {
                     setHelpful={setHelpful}
                     helpful={helpful}
                     obj={review}
+                    origChange={somethingChanged}
+                    change={setSomethingChanged}
                   />
                 );
               })}
@@ -128,12 +127,12 @@ const RatingsAndReviews = (props) => {
               shownReviews > reviewsCount ? null : (
                 <div>
                   <button class="review-buttons" onClick={handleMoreReviews}>
-                    MORE REVIEWS
+                    <h2>MORE REVIEWS</h2>
                   </button>
                 </div>
               )
             ) : null}
-            <WriteAReview />
+            <WriteAReview id={props.main.id} name={props.main.name} />
           </div>
         </div>
       </div>
