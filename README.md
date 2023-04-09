@@ -1,10 +1,8 @@
-# Title: Zephyr Team - FEC-Retail-Store
+# Zephyr Team - FEC-Retail-Store
 
-# Overview: We'll be making a retail clothes store.
+# Overview: The application is a shopping app for clothing that contains 4 widgets: Product Overview Module, Ratings & Reviews Module, Questions & Answers Module, Related Items & Outfit Creation.
 
-# Description: Our App is a shopping app for clothing that will contain 4 widgets: Product Overview Module, Ratings & Reviews Module, Questions & Answers Module, Related Items & Outfit Creation.
-
-# Product Overview Module - will contain information in four parts - WISES IS DOING THIS
+# Product Overview Module-
 
 # a. Image gallery
 
@@ -51,6 +49,11 @@ a toggle to add product to a "my outfit" carousel.
 # Related Items & Outfit Creation - JOSEPH WILL DO THIS
 
 # Installation - Go to github download Webpack and react Run server...
+- Clone from github
+- If not installed already, install npm version 18.1.0 and git
+- Created a local .env file labeling MY_API_TOKEN="XXXXXXXXXXXXXX", where "XXXXXXXXXXXXXX" would be a password token(generated off github)
+- On 2 seperate terminals, navigate to the file, one would run **npm run server** and the other would run **npm run build**
+- Navigate the localhost:3000 as 3000 is where we set the port.
 
 # Usage- app has many added features to save
 
@@ -58,7 +61,6 @@ Project Title - The name of the project
 Overview - A brief description outlining what the project
 Table of Contents - You can link to the different sections below
 Description - A more detailed outline of the project. What does it do? Is there a high level list of features? If describing a project that has visual features, consider adding pictures or animations of the features and functionality in this section. See Adding Screen Captures below.
-Installation - How can another developer get your project up and running on their own? What dependencies are required? Are there environmental requirements? Be specific, and outline steps to take in order to get the project running.
 Usage - Further details on how the project is meant to be used may be helpful. For a library or framework, this section would outline how to use the library within another project (see socket.io ). For a service that is meant to be used within a larger project architecture, instructions on how to integrate may be necessary (see node-statsD ).
 
 #Technology Used
