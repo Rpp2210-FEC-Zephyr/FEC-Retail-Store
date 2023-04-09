@@ -1,6 +1,6 @@
 # Zephyr Team - FEC Retail Store
 
-**Overview:** Zephyr's Store is an online web application that presents comprehensive information about a particular product from an online retailer's catalog. It is categorized by products that have different sizes and styles resulting in unique SKUs (stock keeping units). The product detail page exhibits information at the product level and allows users to break it down further by size or style within the same page.
+**Overview:** Zephyr's Store is an online web application that presents comprehensive information about a particular product from an online retailer's catalog. It is categorized by products that have different sizes and styles resulting in unique product IDs. The product detail page exhibits information at the product level and allows users to break it down further by size or style within the same page.
 
 The Zephyr's Store web app is made up of four modules: Product Overview, Ratings & Reviews, Questions & Answers, and Related Items & Outfit Creation. Each module is designed to display pertinent details about the viewed product and offers various functionalities for users to interact with the product.
 
