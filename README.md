@@ -49,11 +49,13 @@
   - Photos (Max 5)
 
 # Installation - Go to github download Webpack and react Run server...
-- Git clone from github to a local repository
-- If not installed already, install npm version 18.1.0 and git
-- Created a local .env file labeling MY_API_TOKEN="XXXXXXXXXXXXXX", where "XXXXXXXXXXXXXX" would be a password token(generated off github)
-- On 2 seperate terminals, navigate to the file, one would run **npm run server** and the other would run **npm run build**
-- Navigate the localhost:3000 as 3000 is where we set the port.
+1. Git clone from github to a local repository
+2. If not installed already:
+  - install npm version 18.1.0
+  - install git
+4. Created a local .env file labeling MY_API_TOKEN="XXXXXXXXXXXXXX", where "XXXXXXXXXXXXXX" would be a password token(generated off github)
+5. On 2 seperate terminals, navigate to the file, one would run **npm run server** and the other would run **npm run build**
+6. Open your browser and go to http://localhost:3000 to view the app.
 
 # Usage- app has many added features to save
 
