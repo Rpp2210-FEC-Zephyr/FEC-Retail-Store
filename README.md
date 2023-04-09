@@ -7,26 +7,23 @@
 - Ratings & Reviews Module
 
 # Product Overview Module-
+- a. Image gallery
+- b. Product information
+- c. Style selector
+- d. Add to cart
+-In the Product Info:
+  - product category,
+  - product name,
+  - product overview,
+  - clothing,
+  - price,
+  - rating for the item,
+  - a toggle to add product to a "my outfit" carousel.
+- In the Image Gallery
 
-# a. Image gallery
+# Related Items & Outfit Creation
 
-# b. Product information
-
-# c. Style selector
-
-# d. Add to cart
-
-# In the Product Info:
-
-product category,
-product name,
-product overview,
-clothing,
-price,
-rating for the item,
-a toggle to add product to a "my outfit" carousel.
-
-# In the Image Gallery
+# Questions & Answers Module
 
 # Ratings & Reviews Module
 - The left side component would display the average reviews for the current ProductOverview product as well as the distribution of Stars and their respective review count along with the average rating for these attributes if available: (Size, Width, Comfort, Quality, Length, Fit).
@@ -48,10 +45,6 @@ a toggle to add product to a "my outfit" carousel.
   - Review Body (Max 1000 characters)
   - Photos (Max 5)
 
-# Questions & Answers Module - KEVIN WILL DO THIS
-
-# Related Items & Outfit Creation - JOSEPH WILL DO THIS
-
 # Installation - Go to github download Webpack and react Run server...
 - Git clone from github to a local repository
 - If not installed already, install npm version 18.1.0 and git
@@ -67,7 +60,7 @@ Table of Contents - You can link to the different sections below
 Description - A more detailed outline of the project. What does it do? Is there a high level list of features? If describing a project that has visual features, consider adding pictures or animations of the features and functionality in this section. See Adding Screen Captures below.
 Usage - Further details on how the project is meant to be used may be helpful. For a library or framework, this section would outline how to use the library within another project (see socket.io ). For a service that is meant to be used within a larger project architecture, instructions on how to integrate may be necessary (see node-statsD ).
 
-#Technology Used
+# Technology Used
 -React
 -Javascript
 -Node.js
