@@ -76,11 +76,11 @@ To use Zephyr's Store can be used by either browsing through the product catalog
 The Zephyr's store has several features and functionalities that enhance the user experience and provide useful information about the products. These include a responsive design that adapts to different screen sizes and devices, dynamic rendering of data from an API based on user input and selection, sorting and filtering options for reviews and questions, rating breakdown and product breakdown charts that show statistics and averages of ratings and characteristics, modal windows that allow users to write new reviews or answer questions without leaving the page, a carousel component that displays related products and outfit items in a scrollable list, and a comparison table that shows the differences and similarities between two products.
 
 # Technology Used
--React
--Javascript
--Node.js
--Express
--Axios
--Jest
--Webpack
--Babel
+  - React
+  - Javascript
+  - Node.js
+  - Express
+  - Axios
+  - Jest
+  - Webpack
+  - Babel
