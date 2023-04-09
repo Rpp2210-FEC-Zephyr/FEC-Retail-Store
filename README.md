@@ -27,7 +27,11 @@ a toggle to add product to a "my outfit" carousel.
 # In the Image Gallery
 
 # Ratings & Reviews Module
-- R32321
+- The rating section would be based on the main product displayed in the ProductOverview component. The ratings would dynamically render based on the current product.
+- There will be 3 methods of sorting: "Relevant", "Helpful", and "Newest"
+- The widget by design displays only the first 2 reviews, upon clicking on the "MORE REVIEWS" button, it would display 2 more, and 2 more until no more reviews for this product.
+- The write review button would open a popup form requiring the customer to enter:
+- Name
 
 # Questions & Answers Module - KEVIN WILL DO THIS
 
@@ -45,3 +49,11 @@ Installation - How can another developer get your project up and running on thei
 Usage - Further details on how the project is meant to be used may be helpful. For a library or framework, this section would outline how to use the library within another project (see socket.io ). For a service that is meant to be used within a larger project architecture, instructions on how to integrate may be necessary (see node-statsD ).
 
 #Technology Used
+-React
+-Javascript
+-Node.js
+-Express
+-Axios
+-Jest
+-Webpack
+-Babel
