@@ -55,6 +55,7 @@
 2. If not installed already:
     - install npm version 18.1.0
     - install git
+    - npm install
 4. Created a local .env file labeling MY_API_TOKEN=""
     - "" would be a password token(generated off github)
 6. On 2 seperate terminals, navigate to the file:
@@ -68,7 +69,13 @@ Project Title - The name of the project
 Overview - A brief description outlining what the project
 Table of Contents - You can link to the different sections below
 Description - A more detailed outline of the project. What does it do? Is there a high level list of features? If describing a project that has visual features, consider adding pictures or animations of the features and functionality in this section. See Adding Screen Captures below.
-Usage - Further details on how the project is meant to be used may be helpful. For a library or framework, this section would outline how to use the library within another project (see socket.io ). For a service that is meant to be used within a larger project architecture, instructions on how to integrate may be necessary (see node-statsD ).
+**Usage:** 
+
+Further details on how the project is meant to be used may be helpful. For a library or framework, this section would outline how to use the library within another project (see socket.io ). For a service that is meant to be used within a larger project architecture, instructions on how to integrate may be necessary (see node-statsD ).
+
+To use Zephyr's Store can be used by either browsing through the product catalog or by searching for a specific product using its name or ID. Upon selecting a product, users will be directed to its detailed product page where they can interact with the product in various ways. These include zooming in and out of the product image, selecting different styles or sizes, adding the product to the cart or outfit list, rating and reviewing the product, asking and answering questions about the product, and comparing it with other related products.
+
+The Zephyr's store has several features and functionalities that enhance the user experience and provide useful information about the products. These include a responsive design that adapts to different screen sizes and devices, dynamic rendering of data from an API based on user input and selection, sorting and filtering options for reviews and questions, rating breakdown and product breakdown charts that show statistics and averages of ratings and characteristics, modal windows that allow users to write new reviews or answer questions without leaving the page, a carousel component that displays related products and outfit items in a scrollable list, and a comparison table that shows the differences and similarities between two products.
 
 # Technology Used
 -React
