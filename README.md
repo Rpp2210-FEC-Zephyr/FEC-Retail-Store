@@ -5,10 +5,10 @@
 The Zephyr's Store web app is made up of four modules: Product Overview, Ratings & Reviews, Questions & Answers, and Related Items & Outfit Creation. Each module is designed to display pertinent details about the viewed product and offers various functionalities for users to interact with the product.
 
 **Table of Contents:**
-  - # Product Overview Module
-  - # Related Items & Outfit Creation
-  - # Questions & Answers Module
-  - # Ratings & Reviews Module
+  # Product Overview Module
+  # Related Items & Outfit Creation
+  # Questions & Answers Module
+  # Ratings & Reviews Module
 
 # Product Overview Module
 - a. Image gallery
