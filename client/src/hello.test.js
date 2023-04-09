@@ -8,6 +8,8 @@ import ProductOverview from "./components/ProductOverview";
 import RelatedItemsAndOutfitCreation from "./components/RelatedItemsAndOutfitCreation.jsx";
 import RatingsAndReviews from "./components/RatingsAndReviews";
 import IndividualReview from "./components/IndividualReviews";
+import WriteAReview from "./components/WriteAReview";
+import RatingsOverview from "./components/RatingsOverview";
 
 // describe("ProductOverview component", () => {
 //   test("renders main product name", () => {
@@ -74,75 +76,48 @@ import IndividualReview from "./components/IndividualReviews";
 // jest.mock("node-fetch");
 
 describe("RatingsAndReviews component", () => {
-  beforeEach(() => {
-    global.fetch = jest.fn();
-  });
-
-  afterEach(() => {
-    global.fetch.mockClear();
-    delete global.fetch;
-  });
-  it("renders without crashing", async () => {
-    render(<RatingsAndReviews />);
-    expect(screen.getByText("Rating And Reviews!")).toBeInTheDocument();
-  });
-
   test('renders a heading with text "Rating And Reviews!"', () => {
-    const dummyObj = [
-      {
-        id: 71697,
-      },
-    ];
+    const dummyObj = {
+      id: 1,
+      review_id: 5,
+      rating: 3,
+      summary: "I'm enjoying wearing these shades",
+      recommend: false,
+      response: null,
+      body: "Comfortable and practical.",
+      date: "2019-04-14T00:00:00.000Z",
+      reviewer_name: "shortandsweeet",
+      helpfulness: 5,
+      photos: [
+        {
+          id: 1,
+          url: "urlplaceholder/review_5_photo_number_1.jpg",
+        },
+        {
+          id: 2,
+          url: "urlplaceholder/review_5_photo_number_2.jpg",
+        },
+      ],
+    };
 
-    render(<RatingsAndReviews currentProduct={dummyObj} count={0} />);
+    render(<RatingsAndReviews main={dummyObj} count={0} />);
     const words = screen.getByText(/Rating And Reviews!/i);
     expect(words).toBeInTheDocument();
   });
-
-  // it("loads reviews data from the server", async () => {
-  //   const data = {
-  //     results: [
-  //       {
-  //         review_id: 1,
-  //         rating: 5,
-  //         summary: "Great product!",
-  //         body: "I really love this product!",
-  //       },
-  //       {
-  //         review_id: 2,
-  //         rating: 4,
-  //         summary: "Good product!",
-  //         body: "I like this product!",
-  //       },
-  //     ],
-  //     count: 2,
-  //   };
-
-  //   // mock the response from the server
-  //   global.fetch.mockResolvedValueOnce({
-  //     json: () => Promise.resolve(data),
-  //   });
-
-  //   render(<RatingsAndReviews main={{ id: "1" }} />);
-
-  //   // wait for the reviews to load
-  //   await screen.findByText("Great product!");
-
-  //   expect(screen.getByText("Great product!")).toBeInTheDocument();
-  //   expect(screen.getByText("Good product!")).toBeInTheDocument();
-  //   expect(screen.getByText("2 reviews, sorted by")).toBeInTheDocument();
-  // });
 });
 
-test("renders without crashing", () => {
-  const div = document.createElement("div");
-  ReactDOM.render(<RatingsAndReviews />, div);
-});
+// test("renders without crashing", () => {
+//   const div = document.createElement("div");
+//   ReactDOM.render(<RatingsAndReviews />, div);
+// });
 
 test("testing IndividualReviews", () => {
   const data = {
+    main: {
+      id: 1,
+    },
     review_id: 5,
-    rating: 3,
+    rating: 5,
     summary: "I'm enjoying wearing these shades",
     recommend: false,
     response: null,
@@ -168,6 +143,35 @@ test("testing IndividualReviews", () => {
 
 test("testing IndividualReviews photos", () => {
   const data = {
+    main: {
+      id: 1,
+    },
+    review_id: 5,
+    rating: 0,
+    summary: "I'm enjoying wearing these shades",
+    recommend: false,
+    response: null,
+    body: "Comfortable and practical.",
+    date: "2019-04-14T00:00:00.000Z",
+    reviewer_name: "shortandsweeet",
+    helpfulness: 5,
+    photos: [
+      {
+        id: 1,
+        url: "urlplaceholder/review_5_photo_number_1.jpg",
+      },
+    ],
+  };
+  render(<IndividualReview obj={data} />);
+  const imgElement = screen.getByAltText("Review");
+  expect(imgElement).toHaveAttribute("src", data.photos[0].url);
+});
+
+test("testing IndividualReviews photos", () => {
+  const data = {
+    main: {
+      id: 1,
+    },
     review_id: 5,
     rating: 3,
     summary: "I'm enjoying wearing these shades",
@@ -185,6 +189,89 @@ test("testing IndividualReviews photos", () => {
     ],
   };
   render(<IndividualReview obj={data} />);
-  const imgElement = screen.getByAltText("IMAGE!!!");
+  const imgElement = screen.getByAltText("Review");
   expect(imgElement).toHaveAttribute("src", data.photos[0].url);
+});
+
+describe("WriteAReview", () => {
+  it("should render the component", () => {
+    const { getByText } = render(<WriteAReview />);
+    const writeReviewButton = getByText("WRITE REVIEW");
+    expect(writeReviewButton).toBeInTheDocument();
+  });
+
+  it("should show the form popup when the Write Review button is clicked", () => {
+    const { getByText, getByLabelText } = render(<WriteAReview />);
+    const writeReviewButton = getByText("WRITE REVIEW");
+
+    fireEvent.click(writeReviewButton);
+
+    const nicknameInput = getByText("What is your nickname?");
+    expect(nicknameInput).toBeInTheDocument();
+  });
+
+  it("should submit review when the form is filled out and submitted", () => {
+    const productId = "123";
+    const mockAjaxSuccess = jest.fn();
+    $.ajax.mockImplementation(({ success }) => {
+      success();
+    });
+
+    const { getByText, getByLabelText } = render(
+      <WriteAReview id={productId} />
+    );
+    const writeReviewButton = getByText("WRITE REVIEW");
+
+    fireEvent.click(writeReviewButton);
+
+    const nicknameInput = getByLabelText("What is your nickname?");
+    fireEvent.change(nicknameInput, { target: { value: "test nickname" } });
+
+    const emailInput = getByLabelText("Email:");
+    fireEvent.change(emailInput, { target: { value: "test@example.com" } });
+
+    const recommendSelect = getByLabelText("Do you recommend this product?");
+    fireEvent.change(recommendSelect, { target: { value: "true" } });
+
+    const ratingStars = screen.getAllByRole("button", { name: "star" });
+    fireEvent.click(ratingStars[3]);
+
+    const summaryInput = getByLabelText("Summary:");
+    fireEvent.change(summaryInput, { target: { value: "test summary" } });
+
+    const bodyInput = getByLabelText("Write your review:");
+    fireEvent.change(bodyInput, { target: { value: "test body" } });
+
+    const submitButton = getByText("Submit");
+    fireEvent.click(submitButton);
+
+    const expectedReviewData = {
+      product_id: productId,
+      rating: 4,
+      summary: "test summary",
+      body: "test body",
+      recommend: true,
+      nickname: "test nickname",
+      email: "test@example.com",
+      photos: ["", "", "", "", ""],
+      characteristics: {
+        14: NaN,
+        15: NaN,
+        16: NaN,
+        17: NaN,
+        18: NaN,
+        19: NaN,
+      },
+    };
+
+    expect($.ajax).toHaveBeenCalledWith({
+      url: "reviews",
+      method: "POST",
+      data: JSON.stringify(expectedReviewData),
+      contentType: "application/json",
+      success: expect.any(Function),
+      error: expect.any(Function),
+    });
+    expect(mockAjaxSuccess).toHaveBeenCalled();
+  });
 });

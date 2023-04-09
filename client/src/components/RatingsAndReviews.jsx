@@ -57,15 +57,15 @@ const RatingsAndReviews = (props) => {
       getReviews(props.main.id, sortby);
       getReviewData(props.main.id);
       console.log("filteredReviews", filteredReviews);
-      if (clickedFilter.length > 0) {
-        const filtered = reviews.filter((review) =>
-          clickedFilter.includes(review.rating.toString())
-        ); // [{rating : 4, name: lala}, {rating: 4, name: fafa}]
-        setFilteredReviews(filtered);
-      } else {
-        setFilteredReviews([]);
-        setFiltered(false);
-      }
+      // if (clickedFilter.length > 0) {
+      //   const filtered = reviews.filter((review) =>
+      //     clickedFilter.includes(review.rating.toString())
+      //   ); // [{rating : 4, name: lala}, {rating: 4, name: fafa}]
+      //   setFilteredReviews(filtered);
+      // } else {
+      //   setFilteredReviews([]);
+      //   setFiltered(false);
+      // }
       console.log("current selection", clickedFilter);
     }
   }, [props.main, helpful, clickedFilter, somethingChanged]);

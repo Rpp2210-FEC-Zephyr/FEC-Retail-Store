@@ -15,7 +15,6 @@ const WriteAReview = (props) => {
   };
 
   const updateCount = () => {
-    // var countElement = document.getElementById("char-count");
     var inputElement = document.getElementsByName("write-review-body")[0];
     var currentLength = inputElement.value.length;
     setcharCount(currentLength);
@@ -24,22 +23,39 @@ const WriteAReview = (props) => {
   const handleSubmitReview = (event) => {
     event.preventDefault();
 
-    // Get all form inputs
     const nickname = document.getElementsByName("name")[0].value;
     const email = document.getElementsByName("email")[0].value;
     const recommend =
       document.getElementsByName("recommend")[0].value === "true";
     const summary = document.getElementsByName("summary")[0].value;
     const body = document.getElementsByName("write-review-body")[0].value;
+
     const photos = [
       document.getElementsByName("photos1")[0].value,
       document.getElementsByName("photos2")[0].value,
       document.getElementsByName("photos3")[0].value,
       document.getElementsByName("photos4")[0].value,
+      document.getElementsByName("photos5")[0].value,
     ];
 
+    const characteristics = {
+      14: parseInt(document.querySelector('input[name="size"]:checked').value),
+      15: parseInt(document.querySelector('input[name="width"]:checked').value),
+      16: parseInt(
+        document.querySelector('input[name="comfort"]:checked').value
+      ),
+      17: parseInt(
+        document.querySelector('input[name="quality"]:checked').value
+      ),
+      18: parseInt(
+        document.querySelector('input[name="length"]:checked').value
+      ),
+      19: parseInt(document.querySelector('input[name="fit"]:checked').value),
+    };
+    console.log("characteristics", characteristics);
+    console.log("props.productId", props.id);
     const reviewData = {
-      product_id: props.productId,
+      product_id: props.id,
       rating,
       summary,
       body,
@@ -47,11 +63,19 @@ const WriteAReview = (props) => {
       nickname,
       email,
       photos,
+      characteristics,
     };
 
-    // Check if all required inputs have been filled in
-    if (nickname && email && recommend && summary && body && rating) {
-      // All required inputs have been filled in
+    if (
+      rating &&
+      summary &&
+      body &&
+      recommend &&
+      nickname &&
+      email &&
+      photos &&
+      characteristics
+    ) {
       $.ajax({
         url: `reviews`,
         method: "POST",
@@ -105,7 +129,12 @@ const WriteAReview = (props) => {
             <div className="form-popup-inner">
               <h1>Write Your Review</h1>
               <h3>About the {props.name}</h3>
-              <form onSubmit={handleSubmitReview}>
+              <form
+                onSubmit={(e) => {
+                  handleSubmitReview(e);
+                  setShowFormPopup(false);
+                }}
+              >
                 <label className="write-review-label">
                   <br />
                   <h3>What is your nickname?</h3>
@@ -118,7 +147,7 @@ const WriteAReview = (props) => {
                 <br />
                 <label className="write-review-label">
                   <h3>Email:</h3>
-                  <input type="email" name="email" minLength="60" required />
+                  <input type="email" name="email" maxLength="60" required />
                   <div>For authentication reasons, you will not be emailed</div>
                 </label>
                 <br />
@@ -131,7 +160,7 @@ const WriteAReview = (props) => {
                   </select>
                 </label>
                 <br />
-                <label className="write-review-label">
+                <label>
                   <div className="rating-system">
                     <div className="star-grid">
                       {Object.keys(starGrid).map((key) =>
@@ -210,19 +239,19 @@ const WriteAReview = (props) => {
                   <legend>
                     <h3>Quality</h3>
                   </legend>
-                  <input type="radio" id="quality1" name="" value="1" />
+                  <input type="radio" id="quality1" name="quality" value="1" />
                   <label for="quality1">Poor</label>
                   <br />
-                  <input type="radio" id="quality2" name="" value="2" />
+                  <input type="radio" id="quality2" name="quality" value="2" />
                   <label for="quality2">Below average</label>
                   <br />
-                  <input type="radio" id="quality3" name="" value="3" />
+                  <input type="radio" id="quality3" name="quality" value="3" />
                   <label for="quality3">Ok</label>
                   <br />
-                  <input type="radio" id="quality4" name="" value="4" />
+                  <input type="radio" id="quality4" name="quality" value="4" />
                   <label for="quality4">Pretty great</label>
                   <br />
-                  <input type="radio" id="quality5" name="" value="5" />
+                  <input type="radio" id="quality5" name="quality" value="5" />
                   <label for="quality5">Perfect</label>
                   <br />
                 </fieldset>
@@ -230,19 +259,19 @@ const WriteAReview = (props) => {
                   <legend>
                     <h3>Length</h3>
                   </legend>
-                  <input type="radio" id="length1" name="" value="1" />
+                  <input type="radio" id="length1" name="length" value="1" />
                   <label for="length1">Runs Short</label>
                   <br />
-                  <input type="radio" id="length2" name="" value="2" />
+                  <input type="radio" id="length2" name="length" value="2" />
                   <label for="length2">Runs slightly short</label>
                   <br />
-                  <input type="radio" id="length3" name="" value="3" />
+                  <input type="radio" id="length3" name="length" value="3" />
                   <label for="length3">Perfect</label>
                   <br />
-                  <input type="radio" id="length4" name="" value="4" />
+                  <input type="radio" id="length4" name="length" value="4" />
                   <label for="length4">Runs slightly long</label>
                   <br />
-                  <input type="radio" id="length5" name="" value="5" />
+                  <input type="radio" id="length5" name="length" value="5" />
                   <label for="length5">Runs long</label>
                   <br />
                 </fieldset>

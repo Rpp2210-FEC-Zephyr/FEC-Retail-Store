@@ -312,12 +312,12 @@ const postReview = (
   nickname,
   email,
   photos,
-  callback,
-  characteristics
+  characteristics,
+  callback
 ) => {
   axios
     .post(
-      "https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/reviews",
+      "https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews",
       {
         product_id: product_id,
         rating: rating,

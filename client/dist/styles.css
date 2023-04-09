@@ -6,10 +6,10 @@
 
 body {
   background: #e3e3e3;
-  font-family: "Font Awesome 5 Brands";
+  font-family: Arial, Helvetica, sans-serif;
 }
 * {
-  font-family: "Font Awesome 5 Brands";
+  font-family: Arial, Helvetica, sans-serif;
 }
 .productOverview {
   width: 100%;
@@ -42,7 +42,22 @@ body {
 
 .star-rating {
   color: #e9bd0c;
+  font-size: 15px;
 }
+
+.star-grid {
+  color: #e9bd0c;
+  font-size: 21px;
+  margin-top: 1.2vh;
+  margin-bottom: 1vh;
+}
+
+.selected-rating {
+  font-size: 11.5px;
+  color: grey;
+  padding-bottom: 3px;
+}
+
 .scroll {
   margin-left: 10px;
 }
@@ -682,7 +697,6 @@ nav .logo {
 }
 
 /* End of NavBar css */
-
 .coming {
   vertical-align: center;
   text-align: center;
@@ -746,10 +760,6 @@ nav .logo {
   font-weight: bold;
 }
 
-.starClass {
-  font-size: 25px;
-}
-
 .rating-star {
   display: flex;
   font-size: 25px;
@@ -809,11 +819,15 @@ nav .logo {
 
 .review-buttons {
   margin-right: 1vw;
-  background-color: transparent;
-  border: 2px solid black;
-  color: black;
-  padding: 10px 20px;
+  background-color: #40d3dc;
+  border: none;
+  color: white;
+  padding: 16px 26px;
+  font-size: 13px;
+  border-radius: 4px;
   cursor: pointer;
+  transform: translateY(-50%);
+  margin-top: 30px;
 }
 
 progress {
@@ -859,25 +873,29 @@ progress::-webkit-progress-bar {
   background-color: #fff;
   height: 77vh;
 }
+.write-review-label {
+  padding: 1px;
+}
+
+.fieldset {
+  height: 13vh;
+}
+
+.write-review-label div {
+  font-size: 11.5px;
+  color: grey;
+}
 
 .form-popup-container button {
   margin-top: 10px;
 }
 
-.write-review-label {
-  padding: 1px;
-}
-
-.write-review-label div {
-  font-size: 13px;
-  color: grey;
-}
-
 .buttons-container {
   display: flex;
-  margin-right: 10px;
-  padding-right: 10px;
+  margin-right: 1vh;
+  padding-right: 0vh;
   justify-content: center;
+  margin-top: 3vh;
 }
 
 /* ////////////// */

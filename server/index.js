@@ -225,7 +225,7 @@ app.post("/reviews", function (req, res) {
     photos,
     characteristics,
   } = req.body;
-
+  console.log("req.body", req.body);
   API.postReview(
     product_id,
     rating,
@@ -238,9 +238,11 @@ app.post("/reviews", function (req, res) {
     characteristics,
     (err, data) => {
       if (err) {
+        console.log("Server error", err);
         res.status(400);
         res.send(err);
       } else {
+        console.log("Server Success", data);
         res.status(201);
         res.send(data);
       }
