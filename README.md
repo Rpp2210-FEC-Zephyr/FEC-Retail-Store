@@ -26,6 +26,9 @@
 # Questions & Answers Module
 
 # Ratings & Reviews Module
+
+![image](https://user-images.githubusercontent.com/113706094/230748694-9861750b-a9f0-455a-9a0f-763aa8bcd4d6.png)
+
 - The left side component would display the average reviews for the current ProductOverview product as well as the distribution of Stars and their respective review count along with the average rating for these attributes if available: (Size, Width, Comfort, Quality, Length, Fit).
 - The rating section would be based on the main product displayed in the ProductOverview component. The ratings would dynamically render based on the current product.
 - There will be 3 methods of sorting: "Relevant", "Helpful", and "Newest"
