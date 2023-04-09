@@ -36,7 +36,7 @@ The Zephyr's Store web app is made up of four modules: Product Overview, Ratings
 - The left side component would display the average reviews for the current ProductOverview product as well as the distribution of Stars and their respective review count along with the average rating for these attributes if available: (Size, Width, Comfort, Quality, Length, Fit).
 - The rating section would be based on the main product displayed in the ProductOverview component. The ratings would dynamically render based on the current product.
 - There will be 3 methods of sorting: "Relevant", "Helpful", and "Newest"
-- The widget by design displays only the first 2 reviews, upon clicking on the "MORE REVIEWS" button, it would display 2 more, and 2 more until no more reviews for this product.
+- The widget by design displays only the first 2 reviews, upon clicking on the "More Reviews" button, it would display 2 more, and 2 more until no more reviews for this product.
 - The write review button would open a popup form requiring the customer to enter:
   - Name
   - Email
