@@ -1,10 +1,12 @@
 # Zephyr Team - FEC-Retail-Store
 
-# Overview: The application is a shopping app for clothing that contains 4 widgets: 
-- Product Overview Module
-- Related Items & Outfit Creation.
-- Questions & Answers Module
-- Ratings & Reviews Module
+# Overview: The application is a shopping app for clothing that contains 4 widgets: Product Overview Module, Related Items & Outfit Creation, Questions & Answers Module, Ratings & Reviews Module.
+
+**Table of Contents:**
+  - Product Overview Module
+  - Related Items & Outfit Creation.
+  - Questions & Answers Module
+  - Ratings & Reviews Module
 
 # Product Overview Module-
 - a. Image gallery
