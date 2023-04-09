@@ -31,7 +31,7 @@ a toggle to add product to a "my outfit" carousel.
 - There will be 3 methods of sorting: "Relevant", "Helpful", and "Newest"
 - The widget by design displays only the first 2 reviews, upon clicking on the "MORE REVIEWS" button, it would display 2 more, and 2 more until no more reviews for this product.
 - The write review button would open a popup form requiring the customer to enter:
-- Name
+  - Name
 
 # Questions & Answers Module - KEVIN WILL DO THIS
 
