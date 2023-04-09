@@ -52,7 +52,7 @@ The Zephyr's Store web app is made up of four modules: Product Overview, Ratings
   - Review Body (Max 1000 characters)
   - Photos (Max 5)
 
-# Installation - Go to github download Webpack and react Run server...
+# Installation
 1. Git clone from github to a local repository
 2. If not installed already:
     - install npm version 18.1.0
