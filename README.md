@@ -27,11 +27,23 @@ a toggle to add product to a "my outfit" carousel.
 # In the Image Gallery
 
 # Ratings & Reviews Module
+- The left side component would display the average reviews for the current ProductOverview product as well as the distribution of Stars and their respective review count along with the average rating for these attributes if available: (Size, Width, Comfort, Quality, Length, Fit).
 - The rating section would be based on the main product displayed in the ProductOverview component. The ratings would dynamically render based on the current product.
 - There will be 3 methods of sorting: "Relevant", "Helpful", and "Newest"
 - The widget by design displays only the first 2 reviews, upon clicking on the "MORE REVIEWS" button, it would display 2 more, and 2 more until no more reviews for this product.
 - The write review button would open a popup form requiring the customer to enter:
-  - Name
+- Name
+- Email
+- Recommend product or not
+- Rating (1-5)
+- Size (Least to Most)
+- Width (Least to Most)
+- Comfort (Least to Most)
+- Quality (Least to Most)
+- Length (Least to Most)
+- Fit (Least to Most)
+- Review Summary (Max 50 characters)
+- 
 
 # Questions & Answers Module - KEVIN WILL DO THIS
 
