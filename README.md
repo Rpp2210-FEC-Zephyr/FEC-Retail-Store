@@ -53,8 +53,8 @@
 2. If not installed already:
     - install npm version 18.1.0
     - install git
-4. Created a local .env file labeling MY_API_TOKEN="XXXXXXXXXXXXXX"
-  - "XXXXXXXXXXXXXX" would be a password token(generated off github)
+4. Created a local .env file labeling MY_API_TOKEN=""
+    - "" would be a password token(generated off github)
 6. On 2 seperate terminals, navigate to the file:
     - npm run server
     - npm run build
