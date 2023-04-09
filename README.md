@@ -1,6 +1,10 @@
 # Zephyr Team - FEC-Retail-Store
 
-# Overview: The application is a shopping app for clothing that contains 4 widgets: Product Overview Module, Ratings & Reviews Module, Questions & Answers Module, Related Items & Outfit Creation.
+# Overview: The application is a shopping app for clothing that contains 4 widgets: 
+- Product Overview Module
+- Related Items & Outfit Creation.
+- Questions & Answers Module
+- Ratings & Reviews Module
 
 # Product Overview Module-
 
@@ -49,7 +53,7 @@ a toggle to add product to a "my outfit" carousel.
 # Related Items & Outfit Creation - JOSEPH WILL DO THIS
 
 # Installation - Go to github download Webpack and react Run server...
-- Clone from github
+- Git clone from github to a local repository
 - If not installed already, install npm version 18.1.0 and git
 - Created a local .env file labeling MY_API_TOKEN="XXXXXXXXXXXXXX", where "XXXXXXXXXXXXXX" would be a password token(generated off github)
 - On 2 seperate terminals, navigate to the file, one would run **npm run server** and the other would run **npm run build**
