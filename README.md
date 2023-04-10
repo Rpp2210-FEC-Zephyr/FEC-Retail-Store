@@ -100,6 +100,6 @@ The Zephyr's store has several features and functionalities that enhance the use
   - Babel
   
  # Contributors
-  - Lovinson Dieujuste - Product Overview & Related Items & Outfit Creation
+  - Lovinson Dieujuste - Product Overview And Related Items & Outfit Creation
   - Kevin Seng - Question and Answers
   - Alvin Ruan - Ratings and Reviews
