@@ -46,6 +46,28 @@ The Zephyr's Store web app is made up of four modules: Product Overview, Ratings
  - A 'Detail' button that compares the product to the current product showcasing in ProductOverview
 
 # Questions & Answers Module
+![image](https://user-images.githubusercontent.com/49988176/230923093-50531971-cceb-478c-a17f-535d6e89d348.png)
+
+This widget contains:
+- Search bar/function
+- Questions list
+- Answers list
+
+Search bar:
+- whenever a minimum of 3 characters are inputted, the questions in the questions list will be filtered and updated to display in real time the questions that match the current search query.
+
+Questions list:
+- Displays questions asked about the current store item that is selected.
+- Users can post a new question and see the list update to display it without requiring a page refresh.
+- Users can mark any question as "helpful" to promote its order in the list. (all questions are sorted by helpfulness).
+- Initially, up to two questions are rendered. If there are more questions, the "more answered questions" button will render up to an additional 2 questions with each press.
+
+Answers list:
+- Displays answers replied to each question.
+- Users can post a new answer and see the list update to display it without requiring a page refresh.
+- Users can mark any answer as "helpful" to promote its order in the list. (all answers are sorted by helpfulness).
+- Users can report any answer, removing it from the list.
+- Initially, up to two answers are rendered. If there are more answers, the "see more answers" button will render up the remaining answers in the list. The "collapse answers" button will then replace the "see more answers" button and will return the answers list to its default state when pressed.
 
 # Ratings & Reviews Module
 
