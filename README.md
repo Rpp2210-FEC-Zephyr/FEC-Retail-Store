@@ -10,7 +10,11 @@ The Zephyr's Store web app is made up of four modules: Product Overview, Ratings
  - Questions & Answers Module
  - Ratings & Reviews Module
 
+
+
 # Product Overview Module
+<img width="1428" alt="Screen Shot 2023-04-09 at 9 15 10 PM" src="https://user-images.githubusercontent.com/101741874/230806882-0893fc8b-8598-439b-929d-e2453e8d3866.png">
+
 - a. Image gallery
 - b. Product information
 - c. Style selector
@@ -26,6 +30,20 @@ The Zephyr's Store web app is made up of four modules: Product Overview, Ratings
 - In the Image Gallery
 
 # Related Items & Outfit Creation
+<img width="1440" alt="Screen Shot 2023-04-09 at 9 19 47 PM" src="https://user-images.githubusercontent.com/101741874/230806986-e280aa48-eca8-435e-8610-7e354bfe3f3c.png">
+
+-In Both Related and Outfit cards
+  - product category,
+  - product name,
+  - product picture,
+  - price,
+  - rating for the item,
+  
+-In Outfits
+ - an X button to remove product from the Outfit carousel
+ 
+-In Related
+ - I 'Detail' button that compares the product to the current product showcasing in ProductOverview
 
 # Questions & Answers Module
 
