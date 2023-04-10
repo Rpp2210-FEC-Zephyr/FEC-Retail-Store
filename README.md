@@ -40,10 +40,10 @@ The Zephyr's Store web app is made up of four modules: Product Overview, Ratings
   - rating for the item,
   
 -In Outfits
- - an X button to remove product from the Outfit carousel
+ - A 'X' button to remove product from the Outfit carousel
  
 -In Related
- - I 'Detail' button that compares the product to the current product showcasing in ProductOverview
+ - A 'Detail' button that compares the product to the current product showcasing in ProductOverview
 
 # Questions & Answers Module
 
