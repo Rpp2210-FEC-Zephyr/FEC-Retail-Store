@@ -40,8 +40,9 @@ const Zoom = () => {
   const img = document.getElementById("Expanded");
 
   let zoomedIn = false;
-
+  // zoomedIn = False
   img.addEventListener("click", function (e) {
+    //onClick ={(e) =>  }
     if (zoomedIn) {
       // Zoom out
       img.style.transformOrigin = ``;
@@ -90,7 +91,7 @@ const ImageExpander = () => {
   // END  OF JS FOR IMAGE EXPANDER
 };
 const DetailExpander = (ProdOne, ProdTwo) => {
-  // JS FOR IMAGE EXPANDER
+  // React Refactorable
 
   document.querySelector(".Popup").style.display = "block";
 

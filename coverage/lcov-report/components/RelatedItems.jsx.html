@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">57.89% </span>
+                <span class="strong">5.26% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/19</span>
+                <span class='fraction'>1/19</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/4</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/8</span>
+                <span class='fraction'>0/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">61.11% </span>
+                <span class="strong">5.55% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/18</span>
+                <span class='fraction'>1/18</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -159,10 +159,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -172,8 +172,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -191,12 +191,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -245,11 +245,11 @@ import { BiDetail } from "react-icons/bi";
 &nbsp;
 import RatingSystem from "./RatingSystem.jsx";
 &nbsp;
-const RelatedItems = ({ item, URL, DetailModal }) =&gt; {
-  const [image, setImage] = useState(null);
-  const [rating, setRating] = useState(null);
-  const getStyles = (id) =&gt; {
-    $.ajax({
+const RelatedItems = <span class="fstat-no" title="function not covered" >({</span> item, URL, DetailModal }) =&gt; {
+  const [image, setImage] = <span class="cstat-no" title="statement not covered" >useState(null);</span>
+  const [rating, setRating] = <span class="cstat-no" title="statement not covered" >useState(null);</span>
+  const getStyles = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(i</span>d) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    $.ajax({</span>
       type: "GET",
       url: "/Styles",
       data: { id: id },
@@ -259,8 +259,8 @@ const RelatedItems = ({ item, URL, DetailModal }) =&gt; {
     });
   };
 &nbsp;
-  const getReviews = (id) =&gt; {
-    $.ajax({
+  const getReviews = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(i</span>d) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    $.ajax({</span>
       type: "GET",
       url: "/reviews",
       data: {
@@ -278,12 +278,12 @@ const RelatedItems = ({ item, URL, DetailModal }) =&gt; {
       },
     });
   };
-  useEffect(() =&gt; {
-    getStyles(item.id);
-    getReviews(item.id);
+<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    getStyles(item.id);</span>
+<span class="cstat-no" title="statement not covered" >    getReviews(item.id);</span>
   }, []);
 &nbsp;
-  return (
+<span class="cstat-no" title="statement not covered" >  return (</span>
     &lt;div className="RelatedItems"&gt;
       &lt;div
         onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; {
@@ -307,7 +307,7 @@ const RelatedItems = ({ item, URL, DetailModal }) =&gt; {
           &lt;img
             className="RIMG"
             src={
-              image ? <span class="branch-0 cbranch-no" title="branch not covered" >image </span>: "http://cdn.onlinewebfonts.com/svg/img_471954.png"
+              image ? image : "http://cdn.onlinewebfonts.com/svg/img_471954.png"
             }
           /&gt;{" "}
         &lt;/div&gt;
@@ -315,7 +315,7 @@ const RelatedItems = ({ item, URL, DetailModal }) =&gt; {
         &lt;div&gt;{item.name}&lt;/div&gt;
         &lt;div&gt;${item.default_price} &lt;/div&gt;
         &lt;div className="RelateRATING"&gt;
-          {rating ? <span class="branch-0 cbranch-no" title="branch not covered" >&lt;RatingSystem obj={{ rating: rating }} /&gt; </span>: null}
+          {rating ? &lt;RatingSystem obj={{ rating: rating }} /&gt; : null}
         &lt;/div&gt;
         &lt;div&gt;&lt;/div&gt;
       &lt;/div&gt;
@@ -331,11 +331,7 @@ export default RelatedItems;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-<<<<<<< HEAD
-                at 2023-04-02T20:00:28.612Z
-=======
-                at 2023-04-01T02:01:27.410Z
->>>>>>> 4e39c7eb8e6359c9b6b16246130b99300b6afd57
+                at 2023-04-10T01:37:00.416Z
             </div>
         <script src="../prettify.js"></script>
         <script>
