@@ -10,8 +10,6 @@ import RatingSystem from "../RatingSystem.jsx";
 import ReactDOM from "react-dom";
 import $ from "jquery";
 
-const Popup = require("../Notification.jsx");
-
 const ProductFeature = ({ main }) => {
   const [feature, setFeature] = useState([]);
 

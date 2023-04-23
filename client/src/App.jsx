@@ -20,9 +20,6 @@ import RatingsAndReviews from "./components/RatingsAndReviews.jsx";
 import QuestionsAndAnswers from "./components/QuestionsAndAnswers.jsx";
 import RelatedItems from "./components/RelatedItemsAndOutfitCreation.jsx";
 import YourOutfits from "./components/YourOutfits.jsx";
-import Favorites from "./components/Favorites.jsx";
-
-const Popup = require("./components/Notification.jsx");
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -76,13 +73,6 @@ const App = () => {
     } else {
       localStorage.setItem("favorites", JSON.stringify([obj]));
     }
-
-    Favorites.Toggle(obj);
-    setOutfit(Favorites.showOutfit());
-    Popup.Alert("info");
-  };
-  const DetailModal = (product) => {
-    Popup.DetailExpander(product, main);
   };
 
   useEffect(() => {
@@ -91,8 +81,6 @@ const App = () => {
     } else {
       getProducts();
     }
-
-    Popup.Notify();
   }, []);
 
   return (
@@ -106,7 +94,7 @@ const App = () => {
         </div>
       </nav>
       <ProductOverview main={main} Outfits={Outfits} />
-      <RelatedItems main={main} URL={URL} DetailModal={DetailModal} />
+      <RelatedItems main={main} URL={URL} />
       <YourOutfits outfit={outfit} URL={URL} Toggle={Toggle} />
       <QuestionsAndAnswers main={main} />
       <RatingsAndReviews main={main} />

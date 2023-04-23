@@ -9,22 +9,11 @@ import { AiFillCheckCircle } from "react-icons/ai";
 import ReactDOM from "react-dom";
 import $ from "jquery";
 
-const Popup = require("../Notification.jsx");
-
-const ProductLeft = ({ main, show, Scroll }) => {
-  const ImageExpander = () => {
-    setTimeout(() => {
-      // Your logic here
-      Popup.ImageExpander();
-      Popup.Selected();
-
-      ImageExpander();
-    }, 1000);
-  };
+const ProductLeft = ({ main, show }) => {
+  const [selected, setSelected] = useState(1);
 
   useEffect(() => {
     if (main.id != undefined) {
-      ImageExpander();
     }
   }, [main]);
 
@@ -37,11 +26,19 @@ const ProductLeft = ({ main, show, Scroll }) => {
                 <div
                   id={`scroll${index + 1}`}
                   onClick={() => {
-                    Scroll(index + 1);
+                    setSelected(index + 1);
                   }}
                   className="vslide"
                 >
-                  <img src={photo.url} alt="" className="ScrollIMG" />
+                  <img
+                    src={photo.url}
+                    alt=""
+                    className="ScrollIMG"
+                    style={{
+                      border:
+                        selected == index + 1 ? "3px solid #40d3dc" : "none",
+                    }}
+                  />
                 </div>
               ))
             : null}
@@ -49,7 +46,14 @@ const ProductLeft = ({ main, show, Scroll }) => {
         <div className="slides">
           {show.length != 0
             ? show.photos.map((photo, index) => (
-                <input type="radio" name="radio-btn" id={`radio${index + 1}`} />
+                <input
+                  onClick={() => {
+                    setSelected(index + 1);
+                  }}
+                  type="radio"
+                  name="radio-btn"
+                  id={`radio${index + 1}`}
+                />
               ))
             : null}
 
@@ -84,10 +88,11 @@ const ProductLeft = ({ main, show, Scroll }) => {
                 <label
                   key={`${photo} ${index}`}
                   onClick={() => {
-                    Scroll(index + 1);
+                    setSelected(index + 1);
                   }}
                   htmlFor={`radio${index + 1}`}
                   className="manual-btn"
+                  checked={selected === index + 1}
                 ></label>
               ))
             : null}

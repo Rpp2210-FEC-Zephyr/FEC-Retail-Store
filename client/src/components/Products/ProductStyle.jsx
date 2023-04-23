@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { TbStarsFilled } from "react-icons/tb";
 import { IoAddCircleOutline } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -10,8 +10,6 @@ import RatingSystem from "../RatingSystem.jsx";
 import ReactDOM from "react-dom";
 import $ from "jquery";
 
-const Popup = require("../Notification.jsx");
-const Favorites = require("../Favorites.jsx");
 const ProductStyle = ({
   main,
   show,
@@ -23,23 +21,11 @@ const ProductStyle = ({
   setSkus,
 }) => {
   const [quantity, setQuantity] = useState([]);
-  const Change = (item, index) => {
-    const mySelect = document.getElementById(`${index}`);
-    const Selecet = document.querySelectorAll(".StyleChoose");
-    const check = document.querySelectorAll(".selected");
-    Selecet.forEach((element) => {
-      element.addEventListener("click", () => {
-        check.forEach((el) => {
-          el.style.visibility = "hidden";
-        });
-      });
-    });
-    mySelect.style.visibility = "visible";
-    setShow(item);
-    Favorites.Status(main);
+  const [check, setCheck] = useState();
 
-    setSkus(item.skus);
-    console.log("THE SKUS", skus);
+  const list = useRef();
+  const Change = (item, index) => {
+    setCheck(index);
   };
   const onCQuan = (cquan) => {
     cquan = parseInt(cquan);
@@ -85,7 +71,7 @@ const ProductStyle = ({
       </div>
 
       <div className="style">
-        STYLE > <div className="styleSelect"> {show ? show.name : null} </div>
+        STYLE <div className="styleSelect"> {show ? show.name : null} </div>
       </div>
 
       <div className="StyleContainer">
@@ -102,7 +88,7 @@ const ProductStyle = ({
                   className="selected"
                   id={index}
                   style={
-                    index == 0
+                    index == check
                       ? { visibility: "visible" }
                       : { visibility: "hidden" }
                   }

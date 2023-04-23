@@ -9,20 +9,15 @@ import { AiFillCheckCircle } from "react-icons/ai";
 import ReactDOM from "react-dom";
 import $ from "jquery";
 
-const Popup = require("../Notification.jsx");
-
 const ProductBag = ({ Favor, main, show, cSize, cQuant }) => {
   const addBag = () => {
     console.log("CSIXE QUANT", cSize, cQuant);
     if (cSize == null || cQuant == null) {
-      Popup.Alert("error");
     } else {
       const bag = JSON.parse(localStorage.getItem("bag"));
       if (bag != null) {
         if (bag.length == 10) {
-          Popup.Alert("warning");
         } else {
-          Popup.Alert("success");
           localStorage.setItem(
             "bag",
             JSON.stringify([
@@ -32,7 +27,6 @@ const ProductBag = ({ Favor, main, show, cSize, cQuant }) => {
           );
         }
       } else {
-        Popup.Alert("success");
         localStorage.setItem(
           "bag",
           JSON.stringify([

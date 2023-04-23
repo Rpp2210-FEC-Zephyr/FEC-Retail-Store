@@ -12,9 +12,6 @@ import $ from "jquery";
 import ProductLeft from "./Products/ProductLeft.jsx";
 import ProductRight from "./Products/ProductRight.jsx";
 
-const Popup = require("./Notification.jsx");
-const Favorites = require("./Favorites.jsx");
-
 const ProductOverview = ({ main, Outfits }) => {
   const [show, setShow] = useState([]);
   const [style, setStyle] = useState([]);
@@ -40,10 +37,6 @@ const ProductOverview = ({ main, Outfits }) => {
     });
   };
 
-  const Scroll = (id) => {
-    Popup.Scroller(id);
-  };
-
   const Favor = () => {
     main.photo = style.results[0].photos[0].url;
     main.reviews = rating;
@@ -60,10 +53,6 @@ const ProductOverview = ({ main, Outfits }) => {
   const ImageExpander = () => {
     setTimeout(() => {
       // Your logic here
-      Popup.ImageExpander();
-      Popup.Selected();
-
-      ImageExpander();
     }, 1000);
   };
 
@@ -71,15 +60,11 @@ const ProductOverview = ({ main, Outfits }) => {
     if (main.id != undefined) {
       console.log("THE MAIN", main);
       getStyles(main.id);
-      ImageExpander();
-      Popup.Selected();
-      Favorites.Status(main);
-      Outfits(Favorites.showOutfit());
     }
   }, [main]);
   return (
     <div className="productOverview">
-      <ProductLeft main={main} show={show} Scroll={Scroll} />
+      <ProductLeft main={main} show={show} />
 
       <ProductRight
         setRating={setRating}

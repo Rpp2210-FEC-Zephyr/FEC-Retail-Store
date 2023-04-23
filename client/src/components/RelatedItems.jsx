@@ -6,7 +6,7 @@ import { BiDetail } from "react-icons/bi";
 
 import RatingSystem from "./RatingSystem.jsx";
 
-const RelatedItems = ({ item, URL, DetailModal }) => {
+const RelatedItems = ({ item, URL }) => {
   const [image, setImage] = useState(null);
   const [rating, setRating] = useState(null);
   const getStyles = (id) => {
@@ -46,12 +46,7 @@ const RelatedItems = ({ item, URL, DetailModal }) => {
 
   return (
     <div className="RelatedItems">
-      <div
-        onClick={() => {
-          DetailModal(item);
-        }}
-        class="RELATEDdetail"
-      >
+      <div onClick={() => {}} class="RELATEDdetail">
         {" "}
         <IconContext.Provider value={{ color: "#40d3dc", size: "30px" }}>
           <BiDetail />

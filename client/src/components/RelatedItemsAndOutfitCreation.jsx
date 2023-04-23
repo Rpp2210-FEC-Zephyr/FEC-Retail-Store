@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import $ from "jquery";
 import RelatedItems from "./RelatedItems.jsx";
 
-const RelatedItemsAndOutfitCreation = ({ main, URL, DetailModal }) => {
+const RelatedItemsAndOutfitCreation = ({ main, URL }) => {
   const [related, setRelated] = useState(null);
 
   const getRelated = (id) => {
@@ -33,7 +33,6 @@ const RelatedItemsAndOutfitCreation = ({ main, URL, DetailModal }) => {
                 key={`${main.id}-${item.id}`}
                 item={item}
                 URL={URL}
-                DetailModal={DetailModal}
               />
             ))
           : null}

@@ -13,7 +13,6 @@ import ProductName from "./ProductName.jsx";
 import ProductStyle from "./ProductStyle.jsx";
 import ProductBag from "./ProductBag.jsx";
 import ProductFeature from "./ProductFeature.jsx";
-const Popup = require("../Notification.jsx");
 
 const ProductRight = ({
   main,

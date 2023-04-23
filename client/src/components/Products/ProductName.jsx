@@ -10,9 +10,14 @@ import RatingSystem from "../RatingSystem.jsx";
 import ReactDOM from "react-dom";
 import $ from "jquery";
 
-const Popup = require("../Notification.jsx");
-
 const ProductName = ({ rating, main, setRating }) => {
+  const scroll = () => {
+    window.scrollBy({
+      top: 8000,
+      left: 0,
+      behavior: "smooth",
+    });
+  };
   const getReviews = (id) => {
     $.ajax({
       type: "GET",
@@ -40,7 +45,14 @@ const ProductName = ({ rating, main, setRating }) => {
     <div className="ProductNameC">
       <div className="productReview">
         {rating ? <RatingSystem obj={{ rating: rating }} /> : null}
-        <div className="scroll">Show All Reviews</div>
+        <div
+          className="scroll"
+          onClick={() => {
+            scroll();
+          }}
+        >
+          Show All Reviews
+        </div>
       </div>
       <div className="category">{main ? main.category : null}</div>
       <div className="ProductName">{main ? main.name : null}</div>
