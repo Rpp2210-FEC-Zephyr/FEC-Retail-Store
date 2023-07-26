@@ -4,6 +4,15 @@
 
 The Zephyr's Store web app is made up of four modules: Product Overview, Ratings & Reviews, Questions & Answers, and Related Items & Outfit Creation. Each module is designed to display pertinent details about the viewed product and offers various functionalities for users to interact with the product.
 
+# Technology Used
+  ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+  ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+  ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+  ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+  ![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white)
+  ![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black)
+  ![Babel](https://img.shields.io/badge/Babel-F9DC3e?style=for-the-badge&logo=babel&logoColor=black)
+
 **Table of Contents:**
  - Product Overview Module
  - Related Items & Outfit Creation
@@ -111,15 +120,7 @@ To use Zephyr's Store can be used by either browsing through the product catalog
 
 The Zephyr's store has several features and functionalities that enhance the user experience and provide useful information about the products. These include a responsive design that adapts to different screen sizes and devices, dynamic rendering of data from an API based on user input and selection, sorting and filtering options for reviews and questions, rating breakdown and product breakdown charts that show statistics and averages of ratings and characteristics, modal windows that allow users to write new reviews or answer questions without leaving the page, a carousel component that displays related products and outfit items in a scrollable list, and a comparison table that shows the differences and similarities between two products.
 
-# Technology Used
-  - React
-  - Javascript
-  - Node.js
-  - Express
-  - Axios
-  - Jest
-  - Webpack
-  - Babel
+
   
  # Contributors
   - [Lovinson Dieujuste](https://github.com/Wisesofthemall) - Product Overview And Related Items & Outfit Creation
