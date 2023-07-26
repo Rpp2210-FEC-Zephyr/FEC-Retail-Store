@@ -124,4 +124,4 @@ The Zephyr's store has several features and functionalities that enhance the use
  # Contributors
   - [Lovinson Dieujuste](https://github.com/Wisesofthemall) - Product Overview And Related Items & Outfit Creation
   - Kevin Seng - Question and Answers
-  - Alvin Ruan - Ratings and Reviews
+  - [Alvin Ruan](https://github.com/AlvinRuan) - Ratings and Reviews
